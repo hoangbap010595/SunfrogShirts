@@ -31,16 +31,16 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.defaultLookAndFeel = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
-            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
+            this.btnUpdateAll = new DevExpress.XtraEditors.SimpleButton();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
             this.ckListBox = new System.Windows.Forms.CheckedListBox();
-            this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
             this.btnAddTheme = new DevExpress.XtraEditors.SimpleButton();
             this.cbbCategory = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.btnOpenFileExcel = new DevExpress.XtraEditors.SimpleButton();
             this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
             this.info_picImageView = new DevExpress.XtraEditors.PictureEdit();
-            this.info_ckFrontBack = new DevExpress.XtraEditors.CheckEdit();
+            this.info_ckFront = new DevExpress.XtraEditors.CheckEdit();
             this.info_txtKeyWord = new DevExpress.XtraEditors.TextEdit();
             this.info_txtCollection = new DevExpress.XtraEditors.TextEdit();
             this.info_txtDescription = new DevExpress.XtraEditors.TextEdit();
@@ -53,20 +53,21 @@
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.info_cbbCategory = new DevExpress.XtraEditors.ComboBoxEdit();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
-            this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
-            this.sys_txtAccount = new DevExpress.XtraEditors.TextEdit();
-            this.sys_txtPassword = new DevExpress.XtraEditors.TextEdit();
             this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
             this.btnLogin = new DevExpress.XtraEditors.SimpleButton();
+            this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
+            this.sys_txtPassword = new DevExpress.XtraEditors.TextEdit();
+            this.sys_txtAccount = new DevExpress.XtraEditors.TextEdit();
             this.groupControl4 = new DevExpress.XtraEditors.GroupControl();
-            this.listBoxControl1 = new DevExpress.XtraEditors.ListBoxControl();
+            this.lsBoxLog = new DevExpress.XtraEditors.ListBoxControl();
             this.groupControl5 = new DevExpress.XtraEditors.GroupControl();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
-            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
-            this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
-            this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
-            this.simpleButton4 = new DevExpress.XtraEditors.SimpleButton();
             this.pictureEdit1 = new DevExpress.XtraEditors.PictureEdit();
+            this.btnClear = new DevExpress.XtraEditors.SimpleButton();
+            this.btnUpdate = new DevExpress.XtraEditors.SimpleButton();
+            this.txtPath = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
+            this.info_ckBack = new DevExpress.XtraEditors.CheckEdit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
@@ -75,7 +76,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).BeginInit();
             this.groupControl3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.info_picImageView.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.info_ckFrontBack.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.info_ckFront.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.info_txtKeyWord.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.info_txtCollection.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.info_txtDescription.Properties)).BeginInit();
@@ -83,29 +84,30 @@
             ((System.ComponentModel.ISupportInitialize)(this.info_cbbCategory.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.sys_txtAccount.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sys_txtPassword.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sys_txtAccount.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.listBoxControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lsBoxLog)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl5)).BeginInit();
             this.groupControl5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPath.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.info_ckBack.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // defaultLookAndFeel
             // 
             this.defaultLookAndFeel.LookAndFeel.SkinName = "McSkin";
             // 
-            // simpleButton1
+            // btnUpdateAll
             // 
-            this.simpleButton1.Location = new System.Drawing.Point(325, 49);
-            this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(124, 23);
-            this.simpleButton1.TabIndex = 0;
-            this.simpleButton1.Text = "Upload All";
+            this.btnUpdateAll.Location = new System.Drawing.Point(325, 49);
+            this.btnUpdateAll.Name = "btnUpdateAll";
+            this.btnUpdateAll.Size = new System.Drawing.Size(124, 23);
+            this.btnUpdateAll.TabIndex = 0;
+            this.btnUpdateAll.Text = "Upload All";
             // 
             // groupControl1
             // 
@@ -143,15 +145,6 @@
             this.ckListBox.Size = new System.Drawing.Size(185, 436);
             this.ckListBox.TabIndex = 1;
             // 
-            // simpleButton3
-            // 
-            this.simpleButton3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.simpleButton3.Location = new System.Drawing.Point(5, 56);
-            this.simpleButton3.Name = "simpleButton3";
-            this.simpleButton3.Size = new System.Drawing.Size(94, 23);
-            this.simpleButton3.TabIndex = 0;
-            this.simpleButton3.Text = "Open";
-            // 
             // btnAddTheme
             // 
             this.btnAddTheme.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -183,10 +176,21 @@
             this.cbbCategory.TabIndex = 0;
             this.cbbCategory.SelectedIndexChanged += new System.EventHandler(this.cbbCategory_SelectedIndexChanged);
             // 
+            // btnOpenFileExcel
+            // 
+            this.btnOpenFileExcel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnOpenFileExcel.Location = new System.Drawing.Point(5, 56);
+            this.btnOpenFileExcel.Name = "btnOpenFileExcel";
+            this.btnOpenFileExcel.Size = new System.Drawing.Size(94, 23);
+            this.btnOpenFileExcel.TabIndex = 0;
+            this.btnOpenFileExcel.Text = "Open";
+            this.btnOpenFileExcel.Click += new System.EventHandler(this.btnOpenFileExcel_Click);
+            // 
             // groupControl3
             // 
             this.groupControl3.Controls.Add(this.info_picImageView);
-            this.groupControl3.Controls.Add(this.info_ckFrontBack);
+            this.groupControl3.Controls.Add(this.info_ckBack);
+            this.groupControl3.Controls.Add(this.info_ckFront);
             this.groupControl3.Controls.Add(this.info_txtKeyWord);
             this.groupControl3.Controls.Add(this.info_txtCollection);
             this.groupControl3.Controls.Add(this.info_txtDescription);
@@ -219,13 +223,13 @@
             this.info_picImageView.Size = new System.Drawing.Size(100, 100);
             this.info_picImageView.TabIndex = 3;
             // 
-            // info_ckFrontBack
+            // info_ckFront
             // 
-            this.info_ckFrontBack.Location = new System.Drawing.Point(5, 352);
-            this.info_ckFrontBack.Name = "info_ckFrontBack";
-            this.info_ckFrontBack.Properties.Caption = "Front || Back";
-            this.info_ckFrontBack.Size = new System.Drawing.Size(121, 20);
-            this.info_ckFrontBack.TabIndex = 2;
+            this.info_ckFront.Location = new System.Drawing.Point(5, 352);
+            this.info_ckFront.Name = "info_ckFront";
+            this.info_ckFront.Properties.Caption = "Front";
+            this.info_ckFront.Size = new System.Drawing.Size(66, 20);
+            this.info_ckFront.TabIndex = 2;
             // 
             // info_txtKeyWord
             // 
@@ -335,28 +339,6 @@
             this.panelControl1.Size = new System.Drawing.Size(179, 133);
             this.panelControl1.TabIndex = 2;
             // 
-            // labelControl7
-            // 
-            this.labelControl7.Location = new System.Drawing.Point(5, 11);
-            this.labelControl7.Name = "labelControl7";
-            this.labelControl7.Size = new System.Drawing.Size(39, 13);
-            this.labelControl7.TabIndex = 0;
-            this.labelControl7.Text = "Account";
-            // 
-            // sys_txtAccount
-            // 
-            this.sys_txtAccount.Location = new System.Drawing.Point(5, 26);
-            this.sys_txtAccount.Name = "sys_txtAccount";
-            this.sys_txtAccount.Size = new System.Drawing.Size(169, 20);
-            this.sys_txtAccount.TabIndex = 1;
-            // 
-            // sys_txtPassword
-            // 
-            this.sys_txtPassword.Location = new System.Drawing.Point(5, 68);
-            this.sys_txtPassword.Name = "sys_txtPassword";
-            this.sys_txtPassword.Size = new System.Drawing.Size(169, 20);
-            this.sys_txtPassword.TabIndex = 1;
-            // 
             // labelControl8
             // 
             this.labelControl8.Location = new System.Drawing.Point(5, 53);
@@ -373,6 +355,31 @@
             this.btnLogin.Size = new System.Drawing.Size(85, 23);
             this.btnLogin.TabIndex = 0;
             this.btnLogin.Text = "Login";
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
+            // 
+            // labelControl7
+            // 
+            this.labelControl7.Location = new System.Drawing.Point(5, 11);
+            this.labelControl7.Name = "labelControl7";
+            this.labelControl7.Size = new System.Drawing.Size(39, 13);
+            this.labelControl7.TabIndex = 0;
+            this.labelControl7.Text = "Account";
+            // 
+            // sys_txtPassword
+            // 
+            this.sys_txtPassword.EditValue = "Omega@111";
+            this.sys_txtPassword.Location = new System.Drawing.Point(5, 68);
+            this.sys_txtPassword.Name = "sys_txtPassword";
+            this.sys_txtPassword.Size = new System.Drawing.Size(169, 20);
+            this.sys_txtPassword.TabIndex = 1;
+            // 
+            // sys_txtAccount
+            // 
+            this.sys_txtAccount.EditValue = "lchoang1995@gmail.com";
+            this.sys_txtAccount.Location = new System.Drawing.Point(5, 26);
+            this.sys_txtAccount.Name = "sys_txtAccount";
+            this.sys_txtAccount.Size = new System.Drawing.Size(169, 20);
+            this.sys_txtAccount.TabIndex = 1;
             // 
             // groupControl4
             // 
@@ -382,11 +389,11 @@
             this.groupControl4.TabIndex = 0;
             this.groupControl4.Text = "Selected Themes";
             // 
-            // listBoxControl1
+            // lsBoxLog
             // 
-            this.listBoxControl1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.listBoxControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listBoxControl1.Items.AddRange(new object[] {
+            this.lsBoxLog.Cursor = System.Windows.Forms.Cursors.Default;
+            this.lsBoxLog.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lsBoxLog.Items.AddRange(new object[] {
             "ádfádf",
             "adfad",
             "fa",
@@ -395,14 +402,14 @@
             "fa",
             "f",
             "ádf"});
-            this.listBoxControl1.Location = new System.Drawing.Point(2, 22);
-            this.listBoxControl1.Name = "listBoxControl1";
-            this.listBoxControl1.Size = new System.Drawing.Size(464, 175);
-            this.listBoxControl1.TabIndex = 3;
+            this.lsBoxLog.Location = new System.Drawing.Point(2, 22);
+            this.lsBoxLog.Name = "lsBoxLog";
+            this.lsBoxLog.Size = new System.Drawing.Size(464, 175);
+            this.lsBoxLog.TabIndex = 3;
             // 
             // groupControl5
             // 
-            this.groupControl5.Controls.Add(this.listBoxControl1);
+            this.groupControl5.Controls.Add(this.lsBoxLog);
             this.groupControl5.Location = new System.Drawing.Point(194, 330);
             this.groupControl5.Name = "groupControl5";
             this.groupControl5.Size = new System.Drawing.Size(468, 199);
@@ -412,48 +419,16 @@
             // panelControl2
             // 
             this.panelControl2.Controls.Add(this.pictureEdit1);
-            this.panelControl2.Controls.Add(this.simpleButton4);
-            this.panelControl2.Controls.Add(this.simpleButton3);
-            this.panelControl2.Controls.Add(this.simpleButton2);
-            this.panelControl2.Controls.Add(this.simpleButton1);
-            this.panelControl2.Controls.Add(this.textEdit1);
+            this.panelControl2.Controls.Add(this.btnClear);
+            this.panelControl2.Controls.Add(this.btnOpenFileExcel);
+            this.panelControl2.Controls.Add(this.btnUpdate);
+            this.panelControl2.Controls.Add(this.btnUpdateAll);
+            this.panelControl2.Controls.Add(this.txtPath);
             this.panelControl2.Controls.Add(this.labelControl9);
             this.panelControl2.Location = new System.Drawing.Point(194, 239);
             this.panelControl2.Name = "panelControl2";
             this.panelControl2.Size = new System.Drawing.Size(468, 84);
             this.panelControl2.TabIndex = 4;
-            // 
-            // simpleButton2
-            // 
-            this.simpleButton2.Location = new System.Drawing.Point(325, 17);
-            this.simpleButton2.Name = "simpleButton2";
-            this.simpleButton2.Size = new System.Drawing.Size(124, 23);
-            this.simpleButton2.TabIndex = 0;
-            this.simpleButton2.Text = "Upload";
-            // 
-            // labelControl9
-            // 
-            this.labelControl9.Location = new System.Drawing.Point(5, 11);
-            this.labelControl9.Name = "labelControl9";
-            this.labelControl9.Size = new System.Drawing.Size(78, 13);
-            this.labelControl9.TabIndex = 0;
-            this.labelControl9.Text = "File path (*.csv)";
-            // 
-            // textEdit1
-            // 
-            this.textEdit1.Location = new System.Drawing.Point(5, 30);
-            this.textEdit1.Name = "textEdit1";
-            this.textEdit1.Size = new System.Drawing.Size(200, 20);
-            this.textEdit1.TabIndex = 1;
-            // 
-            // simpleButton4
-            // 
-            this.simpleButton4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.simpleButton4.Location = new System.Drawing.Point(111, 56);
-            this.simpleButton4.Name = "simpleButton4";
-            this.simpleButton4.Size = new System.Drawing.Size(94, 23);
-            this.simpleButton4.TabIndex = 0;
-            this.simpleButton4.Text = "Clear";
             // 
             // pictureEdit1
             // 
@@ -471,6 +446,49 @@
             this.pictureEdit1.Properties.ZoomAccelerationFactor = 1D;
             this.pictureEdit1.Size = new System.Drawing.Size(81, 80);
             this.pictureEdit1.TabIndex = 3;
+            // 
+            // btnClear
+            // 
+            this.btnClear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnClear.Location = new System.Drawing.Point(111, 56);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(94, 23);
+            this.btnClear.TabIndex = 0;
+            this.btnClear.Text = "Clear Log";
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            // 
+            // btnUpdate
+            // 
+            this.btnUpdate.Location = new System.Drawing.Point(325, 17);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(124, 23);
+            this.btnUpdate.TabIndex = 0;
+            this.btnUpdate.Text = "Upload";
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            // 
+            // txtPath
+            // 
+            this.txtPath.Location = new System.Drawing.Point(5, 30);
+            this.txtPath.Name = "txtPath";
+            this.txtPath.Properties.ReadOnly = true;
+            this.txtPath.Size = new System.Drawing.Size(200, 20);
+            this.txtPath.TabIndex = 1;
+            // 
+            // labelControl9
+            // 
+            this.labelControl9.Location = new System.Drawing.Point(5, 11);
+            this.labelControl9.Name = "labelControl9";
+            this.labelControl9.Size = new System.Drawing.Size(78, 13);
+            this.labelControl9.TabIndex = 0;
+            this.labelControl9.Text = "File path (*.csv)";
+            // 
+            // info_ckBack
+            // 
+            this.info_ckBack.Location = new System.Drawing.Point(77, 352);
+            this.info_ckBack.Name = "info_ckBack";
+            this.info_ckBack.Properties.Caption = "Back";
+            this.info_ckBack.Size = new System.Drawing.Size(66, 20);
+            this.info_ckBack.TabIndex = 2;
             // 
             // frmMain
             // 
@@ -499,7 +517,7 @@
             this.groupControl3.ResumeLayout(false);
             this.groupControl3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.info_picImageView.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.info_ckFrontBack.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.info_ckFront.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.info_txtKeyWord.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.info_txtCollection.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.info_txtDescription.Properties)).EndInit();
@@ -508,17 +526,18 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.sys_txtAccount.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sys_txtPassword.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sys_txtAccount.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.listBoxControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lsBoxLog)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl5)).EndInit();
             this.groupControl5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
             this.panelControl2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPath.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.info_ckBack.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -526,11 +545,11 @@
         #endregion
 
         private DevExpress.LookAndFeel.DefaultLookAndFeel defaultLookAndFeel;
-        private DevExpress.XtraEditors.SimpleButton simpleButton1;
+        private DevExpress.XtraEditors.SimpleButton btnUpdateAll;
         private DevExpress.XtraEditors.GroupControl groupControl1;
         private DevExpress.XtraEditors.ComboBoxEdit cbbCategory;
         private DevExpress.XtraEditors.GroupControl groupControl2;
-        private DevExpress.XtraEditors.SimpleButton simpleButton3;
+        private DevExpress.XtraEditors.SimpleButton btnOpenFileExcel;
         private DevExpress.XtraEditors.SimpleButton btnAddTheme;
         private System.Windows.Forms.CheckedListBox ckListBox;
         private DevExpress.XtraEditors.GroupControl groupControl3;
@@ -545,7 +564,7 @@
         private DevExpress.XtraEditors.ComboBoxEdit info_cbbCategory;
         private DevExpress.XtraEditors.TextEdit info_txtKeyWord;
         private DevExpress.XtraEditors.PictureEdit info_picImageView;
-        private DevExpress.XtraEditors.CheckEdit info_ckFrontBack;
+        private DevExpress.XtraEditors.CheckEdit info_ckFront;
         private DevExpress.XtraEditors.LabelControl labelControl6;
         private DevExpress.XtraEditors.PanelControl panelControl1;
         private DevExpress.XtraEditors.LabelControl labelControl8;
@@ -554,14 +573,15 @@
         private DevExpress.XtraEditors.TextEdit sys_txtPassword;
         private DevExpress.XtraEditors.TextEdit sys_txtAccount;
         private DevExpress.XtraEditors.GroupControl groupControl4;
-        private DevExpress.XtraEditors.ListBoxControl listBoxControl1;
+        private DevExpress.XtraEditors.ListBoxControl lsBoxLog;
         private DevExpress.XtraEditors.GroupControl groupControl5;
         private DevExpress.XtraEditors.PanelControl panelControl2;
-        private DevExpress.XtraEditors.SimpleButton simpleButton2;
-        private DevExpress.XtraEditors.TextEdit textEdit1;
+        private DevExpress.XtraEditors.SimpleButton btnUpdate;
+        private DevExpress.XtraEditors.TextEdit txtPath;
         private DevExpress.XtraEditors.LabelControl labelControl9;
-        private DevExpress.XtraEditors.SimpleButton simpleButton4;
+        private DevExpress.XtraEditors.SimpleButton btnClear;
         private DevExpress.XtraEditors.PictureEdit pictureEdit1;
+        private DevExpress.XtraEditors.CheckEdit info_ckBack;
     }
 }
 

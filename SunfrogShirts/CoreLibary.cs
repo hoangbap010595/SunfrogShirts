@@ -1,5 +1,8 @@
-﻿using System;
+﻿using DevExpress.XtraEditors;
+using ExcelDataReader;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -8,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace SunfrogShirts
 {
-    class CoreLibary
+    public static class CoreLibary
     {
         //DataJSon
         //{
@@ -40,6 +43,37 @@ namespace SunfrogShirts
                     return base64String;
                 }
             }
+        }
+
+        public static DataTable getDataExcelFromFileToDataTable(string filePath)
+        {
+            using (var stream = File.Open(filePath, FileMode.Open, FileAccess.Read))
+            {
+                // Auto-detect format, supports:
+                //  - Binary Excel files (2.0-2003 format; *.xls)
+                //  - OpenXml Excel files (2007 format; *.xlsx)
+                using (var reader = ExcelReaderFactory.CreateReader(stream))
+                {
+                    var result = reader.AsDataSet(new ExcelDataSetConfiguration()
+                    {
+                        ConfigureDataTable = (data) => new ExcelDataTableConfiguration()
+                        {
+                            UseHeaderRow = true
+                        }
+                    });
+                    //Get all Table
+                    DataTableCollection tables = result.Tables;
+                    DataTable dt = tables[0];
+                    return dt;
+                }
+
+            }
+        }
+
+        public static void writeLog(this ListBoxControl lsbox,string message)
+        {
+            lsbox.Items.Insert(0, message);
+            lsbox.Refresh();
         }
     }
 }

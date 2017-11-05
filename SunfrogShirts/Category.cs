@@ -13,7 +13,7 @@ namespace SunfrogShirts
 
         public Category()
         {
-            
+
         }
 
         public List<Category> getListCategory()
@@ -39,6 +39,36 @@ namespace SunfrogShirts
             ls.Add(new Category { Id = 143, Name = "Canvas 16x20" });
             ls.Add(new Category { Id = 147, Name = "Hat" });
             ls.Add(new Category { Id = 148, Name = "Trucker Cap" });
+
+            return ls;
+        }
+
+        public List<Category> getListCategoryProduct()
+        {
+            List<Category> ls = new List<Category>();
+
+            ls.Add(new Category { Id = 52, Name = "Automotive" });
+            ls.Add(new Category { Id = 76, Name = "Birth Years" });
+            ls.Add(new Category { Id = 78, Name = "Drinking" });
+            ls.Add(new Category { Id = 26, Name = "Faith" });
+            ls.Add(new Category { Id = 61, Name = "Fitness" });
+            ls.Add(new Category { Id = 19, Name = "Funny" });
+            ls.Add(new Category { Id = 13, Name = "Gamer" });
+            ls.Add(new Category { Id = 24, Name = "Geek-Tech" });
+            ls.Add(new Category { Id = 82, Name = "Hobby" });
+            ls.Add(new Category { Id = 35, Name = "Holidays" });
+            ls.Add(new Category { Id = 79, Name = "Jobs" });
+            ls.Add(new Category { Id = 43, Name = "LifeStyle" });
+            ls.Add(new Category { Id = 12, Name = "Movies" });
+            ls.Add(new Category { Id = 71, Name = "Music" });
+            ls.Add(new Category { Id = 75, Name = "Names" });
+            ls.Add(new Category { Id = 81, Name = "Outdoor" });
+            ls.Add(new Category { Id = 62, Name = "Pets" });
+            ls.Add(new Category { Id = 17, Name = "Political" });
+            ls.Add(new Category { Id = 27, Name = "Sports" });
+            ls.Add(new Category { Id = 77, Name = "States" });
+            ls.Add(new Category { Id = 34, Name = "TV Shows" });
+            ls.Add(new Category { Id = 11, Name = "Zombies" });
 
             return ls;
         }
