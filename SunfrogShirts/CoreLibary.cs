@@ -8,6 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace SunfrogShirts
 {
@@ -70,10 +71,34 @@ namespace SunfrogShirts
             }
         }
 
-        public static void writeLog(this ListBoxControl lsbox,string message)
+        public static void writeLog(this ListBoxControl lsbox,string message, int status)
         {
-            lsbox.Items.Insert(0, message);
+            string space = "...................................." + (status == 1 ? "Done" : status == 2 ? "Faild" : "In Progress");
+            string time = DateTime.Now.ToString("HH:mm:ss");
+            lsbox.Items.Insert(0, "Event: " + message + "-"+ time + space);
             lsbox.Refresh();
+        }
+
+        public static void writeLogThread(this ListBoxControl lsbox, string message, int status)
+        {
+            string space = "...................................." + (status == 1 ? "Done" : status == 2 ? "Faild" : "In Progress");
+            lsbox.Invoke((MethodInvoker)delegate
+            {
+                string time = DateTime.Now.ToString("HH:mm:ss");
+                lsbox.Items.Insert(0, "Event: " + message + "-" + time + space);
+                lsbox.Refresh();
+            });
+        }
+
+        public static string convertStringToJson(string text)
+        {
+            var result = "";
+            var value = text.Split(',');
+            foreach (string item in value)
+            {
+                result += "\"" + item + "\",";
+            }
+            return result.TrimEnd(',');
         }
     }
 }

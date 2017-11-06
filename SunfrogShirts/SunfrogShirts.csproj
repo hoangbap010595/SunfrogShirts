@@ -48,6 +48,10 @@
       <HintPath>..\packages\ExcelDataReader.DataSet.3.2.0\lib\net45\ExcelDataReader.DataSet.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.IO.Compression" />
@@ -67,6 +71,12 @@
   <ItemGroup>
     <Compile Include="Category.cs" />
     <Compile Include="CoreLibary.cs" />
+    <Compile Include="frmWait.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmWait.Designer.cs">
+      <DependentUpon>frmWait.cs</DependentUpon>
+    </Compile>
     <Compile Include="ObjColor.cs" />
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
@@ -78,6 +88,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmWait.resx">
+      <DependentUpon>frmWait.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
