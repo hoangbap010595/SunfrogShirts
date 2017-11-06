@@ -204,15 +204,66 @@ namespace SunfrogShirts
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
+            var userName = sys_txtAccount.Text;
+            var password = sys_txtPassword.Text;
             //data
             //username=lchoang1995%40gmail.com&password=Omega%40111&login=Login
-            Login();
-            string getUrl = "https://manager.sunfrogshirts.com/index.cfm?dashboard";
+
+            HttpWebRequest wRequest = (HttpWebRequest)WebRequest.Create("https://manager.sunfrogshirts.com/");
+            wRequest.UserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:56.0) Gecko/20100101 Firefox/56.0";
+            wRequest.Accept = "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8";
+            wRequest.Referer = "https://manager.sunfrogshirts.com/";
+            wRequest.Method = "POST";
+            wRequest.ContentType = "application/x-www-form-urlencoded";
+            wRequest.ContentLength = 65;
+            wRequest.KeepAlive = true;
+            wRequest.CookieContainer = new CookieContainer();
+
+            ASCIIEncoding encoding = new ASCIIEncoding();
+            var enUserName = HttpUtility.UrlEncode(userName);
+            var enPassword = HttpUtility.UrlEncode(password);
+            string data = "username="+ enUserName + "&password="+ enPassword + "&login=Login";
+            byte[] postDataBytes = encoding.GetBytes(data);
+            using (Stream sr = wRequest.GetRequestStream())
+            {
+                sr.Write(postDataBytes,0, postDataBytes.Length);
+            }
+            var cookieHeader = "";
+            WebResponse resp = wRequest.GetResponse();
+            cookieHeader = resp.Headers["Set-cookie"];
+
+            SessionCookieContainer = new CookieContainer();
+            foreach (Cookie cookie in ((HttpWebResponse)resp).Cookies)
+            {
+                SessionCookieContainer.Add(cookie);
+            }
             var pageSource = "";
+            using (StreamReader sr = new StreamReader(resp.GetResponseStream()))
+            {
+                pageSource = sr.ReadToEnd();
+            }
+
+            var dataToSend = "{\"ArtOwnerID\":0,\"IAgree\":true,\"Title\":\"hoangtest21\",\"Category\":\"78\",\"Description\":\"asdfasdf\",\"Collections\":\"ADV\",\"Keywords\":[\"adfasdf\",\"asdf\",\"asd\"],\"imageFront\":\"<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" id=\"SvgjsSvg1000\" version=\"1.1\" width=\"2400\" height=\"3200\" viewBox=\"311.00000000008 150 387.99999999984004 517.33333333312\"><text id=\"SvgjsText1052\" font-family=\"Source Sans Pro\" fill=\"#808080\" font-size=\"30\" stroke-width=\"0\" font-style=\"\" font-weight=\"\" text-decoration=\" \" text-anchor=\"start\" x=\"457.39119720458984\" y=\"241.71535301208496\"><tspan id=\"SvgjsTspan1056\" dy=\"39\" x=\"457.39119720458984\">adfasdf</tspan></text><defs id=\"SvgjsDefs1001\"></defs></svg>\",\"imageBack\":\"\"";
+            dataToSend += ",\"types\":[{\"id\":8,\"name\":\"Guys Tee\",\"price\":19,\"colors\":[\"Green\"]},{\"id\":27,\"name\":\"Sweat Shirt\",\"price\":31,\"colors\":[\"Red\"]}],\"images\":[]}";
+            byte[] postDataBytes2 = encoding.GetBytes(dataToSend);
+            string getUrl = "https://manager.sunfrogshirts.com/Designer/php/upload-handler.cfm";
+
             HttpWebRequest getRequest = (HttpWebRequest)WebRequest.Create(getUrl);
-            getRequest.Method = "GET";
-            getRequest.AllowAutoRedirect = true;
-            //getRequest.CookieContainer = cookie;
+            getRequest.UserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:56.0) Gecko/20100101 Firefox/56.0";
+            getRequest.Accept = "*/*";
+            getRequest.Method = "POST";
+            getRequest.ContentType = "application/json";
+            getRequest.ContentLength = postDataBytes2.Length;
+            getRequest.KeepAlive = true;
+            getRequest.CookieContainer = SessionCookieContainer;       
+            using (Stream sr = getRequest.GetRequestStream())
+            {
+                sr.Write(postDataBytes2, 0, postDataBytes2.Length);
+            }
+
+            var cookieHeader2 = "";
+            WebResponse resp2 = getRequest.GetResponse();
+            cookieHeader2 = resp2.Headers["Set-cookie"];
             HttpWebResponse getResponse = (HttpWebResponse)getRequest.GetResponse();
             using (StreamReader sr = new StreamReader(getResponse.GetResponseStream()))
             {
