@@ -276,8 +276,8 @@ namespace SunfrogShirts
         private void btnLogin_Click(object sender, EventArgs e)
         {
             frmWait frm = new frmWait();
-            frm.SetCaption("Đăng nhập hệ thống!");
-            frm.SetDescription("Vui lòng chờ...");
+            frm.SetCaption("Connecting to server");
+            frm.SetDescription("Please wait...");
             Thread t = new Thread(new ThreadStart(() =>
             {
                 var userName = sys_txtAccount.Text;
@@ -324,11 +324,9 @@ namespace SunfrogShirts
 
                 if (matchCollection.Count == 0)
                 {
-                    XtraMessageBox.Show("Tên đăng nhập hoặc mật khẩu không đúng!", "Thông báo");
+                    XtraMessageBox.Show("Account or Password is wrong!", "Message");
                     frm.Invoke((MethodInvoker)delegate { frm.Close(); });
                     lblTimeOnline.Invoke((MethodInvoker)delegate { lblTimeOnline.Visible = false; });
-                    btnLogin.Invoke((MethodInvoker)delegate { btnLogin.Visible = true; });
-                    lblPassword.Invoke((MethodInvoker)delegate { lblPassword.Visible = true; });
                     CoreLibary.writeLogThread(lsBoxLog, "User Login", 2);
                     return;
                 }
@@ -338,8 +336,6 @@ namespace SunfrogShirts
                 }
                 frm.Invoke((MethodInvoker)delegate { frm.Close(); });
                 lblTimeOnline.Invoke((MethodInvoker)delegate { lblTimeOnline.Visible = true; });
-                btnLogin.Invoke((MethodInvoker)delegate { btnLogin.Visible = false; });
-                lblPassword.Invoke((MethodInvoker)delegate { lblPassword.Visible = false; });
                 groupControlInfo.Invoke((MethodInvoker)delegate { groupControlInfo.Enabled = true; });
                 groupControlSelectTheme.Invoke((MethodInvoker)delegate { groupControlSelectTheme.Enabled = true; });
                 groupControlTheme.Invoke((MethodInvoker)delegate { groupControlTheme.Enabled = true; });
@@ -453,6 +449,11 @@ namespace SunfrogShirts
         /// <param name="e"></param>
         private void btnUpdate_Click(object sender, EventArgs e)
         {
+            if (dtDataTempColor.Rows.Count == 0)
+            {
+                XtraMessageBox.Show("No themes selected!", "Message");
+                return;
+            }
             btnUpdate.Enabled = false;
             CoreLibary.writeLog(lsBoxLog, "Uploading One Collection", 3);
             Thread t = new Thread(new ThreadStart(() =>
@@ -501,7 +502,13 @@ namespace SunfrogShirts
             //Check data
             if (dtDataTemp.Rows.Count == 0)
             {
-                XtraMessageBox.Show("Không có dữ liệu thực hiện!");
+                XtraMessageBox.Show("Not found data!", "Message");
+                return;
+            }
+            //Check data
+            if (dtDataTempColor.Rows.Count == 0)
+            {
+                XtraMessageBox.Show("No themes selected!", "Message");
                 return;
             }
             Thread t = new Thread(new ThreadStart(() =>

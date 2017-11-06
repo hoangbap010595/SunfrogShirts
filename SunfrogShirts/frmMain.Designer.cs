@@ -56,7 +56,6 @@
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.lblPassword = new DevExpress.XtraEditors.LabelControl();
             this.btnLogin = new DevExpress.XtraEditors.SimpleButton();
-            this.lblTimeOnline = new DevExpress.XtraEditors.LabelControl();
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.sys_txtPassword = new DevExpress.XtraEditors.TextEdit();
             this.sys_txtAccount = new DevExpress.XtraEditors.TextEdit();
@@ -80,6 +79,7 @@
             this.gridColumnColor5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumnPrice = new DevExpress.XtraGrid.Columns.GridColumn();
             this.btnClearColor = new DevExpress.XtraEditors.SimpleButton();
+            this.lblTimeOnline = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.groupControlTheme)).BeginInit();
             this.groupControlTheme.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cbbCategory.Properties)).BeginInit();
@@ -343,9 +343,9 @@
             // 
             // panelControl1
             // 
+            this.panelControl1.Controls.Add(this.lblTimeOnline);
             this.panelControl1.Controls.Add(this.lblPassword);
             this.panelControl1.Controls.Add(this.btnLogin);
-            this.panelControl1.Controls.Add(this.lblTimeOnline);
             this.panelControl1.Controls.Add(this.labelControl7);
             this.panelControl1.Controls.Add(this.sys_txtPassword);
             this.panelControl1.Controls.Add(this.sys_txtAccount);
@@ -371,25 +371,6 @@
             this.btnLogin.TabIndex = 3;
             this.btnLogin.Text = "Login";
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
-            // 
-            // lblTimeOnline
-            // 
-            this.lblTimeOnline.Appearance.Font = new System.Drawing.Font("Tahoma", 30F, System.Drawing.FontStyle.Bold);
-            this.lblTimeOnline.Appearance.ForeColor = System.Drawing.Color.DarkGreen;
-            this.lblTimeOnline.Appearance.Options.UseFont = true;
-            this.lblTimeOnline.Appearance.Options.UseForeColor = true;
-            this.lblTimeOnline.Appearance.Options.UseTextOptions = true;
-            this.lblTimeOnline.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.lblTimeOnline.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.lblTimeOnline.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblTimeOnline.Location = new System.Drawing.Point(2, 2);
-            this.lblTimeOnline.Name = "lblTimeOnline";
-            this.lblTimeOnline.Size = new System.Drawing.Size(175, 129);
-            this.lblTimeOnline.TabIndex = 0;
-            this.lblTimeOnline.Text = "00:00";
-            this.lblTimeOnline.ToolTip = "Thời gian hoạt động";
-            this.lblTimeOnline.ToolTipTitle = "Online";
-            this.lblTimeOnline.Visible = false;
             // 
             // labelControl7
             // 
@@ -651,6 +632,25 @@
             this.btnClearColor.Text = "Clear Color";
             this.btnClearColor.Click += new System.EventHandler(this.btnClearColor_Click);
             // 
+            // lblTimeOnline
+            // 
+            this.lblTimeOnline.Appearance.Font = new System.Drawing.Font("Tahoma", 30F, System.Drawing.FontStyle.Bold);
+            this.lblTimeOnline.Appearance.ForeColor = System.Drawing.Color.DarkGreen;
+            this.lblTimeOnline.Appearance.Options.UseFont = true;
+            this.lblTimeOnline.Appearance.Options.UseForeColor = true;
+            this.lblTimeOnline.Appearance.Options.UseTextOptions = true;
+            this.lblTimeOnline.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.lblTimeOnline.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+            this.lblTimeOnline.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblTimeOnline.Location = new System.Drawing.Point(2, 2);
+            this.lblTimeOnline.Name = "lblTimeOnline";
+            this.lblTimeOnline.Size = new System.Drawing.Size(175, 129);
+            this.lblTimeOnline.TabIndex = 4;
+            this.lblTimeOnline.Text = "00:00";
+            this.lblTimeOnline.ToolTip = "Connected To Server";
+            this.lblTimeOnline.ToolTipTitle = "Online";
+            this.lblTimeOnline.Visible = false;
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -667,7 +667,7 @@
             this.MinimumSize = new System.Drawing.Size(1000, 580);
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "SunfrogShirts";
+            this.Text = "Auto Upload Sunfrog Shirts";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.groupControlTheme)).EndInit();
             this.groupControlTheme.ResumeLayout(false);
@@ -746,7 +746,6 @@
         private DevExpress.XtraEditors.CheckEdit info_ckBack;
         private DevExpress.XtraEditors.LookUpEdit info_cbbCategory;
         private DevExpress.XtraEditors.LookUpEdit cbbCategory;
-        private DevExpress.XtraEditors.LabelControl lblTimeOnline;
         private DevExpress.XtraGrid.GridControl gridControl1;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnId;
@@ -758,6 +757,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnColor5;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnPrice;
         private DevExpress.XtraEditors.SimpleButton btnClearColor;
+        private DevExpress.XtraEditors.LabelControl lblTimeOnline;
     }
 }
 
