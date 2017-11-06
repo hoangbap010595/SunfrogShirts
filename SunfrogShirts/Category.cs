@@ -10,6 +10,7 @@ namespace SunfrogShirts
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public int Price { get; set; }
 
         public Category()
         {
@@ -19,26 +20,26 @@ namespace SunfrogShirts
         public List<Category> getListCategory()
         {
             List<Category> ls = new List<Category>();
-            ls.Add(new Category { Id = 8, Name = "Guys Tee" });
-            ls.Add(new Category { Id = 34, Name = "Ladies Tee" });
-            ls.Add(new Category { Id = 35, Name = "Youth Tee" });
-            ls.Add(new Category { Id = 19, Name = "Hoodie" });
-            ls.Add(new Category { Id = 27, Name = "Sweat Shirt" });
-            ls.Add(new Category { Id = 50, Name = "Guys V-Neck" });
-            ls.Add(new Category { Id = 116, Name = "Ladies V-Neck" });
-            ls.Add(new Category { Id = 118, Name = "Unisex Tank Top" });
-            ls.Add(new Category { Id = 119, Name = "Unisex Long Sleeve" });
-            ls.Add(new Category { Id = 120, Name = "Leggings" });
-            ls.Add(new Category { Id = 128, Name = "Coffee Mug (colored)" });
-            ls.Add(new Category { Id = 129, Name = "Coffee Mug (white)" });
-            ls.Add(new Category { Id = 145, Name = "Coffee Mug (color change)" });
-            ls.Add(new Category { Id = 137, Name = "Posters 16x24" });
-            ls.Add(new Category { Id = 138, Name = "Posters 24x16" });
-            ls.Add(new Category { Id = 139, Name = "Posters 11x17" });
-            ls.Add(new Category { Id = 140, Name = "Posters 17x11" });
-            ls.Add(new Category { Id = 143, Name = "Canvas 16x20" });
-            ls.Add(new Category { Id = 147, Name = "Hat" });
-            ls.Add(new Category { Id = 148, Name = "Trucker Cap" });
+            ls.Add(new Category { Id = 8, Name = "Guys Tee", Price = 19 });
+            ls.Add(new Category { Id = 34, Name = "Ladies Tee", Price = 19 });
+            ls.Add(new Category { Id = 35, Name = "Youth Tee", Price = 19 });
+            ls.Add(new Category { Id = 19, Name = "Hoodie", Price = 34 });
+            ls.Add(new Category { Id = 27, Name = "Sweat Shirt", Price = 31 });
+            ls.Add(new Category { Id = 50, Name = "Guys V-Neck", Price = 23 });
+            ls.Add(new Category { Id = 116, Name = "Ladies V-Neck", Price = 23 });
+            ls.Add(new Category { Id = 118, Name = "Unisex Tank Top", Price = 19 });
+            ls.Add(new Category { Id = 119, Name = "Unisex Long Sleeve", Price = 25 });
+            ls.Add(new Category { Id = 120, Name = "Leggings", Price = 14 });
+            ls.Add(new Category { Id = 128, Name = "Coffee Mug (colored)", Price = 14 });
+            ls.Add(new Category { Id = 129, Name = "Coffee Mug (white)", Price = 14 });
+            ls.Add(new Category { Id = 145, Name = "Coffee Mug (color change)", Price = 14 });
+            ls.Add(new Category { Id = 137, Name = "Posters 16x24", Price = 14 });
+            ls.Add(new Category { Id = 138, Name = "Posters 24x16", Price = 14 });
+            ls.Add(new Category { Id = 139, Name = "Posters 11x17", Price = 14 });
+            ls.Add(new Category { Id = 140, Name = "Posters 17x11", Price = 14 });
+            ls.Add(new Category { Id = 143, Name = "Canvas 16x20", Price = 14 });
+            ls.Add(new Category { Id = 147, Name = "Hat", Price = 15 });
+            ls.Add(new Category { Id = 148, Name = "Trucker Cap", Price = 18 });
 
             return ls;
         }

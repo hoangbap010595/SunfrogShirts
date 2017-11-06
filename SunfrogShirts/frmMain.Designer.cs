@@ -32,13 +32,13 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.defaultLookAndFeel = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
             this.btnUpdateAll = new DevExpress.XtraEditors.SimpleButton();
-            this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.groupControlTheme = new DevExpress.XtraEditors.GroupControl();
             this.cbbCategory = new DevExpress.XtraEditors.LookUpEdit();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
             this.ckListBox = new System.Windows.Forms.CheckedListBox();
             this.btnAddTheme = new DevExpress.XtraEditors.SimpleButton();
             this.btnOpenFileExcel = new DevExpress.XtraEditors.SimpleButton();
-            this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
+            this.groupControlInfo = new DevExpress.XtraEditors.GroupControl();
             this.info_cbbCategory = new DevExpress.XtraEditors.LookUpEdit();
             this.info_picImageView = new DevExpress.XtraEditors.PictureEdit();
             this.info_ckBack = new DevExpress.XtraEditors.CheckEdit();
@@ -60,22 +60,33 @@
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.sys_txtPassword = new DevExpress.XtraEditors.TextEdit();
             this.sys_txtAccount = new DevExpress.XtraEditors.TextEdit();
-            this.groupControl4 = new DevExpress.XtraEditors.GroupControl();
+            this.groupControlSelectTheme = new DevExpress.XtraEditors.GroupControl();
             this.lsBoxLog = new DevExpress.XtraEditors.ListBoxControl();
             this.groupControl5 = new DevExpress.XtraEditors.GroupControl();
-            this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
+            this.panelControlAction = new DevExpress.XtraEditors.PanelControl();
             this.pictureEdit1 = new DevExpress.XtraEditors.PictureEdit();
             this.btnClear = new DevExpress.XtraEditors.SimpleButton();
             this.btnUpdate = new DevExpress.XtraEditors.SimpleButton();
             this.txtPath = new DevExpress.XtraEditors.TextEdit();
             this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
-            this.groupControl1.SuspendLayout();
+            this.gridControl1 = new DevExpress.XtraGrid.GridControl();
+            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumnId = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumnName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumnColor1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumnColor2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumnColor3 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumnColor4 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumnColor5 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumnPrice = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.btnClearColor = new DevExpress.XtraEditors.SimpleButton();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControlTheme)).BeginInit();
+            this.groupControlTheme.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cbbCategory.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
             this.groupControl2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).BeginInit();
-            this.groupControl3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControlInfo)).BeginInit();
+            this.groupControlInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.info_cbbCategory.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.info_picImageView.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.info_ckBack.Properties)).BeginInit();
@@ -88,14 +99,17 @@
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.sys_txtPassword.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sys_txtAccount.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControlSelectTheme)).BeginInit();
+            this.groupControlSelectTheme.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lsBoxLog)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl5)).BeginInit();
             this.groupControl5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
-            this.panelControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControlAction)).BeginInit();
+            this.panelControlAction.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPath.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // defaultLookAndFeel
@@ -104,23 +118,23 @@
             // 
             // btnUpdateAll
             // 
-            this.btnUpdateAll.Location = new System.Drawing.Point(325, 49);
+            this.btnUpdateAll.Location = new System.Drawing.Point(429, 49);
             this.btnUpdateAll.Name = "btnUpdateAll";
             this.btnUpdateAll.Size = new System.Drawing.Size(124, 23);
             this.btnUpdateAll.TabIndex = 16;
-            this.btnUpdateAll.Text = "Upload All";
+            this.btnUpdateAll.Text = "Upload From File";
             this.btnUpdateAll.Click += new System.EventHandler(this.btnUpdateAll_Click);
             // 
-            // groupControl1
+            // groupControlTheme
             // 
-            this.groupControl1.Controls.Add(this.cbbCategory);
-            this.groupControl1.Controls.Add(this.groupControl2);
-            this.groupControl1.Controls.Add(this.btnAddTheme);
-            this.groupControl1.Location = new System.Drawing.Point(666, 12);
-            this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(206, 517);
-            this.groupControl1.TabIndex = 0;
-            this.groupControl1.Text = "Themes";
+            this.groupControlTheme.Controls.Add(this.cbbCategory);
+            this.groupControlTheme.Controls.Add(this.groupControl2);
+            this.groupControlTheme.Controls.Add(this.btnAddTheme);
+            this.groupControlTheme.Location = new System.Drawing.Point(770, 12);
+            this.groupControlTheme.Name = "groupControlTheme";
+            this.groupControlTheme.Size = new System.Drawing.Size(206, 517);
+            this.groupControlTheme.TabIndex = 0;
+            this.groupControlTheme.Text = "Themes";
             // 
             // cbbCategory
             // 
@@ -174,34 +188,34 @@
             // btnOpenFileExcel
             // 
             this.btnOpenFileExcel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOpenFileExcel.Location = new System.Drawing.Point(5, 56);
+            this.btnOpenFileExcel.Location = new System.Drawing.Point(51, 56);
             this.btnOpenFileExcel.Name = "btnOpenFileExcel";
-            this.btnOpenFileExcel.Size = new System.Drawing.Size(94, 23);
+            this.btnOpenFileExcel.Size = new System.Drawing.Size(63, 23);
             this.btnOpenFileExcel.TabIndex = 13;
             this.btnOpenFileExcel.Text = "Open";
             this.btnOpenFileExcel.Click += new System.EventHandler(this.btnOpenFileExcel_Click);
             // 
-            // groupControl3
+            // groupControlInfo
             // 
-            this.groupControl3.Controls.Add(this.info_cbbCategory);
-            this.groupControl3.Controls.Add(this.info_picImageView);
-            this.groupControl3.Controls.Add(this.info_ckBack);
-            this.groupControl3.Controls.Add(this.info_ckFront);
-            this.groupControl3.Controls.Add(this.info_txtKeyWord);
-            this.groupControl3.Controls.Add(this.info_txtCollection);
-            this.groupControl3.Controls.Add(this.info_txtDescription);
-            this.groupControl3.Controls.Add(this.info_txtTitle);
-            this.groupControl3.Controls.Add(this.labelControl2);
-            this.groupControl3.Controls.Add(this.labelControl6);
-            this.groupControl3.Controls.Add(this.labelControl5);
-            this.groupControl3.Controls.Add(this.labelControl4);
-            this.groupControl3.Controls.Add(this.labelControl3);
-            this.groupControl3.Controls.Add(this.labelControl1);
-            this.groupControl3.Location = new System.Drawing.Point(12, 151);
-            this.groupControl3.Name = "groupControl3";
-            this.groupControl3.Size = new System.Drawing.Size(179, 378);
-            this.groupControl3.TabIndex = 0;
-            this.groupControl3.Text = "Infomation";
+            this.groupControlInfo.Controls.Add(this.info_cbbCategory);
+            this.groupControlInfo.Controls.Add(this.info_picImageView);
+            this.groupControlInfo.Controls.Add(this.info_ckBack);
+            this.groupControlInfo.Controls.Add(this.info_ckFront);
+            this.groupControlInfo.Controls.Add(this.info_txtKeyWord);
+            this.groupControlInfo.Controls.Add(this.info_txtCollection);
+            this.groupControlInfo.Controls.Add(this.info_txtDescription);
+            this.groupControlInfo.Controls.Add(this.info_txtTitle);
+            this.groupControlInfo.Controls.Add(this.labelControl2);
+            this.groupControlInfo.Controls.Add(this.labelControl6);
+            this.groupControlInfo.Controls.Add(this.labelControl5);
+            this.groupControlInfo.Controls.Add(this.labelControl4);
+            this.groupControlInfo.Controls.Add(this.labelControl3);
+            this.groupControlInfo.Controls.Add(this.labelControl1);
+            this.groupControlInfo.Location = new System.Drawing.Point(12, 151);
+            this.groupControlInfo.Name = "groupControlInfo";
+            this.groupControlInfo.Size = new System.Drawing.Size(179, 378);
+            this.groupControlInfo.TabIndex = 0;
+            this.groupControlInfo.Text = "Infomation";
             // 
             // info_cbbCategory
             // 
@@ -240,6 +254,7 @@
             // 
             // info_ckFront
             // 
+            this.info_ckFront.EditValue = true;
             this.info_ckFront.Location = new System.Drawing.Point(5, 352);
             this.info_ckFront.Name = "info_ckFront";
             this.info_ckFront.Properties.Caption = "Front";
@@ -248,6 +263,7 @@
             // 
             // info_txtKeyWord
             // 
+            this.info_txtKeyWord.EditValue = "Mot,Hau,Ba";
             this.info_txtKeyWord.Location = new System.Drawing.Point(5, 221);
             this.info_txtKeyWord.Name = "info_txtKeyWord";
             this.info_txtKeyWord.Size = new System.Drawing.Size(169, 20);
@@ -255,6 +271,7 @@
             // 
             // info_txtCollection
             // 
+            this.info_txtCollection.EditValue = "OKI";
             this.info_txtCollection.Location = new System.Drawing.Point(5, 176);
             this.info_txtCollection.Name = "info_txtCollection";
             this.info_txtCollection.Size = new System.Drawing.Size(169, 20);
@@ -262,6 +279,7 @@
             // 
             // info_txtDescription
             // 
+            this.info_txtDescription.EditValue = "Mo ta Test";
             this.info_txtDescription.Location = new System.Drawing.Point(5, 134);
             this.info_txtDescription.Name = "info_txtDescription";
             this.info_txtDescription.Size = new System.Drawing.Size(169, 20);
@@ -269,6 +287,7 @@
             // 
             // info_txtTitle
             // 
+            this.info_txtTitle.EditValue = "TesstObject";
             this.info_txtTitle.Location = new System.Drawing.Point(5, 44);
             this.info_txtTitle.Name = "info_txtTitle";
             this.info_txtTitle.Size = new System.Drawing.Size(169, 20);
@@ -396,18 +415,21 @@
             this.sys_txtAccount.Size = new System.Drawing.Size(169, 20);
             this.sys_txtAccount.TabIndex = 1;
             // 
-            // groupControl4
+            // groupControlSelectTheme
             // 
-            this.groupControl4.Location = new System.Drawing.Point(194, 12);
-            this.groupControl4.Name = "groupControl4";
-            this.groupControl4.Size = new System.Drawing.Size(468, 222);
-            this.groupControl4.TabIndex = 0;
-            this.groupControl4.Text = "Selected Themes";
+            this.groupControlSelectTheme.Controls.Add(this.gridControl1);
+            this.groupControlSelectTheme.Location = new System.Drawing.Point(194, 12);
+            this.groupControlSelectTheme.Name = "groupControlSelectTheme";
+            this.groupControlSelectTheme.Size = new System.Drawing.Size(571, 222);
+            this.groupControlSelectTheme.TabIndex = 0;
+            this.groupControlSelectTheme.Text = "Selected Themes";
             // 
             // lsBoxLog
             // 
             this.lsBoxLog.Cursor = System.Windows.Forms.Cursors.Default;
             this.lsBoxLog.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lsBoxLog.HorizontalScrollbar = true;
+            this.lsBoxLog.ItemHeight = 22;
             this.lsBoxLog.Items.AddRange(new object[] {
             "ádfádf",
             "adfad",
@@ -419,37 +441,39 @@
             "ádf"});
             this.lsBoxLog.Location = new System.Drawing.Point(2, 22);
             this.lsBoxLog.Name = "lsBoxLog";
-            this.lsBoxLog.Size = new System.Drawing.Size(464, 175);
+            this.lsBoxLog.ShowFocusRect = false;
+            this.lsBoxLog.Size = new System.Drawing.Size(564, 175);
             this.lsBoxLog.TabIndex = 0;
             // 
             // groupControl5
             // 
             this.groupControl5.Controls.Add(this.lsBoxLog);
-            this.groupControl5.Location = new System.Drawing.Point(194, 330);
+            this.groupControl5.Location = new System.Drawing.Point(197, 330);
             this.groupControl5.Name = "groupControl5";
-            this.groupControl5.Size = new System.Drawing.Size(468, 199);
+            this.groupControl5.Size = new System.Drawing.Size(568, 199);
             this.groupControl5.TabIndex = 3;
             this.groupControl5.Text = "Progress";
             // 
-            // panelControl2
+            // panelControlAction
             // 
-            this.panelControl2.Controls.Add(this.pictureEdit1);
-            this.panelControl2.Controls.Add(this.btnClear);
-            this.panelControl2.Controls.Add(this.btnOpenFileExcel);
-            this.panelControl2.Controls.Add(this.btnUpdate);
-            this.panelControl2.Controls.Add(this.btnUpdateAll);
-            this.panelControl2.Controls.Add(this.txtPath);
-            this.panelControl2.Controls.Add(this.labelControl9);
-            this.panelControl2.Location = new System.Drawing.Point(194, 239);
-            this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(468, 84);
-            this.panelControl2.TabIndex = 4;
+            this.panelControlAction.Controls.Add(this.pictureEdit1);
+            this.panelControlAction.Controls.Add(this.btnClearColor);
+            this.panelControlAction.Controls.Add(this.btnClear);
+            this.panelControlAction.Controls.Add(this.btnOpenFileExcel);
+            this.panelControlAction.Controls.Add(this.btnUpdate);
+            this.panelControlAction.Controls.Add(this.btnUpdateAll);
+            this.panelControlAction.Controls.Add(this.txtPath);
+            this.panelControlAction.Controls.Add(this.labelControl9);
+            this.panelControlAction.Location = new System.Drawing.Point(194, 239);
+            this.panelControlAction.Name = "panelControlAction";
+            this.panelControlAction.Size = new System.Drawing.Size(571, 84);
+            this.panelControlAction.TabIndex = 4;
             // 
             // pictureEdit1
             // 
             this.pictureEdit1.Cursor = System.Windows.Forms.Cursors.Default;
             this.pictureEdit1.EditValue = ((object)(resources.GetObject("pictureEdit1.EditValue")));
-            this.pictureEdit1.Location = new System.Drawing.Point(226, 0);
+            this.pictureEdit1.Location = new System.Drawing.Point(291, 0);
             this.pictureEdit1.Name = "pictureEdit1";
             this.pictureEdit1.Properties.AllowFocused = false;
             this.pictureEdit1.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
@@ -465,20 +489,20 @@
             // btnClear
             // 
             this.btnClear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClear.Location = new System.Drawing.Point(111, 56);
+            this.btnClear.Location = new System.Drawing.Point(116, 56);
             this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(94, 23);
+            this.btnClear.Size = new System.Drawing.Size(63, 23);
             this.btnClear.TabIndex = 14;
             this.btnClear.Text = "Clear Log";
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(325, 17);
+            this.btnUpdate.Location = new System.Drawing.Point(429, 17);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(124, 23);
             this.btnUpdate.TabIndex = 15;
-            this.btnUpdate.Text = "Upload";
+            this.btnUpdate.Text = "Upload ";
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // txtPath
@@ -486,43 +510,173 @@
             this.txtPath.Location = new System.Drawing.Point(5, 30);
             this.txtPath.Name = "txtPath";
             this.txtPath.Properties.ReadOnly = true;
-            this.txtPath.Size = new System.Drawing.Size(200, 20);
+            this.txtPath.Size = new System.Drawing.Size(248, 20);
             this.txtPath.TabIndex = 12;
             // 
             // labelControl9
             // 
             this.labelControl9.Location = new System.Drawing.Point(5, 11);
             this.labelControl9.Name = "labelControl9";
-            this.labelControl9.Size = new System.Drawing.Size(78, 13);
+            this.labelControl9.Size = new System.Drawing.Size(111, 13);
             this.labelControl9.TabIndex = 0;
-            this.labelControl9.Text = "File path (*.csv)";
+            this.labelControl9.Text = "File path (*.xls, *.xlsx)";
+            // 
+            // gridControl1
+            // 
+            this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridControl1.Location = new System.Drawing.Point(2, 22);
+            this.gridControl1.MainView = this.gridView1;
+            this.gridControl1.Name = "gridControl1";
+            this.gridControl1.Size = new System.Drawing.Size(567, 198);
+            this.gridControl1.TabIndex = 0;
+            this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView1});
+            // 
+            // gridView1
+            // 
+            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumnId,
+            this.gridColumnName,
+            this.gridColumnPrice,
+            this.gridColumnColor1,
+            this.gridColumnColor2,
+            this.gridColumnColor3,
+            this.gridColumnColor4,
+            this.gridColumnColor5});
+            this.gridView1.GridControl = this.gridControl1;
+            this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsBehavior.Editable = false;
+            this.gridView1.OptionsBehavior.ReadOnly = true;
+            this.gridView1.OptionsCustomization.AllowColumnMoving = false;
+            this.gridView1.OptionsView.ShowGroupPanel = false;
+            // 
+            // gridColumnId
+            // 
+            this.gridColumnId.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.gridColumnId.AppearanceHeader.Options.UseFont = true;
+            this.gridColumnId.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridColumnId.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumnId.Caption = "Id";
+            this.gridColumnId.FieldName = "Id";
+            this.gridColumnId.MaxWidth = 35;
+            this.gridColumnId.MinWidth = 35;
+            this.gridColumnId.Name = "gridColumnId";
+            this.gridColumnId.Width = 35;
+            // 
+            // gridColumnName
+            // 
+            this.gridColumnName.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.gridColumnName.AppearanceHeader.Options.UseFont = true;
+            this.gridColumnName.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridColumnName.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumnName.Caption = "Name";
+            this.gridColumnName.FieldName = "Name";
+            this.gridColumnName.Name = "gridColumnName";
+            this.gridColumnName.Visible = true;
+            this.gridColumnName.VisibleIndex = 0;
+            // 
+            // gridColumnColor1
+            // 
+            this.gridColumnColor1.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.gridColumnColor1.AppearanceHeader.Options.UseFont = true;
+            this.gridColumnColor1.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridColumnColor1.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumnColor1.Caption = "Color1";
+            this.gridColumnColor1.FieldName = "Color1";
+            this.gridColumnColor1.Name = "gridColumnColor1";
+            this.gridColumnColor1.Visible = true;
+            this.gridColumnColor1.VisibleIndex = 1;
+            // 
+            // gridColumnColor2
+            // 
+            this.gridColumnColor2.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.gridColumnColor2.AppearanceHeader.Options.UseFont = true;
+            this.gridColumnColor2.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridColumnColor2.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumnColor2.Caption = "Color2";
+            this.gridColumnColor2.FieldName = "Color2";
+            this.gridColumnColor2.Name = "gridColumnColor2";
+            this.gridColumnColor2.Visible = true;
+            this.gridColumnColor2.VisibleIndex = 2;
+            // 
+            // gridColumnColor3
+            // 
+            this.gridColumnColor3.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.gridColumnColor3.AppearanceHeader.Options.UseFont = true;
+            this.gridColumnColor3.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridColumnColor3.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumnColor3.Caption = "Color3";
+            this.gridColumnColor3.FieldName = "Color3";
+            this.gridColumnColor3.Name = "gridColumnColor3";
+            this.gridColumnColor3.Visible = true;
+            this.gridColumnColor3.VisibleIndex = 3;
+            // 
+            // gridColumnColor4
+            // 
+            this.gridColumnColor4.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.gridColumnColor4.AppearanceHeader.Options.UseFont = true;
+            this.gridColumnColor4.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridColumnColor4.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumnColor4.Caption = "Color4";
+            this.gridColumnColor4.FieldName = "Color4";
+            this.gridColumnColor4.Name = "gridColumnColor4";
+            this.gridColumnColor4.Visible = true;
+            this.gridColumnColor4.VisibleIndex = 4;
+            // 
+            // gridColumnColor5
+            // 
+            this.gridColumnColor5.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.gridColumnColor5.AppearanceHeader.Options.UseFont = true;
+            this.gridColumnColor5.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridColumnColor5.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumnColor5.Caption = "Color5";
+            this.gridColumnColor5.FieldName = "Color5";
+            this.gridColumnColor5.Name = "gridColumnColor5";
+            this.gridColumnColor5.Visible = true;
+            this.gridColumnColor5.VisibleIndex = 5;
+            // 
+            // gridColumnPrice
+            // 
+            this.gridColumnPrice.Caption = "Price";
+            this.gridColumnPrice.FieldName = "Price";
+            this.gridColumnPrice.Name = "gridColumnPrice";
+            // 
+            // btnClearColor
+            // 
+            this.btnClearColor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnClearColor.Location = new System.Drawing.Point(185, 56);
+            this.btnClearColor.Name = "btnClearColor";
+            this.btnClearColor.Size = new System.Drawing.Size(66, 23);
+            this.btnClearColor.TabIndex = 14;
+            this.btnClearColor.Text = "Clear Color";
+            this.btnClearColor.Click += new System.EventHandler(this.btnClearColor_Click);
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(884, 541);
-            this.Controls.Add(this.panelControl2);
+            this.ClientSize = new System.Drawing.Size(984, 541);
+            this.Controls.Add(this.panelControlAction);
             this.Controls.Add(this.groupControl5);
-            this.Controls.Add(this.groupControl4);
+            this.Controls.Add(this.groupControlSelectTheme);
             this.Controls.Add(this.panelControl1);
-            this.Controls.Add(this.groupControl3);
-            this.Controls.Add(this.groupControl1);
+            this.Controls.Add(this.groupControlInfo);
+            this.Controls.Add(this.groupControlTheme);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximumSize = new System.Drawing.Size(900, 580);
-            this.MinimumSize = new System.Drawing.Size(900, 580);
+            this.MaximumSize = new System.Drawing.Size(1000, 580);
+            this.MinimumSize = new System.Drawing.Size(1000, 580);
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SunfrogShirts";
             this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
-            this.groupControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.groupControlTheme)).EndInit();
+            this.groupControlTheme.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.cbbCategory.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
             this.groupControl2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).EndInit();
-            this.groupControl3.ResumeLayout(false);
-            this.groupControl3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControlInfo)).EndInit();
+            this.groupControlInfo.ResumeLayout(false);
+            this.groupControlInfo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.info_cbbCategory.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.info_picImageView.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.info_ckBack.Properties)).EndInit();
@@ -536,15 +690,18 @@
             this.panelControl1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.sys_txtPassword.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sys_txtAccount.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControlSelectTheme)).EndInit();
+            this.groupControlSelectTheme.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.lsBoxLog)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl5)).EndInit();
             this.groupControl5.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
-            this.panelControl2.ResumeLayout(false);
-            this.panelControl2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControlAction)).EndInit();
+            this.panelControlAction.ResumeLayout(false);
+            this.panelControlAction.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPath.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -553,12 +710,12 @@
 
         private DevExpress.LookAndFeel.DefaultLookAndFeel defaultLookAndFeel;
         private DevExpress.XtraEditors.SimpleButton btnUpdateAll;
-        private DevExpress.XtraEditors.GroupControl groupControl1;
+        private DevExpress.XtraEditors.GroupControl groupControlTheme;
         private DevExpress.XtraEditors.GroupControl groupControl2;
         private DevExpress.XtraEditors.SimpleButton btnOpenFileExcel;
         private DevExpress.XtraEditors.SimpleButton btnAddTheme;
         private System.Windows.Forms.CheckedListBox ckListBox;
-        private DevExpress.XtraEditors.GroupControl groupControl3;
+        private DevExpress.XtraEditors.GroupControl groupControlInfo;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.TextEdit info_txtTitle;
         private DevExpress.XtraEditors.TextEdit info_txtCollection;
@@ -577,10 +734,10 @@
         private DevExpress.XtraEditors.LabelControl labelControl7;
         private DevExpress.XtraEditors.TextEdit sys_txtPassword;
         private DevExpress.XtraEditors.TextEdit sys_txtAccount;
-        private DevExpress.XtraEditors.GroupControl groupControl4;
+        private DevExpress.XtraEditors.GroupControl groupControlSelectTheme;
         private DevExpress.XtraEditors.ListBoxControl lsBoxLog;
         private DevExpress.XtraEditors.GroupControl groupControl5;
-        private DevExpress.XtraEditors.PanelControl panelControl2;
+        private DevExpress.XtraEditors.PanelControl panelControlAction;
         private DevExpress.XtraEditors.SimpleButton btnUpdate;
         private DevExpress.XtraEditors.TextEdit txtPath;
         private DevExpress.XtraEditors.LabelControl labelControl9;
@@ -590,6 +747,17 @@
         private DevExpress.XtraEditors.LookUpEdit info_cbbCategory;
         private DevExpress.XtraEditors.LookUpEdit cbbCategory;
         private DevExpress.XtraEditors.LabelControl lblTimeOnline;
+        private DevExpress.XtraGrid.GridControl gridControl1;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumnId;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumnName;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumnColor1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumnColor2;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumnColor3;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumnColor4;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumnColor5;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumnPrice;
+        private DevExpress.XtraEditors.SimpleButton btnClearColor;
     }
 }
 

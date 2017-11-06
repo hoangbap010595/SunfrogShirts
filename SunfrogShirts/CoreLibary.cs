@@ -71,11 +71,11 @@ namespace SunfrogShirts
             }
         }
 
-        public static void writeLog(this ListBoxControl lsbox,string message, int status)
+        public static void writeLog(this ListBoxControl lsbox, string message, int status)
         {
             string space = "...................................." + (status == 1 ? "Done" : status == 2 ? "Faild" : "In Progress");
             string time = DateTime.Now.ToString("HH:mm:ss");
-            lsbox.Items.Insert(0, "Event: " + message + "-"+ time + space);
+            lsbox.Items.Insert(0, "[" + time + "] " + message + space);
             lsbox.Refresh();
         }
 
@@ -85,7 +85,7 @@ namespace SunfrogShirts
             lsbox.Invoke((MethodInvoker)delegate
             {
                 string time = DateTime.Now.ToString("HH:mm:ss");
-                lsbox.Items.Insert(0, "Event: " + message + "-" + time + space);
+                lsbox.Items.Insert(0, "[" + time + "] " + message + space);
                 lsbox.Refresh();
             });
         }
@@ -96,7 +96,8 @@ namespace SunfrogShirts
             var value = text.Split(',');
             foreach (string item in value)
             {
-                result += "\"" + item + "\",";
+                if (item != "")
+                    result += "\"" + item + "\",";
             }
             return result.TrimEnd(',');
         }

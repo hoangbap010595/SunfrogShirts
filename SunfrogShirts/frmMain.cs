@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -13,6 +12,7 @@ using System.IO;
 using System.Web;
 using Newtonsoft.Json.Linq;
 using System.Text.RegularExpressions;
+using Newtonsoft.Json;
 
 namespace SunfrogShirts
 {
@@ -23,6 +23,7 @@ namespace SunfrogShirts
         private List<Category> lsCategory;
         private List<Category> lsCategoryProduct;
         private DataTable dtDataTemp = new DataTable();
+        private DataTable dtDataTempColor = new DataTable();
         private CookieContainer cookieContainer;
         private System.Windows.Forms.Timer timeOnline = new System.Windows.Forms.Timer();
         private int timeRight = 0;
@@ -53,6 +54,34 @@ namespace SunfrogShirts
             timeOnline.Interval = 1000;
             timeOnline.Enabled = false;
             timeOnline.Tick += TimeOnline_Tick;
+
+            if (cookieContainer.Count == 0)
+            {
+                CoreLibary.writeLog(lsBoxLog, "Your session has expired and you are no longer logged in.", 1);
+                groupControlInfo.Enabled = groupControlSelectTheme.Enabled = groupControlTheme.Enabled = panelControlAction.Enabled = false;
+            }
+
+            //dtDataTempColor
+            dtDataTempColor = new DataTable();
+            dtDataTempColor.Columns.Add("Id");
+            dtDataTempColor.Columns.Add("Name");
+            dtDataTempColor.Columns.Add("Price");
+            dtDataTempColor.Columns.Add("Color1");
+            dtDataTempColor.Columns.Add("Color2");
+            dtDataTempColor.Columns.Add("Color3");
+            dtDataTempColor.Columns.Add("Color4");
+            dtDataTempColor.Columns.Add("Color5");
+
+            dtDataTemp = new DataTable();
+            dtDataTemp.Columns.Add("FrontBack");
+            dtDataTemp.Columns.Add("Image");
+            dtDataTemp.Columns.Add("Title");
+            dtDataTemp.Columns.Add("Category");
+            dtDataTemp.Columns.Add("Description");
+            dtDataTemp.Columns.Add("Keyword");
+            dtDataTemp.Columns.Add("Collection");
+            dtDataTemp.Columns.Add("Status");
+
         }
 
         private void TimeOnline_Tick(object sender, EventArgs e)
@@ -165,18 +194,41 @@ namespace SunfrogShirts
 
             if (uChecked > 5)
             {
-                XtraMessageBox.Show("Chọn số lượng màu nhỏ hơn 5", "Error");
+                XtraMessageBox.Show("Maximum is 5 colors", "Message");
                 return;
             }
             if (uChecked == 0)
             {
-                XtraMessageBox.Show("Không có màu nào được chọn", "Error");
+                XtraMessageBox.Show("No color selected", "Message");
                 return;
             }
 
             //Add theme here
+            var obj = cbbCategory.GetSelectedDataRow();
 
+            DataRow dr = dtDataTempColor.NewRow();
+            dr[0] = ((SunfrogShirts.Category)obj).Id;
+            dr[1] = ((SunfrogShirts.Category)obj).Name;
+            dr[2] = ((SunfrogShirts.Category)obj).Price;
+            int j = 3;
+            foreach (string strColor in lsSelectColor)
+            {
+                dr[j] = strColor;
+                j++;
+            }
+            int checkExists = 0;
+            foreach (DataRow drFind in dtDataTempColor.Rows)
+            {
+                if (drFind["Id"].ToString().Equals(dr[0].ToString()))
+                {
+                    checkExists++;
+                }
+            }
+            if (checkExists == 0)
+                dtDataTempColor.Rows.Add(dr);
+            dtDataTempColor.AcceptChanges();
 
+            gridControl1.DataSource = dtDataTempColor;
         }
 
         private void btnOpenFileExcel_Click(object sender, EventArgs e)
@@ -190,6 +242,7 @@ namespace SunfrogShirts
                     txtPath.Text = op.FileName;
                     dtDataTemp = new DataTable();
                     dtDataTemp = CoreLibary.getDataExcelFromFileToDataTable(op.FileName);
+                    CoreLibary.writeLog(lsBoxLog,"Opened file-Total: " + dtDataTemp.Rows.Count, 1);
                 }
             }
             catch (Exception ex)
@@ -208,8 +261,17 @@ namespace SunfrogShirts
             lsBoxLog.Items.Clear();
             CoreLibary.writeLog(lsBoxLog, "CLEAR", 1);
         }
-
-
+        /// <summary>
+        /// Clear Color
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnClearColor_Click(object sender, EventArgs e)
+        {
+            dtDataTempColor.Rows.Clear();
+            dtDataTempColor.AcceptChanges();
+            gridControl1.Refresh();
+        }
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
@@ -278,6 +340,10 @@ namespace SunfrogShirts
                 lblTimeOnline.Invoke((MethodInvoker)delegate { lblTimeOnline.Visible = true; });
                 btnLogin.Invoke((MethodInvoker)delegate { btnLogin.Visible = false; });
                 lblPassword.Invoke((MethodInvoker)delegate { lblPassword.Visible = false; });
+                groupControlInfo.Invoke((MethodInvoker)delegate { groupControlInfo.Enabled = true; });
+                groupControlSelectTheme.Invoke((MethodInvoker)delegate { groupControlSelectTheme.Enabled = true; });
+                groupControlTheme.Invoke((MethodInvoker)delegate { groupControlTheme.Enabled = true; });
+                panelControlAction.Invoke((MethodInvoker)delegate { panelControlAction.Enabled = true; });
                 CoreLibary.writeLogThread(lsBoxLog, "User Login", 1);
             }));
             t.Start();
@@ -288,18 +354,18 @@ namespace SunfrogShirts
         private void UploadAndDownload(DataRow dr)
         {
             //Config Data
-            var frontbackImage = dr[0].ToString().Trim();
-            var pathImage = dr[1].ToString().Trim();
-            var title = dr[2].ToString().Trim();
-            var category = dr[3].ToString().Trim();
-            var description = dr[4].ToString().Trim();
-            var keyword = dr[5].ToString().Trim();
-            var collection = dr[6].ToString().Trim();
-            var themes = dr[7].ToString().Trim();
+            var frontbackImage = dr["FrontBack"].ToString().Trim();
+            var pathImage = dr["Image"].ToString().Trim();
+            var title = dr["Title"].ToString().Trim();
+            var category = getIDCategory(dr["Category"].ToString().Trim());
+            var description = dr["Description"].ToString().Trim();
+            var keyword = CoreLibary.convertStringToJson(dr["Keyword"].ToString().Trim());
+            var collection = dr["Collection"].ToString().Trim();
+
             var imgBase64 = CoreLibary.ConvertImageToBase64(pathImage);
 
-            themes = "{\"id\":8,\"name\":\"Guys Tee\",\"price\":19,\"colors\":[\"Orange\",\"Yellow\"]}";
-            themes += ",{\"id\":19,\"name\":\"Hoodie\",\"price\":34,\"colors\":[\"White\",\"Green\"]}";
+            //themes = "{\"id\":8,\"name\":\"Guys Tee\",\"price\":19,\"colors\":[\"Orange\",\"Yellow\"]}";
+            //themes += ",{\"id\":19,\"name\":\"Hoodie\",\"price\":34,\"colors\":[\"White\",\"Green\"]}";
             //2. Upload Image
             //var strFrontText = "<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' id='SvgjsSvg1000' version='1.1' width='2400' height='3200' viewBox='311.00000000008 150 387.99999999984004 517.33333333312'><text id='SvgjsText1052' font-family='Source Sans Pro' fill='#808080' font-size='30' stroke-width='0' font-style='' font-weight='' text-decoration=' ' text-anchor='start' x='457.39119720458984' y='241.71535301208496'><tspan id='SvgjsTspan1056' dy='39' x='457.39119720458984'>adfasdf</tspan></text><defs id='SvgjsDefs1001'></defs></svg>";
             //Back:        <svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' id='SvgjsSvg1006' version='1.1' width='2400' height='3200' viewBox='311.00000000008 100 387.99999999984004 517.33333333312'><g id='SvgjsG1052' transform='scale(0.08399999999996445 0.08399999999996445) translate(3761.9047619073062 1569.8412698418072)'><image id='SvgjsImage1053' xlink:href='__dataURI:0__' width='4500' height='5400'></image></g><defs id='SvgjsDefs1007'></defs></svg>
@@ -321,10 +387,7 @@ namespace SunfrogShirts
             dataToSend += " ,\"Keywords\":[" + keyword + "]";
             dataToSend += " ,\"imageFront\":\"" + strFront + "\"";
             dataToSend += " ,\"imageBack\":\"" + strBack + "\"";
-            dataToSend += " ,\"types\":[";
-            dataToSend += "     " + themes + "";
-            dataToSend += " ]";
-            //dataToSend += " ,\"images\":[]";
+            dataToSend += " ,\"types\":" + getListTheme();
             dataToSend += " ,\"images\":[{\"id\":\"__dataURI: 0__\",\"uri\":\"data:image/png;base64," + imgBase64 + "\"}]";
             dataToSend += "}";
 
@@ -396,47 +459,33 @@ namespace SunfrogShirts
             {
                 try
                 {
-                    dtDataTemp = new DataTable();
-                    dtDataTemp.Columns.Add("FronBack");
-                    dtDataTemp.Columns.Add("Image");
-                    dtDataTemp.Columns.Add("Title");
-                    dtDataTemp.Columns.Add("Category");
-                    dtDataTemp.Columns.Add("Description");
-                    dtDataTemp.Columns.Add("Keyword");
-                    dtDataTemp.Columns.Add("Collection");
-                    dtDataTemp.Columns.Add("Themes");
-                    dtDataTemp.Columns.Add("Status");
+                    dtDataTemp.Rows.Clear();
                     DataRow dr = dtDataTemp.NewRow();
                     //Load Data
                     if (info_ckFront.Checked)
-                        dr[0] = "F";
+                        dr["FrontBack"] = "F";
                     else
-                        dr[0] = "B";
-                    //if (info_ckBack.Checked)
-                    //    dr[0] = "B";
-                    //else
-                    //    dr[0] = "F";
-
-                    dr[1] = currentImageUploadOne;
-                    dr[2] = info_txtTitle.Text.Trim();
+                        dr["FrontBack"] = "B";
+                    dr["Image"] = currentImageUploadOne;
+                    dr["Title"] = info_txtTitle.Text.Trim();
                     var obj = info_cbbCategory.GetSelectedDataRow();
                     var category = ((SunfrogShirts.Category)obj).Id;
-                    dr[3] = category;
-                    dr[4] = info_txtDescription.Text.Trim();
-                    dr[5] = CoreLibary.convertStringToJson(info_txtKeyWord.Text.Trim());
-                    dr[6] = info_txtCollection.Text.Trim();
+                    dr["Category"] = category;
+                    dr["Description"] = info_txtDescription.Text.Trim();
+                    dr["Keyword"] = info_txtKeyWord.Text.Trim();
+                    dr["Collection"] = info_txtCollection.Text.Trim();
                     dtDataTemp.Rows.Add(dr);
                     foreach (DataRow drItem in dtDataTemp.Rows)
                     {
                         UploadAndDownload(drItem);
-                        CoreLibary.writeLogThread(lsBoxLog, "Upload Item " + drItem[2].ToString(), 1);
+                        CoreLibary.writeLogThread(lsBoxLog, "Uploaded Item " + drItem[2].ToString(), 1);
                     }
                 }
                 catch (Exception ex)
                 {
-                    CoreLibary.writeLogThread(lsBoxLog, "Upload Image..Sunfrog", 2);
+                    CoreLibary.writeLogThread(lsBoxLog, "Uploaded Image..Sunfrog", 2);
                     CoreLibary.writeLogThread(lsBoxLog, ex.Message, 2);
-                    XtraMessageBox.Show("Upload không thành công.\n" + ex.Message, "Thông báo");
+                    XtraMessageBox.Show("Upload not successfully.\n" + ex.Message, "Message");
                 }
                 btnUpdate.Invoke((MethodInvoker)delegate { btnUpdate.Enabled = true; });
             }));
@@ -461,7 +510,9 @@ namespace SunfrogShirts
                 {
                     try
                     {
-
+                        CoreLibary.writeLogThread(lsBoxLog, "Uploading Item " + dr["Title"].ToString(), 3);
+                        UploadAndDownload(dr);
+                        CoreLibary.writeLogThread(lsBoxLog, "Uploaded Item " + dr["Title"].ToString(), 1);
                     }
                     catch { }
                 }
@@ -486,5 +537,45 @@ namespace SunfrogShirts
                 XtraMessageBox.Show("Error: " + ex.Message);
             }
         }
+
+        private string getListTheme()
+        {
+            //  themes = "{\"id\":8,\"name\":\"Guys Tee\",\"price\":19,\"colors\":[\"Orange\",\"Yellow\"]}";
+            string result = "[";
+            foreach (DataRow drTheme in dtDataTempColor.Rows)
+            {
+                var color = "";
+                result += "{\"id\": " + drTheme["Id"] + ", \"name\": \"" + drTheme["Name"] + "\", \"price\": " + drTheme["Price"] + ",";
+                result += "\"colors\":[";
+                if (!string.IsNullOrEmpty(drTheme["Color1"].ToString()))
+                    color += drTheme["Color1"].ToString() + ",";
+                if (!string.IsNullOrEmpty(drTheme["Color2"].ToString()))
+                    color += drTheme["Color2"].ToString() + ",";
+                if (!string.IsNullOrEmpty(drTheme["Color3"].ToString()))
+                    color += drTheme["Color3"].ToString() + ",";
+                if (!string.IsNullOrEmpty(drTheme["Color4"].ToString()))
+                    color += drTheme["Color4"].ToString() + ",";
+                if (!string.IsNullOrEmpty(drTheme["Color5"].ToString()))
+                    color += drTheme["Color5"].ToString() + ",";
+                result += CoreLibary.convertStringToJson(color);
+                result += "]";
+                result += "},";
+            }
+            result = result.TrimEnd(',');
+            result += "]";
+            return result;
+        }
+
+        private string getIDCategory(string category)
+        {
+            string id = "";
+            foreach (Category cate in lsCategoryProduct)
+            {
+                if (cate.Id.Equals(category) || cate.Name.Contains(category))
+                    id = cate.Id.ToString();
+            }
+            return id;
+        }
+
     }
 }
