@@ -25,42 +25,20 @@ namespace SunfrogShirts
         private DataTable dtDataTemp = new DataTable();
         private DataTable dtDataTempColor = new DataTable();
         private CookieContainer cookieContainer;
-        private System.Windows.Forms.Timer timeOnline = new System.Windows.Forms.Timer();
-        private int timeRight = 0;
         private string currentImageUploadOne = "";
         public frmMain()
         {
             InitializeComponent();
         }
-
-        private void Form1_Load(object sender, EventArgs e)
+        private void clear()
         {
-            lsCategory = objCategory.getListCategory();
-            lsCategoryProduct = objCategory.getListCategoryProduct();
             ckListBox.Items.Clear();
             lsBoxLog.Items.Clear();
-
-            info_cbbCategory.Properties.DataSource = lsCategoryProduct;
-            info_cbbCategory.Properties.DisplayMember = "Name";
-            info_cbbCategory.Properties.ValueMember = "Id";
-
-            cbbCategory.Properties.DataSource = lsCategory;
-            cbbCategory.Properties.DisplayMember = "Name";
-            cbbCategory.Properties.ValueMember = "Id";
-
-            cbbCategory.ItemIndex = 0;
-            info_cbbCategory.ItemIndex = 0;
-            cookieContainer = new CookieContainer();
-            timeOnline.Interval = 1000;
-            timeOnline.Enabled = false;
-            timeOnline.Tick += TimeOnline_Tick;
-
-            if (cookieContainer.Count == 0)
-            {
-                CoreLibary.writeLog(lsBoxLog, "Your session has expired and you are no longer logged in.", 1);
-                groupControlInfo.Enabled = groupControlSelectTheme.Enabled = groupControlTheme.Enabled = panelControlAction.Enabled = false;
-            }
-
+            txtPath.Text = sys_txtPassword.Text = sys_txtAccount.Text = info_txtCollection.Text = info_txtDescription.Text = info_txtKeyWord.Text = info_txtTitle.Text = "";
+        }
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            //clear();
             //dtDataTempColor
             dtDataTempColor = new DataTable();
             dtDataTempColor.Columns.Add("Id");
@@ -82,16 +60,26 @@ namespace SunfrogShirts
             dtDataTemp.Columns.Add("Collection");
             dtDataTemp.Columns.Add("Status");
 
-        }
+            lsCategory = objCategory.getListCategory();
+            lsCategoryProduct = objCategory.getListCategoryProduct();
 
-        private void TimeOnline_Tick(object sender, EventArgs e)
-        {
-            timeRight++;
-            int hour = timeRight / 60;
-            int min = timeRight % 60;
-            string shour = hour < 10 ? "0" + hour : hour.ToString();
-            string smin = min < 10 ? "0" + min : min.ToString();
-            lblTimeOnline.Text = shour + ":" + smin;
+            info_cbbCategory.Properties.DataSource = lsCategoryProduct;
+            info_cbbCategory.Properties.DisplayMember = "Name";
+            info_cbbCategory.Properties.ValueMember = "Id";
+
+            cbbCategory.Properties.DataSource = lsCategory;
+            cbbCategory.Properties.DisplayMember = "Name";
+            cbbCategory.Properties.ValueMember = "Id";
+
+            cbbCategory.ItemIndex = 0;
+            info_cbbCategory.ItemIndex = 0;
+
+            cookieContainer = new CookieContainer();
+            if (cookieContainer.Count == 0)
+            {
+                CoreLibary.writeLog(lsBoxLog, "Your session has expired and you are no longer logged in.", 1);
+                groupControlInfo.Enabled = groupControlSelectTheme.Enabled = groupControlTheme.Enabled = panelControlAction.Enabled = false;
+            }
         }
 
         /// <summary>
@@ -242,7 +230,7 @@ namespace SunfrogShirts
                     txtPath.Text = op.FileName;
                     dtDataTemp = new DataTable();
                     dtDataTemp = CoreLibary.getDataExcelFromFileToDataTable(op.FileName);
-                    CoreLibary.writeLog(lsBoxLog,"Opened file-Total: " + dtDataTemp.Rows.Count, 1);
+                    CoreLibary.writeLog(lsBoxLog, "Success " + dtDataTemp.Rows.Count + " record(s) is opened", 1);
                 }
             }
             catch (Exception ex)
@@ -276,7 +264,7 @@ namespace SunfrogShirts
         private void btnLogin_Click(object sender, EventArgs e)
         {
             frmWait frm = new frmWait();
-            frm.SetCaption("Connecting to server");
+            frm.SetCaption("Connecting To Server");
             frm.SetDescription("Please wait...");
             Thread t = new Thread(new ThreadStart(() =>
             {
@@ -324,18 +312,18 @@ namespace SunfrogShirts
 
                 if (matchCollection.Count == 0)
                 {
-                    XtraMessageBox.Show("Account or Password is wrong!", "Message");
+                    XtraMessageBox.Show("Login is disabled, and the password is incorrect!", "Message");
                     frm.Invoke((MethodInvoker)delegate { frm.Close(); });
-                    lblTimeOnline.Invoke((MethodInvoker)delegate { lblTimeOnline.Visible = false; });
+                    imgLogo.Invoke((MethodInvoker)delegate { imgLogo.Visible = false; });
                     CoreLibary.writeLogThread(lsBoxLog, "User Login", 2);
                     return;
                 }
                 foreach (Match match in matchCollection)
                 {
-                    this.Invoke((MethodInvoker)delegate { this.Text += " - [Your Id: " + match.Groups["myId"].Value + "]"; });
+                    this.Invoke((MethodInvoker)delegate { this.Text += " - [Your Seller ID: " + match.Groups["myId"].Value + "]"; });
                 }
                 frm.Invoke((MethodInvoker)delegate { frm.Close(); });
-                lblTimeOnline.Invoke((MethodInvoker)delegate { lblTimeOnline.Visible = true; });
+                imgLogo.Invoke((MethodInvoker)delegate { imgLogo.Visible = true; });
                 groupControlInfo.Invoke((MethodInvoker)delegate { groupControlInfo.Enabled = true; });
                 groupControlSelectTheme.Invoke((MethodInvoker)delegate { groupControlSelectTheme.Enabled = true; });
                 groupControlTheme.Invoke((MethodInvoker)delegate { groupControlTheme.Enabled = true; });
@@ -344,7 +332,6 @@ namespace SunfrogShirts
             }));
             t.Start();
             frm.ShowDialog();
-            timeOnline.Enabled = true;
         }
 
         private void UploadAndDownload(DataRow dr)
@@ -357,20 +344,23 @@ namespace SunfrogShirts
             var description = dr["Description"].ToString().Trim();
             var keyword = CoreLibary.convertStringToJson(dr["Keyword"].ToString().Trim());
             var collection = dr["Collection"].ToString().Trim();
-
+            var themes = getListTheme();
             var imgBase64 = CoreLibary.ConvertImageToBase64(pathImage);
 
             //themes = "{\"id\":8,\"name\":\"Guys Tee\",\"price\":19,\"colors\":[\"Orange\",\"Yellow\"]}";
             //themes += ",{\"id\":19,\"name\":\"Hoodie\",\"price\":34,\"colors\":[\"White\",\"Green\"]}";
             //2. Upload Image
             //var strFrontText = "<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' id='SvgjsSvg1000' version='1.1' width='2400' height='3200' viewBox='311.00000000008 150 387.99999999984004 517.33333333312'><text id='SvgjsText1052' font-family='Source Sans Pro' fill='#808080' font-size='30' stroke-width='0' font-style='' font-weight='' text-decoration=' ' text-anchor='start' x='457.39119720458984' y='241.71535301208496'><tspan id='SvgjsTspan1056' dy='39' x='457.39119720458984'>adfasdf</tspan></text><defs id='SvgjsDefs1001'></defs></svg>";
-            //Back:        <svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' id='SvgjsSvg1006' version='1.1' width='2400' height='3200' viewBox='311.00000000008 100 387.99999999984004 517.33333333312'><g id='SvgjsG1052' transform='scale(0.08399999999996445 0.08399999999996445) translate(3761.9047619073062 1569.8412698418072)'><image id='SvgjsImage1053' xlink:href='__dataURI:0__' width='4500' height='5400'></image></g><defs id='SvgjsDefs1007'></defs></svg>
-            var strBack = "<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' id='SvgjsSvg1006' version='1.1' width='2400' height='3200' viewBox='311.00000000008 100 387.99999999984004 517.33333333312'><g id='SvgjsG1052' transform='scale(0.08399999999996445 0.08399999999996445) translate(3761.9047619073062 1569.8412698418072)'><image id='SvgjsImage1053' xlink:href='__dataURI:0__' width='4500' height='5400'></image></g><defs id='SvgjsDefs1007'></defs></svg>";
-            var strFront = "<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' id='SvgjsSvg1000' version='1.1' width='2400' height='3200' viewBox='311.00000000008 150 387.99999999984004 517.33333333312'><g id='SvgjsG1052' transform='scale(0.08399999999996445 0.08399999999996445) translate(3761.9047619073062 2165.0793650801543)'><image id='SvgjsImage1053' xlink:href='__dataURI:0__' width='4500' height='5400'></image></g><defs id='SvgjsDefs1001'></defs></svg>";
-            if (frontbackImage == "F")
-                strBack = "";
+            //Back:        <svg xmlns=\\\"http://www.w3.org/2000/svg\\\" xmlns:xlink=\\\"http://www.w3.org/1999/xlink\\\" id=\\\"SvgjsSvg1006\\\" version=\\\"1.1\\\" width=\\\"2400\\\" height=\\\"3200\\\" viewBox=\\\"311.00000000008 100 387.99999999984004 517.33333333312\\\"><g id=\\\"SvgjsG1052\\\" transform=\\\"scale(0.08399999999996445 0.08399999999996445) translate(3761.9047619073062 1569.8412698418072)\\\"><image id=\\\"SvgjsImage1053\\\" xlink:href=\\\"__dataURI:0__\\\" width=\\\"4500\\\" height=\\\"5400\\\"></image></g><defs id=\\\"SvgjsDefs1007\\\"></defs></svg>
+            //Front:       "<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" xmlns:xlink=\\\"http://www.w3.org/1999/xlink\\\" id=\\\"SvgjsSvg1000\\\" version=\\\"1.1\\\" width=\\\"2400\\\" height=\\\"3200\\\" viewBox=\\\"311.00000000008 150 387.99999999984004 517.33333333312\\\"><g id=\\\"SvgjsG1052\\\" transform=\\\"scale(0.08399999999996445 0.08399999999996445) translate(3761.9047619073062 2165.0793650801543)\\\"><image id=\\\"SvgjsImage1053\\\" xlink:href=\\\"__dataURI:0__\\\" width=\\\"4500\\\" height=\\\"5400\\\"></image></g><defs id=\\\"SvgjsDefs1001\\\"></defs></svg>"
+            var strBack = "";
+            var strFront = "";
+            if (frontbackImage == "B")
+                strBack = "<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" xmlns:xlink=\\\"http://www.w3.org/1999/xlink\\\" id=\\\"SvgjsSvg1006\\\" version=\\\"1.1\\\" width=\\\"2400\\\" height=\\\"3200\\\" viewBox=\\\"311.00000000008 100 387.99999999984004 517.33333333312\\\"><g id=\\\"SvgjsG1052\\\" transform=\\\"scale(0.08399999999996445 0.08399999999996445) translate(3761.9047619073062 1569.8412698418072)\\\"><image id=\\\"SvgjsImage1053\\\" xlink:href=\\\"__dataURI:0__\\\" width=\\\"4500\\\" height=\\\"5400\\\"></image></g><defs id=\\\"SvgjsDefs1007\\\"></defs></svg>";
             else
-                strFront = "";
+                strFront = "<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" xmlns:xlink=\\\"http://www.w3.org/1999/xlink\\\" id=\\\"SvgjsSvg1000\\\" version=\\\"1.1\\\" width=\\\"2400\\\" height=\\\"3200\\\" viewBox=\\\"311.00000000008 150 387.99999999984004 517.33333333312\\\"><g id=\\\"SvgjsG1052\\\" transform=\\\"scale(0.08399999999996445 0.08399999999996445) translate(3761.9047619073062 2165.0793650801543)\\\"><image id=\\\"SvgjsImage1053\\\" xlink:href=\\\"__dataURI:0__\\\" width=\\\"4500\\\" height=\\\"5400\\\"></image></g><defs id=\\\"SvgjsDefs1001\\\"></defs></svg>";
+            //<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" xmlns:xlink=\\\"http://www.w3.org/1999/xlink\\\" id=\\\"SvgjsSvg1000\\\" version=\\\"1.1\\\" width=\\\"2400\\\" height=\\\"3200\\\" viewBox=\\\"311.00000000008 150 387.99999999984004 517.33333333312\\\"><g id=\\\"SvgjsG1052\\\" transform=\\\"scale(0.08399999999996445 0.08399999999996445) translate(3761.9047619073062 2165.0793650801543)\\\"><image id=\\\"SvgjsImage1053\\\" xlink:href=\\\"__dataURI:0__\\\" width=\\\"4500\\\" height=\\\"5400\\\"></image></g><defs id=\\\"SvgjsDefs1001\\\"></defs></svg>
+            //<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" id=\"SvgjsSvg1000\" version=\"1.1\" width=\"2400\" height=\"3200\" viewBox=\"311.00000000008 150 387.99999999984004 517.33333333312\"><g id=\"SvgjsG1052\" transform=\"scale(0.08399999999996445 0.08399999999996445) translate(3761.9047619073062 2165.0793650801543)\"><image id=\"SvgjsImage1053\" xlink:href=\"__dataURI:0__\" width=\"4500\" height=\"5400\"></image></g><defs id=\"SvgjsDefs1001\"></defs></svg>
 
             var dataToSend = "";
             dataToSend += "{";
@@ -383,10 +373,9 @@ namespace SunfrogShirts
             dataToSend += " ,\"Keywords\":[" + keyword + "]";
             dataToSend += " ,\"imageFront\":\"" + strFront + "\"";
             dataToSend += " ,\"imageBack\":\"" + strBack + "\"";
-            dataToSend += " ,\"types\":" + getListTheme();
+            dataToSend += " ,\"types\":" + themes;
             dataToSend += " ,\"images\":[{\"id\":\"__dataURI: 0__\",\"uri\":\"data:image/png;base64," + imgBase64 + "\"}]";
             dataToSend += "}";
-
             byte[] postDataBytes2 = Encoding.UTF8.GetBytes(dataToSend);
             string getUrl = "https://manager.sunfrogshirts.com/Designer/php/upload-handler.cfm";
 
@@ -414,32 +403,36 @@ namespace SunfrogShirts
             }
             var dirSave = Directory.GetCurrentDirectory() + "\\Uploaded\\";
             if (!Directory.Exists(dirSave))
-            {
                 Directory.CreateDirectory(dirSave);
-            }
             var obj = JObject.Parse(sourceCode);
-            for (int i = 0; i < obj["products"].Count(); i++)
-            {
-                string url = "";
-                string name = "";
-                if (frontbackImage == "F")
-                {
-                    name = obj["products"][i]["imageFront"].ToString().Split('/')[6];
-                    url = "http:" + obj["products"][i]["imageFront"].ToString();
-                }
-                else
-                {
-                    name = obj["products"][i]["imageBack"].ToString().Split('/')[6];
-                    url = "http:" + obj["products"][i]["imageBack"].ToString();
-                }
-                string fileName = dirSave + name;
-                WebClient webClient = new WebClient();
-                webClient.DownloadFile(url, fileName);
-            }
             if (int.Parse(obj["result"].ToString()) == 0)
-            {
                 CoreLibary.writeLogThread(lsBoxLog, "Collection:" + obj["collectionName"].ToString() + " - " + obj["description"].ToString(), 2);
-            }
+            else
+                CoreLibary.writeLogThread(lsBoxLog, "Uploaded " + obj["description"].ToString(), 1);
+
+            Thread tDownFile = new Thread(new ThreadStart(() =>
+            {
+                var newObj = obj;
+                for (int i = 0; i < newObj["products"].Count(); i++)
+                {
+                    string url = "";
+                    string name = "";
+                    if (frontbackImage == "F")
+                    {
+                        name = newObj["products"][i]["imageFront"].ToString().Split('/').Last();
+                        url = "http:" + newObj["products"][i]["imageFront"].ToString();
+                    }
+                    else
+                    {
+                        name = newObj["products"][i]["imageBack"].ToString().Split('/').Last();
+                        url = "http:" + newObj["products"][i]["imageBack"].ToString();
+                    }
+                    string fileName = dirSave + name;
+                    WebClient webClient = new WebClient();
+                    webClient.DownloadFile(url, fileName);
+                }
+            }));
+            tDownFile.Start();
         }
 
         /// <summary>
@@ -454,8 +447,20 @@ namespace SunfrogShirts
                 XtraMessageBox.Show("No themes selected!", "Message");
                 return;
             }
-            btnUpdate.Enabled = false;
-            CoreLibary.writeLog(lsBoxLog, "Uploading One Collection", 3);
+            var title = info_txtTitle.Text.Trim();
+            var obj = info_cbbCategory.GetSelectedDataRow();
+            var category = ((SunfrogShirts.Category)obj).Name;
+            var description = info_txtDescription.Text.Trim();
+            var keyword = info_txtKeyWord.Text.Trim();
+            var collection = info_txtCollection.Text.Trim();
+            if (string.IsNullOrEmpty(title) || string.IsNullOrEmpty(description)
+                || string.IsNullOrEmpty(keyword) || string.IsNullOrEmpty(collection)
+                || string.IsNullOrEmpty(currentImageUploadOne))
+            {
+                XtraMessageBox.Show("Title, Description, Keyword, Collection and Image is not empty.", "Message");
+                return;
+            }
+            panelControlAction.Enabled = false;
             Thread t = new Thread(new ThreadStart(() =>
             {
                 try
@@ -468,27 +473,26 @@ namespace SunfrogShirts
                     else
                         dr["FrontBack"] = "B";
                     dr["Image"] = currentImageUploadOne;
-                    dr["Title"] = info_txtTitle.Text.Trim();
-                    var obj = info_cbbCategory.GetSelectedDataRow();
-                    var category = ((SunfrogShirts.Category)obj).Id;
+                    dr["Title"] = title;
                     dr["Category"] = category;
-                    dr["Description"] = info_txtDescription.Text.Trim();
-                    dr["Keyword"] = info_txtKeyWord.Text.Trim();
-                    dr["Collection"] = info_txtCollection.Text.Trim();
+                    dr["Description"] = description;
+                    dr["Keyword"] = keyword;
+                    dr["Collection"] = collection;
                     dtDataTemp.Rows.Add(dr);
-                    foreach (DataRow drItem in dtDataTemp.Rows)
-                    {
-                        UploadAndDownload(drItem);
-                        CoreLibary.writeLogThread(lsBoxLog, "Uploaded Item " + drItem[2].ToString(), 1);
-                    }
+                    DataRow drItem = dtDataTemp.Rows[0];
+
+                    CoreLibary.writeLogThread(lsBoxLog, "Uploading Item " + drItem[2].ToString(), 3);
+                    UploadAndDownload(drItem);
+                    CoreLibary.writeLogThread(lsBoxLog, "Uploaded Item " + drItem[2].ToString(), 1);
+
                 }
                 catch (Exception ex)
                 {
-                    CoreLibary.writeLogThread(lsBoxLog, "Uploaded Image..Sunfrog", 2);
+                    CoreLibary.writeLogThread(lsBoxLog, "Uploaded image to Sunfrog", 2);
                     CoreLibary.writeLogThread(lsBoxLog, ex.Message, 2);
-                    XtraMessageBox.Show("Upload not successfully.\n" + ex.Message, "Message");
+                    XtraMessageBox.Show("Upload failed.\n" + ex.Message, "Message");
                 }
-                btnUpdate.Invoke((MethodInvoker)delegate { btnUpdate.Enabled = true; });
+                panelControlAction.Invoke((MethodInvoker)delegate { panelControlAction.Enabled = true; });
             }));
             t.Start();
         }
@@ -511,18 +515,23 @@ namespace SunfrogShirts
                 XtraMessageBox.Show("No themes selected!", "Message");
                 return;
             }
+            panelControlAction.Enabled = false;
             Thread t = new Thread(new ThreadStart(() =>
             {
                 foreach (DataRow dr in dtDataTemp.Rows)
                 {
                     try
                     {
-                        CoreLibary.writeLogThread(lsBoxLog, "Uploading Item " + dr["Title"].ToString(), 3);
+                        CoreLibary.writeLogThread(lsBoxLog, "Uploading " + dr["Title"].ToString(), 3);
                         UploadAndDownload(dr);
-                        CoreLibary.writeLogThread(lsBoxLog, "Uploaded Item " + dr["Title"].ToString(), 1);
+                        CoreLibary.writeLogThread(lsBoxLog, "Uploaded " + dr["Title"].ToString(), 1);
                     }
-                    catch { }
+                    catch (Exception ex)
+                    {
+                        CoreLibary.writeLogThread(lsBoxLog, "Upload Error: " + ex.Message, 2);
+                    }
                 }
+                panelControlAction.Invoke((MethodInvoker)delegate { panelControlAction.Enabled = true; });
             }));
             t.Start();
         }
@@ -578,8 +587,11 @@ namespace SunfrogShirts
             string id = "";
             foreach (Category cate in lsCategoryProduct)
             {
-                if (cate.Id.Equals(category) || cate.Name.Contains(category))
+                if (cate.Name.Contains(category))
+                {
                     id = cate.Id.ToString();
+                    break;
+                }
             }
             return id;
         }

@@ -54,32 +54,34 @@
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.imgLogo = new DevExpress.XtraEditors.PictureEdit();
             this.lblPassword = new DevExpress.XtraEditors.LabelControl();
             this.btnLogin = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.sys_txtPassword = new DevExpress.XtraEditors.TextEdit();
             this.sys_txtAccount = new DevExpress.XtraEditors.TextEdit();
             this.groupControlSelectTheme = new DevExpress.XtraEditors.GroupControl();
-            this.lsBoxLog = new DevExpress.XtraEditors.ListBoxControl();
-            this.groupControl5 = new DevExpress.XtraEditors.GroupControl();
-            this.panelControlAction = new DevExpress.XtraEditors.PanelControl();
-            this.pictureEdit1 = new DevExpress.XtraEditors.PictureEdit();
-            this.btnClear = new DevExpress.XtraEditors.SimpleButton();
-            this.btnUpdate = new DevExpress.XtraEditors.SimpleButton();
-            this.txtPath = new DevExpress.XtraEditors.TextEdit();
-            this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumnId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumnName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumnPrice = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumnColor1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumnColor2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumnColor3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumnColor4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumnColor5 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumnPrice = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.lsBoxLog = new DevExpress.XtraEditors.ListBoxControl();
+            this.groupControl5 = new DevExpress.XtraEditors.GroupControl();
+            this.panelControlAction = new DevExpress.XtraEditors.PanelControl();
             this.btnClearColor = new DevExpress.XtraEditors.SimpleButton();
-            this.lblTimeOnline = new DevExpress.XtraEditors.LabelControl();
+            this.btnViewData = new DevExpress.XtraEditors.SimpleButton();
+            this.btnClear = new DevExpress.XtraEditors.SimpleButton();
+            this.btnLoadTheme = new DevExpress.XtraEditors.SimpleButton();
+            this.btnSaveTheme = new DevExpress.XtraEditors.SimpleButton();
+            this.btnUpdate = new DevExpress.XtraEditors.SimpleButton();
+            this.txtPath = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.groupControlTheme)).BeginInit();
             this.groupControlTheme.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cbbCategory.Properties)).BeginInit();
@@ -97,19 +99,19 @@
             ((System.ComponentModel.ISupportInitialize)(this.info_txtTitle.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.imgLogo.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sys_txtPassword.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sys_txtAccount.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControlSelectTheme)).BeginInit();
             this.groupControlSelectTheme.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lsBoxLog)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl5)).BeginInit();
             this.groupControl5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControlAction)).BeginInit();
             this.panelControlAction.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPath.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // defaultLookAndFeel
@@ -118,10 +120,12 @@
             // 
             // btnUpdateAll
             // 
+            this.btnUpdateAll.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnUpdateAll.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnUpdateAll.ImageOptions.Image")));
             this.btnUpdateAll.Location = new System.Drawing.Point(429, 49);
             this.btnUpdateAll.Name = "btnUpdateAll";
             this.btnUpdateAll.Size = new System.Drawing.Size(124, 23);
-            this.btnUpdateAll.TabIndex = 16;
+            this.btnUpdateAll.TabIndex = 20;
             this.btnUpdateAll.Text = "Upload From File";
             this.btnUpdateAll.Click += new System.EventHandler(this.btnUpdateAll_Click);
             // 
@@ -177,6 +181,7 @@
             // btnAddTheme
             // 
             this.btnAddTheme.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAddTheme.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAddTheme.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnAddTheme.ImageOptions.Image")));
             this.btnAddTheme.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
             this.btnAddTheme.Location = new System.Drawing.Point(163, 24);
@@ -188,11 +193,14 @@
             // btnOpenFileExcel
             // 
             this.btnOpenFileExcel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOpenFileExcel.Location = new System.Drawing.Point(51, 56);
+            this.btnOpenFileExcel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnOpenFileExcel.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnOpenFileExcel.ImageOptions.Image")));
+            this.btnOpenFileExcel.Location = new System.Drawing.Point(4, 56);
             this.btnOpenFileExcel.Name = "btnOpenFileExcel";
-            this.btnOpenFileExcel.Size = new System.Drawing.Size(63, 23);
+            this.btnOpenFileExcel.Size = new System.Drawing.Size(70, 23);
             this.btnOpenFileExcel.TabIndex = 13;
             this.btnOpenFileExcel.Text = "Open";
+            this.btnOpenFileExcel.ToolTip = "Open File Data";
             this.btnOpenFileExcel.Click += new System.EventHandler(this.btnOpenFileExcel_Click);
             // 
             // groupControlInfo
@@ -230,12 +238,13 @@
             // 
             // info_picImageView
             // 
-            this.info_picImageView.Cursor = System.Windows.Forms.Cursors.Default;
-            this.info_picImageView.EditValue = ((object)(resources.GetObject("info_picImageView.EditValue")));
+            this.info_picImageView.Cursor = System.Windows.Forms.Cursors.Hand;
             this.info_picImageView.Location = new System.Drawing.Point(41, 247);
             this.info_picImageView.Name = "info_picImageView";
-            this.info_picImageView.Properties.Appearance.BackColor = System.Drawing.Color.Black;
+            this.info_picImageView.Properties.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
+            this.info_picImageView.Properties.Appearance.ForeColor = System.Drawing.Color.Maroon;
             this.info_picImageView.Properties.Appearance.Options.UseBackColor = true;
+            this.info_picImageView.Properties.Appearance.Options.UseForeColor = true;
             this.info_picImageView.Properties.ReadOnly = true;
             this.info_picImageView.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
             this.info_picImageView.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Stretch;
@@ -343,7 +352,7 @@
             // 
             // panelControl1
             // 
-            this.panelControl1.Controls.Add(this.lblTimeOnline);
+            this.panelControl1.Controls.Add(this.imgLogo);
             this.panelControl1.Controls.Add(this.lblPassword);
             this.panelControl1.Controls.Add(this.btnLogin);
             this.panelControl1.Controls.Add(this.labelControl7);
@@ -353,6 +362,26 @@
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Size = new System.Drawing.Size(179, 133);
             this.panelControl1.TabIndex = 0;
+            // 
+            // imgLogo
+            // 
+            this.imgLogo.Cursor = System.Windows.Forms.Cursors.Default;
+            this.imgLogo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.imgLogo.EditValue = ((object)(resources.GetObject("imgLogo.EditValue")));
+            this.imgLogo.Location = new System.Drawing.Point(2, 2);
+            this.imgLogo.Name = "imgLogo";
+            this.imgLogo.Properties.AllowFocused = false;
+            this.imgLogo.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
+            this.imgLogo.Properties.Appearance.Options.UseBackColor = true;
+            this.imgLogo.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.imgLogo.Properties.Padding = new System.Windows.Forms.Padding(10, 0, 15, 0);
+            this.imgLogo.Properties.ReadOnly = true;
+            this.imgLogo.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
+            this.imgLogo.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Stretch;
+            this.imgLogo.Properties.ZoomAccelerationFactor = 1D;
+            this.imgLogo.Size = new System.Drawing.Size(175, 129);
+            this.imgLogo.TabIndex = 0;
+            this.imgLogo.Visible = false;
             // 
             // lblPassword
             // 
@@ -404,103 +433,6 @@
             this.groupControlSelectTheme.Size = new System.Drawing.Size(571, 222);
             this.groupControlSelectTheme.TabIndex = 0;
             this.groupControlSelectTheme.Text = "Selected Themes";
-            // 
-            // lsBoxLog
-            // 
-            this.lsBoxLog.Cursor = System.Windows.Forms.Cursors.Default;
-            this.lsBoxLog.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lsBoxLog.HorizontalScrollbar = true;
-            this.lsBoxLog.ItemHeight = 22;
-            this.lsBoxLog.Items.AddRange(new object[] {
-            "ádfádf",
-            "adfad",
-            "fa",
-            "sdf",
-            "ad",
-            "fa",
-            "f",
-            "ádf"});
-            this.lsBoxLog.Location = new System.Drawing.Point(2, 22);
-            this.lsBoxLog.Name = "lsBoxLog";
-            this.lsBoxLog.ShowFocusRect = false;
-            this.lsBoxLog.Size = new System.Drawing.Size(564, 175);
-            this.lsBoxLog.TabIndex = 0;
-            // 
-            // groupControl5
-            // 
-            this.groupControl5.Controls.Add(this.lsBoxLog);
-            this.groupControl5.Location = new System.Drawing.Point(197, 330);
-            this.groupControl5.Name = "groupControl5";
-            this.groupControl5.Size = new System.Drawing.Size(568, 199);
-            this.groupControl5.TabIndex = 3;
-            this.groupControl5.Text = "Progress";
-            // 
-            // panelControlAction
-            // 
-            this.panelControlAction.Controls.Add(this.pictureEdit1);
-            this.panelControlAction.Controls.Add(this.btnClearColor);
-            this.panelControlAction.Controls.Add(this.btnClear);
-            this.panelControlAction.Controls.Add(this.btnOpenFileExcel);
-            this.panelControlAction.Controls.Add(this.btnUpdate);
-            this.panelControlAction.Controls.Add(this.btnUpdateAll);
-            this.panelControlAction.Controls.Add(this.txtPath);
-            this.panelControlAction.Controls.Add(this.labelControl9);
-            this.panelControlAction.Location = new System.Drawing.Point(194, 239);
-            this.panelControlAction.Name = "panelControlAction";
-            this.panelControlAction.Size = new System.Drawing.Size(571, 84);
-            this.panelControlAction.TabIndex = 4;
-            // 
-            // pictureEdit1
-            // 
-            this.pictureEdit1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.pictureEdit1.EditValue = ((object)(resources.GetObject("pictureEdit1.EditValue")));
-            this.pictureEdit1.Location = new System.Drawing.Point(291, 0);
-            this.pictureEdit1.Name = "pictureEdit1";
-            this.pictureEdit1.Properties.AllowFocused = false;
-            this.pictureEdit1.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
-            this.pictureEdit1.Properties.Appearance.Options.UseBackColor = true;
-            this.pictureEdit1.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.pictureEdit1.Properties.ReadOnly = true;
-            this.pictureEdit1.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
-            this.pictureEdit1.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Stretch;
-            this.pictureEdit1.Properties.ZoomAccelerationFactor = 1D;
-            this.pictureEdit1.Size = new System.Drawing.Size(81, 80);
-            this.pictureEdit1.TabIndex = 0;
-            // 
-            // btnClear
-            // 
-            this.btnClear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClear.Location = new System.Drawing.Point(116, 56);
-            this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(63, 23);
-            this.btnClear.TabIndex = 14;
-            this.btnClear.Text = "Clear Log";
-            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
-            // 
-            // btnUpdate
-            // 
-            this.btnUpdate.Location = new System.Drawing.Point(429, 17);
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(124, 23);
-            this.btnUpdate.TabIndex = 15;
-            this.btnUpdate.Text = "Upload ";
-            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
-            // 
-            // txtPath
-            // 
-            this.txtPath.Location = new System.Drawing.Point(5, 30);
-            this.txtPath.Name = "txtPath";
-            this.txtPath.Properties.ReadOnly = true;
-            this.txtPath.Size = new System.Drawing.Size(248, 20);
-            this.txtPath.TabIndex = 12;
-            // 
-            // labelControl9
-            // 
-            this.labelControl9.Location = new System.Drawing.Point(5, 11);
-            this.labelControl9.Name = "labelControl9";
-            this.labelControl9.Size = new System.Drawing.Size(111, 13);
-            this.labelControl9.TabIndex = 0;
-            this.labelControl9.Text = "File path (*.xls, *.xlsx)";
             // 
             // gridControl1
             // 
@@ -555,6 +487,12 @@
             this.gridColumnName.Name = "gridColumnName";
             this.gridColumnName.Visible = true;
             this.gridColumnName.VisibleIndex = 0;
+            // 
+            // gridColumnPrice
+            // 
+            this.gridColumnPrice.Caption = "Price";
+            this.gridColumnPrice.FieldName = "Price";
+            this.gridColumnPrice.Name = "gridColumnPrice";
             // 
             // gridColumnColor1
             // 
@@ -616,40 +554,137 @@
             this.gridColumnColor5.Visible = true;
             this.gridColumnColor5.VisibleIndex = 5;
             // 
-            // gridColumnPrice
+            // lsBoxLog
             // 
-            this.gridColumnPrice.Caption = "Price";
-            this.gridColumnPrice.FieldName = "Price";
-            this.gridColumnPrice.Name = "gridColumnPrice";
+            this.lsBoxLog.Cursor = System.Windows.Forms.Cursors.Default;
+            this.lsBoxLog.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lsBoxLog.HorizontalScrollbar = true;
+            this.lsBoxLog.ItemHeight = 22;
+            this.lsBoxLog.Items.AddRange(new object[] {
+            "ádfádf",
+            "adfad",
+            "fa",
+            "sdf",
+            "ad",
+            "fa",
+            "f",
+            "ádf"});
+            this.lsBoxLog.Location = new System.Drawing.Point(2, 22);
+            this.lsBoxLog.Name = "lsBoxLog";
+            this.lsBoxLog.ShowFocusRect = false;
+            this.lsBoxLog.Size = new System.Drawing.Size(564, 175);
+            this.lsBoxLog.TabIndex = 0;
+            // 
+            // groupControl5
+            // 
+            this.groupControl5.Controls.Add(this.lsBoxLog);
+            this.groupControl5.Location = new System.Drawing.Point(197, 330);
+            this.groupControl5.Name = "groupControl5";
+            this.groupControl5.Size = new System.Drawing.Size(568, 199);
+            this.groupControl5.TabIndex = 3;
+            this.groupControl5.Text = "Progress";
+            // 
+            // panelControlAction
+            // 
+            this.panelControlAction.Controls.Add(this.btnClearColor);
+            this.panelControlAction.Controls.Add(this.btnViewData);
+            this.panelControlAction.Controls.Add(this.btnClear);
+            this.panelControlAction.Controls.Add(this.btnOpenFileExcel);
+            this.panelControlAction.Controls.Add(this.btnLoadTheme);
+            this.panelControlAction.Controls.Add(this.btnSaveTheme);
+            this.panelControlAction.Controls.Add(this.btnUpdate);
+            this.panelControlAction.Controls.Add(this.btnUpdateAll);
+            this.panelControlAction.Controls.Add(this.txtPath);
+            this.panelControlAction.Controls.Add(this.labelControl9);
+            this.panelControlAction.Location = new System.Drawing.Point(194, 239);
+            this.panelControlAction.Name = "panelControlAction";
+            this.panelControlAction.Size = new System.Drawing.Size(571, 84);
+            this.panelControlAction.TabIndex = 4;
             // 
             // btnClearColor
             // 
             this.btnClearColor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClearColor.Location = new System.Drawing.Point(185, 56);
+            this.btnClearColor.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnClearColor.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnClearColor.ImageOptions.Image")));
+            this.btnClearColor.Location = new System.Drawing.Point(214, 56);
             this.btnClearColor.Name = "btnClearColor";
-            this.btnClearColor.Size = new System.Drawing.Size(66, 23);
-            this.btnClearColor.TabIndex = 14;
-            this.btnClearColor.Text = "Clear Color";
+            this.btnClearColor.Size = new System.Drawing.Size(70, 23);
+            this.btnClearColor.TabIndex = 16;
+            this.btnClearColor.Text = "Color";
+            this.btnClearColor.ToolTip = "Clear Color";
             this.btnClearColor.Click += new System.EventHandler(this.btnClearColor_Click);
             // 
-            // lblTimeOnline
+            // btnViewData
             // 
-            this.lblTimeOnline.Appearance.Font = new System.Drawing.Font("Tahoma", 30F, System.Drawing.FontStyle.Bold);
-            this.lblTimeOnline.Appearance.ForeColor = System.Drawing.Color.DarkGreen;
-            this.lblTimeOnline.Appearance.Options.UseFont = true;
-            this.lblTimeOnline.Appearance.Options.UseForeColor = true;
-            this.lblTimeOnline.Appearance.Options.UseTextOptions = true;
-            this.lblTimeOnline.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.lblTimeOnline.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.lblTimeOnline.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblTimeOnline.Location = new System.Drawing.Point(2, 2);
-            this.lblTimeOnline.Name = "lblTimeOnline";
-            this.lblTimeOnline.Size = new System.Drawing.Size(175, 129);
-            this.lblTimeOnline.TabIndex = 4;
-            this.lblTimeOnline.Text = "00:00";
-            this.lblTimeOnline.ToolTip = "Connected To Server";
-            this.lblTimeOnline.ToolTipTitle = "Online";
-            this.lblTimeOnline.Visible = false;
+            this.btnViewData.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnViewData.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnViewData.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnViewData.ImageOptions.Image")));
+            this.btnViewData.Location = new System.Drawing.Point(74, 56);
+            this.btnViewData.Name = "btnViewData";
+            this.btnViewData.Size = new System.Drawing.Size(70, 23);
+            this.btnViewData.TabIndex = 14;
+            this.btnViewData.Text = "View";
+            this.btnViewData.ToolTip = "View Data From File Excel";
+            // 
+            // btnClear
+            // 
+            this.btnClear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnClear.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnClear.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnClear.ImageOptions.Image")));
+            this.btnClear.Location = new System.Drawing.Point(144, 56);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(70, 23);
+            this.btnClear.TabIndex = 15;
+            this.btnClear.Text = "Log";
+            this.btnClear.ToolTip = "Clear Log";
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            // 
+            // btnLoadTheme
+            // 
+            this.btnLoadTheme.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnLoadTheme.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnLoadTheme.ImageOptions.Image")));
+            this.btnLoadTheme.Location = new System.Drawing.Point(299, 49);
+            this.btnLoadTheme.Name = "btnLoadTheme";
+            this.btnLoadTheme.Size = new System.Drawing.Size(124, 23);
+            this.btnLoadTheme.TabIndex = 18;
+            this.btnLoadTheme.Text = "Load Theme";
+            // 
+            // btnSaveTheme
+            // 
+            this.btnSaveTheme.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSaveTheme.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnSaveTheme.ImageOptions.Image")));
+            this.btnSaveTheme.Location = new System.Drawing.Point(299, 17);
+            this.btnSaveTheme.Name = "btnSaveTheme";
+            this.btnSaveTheme.Size = new System.Drawing.Size(124, 23);
+            this.btnSaveTheme.TabIndex = 17;
+            this.btnSaveTheme.Text = "Save Theme";
+            // 
+            // btnUpdate
+            // 
+            this.btnUpdate.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnUpdate.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnUpdate.ImageOptions.Image")));
+            this.btnUpdate.Location = new System.Drawing.Point(429, 17);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(124, 23);
+            this.btnUpdate.TabIndex = 19;
+            this.btnUpdate.Text = "Upload ";
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            // 
+            // txtPath
+            // 
+            this.txtPath.Location = new System.Drawing.Point(5, 30);
+            this.txtPath.Name = "txtPath";
+            this.txtPath.Properties.ReadOnly = true;
+            this.txtPath.Size = new System.Drawing.Size(277, 20);
+            this.txtPath.TabIndex = 12;
+            // 
+            // labelControl9
+            // 
+            this.labelControl9.Location = new System.Drawing.Point(5, 11);
+            this.labelControl9.Name = "labelControl9";
+            this.labelControl9.Size = new System.Drawing.Size(111, 13);
+            this.labelControl9.TabIndex = 0;
+            this.labelControl9.Text = "File path (*.xls, *.xlsx)";
             // 
             // frmMain
             // 
@@ -688,20 +723,20 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.imgLogo.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sys_txtPassword.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sys_txtAccount.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControlSelectTheme)).EndInit();
             this.groupControlSelectTheme.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lsBoxLog)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl5)).EndInit();
             this.groupControl5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.panelControlAction)).EndInit();
             this.panelControlAction.ResumeLayout(false);
             this.panelControlAction.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPath.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -742,7 +777,7 @@
         private DevExpress.XtraEditors.TextEdit txtPath;
         private DevExpress.XtraEditors.LabelControl labelControl9;
         private DevExpress.XtraEditors.SimpleButton btnClear;
-        private DevExpress.XtraEditors.PictureEdit pictureEdit1;
+        private DevExpress.XtraEditors.PictureEdit imgLogo;
         private DevExpress.XtraEditors.CheckEdit info_ckBack;
         private DevExpress.XtraEditors.LookUpEdit info_cbbCategory;
         private DevExpress.XtraEditors.LookUpEdit cbbCategory;
@@ -757,7 +792,9 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnColor5;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnPrice;
         private DevExpress.XtraEditors.SimpleButton btnClearColor;
-        private DevExpress.XtraEditors.LabelControl lblTimeOnline;
+        private DevExpress.XtraEditors.SimpleButton btnViewData;
+        private DevExpress.XtraEditors.SimpleButton btnLoadTheme;
+        private DevExpress.XtraEditors.SimpleButton btnSaveTheme;
     }
 }
 
