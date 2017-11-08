@@ -276,7 +276,7 @@ namespace SunfrogShirts
                 wRequest.Method = "POST";
                 wRequest.ContentType = "application/x-www-form-urlencoded";
                 wRequest.ContentLength = postDataBytes.Length;
-                //wRequest.KeepAlive = true;
+                //wRequest.KeepAlive = true;lo
                 wRequest.CookieContainer = cookieContainer;
 
                 using (Stream sr = wRequest.GetRequestStream())
