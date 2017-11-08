@@ -26,39 +26,38 @@ namespace SunfrogShirts
         private DataTable dtDataTempColor = new DataTable();
         private CookieContainer cookieContainer;
         private string currentImageUploadOne = "";
+        private string dirSaveStatusFile = Directory.GetCurrentDirectory() + "\\FileDataTool.xlsx";
+        private string dirSaveImageSunUploaded = Directory.GetCurrentDirectory() + "\\SunfrogUploaded\\";
+        private string dirSaveImageUploaded = Directory.GetCurrentDirectory() + "\\ImageUploaded\\";
+
         public frmMain()
         {
             InitializeComponent();
         }
-        private void clear()
-        {
-            ckListBox.Items.Clear();
-            lsBoxLog.Items.Clear();
-            txtPath.Text = sys_txtPassword.Text = sys_txtAccount.Text = info_txtCollection.Text = info_txtDescription.Text = info_txtKeyWord.Text = info_txtTitle.Text = "";
-        }
         private void Form1_Load(object sender, EventArgs e)
         {
-            //clear();
-            //dtDataTempColor
+            //Tạo folder save file sau khi upload thành công
+            if (!Directory.Exists(dirSaveImageSunUploaded))
+                Directory.CreateDirectory(dirSaveImageSunUploaded);
+            if (!Directory.Exists(dirSaveImageUploaded))
+                Directory.CreateDirectory(dirSaveImageUploaded);
+            //clearContent();
+            //Khởi tạo dtDataTempColor
             dtDataTempColor = new DataTable();
-            dtDataTempColor.Columns.Add("Id");
-            dtDataTempColor.Columns.Add("Name");
-            dtDataTempColor.Columns.Add("Price");
-            dtDataTempColor.Columns.Add("Color1");
-            dtDataTempColor.Columns.Add("Color2");
-            dtDataTempColor.Columns.Add("Color3");
-            dtDataTempColor.Columns.Add("Color4");
-            dtDataTempColor.Columns.Add("Color5");
-
+            dtDataTempColor.Columns.AddRange(new DataColumn[] {
+                new DataColumn("Id"), new DataColumn("Name"), new DataColumn("Price")
+                ,new DataColumn("Color1"), new DataColumn("Color2")
+                ,new DataColumn("Color3"), new DataColumn("Color4")
+                ,new DataColumn("Color5")
+            });
+            //Khởi tạo dtDataTemp
             dtDataTemp = new DataTable();
-            dtDataTemp.Columns.Add("FrontBack");
-            dtDataTemp.Columns.Add("Image");
-            dtDataTemp.Columns.Add("Title");
-            dtDataTemp.Columns.Add("Category");
-            dtDataTemp.Columns.Add("Description");
-            dtDataTemp.Columns.Add("Keyword");
-            dtDataTemp.Columns.Add("Collection");
-            dtDataTemp.Columns.Add("Status");
+            dtDataTemp.Columns.AddRange(new DataColumn[] {
+                new DataColumn("FrontBack"), new DataColumn("Image")
+                , new DataColumn("Title"),new DataColumn("Category")
+                , new DataColumn("Description"),new DataColumn("Keyword")
+                , new DataColumn("Collection"),new DataColumn("Status")
+            });
 
             lsCategory = objCategory.getListCategory();
             lsCategoryProduct = objCategory.getListCategoryProduct();
@@ -81,7 +80,6 @@ namespace SunfrogShirts
                 groupControlInfo.Enabled = groupControlSelectTheme.Enabled = groupControlTheme.Enabled = panelControlAction.Enabled = false;
             }
         }
-
         /// <summary>
         /// Chọn màu cho themes
         /// </summary>
@@ -147,20 +145,6 @@ namespace SunfrogShirts
                     break;
             }
         }
-
-        /// <summary>
-        /// Add màu tương ứng với themes đã chọn
-        /// </summary>
-        /// <param name="lsColor">List color tương ứng</param>
-        private void addListColor(List<ObjColor> lsColor)
-        {
-            ckListBox.Items.Clear();
-            foreach (ObjColor item in lsColor)
-            {
-                ckListBox.Items.Add(item.Name);
-            }
-        }
-
         /// <summary>
         /// Add new themes
         /// </summary>
@@ -218,7 +202,11 @@ namespace SunfrogShirts
 
             gridControl1.DataSource = dtDataTempColor;
         }
-
+        /// <summary>
+        /// Chọn file Excel chứa dữ liệu cần upload
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnOpenFileExcel_Click(object sender, EventArgs e)
         {
             try
@@ -238,7 +226,6 @@ namespace SunfrogShirts
                 XtraMessageBox.Show("Error: " + ex.Message);
             }
         }
-
         /// <summary>
         /// Clear log
         /// </summary>
@@ -260,7 +247,11 @@ namespace SunfrogShirts
             dtDataTempColor.AcceptChanges();
             gridControl1.Refresh();
         }
-
+        /// <summary>
+        /// Đăng nhập vào chương trình
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnLogin_Click(object sender, EventArgs e)
         {
             frmWait frm = new frmWait();
@@ -279,13 +270,13 @@ namespace SunfrogShirts
                 byte[] postDataBytes = encoding.GetBytes(data);
 
                 HttpWebRequest wRequest = (HttpWebRequest)WebRequest.Create("https://manager.sunfrogshirts.com/");
-                wRequest.UserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:56.0) Gecko/20100101 Firefox/56.0";
-                wRequest.Accept = "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8";
-                wRequest.Referer = "https://manager.sunfrogshirts.com/";
+                //wRequest.UserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:56.0) Gecko/20100101 Firefox/56.0";
+                //wRequest.Accept = "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8";
+                //wRequest.Referer = "https://manager.sunfrogshirts.com/";
                 wRequest.Method = "POST";
                 wRequest.ContentType = "application/x-www-form-urlencoded";
                 wRequest.ContentLength = postDataBytes.Length;
-                wRequest.KeepAlive = true;
+                //wRequest.KeepAlive = true;
                 wRequest.CookieContainer = cookieContainer;
 
                 using (Stream sr = wRequest.GetRequestStream())
@@ -333,108 +324,6 @@ namespace SunfrogShirts
             t.Start();
             frm.ShowDialog();
         }
-
-        private void UploadAndDownload(DataRow dr)
-        {
-            //Config Data
-            var frontbackImage = dr["FrontBack"].ToString().Trim();
-            var pathImage = dr["Image"].ToString().Trim();
-            var title = dr["Title"].ToString().Trim();
-            var category = getIDCategory(dr["Category"].ToString().Trim());
-            var description = dr["Description"].ToString().Trim();
-            var keyword = CoreLibary.convertStringToJson(dr["Keyword"].ToString().Trim());
-            var collection = dr["Collection"].ToString().Trim();
-            var themes = getListTheme();
-            var imgBase64 = CoreLibary.ConvertImageToBase64(pathImage);
-
-            //themes = "{\"id\":8,\"name\":\"Guys Tee\",\"price\":19,\"colors\":[\"Orange\",\"Yellow\"]}";
-            //themes += ",{\"id\":19,\"name\":\"Hoodie\",\"price\":34,\"colors\":[\"White\",\"Green\"]}";
-            //2. Upload Image
-            //var strFrontText = "<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' id='SvgjsSvg1000' version='1.1' width='2400' height='3200' viewBox='311.00000000008 150 387.99999999984004 517.33333333312'><text id='SvgjsText1052' font-family='Source Sans Pro' fill='#808080' font-size='30' stroke-width='0' font-style='' font-weight='' text-decoration=' ' text-anchor='start' x='457.39119720458984' y='241.71535301208496'><tspan id='SvgjsTspan1056' dy='39' x='457.39119720458984'>adfasdf</tspan></text><defs id='SvgjsDefs1001'></defs></svg>";
-            //Back:        <svg xmlns=\\\"http://www.w3.org/2000/svg\\\" xmlns:xlink=\\\"http://www.w3.org/1999/xlink\\\" id=\\\"SvgjsSvg1006\\\" version=\\\"1.1\\\" width=\\\"2400\\\" height=\\\"3200\\\" viewBox=\\\"311.00000000008 100 387.99999999984004 517.33333333312\\\"><g id=\\\"SvgjsG1052\\\" transform=\\\"scale(0.08399999999996445 0.08399999999996445) translate(3761.9047619073062 1569.8412698418072)\\\"><image id=\\\"SvgjsImage1053\\\" xlink:href=\\\"__dataURI:0__\\\" width=\\\"4500\\\" height=\\\"5400\\\"></image></g><defs id=\\\"SvgjsDefs1007\\\"></defs></svg>
-            //Front:       "<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" xmlns:xlink=\\\"http://www.w3.org/1999/xlink\\\" id=\\\"SvgjsSvg1000\\\" version=\\\"1.1\\\" width=\\\"2400\\\" height=\\\"3200\\\" viewBox=\\\"311.00000000008 150 387.99999999984004 517.33333333312\\\"><g id=\\\"SvgjsG1052\\\" transform=\\\"scale(0.08399999999996445 0.08399999999996445) translate(3761.9047619073062 2165.0793650801543)\\\"><image id=\\\"SvgjsImage1053\\\" xlink:href=\\\"__dataURI:0__\\\" width=\\\"4500\\\" height=\\\"5400\\\"></image></g><defs id=\\\"SvgjsDefs1001\\\"></defs></svg>"
-            var strBack = "";
-            var strFront = "";
-            if (frontbackImage == "B")
-                strBack = "<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" xmlns:xlink=\\\"http://www.w3.org/1999/xlink\\\" id=\\\"SvgjsSvg1006\\\" version=\\\"1.1\\\" width=\\\"2400\\\" height=\\\"3200\\\" viewBox=\\\"311.00000000008 100 387.99999999984004 517.33333333312\\\"><g id=\\\"SvgjsG1052\\\" transform=\\\"scale(0.08399999999996445 0.08399999999996445) translate(3761.9047619073062 1569.8412698418072)\\\"><image id=\\\"SvgjsImage1053\\\" xlink:href=\\\"__dataURI:0__\\\" width=\\\"4500\\\" height=\\\"5400\\\"></image></g><defs id=\\\"SvgjsDefs1007\\\"></defs></svg>";
-            else
-                strFront = "<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" xmlns:xlink=\\\"http://www.w3.org/1999/xlink\\\" id=\\\"SvgjsSvg1000\\\" version=\\\"1.1\\\" width=\\\"2400\\\" height=\\\"3200\\\" viewBox=\\\"311.00000000008 150 387.99999999984004 517.33333333312\\\"><g id=\\\"SvgjsG1052\\\" transform=\\\"scale(0.08399999999996445 0.08399999999996445) translate(3761.9047619073062 2165.0793650801543)\\\"><image id=\\\"SvgjsImage1053\\\" xlink:href=\\\"__dataURI:0__\\\" width=\\\"4500\\\" height=\\\"5400\\\"></image></g><defs id=\\\"SvgjsDefs1001\\\"></defs></svg>";
-            //<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" xmlns:xlink=\\\"http://www.w3.org/1999/xlink\\\" id=\\\"SvgjsSvg1000\\\" version=\\\"1.1\\\" width=\\\"2400\\\" height=\\\"3200\\\" viewBox=\\\"311.00000000008 150 387.99999999984004 517.33333333312\\\"><g id=\\\"SvgjsG1052\\\" transform=\\\"scale(0.08399999999996445 0.08399999999996445) translate(3761.9047619073062 2165.0793650801543)\\\"><image id=\\\"SvgjsImage1053\\\" xlink:href=\\\"__dataURI:0__\\\" width=\\\"4500\\\" height=\\\"5400\\\"></image></g><defs id=\\\"SvgjsDefs1001\\\"></defs></svg>
-            //<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" id=\"SvgjsSvg1000\" version=\"1.1\" width=\"2400\" height=\"3200\" viewBox=\"311.00000000008 150 387.99999999984004 517.33333333312\"><g id=\"SvgjsG1052\" transform=\"scale(0.08399999999996445 0.08399999999996445) translate(3761.9047619073062 2165.0793650801543)\"><image id=\"SvgjsImage1053\" xlink:href=\"__dataURI:0__\" width=\"4500\" height=\"5400\"></image></g><defs id=\"SvgjsDefs1001\"></defs></svg>
-
-            var dataToSend = "";
-            dataToSend += "{";
-            dataToSend += " \"ArtOwnerID\":0";
-            dataToSend += " ,\"IAgree\":true";
-            dataToSend += " ,\"Title\":\"" + title + "\"";
-            dataToSend += " ,\"Category\":\"" + category + "\"";
-            dataToSend += " ,\"Description\":\"" + description + "\"";
-            dataToSend += " ,\"Collections\":\"" + collection + "\"";
-            dataToSend += " ,\"Keywords\":[" + keyword + "]";
-            dataToSend += " ,\"imageFront\":\"" + strFront + "\"";
-            dataToSend += " ,\"imageBack\":\"" + strBack + "\"";
-            dataToSend += " ,\"types\":" + themes;
-            dataToSend += " ,\"images\":[{\"id\":\"__dataURI: 0__\",\"uri\":\"data:image/png;base64," + imgBase64 + "\"}]";
-            dataToSend += "}";
-            byte[] postDataBytes2 = Encoding.UTF8.GetBytes(dataToSend);
-            string getUrl = "https://manager.sunfrogshirts.com/Designer/php/upload-handler.cfm";
-
-            HttpWebRequest getRequest = (HttpWebRequest)WebRequest.Create(getUrl);
-            getRequest.UserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:56.0) Gecko/20100101 Firefox/56.0";
-            getRequest.Accept = "*/*";
-            getRequest.AllowWriteStreamBuffering = true;
-            getRequest.AllowAutoRedirect = true;
-            getRequest.Method = "POST";
-            getRequest.ContentType = "application/json; charset=UTF-8";
-            getRequest.ContentLength = postDataBytes2.Length;
-            getRequest.KeepAlive = true;
-            getRequest.CookieContainer = cookieContainer;
-
-            using (Stream sr = getRequest.GetRequestStream())
-            {
-                sr.Write(postDataBytes2, 0, postDataBytes2.Length);
-            }
-
-            string sourceCode = "";
-            HttpWebResponse getResponse = (HttpWebResponse)getRequest.GetResponse();
-            using (StreamReader sr = new StreamReader(getResponse.GetResponseStream()))
-            {
-                sourceCode = sr.ReadToEnd();
-            }
-            var dirSave = Directory.GetCurrentDirectory() + "\\Uploaded\\";
-            if (!Directory.Exists(dirSave))
-                Directory.CreateDirectory(dirSave);
-            var obj = JObject.Parse(sourceCode);
-            if (int.Parse(obj["result"].ToString()) == 0)
-                CoreLibary.writeLogThread(lsBoxLog, "Collection:" + obj["collectionName"].ToString() + " - " + obj["description"].ToString(), 2);
-            else
-                CoreLibary.writeLogThread(lsBoxLog, "Uploaded " + obj["description"].ToString(), 1);
-
-            Thread tDownFile = new Thread(new ThreadStart(() =>
-            {
-                var newObj = obj;
-                for (int i = 0; i < newObj["products"].Count(); i++)
-                {
-                    string url = "";
-                    string name = "";
-                    if (frontbackImage == "F")
-                    {
-                        name = newObj["products"][i]["imageFront"].ToString().Split('/').Last();
-                        url = "http:" + newObj["products"][i]["imageFront"].ToString();
-                    }
-                    else
-                    {
-                        name = newObj["products"][i]["imageBack"].ToString().Split('/').Last();
-                        url = "http:" + newObj["products"][i]["imageBack"].ToString();
-                    }
-                    string fileName = dirSave + name;
-                    WebClient webClient = new WebClient();
-                    webClient.DownloadFile(url, fileName);
-                }
-            }));
-            tDownFile.Start();
-        }
-
         /// <summary>
         /// Upload 1 hình 
         /// </summary>
@@ -535,7 +424,11 @@ namespace SunfrogShirts
             }));
             t.Start();
         }
-
+        /// <summary>
+        /// Chọn image để hiển thị upload 1 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void info_picImageView_Click(object sender, EventArgs e)
         {
             try
@@ -553,7 +446,48 @@ namespace SunfrogShirts
                 XtraMessageBox.Show("Error: " + ex.Message);
             }
         }
+        /// <summary>
+        /// Xem Dữ liệu của file Excel
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnViewData_Click(object sender, EventArgs e)
+        {
+            //UpdateExcel("", 3, 8, "Done");
+        }
+        /// <summary>
+        /// Lưu theme lại thành file 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnSaveTheme_Click(object sender, EventArgs e)
+        {
 
+        }
+        /// <summary>
+        /// Mở các file chứa themes đã lưu
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnLoadTheme_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        #region=========================Function=========================
+        /// <summary>
+        /// Khởi tạo các giá trị của control khi load form
+        /// </summary>
+        private void clearContent()
+        {
+            txtPath.Text = sys_txtPassword.Text = sys_txtAccount.Text 
+                = info_txtCollection.Text = info_txtDescription.Text 
+                = info_txtKeyWord.Text = info_txtTitle.Text = "";
+        }
+        /// <summary>
+        /// Lấy chuỗi json màu sắc và danh mục
+        /// </summary>
+        /// <returns>Chuỗi json các màu sắc và category đã chọn</returns>
         private string getListTheme()
         {
             //  themes = "{\"id\":8,\"name\":\"Guys Tee\",\"price\":19,\"colors\":[\"Orange\",\"Yellow\"]}";
@@ -581,7 +515,11 @@ namespace SunfrogShirts
             result += "]";
             return result;
         }
-
+        /// <summary>
+        /// Lấy giá trị Id của category
+        /// </summary>
+        /// <param name="category">Tên category cần lấy ID</param>
+        /// <returns>ID category</returns>
         private string getIDCategory(string category)
         {
             string id = "";
@@ -595,6 +533,169 @@ namespace SunfrogShirts
             }
             return id;
         }
+        /// <summary>
+        /// Update content row in file Excel
+        /// Cập nhật trạng thái status của hình vừa upload: Done
+        /// </summary>
+        /// <param name="sheetName">Tên sheet. Chọn sheet mặc định mở nếu sheetName = ""</param>
+        /// <param name="row">Dòng cần cập nhật</param>
+        /// <param name="col">Cột cần cập nhật</param>
+        /// <param name="data">Dữ liệu cần cập nhật</param>
+        private void UpdateExcel(string sheetName, int row, int col, string data)
+        {
+            Microsoft.Office.Interop.Excel.Application oXL = null;
+            Microsoft.Office.Interop.Excel._Workbook oWB = null;
+            Microsoft.Office.Interop.Excel._Worksheet oSheet = null;
 
+            try
+            {
+                oXL = new Microsoft.Office.Interop.Excel.Application();
+                oWB = oXL.Workbooks.Open(dirSaveStatusFile);
+                oSheet = String.IsNullOrEmpty(sheetName) ? (Microsoft.Office.Interop.Excel._Worksheet)oWB.ActiveSheet : (Microsoft.Office.Interop.Excel._Worksheet)oWB.Worksheets[sheetName];
+
+                oSheet.Cells[row, col] = data;
+
+                oWB.Save();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            finally
+            {
+                if (oWB != null)
+                    oWB.Close();
+            }
+        }
+        /// <summary>
+        /// Upload file to Sunfrog
+        /// </summary>
+        /// <param name="dr">Nội dụng dữ liệu cần upload</param>
+        private void UploadAndDownload(DataRow dr)
+        {
+            //Config Data
+            var frontbackImage = dr["FrontBack"].ToString().Trim();
+            var pathImage = dr["Image"].ToString().Trim();
+            var title = dr["Title"].ToString().Trim();
+            var category = getIDCategory(dr["Category"].ToString().Trim());
+            var description = dr["Description"].ToString().Trim();
+            var keyword = CoreLibary.convertStringToJson(dr["Keyword"].ToString().Trim());
+            var collection = dr["Collection"].ToString().Trim();
+            var themes = getListTheme();
+            var imgBase64 = CoreLibary.ConvertImageToBase64(pathImage);
+
+            //themes = "{\"id\":8,\"name\":\"Guys Tee\",\"price\":19,\"colors\":[\"Orange\",\"Yellow\"]}";
+            //themes += ",{\"id\":19,\"name\":\"Hoodie\",\"price\":34,\"colors\":[\"White\",\"Green\"]}";
+            //2. Upload Image
+            //var strFrontText = "<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' id='SvgjsSvg1000' version='1.1' width='2400' height='3200' viewBox='311.00000000008 150 387.99999999984004 517.33333333312'><text id='SvgjsText1052' font-family='Source Sans Pro' fill='#808080' font-size='30' stroke-width='0' font-style='' font-weight='' text-decoration=' ' text-anchor='start' x='457.39119720458984' y='241.71535301208496'><tspan id='SvgjsTspan1056' dy='39' x='457.39119720458984'>adfasdf</tspan></text><defs id='SvgjsDefs1001'></defs></svg>";
+            //Back:        <svg xmlns=\\\"http://www.w3.org/2000/svg\\\" xmlns:xlink=\\\"http://www.w3.org/1999/xlink\\\" id=\\\"SvgjsSvg1006\\\" version=\\\"1.1\\\" width=\\\"2400\\\" height=\\\"3200\\\" viewBox=\\\"311.00000000008 100 387.99999999984004 517.33333333312\\\"><g id=\\\"SvgjsG1052\\\" transform=\\\"scale(0.08399999999996445 0.08399999999996445) translate(3761.9047619073062 1569.8412698418072)\\\"><image id=\\\"SvgjsImage1053\\\" xlink:href=\\\"__dataURI:0__\\\" width=\\\"4500\\\" height=\\\"5400\\\"></image></g><defs id=\\\"SvgjsDefs1007\\\"></defs></svg>
+            //Front:       "<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" xmlns:xlink=\\\"http://www.w3.org/1999/xlink\\\" id=\\\"SvgjsSvg1000\\\" version=\\\"1.1\\\" width=\\\"2400\\\" height=\\\"3200\\\" viewBox=\\\"311.00000000008 150 387.99999999984004 517.33333333312\\\"><g id=\\\"SvgjsG1052\\\" transform=\\\"scale(0.08399999999996445 0.08399999999996445) translate(3761.9047619073062 2165.0793650801543)\\\"><image id=\\\"SvgjsImage1053\\\" xlink:href=\\\"__dataURI:0__\\\" width=\\\"4500\\\" height=\\\"5400\\\"></image></g><defs id=\\\"SvgjsDefs1001\\\"></defs></svg>"
+            var strBack = "";
+            var strFront = "";
+            if (frontbackImage == "B")
+                strBack = "<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" xmlns:xlink=\\\"http://www.w3.org/1999/xlink\\\" id=\\\"SvgjsSvg1006\\\" version=\\\"1.1\\\" width=\\\"2400\\\" height=\\\"3200\\\" viewBox=\\\"311.00000000008 100 387.99999999984004 517.33333333312\\\"><g id=\\\"SvgjsG1052\\\" transform=\\\"scale(0.08399999999996445 0.08399999999996445) translate(3761.9047619073062 1569.8412698418072)\\\"><image id=\\\"SvgjsImage1053\\\" xlink:href=\\\"__dataURI:0__\\\" width=\\\"4500\\\" height=\\\"5400\\\"></image></g><defs id=\\\"SvgjsDefs1007\\\"></defs></svg>";
+            else
+                strFront = "<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" xmlns:xlink=\\\"http://www.w3.org/1999/xlink\\\" id=\\\"SvgjsSvg1000\\\" version=\\\"1.1\\\" width=\\\"2400\\\" height=\\\"3200\\\" viewBox=\\\"311.00000000008 150 387.99999999984004 517.33333333312\\\"><g id=\\\"SvgjsG1052\\\" transform=\\\"scale(0.08399999999996445 0.08399999999996445) translate(3761.9047619073062 2165.0793650801543)\\\"><image id=\\\"SvgjsImage1053\\\" xlink:href=\\\"__dataURI:0__\\\" width=\\\"4500\\\" height=\\\"5400\\\"></image></g><defs id=\\\"SvgjsDefs1001\\\"></defs></svg>";
+
+            var dataToSend = "";
+            dataToSend += "{";
+            dataToSend += " \"ArtOwnerID\":0";
+            dataToSend += " ,\"IAgree\":true";
+            dataToSend += " ,\"Title\":\"" + title + "\"";
+            dataToSend += " ,\"Category\":\"" + category + "\"";
+            dataToSend += " ,\"Description\":\"" + description + "\"";
+            dataToSend += " ,\"Collections\":\"" + collection + "\"";
+            dataToSend += " ,\"Keywords\":[" + keyword + "]";
+            dataToSend += " ,\"imageFront\":\"" + strFront + "\"";
+            dataToSend += " ,\"imageBack\":\"" + strBack + "\"";
+            dataToSend += " ,\"types\":" + themes;
+            dataToSend += " ,\"images\":[{\"id\":\"__dataURI: 0__\",\"uri\":\"data:image/png;base64," + imgBase64 + "\"}]";
+            dataToSend += "}";
+            byte[] postDataBytes2 = Encoding.UTF8.GetBytes(dataToSend);
+            string getUrl = "https://manager.sunfrogshirts.com/Designer/php/upload-handler.cfm";
+
+            HttpWebRequest getRequest = (HttpWebRequest)WebRequest.Create(getUrl);
+            //getRequest.UserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:56.0) Gecko/20100101 Firefox/56.0";
+            //getRequest.Accept = "*/*";
+            //getRequest.AllowWriteStreamBuffering = true;
+            //getRequest.AllowAutoRedirect = true;
+            //getRequest.Method = "POST";
+            //getRequest.ContentType = "application/json; charset=UTF-8";
+            //getRequest.ContentLength = postDataBytes2.Length;
+            //getRequest.KeepAlive = true;
+            getRequest.CookieContainer = cookieContainer;
+            using (Stream sr = getRequest.GetRequestStream())
+            {
+                sr.Write(postDataBytes2, 0, postDataBytes2.Length);
+            }
+            string sourceCode = "";
+            HttpWebResponse getResponse = (HttpWebResponse)getRequest.GetResponse();
+            using (StreamReader sr = new StreamReader(getResponse.GetResponseStream()))
+            {
+                sourceCode = sr.ReadToEnd();
+            }
+            var obj = JObject.Parse(sourceCode);
+            if (int.Parse(obj["result"].ToString()) == 0)
+                CoreLibary.writeLogThread(lsBoxLog, "Collection:" + obj["collectionName"].ToString() + " - " + obj["description"].ToString(), 2);
+            else
+                CoreLibary.writeLogThread(lsBoxLog, "Uploaded " + obj["description"].ToString(), 1);
+            //Chuyển hình sang folder Uploaded
+            moveImageUploaded(pathImage);
+            Thread tDownFile = new Thread(new ThreadStart(() =>
+            {
+                var newObj = obj;
+                for (int i = 0; i < newObj["products"].Count(); i++)
+                {
+                    string url = "";
+                    string name = "";
+                    if (frontbackImage == "F")
+                    {
+                        name = newObj["products"][i]["imageFront"].ToString().Split('/').Last();
+                        url = "http:" + newObj["products"][i]["imageFront"].ToString();
+                    }
+                    else
+                    {
+                        name = newObj["products"][i]["imageBack"].ToString().Split('/').Last();
+                        url = "http:" + newObj["products"][i]["imageBack"].ToString();
+                    }
+                    string fileName = dirSaveImageSunUploaded + name;
+                    WebClient webClient = new WebClient();
+                    webClient.DownloadFile(url, fileName);
+                }
+            }));
+            tDownFile.Start();
+        }
+        /// <summary>
+        /// Add màu tương ứng với themes đã chọn
+        /// </summary>
+        /// <param name="lsColor">List color tương ứng</param>
+        private void addListColor(List<ObjColor> lsColor)
+        {
+            ckListBox.Items.Clear();
+            foreach (ObjColor item in lsColor)
+            {
+                ckListBox.Items.Add(item.Name);
+            }
+        }
+        /// <summary>
+        /// Chuyển hình đã upload lên Sunfrog vào folder khác
+        /// </summary>
+        /// <param name="fileName">đường dẫn hình hiện tại</param>
+        private void moveImageUploaded(string fileName)
+        {
+            try
+            {
+                if (File.Exists(fileName))
+                {
+                    string newFileName = dirSaveImageUploaded + Path.GetFileName(fileName);
+                    File.Move(fileName, newFileName);
+                }
+            }
+            catch(Exception ex) {
+                CoreLibary.writeLogThread(lsBoxLog, ex.Message, 2);
+            }
+        }
+        #endregion
     }
 }

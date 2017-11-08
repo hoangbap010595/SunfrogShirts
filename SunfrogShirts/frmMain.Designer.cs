@@ -120,9 +120,11 @@
             // 
             // btnUpdateAll
             // 
+            this.btnUpdateAll.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
             this.btnUpdateAll.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnUpdateAll.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnUpdateAll.ImageOptions.Image")));
-            this.btnUpdateAll.Location = new System.Drawing.Point(429, 49);
+            this.btnUpdateAll.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleLeft;
+            this.btnUpdateAll.Location = new System.Drawing.Point(439, 49);
             this.btnUpdateAll.Name = "btnUpdateAll";
             this.btnUpdateAll.Size = new System.Drawing.Size(124, 23);
             this.btnUpdateAll.TabIndex = 20;
@@ -181,20 +183,24 @@
             // btnAddTheme
             // 
             this.btnAddTheme.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAddTheme.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
             this.btnAddTheme.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAddTheme.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnAddTheme.ImageOptions.Image")));
             this.btnAddTheme.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
-            this.btnAddTheme.Location = new System.Drawing.Point(163, 24);
+            this.btnAddTheme.Location = new System.Drawing.Point(159, 24);
             this.btnAddTheme.Name = "btnAddTheme";
             this.btnAddTheme.Size = new System.Drawing.Size(38, 23);
             this.btnAddTheme.TabIndex = 18;
+            this.btnAddTheme.ToolTip = "Add Theme";
             this.btnAddTheme.Click += new System.EventHandler(this.btnAddTheme_Click);
             // 
             // btnOpenFileExcel
             // 
             this.btnOpenFileExcel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnOpenFileExcel.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
             this.btnOpenFileExcel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnOpenFileExcel.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnOpenFileExcel.ImageOptions.Image")));
+            this.btnOpenFileExcel.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleLeft;
             this.btnOpenFileExcel.Location = new System.Drawing.Point(4, 56);
             this.btnOpenFileExcel.Name = "btnOpenFileExcel";
             this.btnOpenFileExcel.Size = new System.Drawing.Size(70, 23);
@@ -223,7 +229,7 @@
             this.groupControlInfo.Name = "groupControlInfo";
             this.groupControlInfo.Size = new System.Drawing.Size(179, 378);
             this.groupControlInfo.TabIndex = 0;
-            this.groupControlInfo.Text = "Infomation";
+            this.groupControlInfo.Text = "Infomation Upload";
             // 
             // info_cbbCategory
             // 
@@ -251,6 +257,7 @@
             this.info_picImageView.Properties.ZoomAccelerationFactor = 1D;
             this.info_picImageView.Size = new System.Drawing.Size(100, 100);
             this.info_picImageView.TabIndex = 9;
+            this.info_picImageView.ToolTip = "Choose image...";
             this.info_picImageView.Click += new System.EventHandler(this.info_picImageView_Click);
             // 
             // info_ckBack
@@ -394,9 +401,12 @@
             // btnLogin
             // 
             this.btnLogin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnLogin.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
+            this.btnLogin.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnLogin.ImageOptions.Image")));
+            this.btnLogin.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleLeft;
             this.btnLogin.Location = new System.Drawing.Point(41, 99);
             this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(85, 23);
+            this.btnLogin.Size = new System.Drawing.Size(85, 25);
             this.btnLogin.TabIndex = 3;
             this.btnLogin.Text = "Login";
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
@@ -432,7 +442,7 @@
             this.groupControlSelectTheme.Name = "groupControlSelectTheme";
             this.groupControlSelectTheme.Size = new System.Drawing.Size(571, 222);
             this.groupControlSelectTheme.TabIndex = 0;
-            this.groupControlSelectTheme.Text = "Selected Themes";
+            this.groupControlSelectTheme.Text = "Selected";
             // 
             // gridControl1
             // 
@@ -560,15 +570,6 @@
             this.lsBoxLog.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lsBoxLog.HorizontalScrollbar = true;
             this.lsBoxLog.ItemHeight = 22;
-            this.lsBoxLog.Items.AddRange(new object[] {
-            "ádfádf",
-            "adfad",
-            "fa",
-            "sdf",
-            "ad",
-            "fa",
-            "f",
-            "ádf"});
             this.lsBoxLog.Location = new System.Drawing.Point(2, 22);
             this.lsBoxLog.Name = "lsBoxLog";
             this.lsBoxLog.ShowFocusRect = false;
@@ -604,34 +605,41 @@
             // btnClearColor
             // 
             this.btnClearColor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnClearColor.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
             this.btnClearColor.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnClearColor.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnClearColor.ImageOptions.Image")));
-            this.btnClearColor.Location = new System.Drawing.Point(214, 56);
+            this.btnClearColor.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleLeft;
+            this.btnClearColor.Location = new System.Drawing.Point(223, 56);
             this.btnClearColor.Name = "btnClearColor";
             this.btnClearColor.Size = new System.Drawing.Size(70, 23);
             this.btnClearColor.TabIndex = 16;
-            this.btnClearColor.Text = "Color";
+            this.btnClearColor.Text = "Themes";
             this.btnClearColor.ToolTip = "Clear Color";
             this.btnClearColor.Click += new System.EventHandler(this.btnClearColor_Click);
             // 
             // btnViewData
             // 
             this.btnViewData.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnViewData.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
             this.btnViewData.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnViewData.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnViewData.ImageOptions.Image")));
-            this.btnViewData.Location = new System.Drawing.Point(74, 56);
+            this.btnViewData.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleLeft;
+            this.btnViewData.Location = new System.Drawing.Point(77, 56);
             this.btnViewData.Name = "btnViewData";
             this.btnViewData.Size = new System.Drawing.Size(70, 23);
             this.btnViewData.TabIndex = 14;
             this.btnViewData.Text = "View";
             this.btnViewData.ToolTip = "View Data From File Excel";
+            this.btnViewData.Click += new System.EventHandler(this.btnViewData_Click);
             // 
             // btnClear
             // 
             this.btnClear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnClear.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
             this.btnClear.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnClear.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnClear.ImageOptions.Image")));
-            this.btnClear.Location = new System.Drawing.Point(144, 56);
+            this.btnClear.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleLeft;
+            this.btnClear.Location = new System.Drawing.Point(150, 56);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(70, 23);
             this.btnClear.TabIndex = 15;
@@ -641,29 +649,37 @@
             // 
             // btnLoadTheme
             // 
+            this.btnLoadTheme.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
             this.btnLoadTheme.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnLoadTheme.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnLoadTheme.ImageOptions.Image")));
-            this.btnLoadTheme.Location = new System.Drawing.Point(299, 49);
+            this.btnLoadTheme.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleLeft;
+            this.btnLoadTheme.Location = new System.Drawing.Point(309, 49);
             this.btnLoadTheme.Name = "btnLoadTheme";
             this.btnLoadTheme.Size = new System.Drawing.Size(124, 23);
             this.btnLoadTheme.TabIndex = 18;
             this.btnLoadTheme.Text = "Load Theme";
+            this.btnLoadTheme.Click += new System.EventHandler(this.btnLoadTheme_Click);
             // 
             // btnSaveTheme
             // 
+            this.btnSaveTheme.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
             this.btnSaveTheme.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSaveTheme.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnSaveTheme.ImageOptions.Image")));
-            this.btnSaveTheme.Location = new System.Drawing.Point(299, 17);
+            this.btnSaveTheme.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleLeft;
+            this.btnSaveTheme.Location = new System.Drawing.Point(309, 17);
             this.btnSaveTheme.Name = "btnSaveTheme";
             this.btnSaveTheme.Size = new System.Drawing.Size(124, 23);
             this.btnSaveTheme.TabIndex = 17;
             this.btnSaveTheme.Text = "Save Theme";
+            this.btnSaveTheme.Click += new System.EventHandler(this.btnSaveTheme_Click);
             // 
             // btnUpdate
             // 
+            this.btnUpdate.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
             this.btnUpdate.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnUpdate.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnUpdate.ImageOptions.Image")));
-            this.btnUpdate.Location = new System.Drawing.Point(429, 17);
+            this.btnUpdate.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleLeft;
+            this.btnUpdate.Location = new System.Drawing.Point(439, 17);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(124, 23);
             this.btnUpdate.TabIndex = 19;
@@ -675,7 +691,7 @@
             this.txtPath.Location = new System.Drawing.Point(5, 30);
             this.txtPath.Name = "txtPath";
             this.txtPath.Properties.ReadOnly = true;
-            this.txtPath.Size = new System.Drawing.Size(277, 20);
+            this.txtPath.Size = new System.Drawing.Size(288, 20);
             this.txtPath.TabIndex = 12;
             // 
             // labelControl9

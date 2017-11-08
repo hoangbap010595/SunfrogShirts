@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -33,17 +34,22 @@ namespace SunfrogShirts
 
         public static string ConvertImageToBase64(string path)
         {
-            using (Image image = Image.FromFile(path))
+            string base64String = string.Empty;
+            if (!File.Exists(path))
+                return base64String;
+            // Convert Image to Base64
+            using (Image img = Image.FromFile(path)) // Image Path from File Upload Controller
             {
-                using (MemoryStream m = new MemoryStream())
+                using (var memStream = new MemoryStream())
                 {
-                    image.Save(m, image.RawFormat);
-                    byte[] imageBytes = m.ToArray();
+                    img.Save(memStream, img.RawFormat);
+                    byte[] imageBytes = memStream.ToArray();
                     // Convert byte[] to Base64 String
-                    string base64String = Convert.ToBase64String(imageBytes);
-                    return base64String;
+                    base64String = Convert.ToBase64String(imageBytes);
                 }
+                img.Dispose();
             }
+            return base64String;
         }
 
         public static DataTable getDataExcelFromFileToDataTable(string filePath)
