@@ -5,7 +5,7 @@
   },
   "publishingDetails": [ ],
   "properties": { "manualAssortmentSelection": true },
-  "id": "5a0a6414aa0c6d5484b0bfdb",//ID designs
+  "id": "5a0ac4a0aa0c6d5484cf1e98",//ID designs
   "userId": "302719724",
   "state": "ACTIVE",
   "mainDesignId": "1013521844",
@@ -3403,7 +3403,7 @@
         "id": "302719724",
         "href": "https://partner.spreadshirt.com/api/v1/users/302719724"
       },
-      "id": "5a0a6414aa0c6d5484b0bfdb",
+      "id": "5a0ac4a0aa0c6d5484cf1e98",
       "href": "https://partner.spreadshirt.com/api/v1/users/302719724/ideas/5a0a6414aa0c6d5484b0bfdb"
     },
     "restangularCollection": false

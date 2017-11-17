@@ -96,10 +96,10 @@ namespace SpreadShirts
             string userId = obj["user"]["id"].ToString();
             string role = obj["role"].ToString();
 
-            //https://partner.spreadshirt.com/api/v1/users/302719724/ideas/5a0a5c17aa0c6d5484aef460?apiKey=1c711bf5-b82d-40de-bea6-435b5473cf9b&locale=us_US&mediaType=json&sig=c313820f219028718036e05a93d375196f36b49d&time=1510629969266
+            //https://partner.spreadshirt.com/api/v1/users/302719724/ideas/5a0ac4a0aa0c6d5484cf1e98?apiKey=1c711bf5-b82d-40de-bea6-435b5473cf9b&locale=us_US&mediaType=json&sig=c313820f219028718036e05a93d375196f36b49d&time=1510629969266
             string url = " http://api.spreadshirt.net/api/v1/shops/" + userId + "/designs?apiKey=" + API_KEY;
 
-            url = "https://partner.spreadshirt.com/api/v1/users/" + userId + "/ideas/5a0a6414aa0c6d5484b0bfdb?apiKey=" + API_KEY + "&locale=us_US&mediaType=json&sig=@SIG&time=1510629969266";
+            url = "https://partner.spreadshirt.com/api/v1/users/" + userId + "/ideas/5a0ac4a0aa0c6d5484cf1e98?apiKey=" + API_KEY + "&locale=us_US&mediaType=json&sig=@SIG&time=1510629969266";
             var temp = url.Split('?')[0];
             string time = "1510629969266";
             string data = "PUT " + temp + " " + time + " " + SECRET;
