@@ -599,20 +599,19 @@ namespace SunfrogShirts
                 strFront = "<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" xmlns:xlink=\\\"http://www.w3.org/1999/xlink\\\" id=\\\"SvgjsSvg1000\\\" version=\\\"1.1\\\" width=\\\"2400\\\" height=\\\"3200\\\" viewBox=\\\"311.00000000008 150 387.99999999984004 517.33333333312\\\"><g id=\\\"SvgjsG1052\\\" transform=\\\"scale(0.08399999999996445 0.08399999999996445) translate(3761.9047619073062 2165.0793650801543)\\\"><image id=\\\"SvgjsImage1053\\\" xlink:href=\\\"__dataURI:0__\\\" width=\\\"4500\\\" height=\\\"5400\\\"></image></g><defs id=\\\"SvgjsDefs1001\\\"></defs></svg>";
 
             var dataToSend = "";
-            dataToSend += "{";
-            dataToSend += " \"ArtOwnerID\":0";
-            dataToSend += " ,\"IAgree\":true";
-            dataToSend += " ,\"Title\":\"" + title + "\"";
-            dataToSend += " ,\"Category\":\"" + category + "\"";
-            dataToSend += " ,\"Description\":\"" + description + "\"";
-            dataToSend += " ,\"Collections\":\"" + collection + "\"";
-            dataToSend += " ,\"Keywords\":[" + keyword + "]";
-            dataToSend += " ,\"imageFront\":\"" + strFront + "\"";
-            dataToSend += " ,\"imageBack\":\"" + strBack + "\"";
-            dataToSend += " ,\"types\":" + themes;
-            dataToSend += " ,\"images\":[{\"id\":\"__dataURI: 0__\",\"uri\":\"data:image/png;base64," + imgBase64 + "\"}]";
+            dataToSend = "{";
+            dataToSend += "\"ArtOwnerID\":\"0\",\"IAgree\":\"true\"";
+            dataToSend += ",\"Title\":\"" + title + "\"";
+            dataToSend += ",\"Category\":\"" + category + "\"";
+            dataToSend += ",\"Description\":\"" + description + "\"";
+            dataToSend += ",\"Collections\":\"" + collection + "\"";
+            dataToSend += ",\"Keywords\": [" + keyword + "]";
+            dataToSend += ",\"imageFront\":\"" + strFront + "\"";
+            dataToSend += ",\"imageBack\":\"" + strBack + "\"";
+            dataToSend += ",\"types\":" + themes;
+            dataToSend += ",\"images\":[{\"id\":\"__dataURI: 0__\",\"uri\":\"data:image/png;base64," + imgBase64 + "\"}]";
             dataToSend += "}";
-            byte[] postDataBytes2 = Encoding.UTF8.GetBytes(dataToSend);
+            byte[] postDataBytes2 = Encoding.ASCII.GetBytes(dataToSend);
             string getUrl = "https://manager.sunfrogshirts.com/Designer/php/upload-handler.cfm";
 
             HttpWebRequest getRequest = (HttpWebRequest)WebRequest.Create(getUrl);
@@ -620,14 +619,17 @@ namespace SunfrogShirts
             //getRequest.Accept = "*/*";
             //getRequest.AllowWriteStreamBuffering = true;
             //getRequest.AllowAutoRedirect = true;
-            //getRequest.Method = "POST";
-            //getRequest.ContentType = "application/json; charset=UTF-8";
-            //getRequest.ContentLength = postDataBytes2.Length;
+            getRequest.Method = "POST";
+            getRequest.ContentType = "application/json; charset=UTF-8";
+            getRequest.ContentLength = postDataBytes2.Length;
             //getRequest.KeepAlive = true;
             getRequest.CookieContainer = cookieContainer;
-            using (Stream sr = getRequest.GetRequestStream())
+            using (StreamWriter sr = new StreamWriter(getRequest.GetRequestStream()))
             {
-                sr.Write(postDataBytes2, 0, postDataBytes2.Length);
+                sr.Write(dataToSend);
+                //sr.Write(postDataBytes2, 0, postDataBytes2.Length);
+                sr.Flush();
+                sr.Close();
             }
             string sourceCode = "";
             HttpWebResponse getResponse = (HttpWebResponse)getRequest.GetResponse();
@@ -641,7 +643,7 @@ namespace SunfrogShirts
             else
                 CoreLibary.writeLogThread(lsBoxLog, "Uploaded " + obj["description"].ToString(), 1);
             //Chuyển hình sang folder Uploaded
-            moveImageUploaded(pathImage);
+            //moveImageUploaded(pathImage);
             Thread tDownFile = new Thread(new ThreadStart(() =>
             {
                 var newObj = obj;
