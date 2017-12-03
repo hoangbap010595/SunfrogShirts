@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SunfrogShirts", "SunfrogShi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpreadShirts", "SpreadShirts\SpreadShirts.csproj", "{CDD39F86-01FA-431A-9EE1-A22D633F5A56}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TCProShirts", "TCProShirts\TCProShirts.csproj", "{9B164F4A-3BB5-40D0-AEB8-13F8BADB873E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{CDD39F86-01FA-431A-9EE1-A22D633F5A56}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CDD39F86-01FA-431A-9EE1-A22D633F5A56}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CDD39F86-01FA-431A-9EE1-A22D633F5A56}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B164F4A-3BB5-40D0-AEB8-13F8BADB873E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B164F4A-3BB5-40D0-AEB8-13F8BADB873E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B164F4A-3BB5-40D0-AEB8-13F8BADB873E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B164F4A-3BB5-40D0-AEB8-13F8BADB873E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
