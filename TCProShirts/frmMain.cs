@@ -20,6 +20,7 @@ using System.Web;
 using System.Windows.Forms;
 using TCProShirts.Models;
 using TCProShirts.Properties;
+using TCProShirts.UControls;
 
 namespace TCProShirts
 {
@@ -30,7 +31,8 @@ namespace TCProShirts
         private string BROWSER_FIREFOX = "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:49.0) Gecko/20100101 Firefox/49.0";
         private ApplicationUser User;
         private string currToken = "";
-        List<Product> lsBulkProduct;
+        private List<Product> lsBulkProduct;
+        private List<UserControl> lsUserControlTheme = new List<UserControl>();
         public frmMain()
         {
             InitializeComponent();
@@ -47,6 +49,7 @@ namespace TCProShirts
         private void frmMain_Load(object sender, EventArgs e)
         {
             loadBulkProduct();
+            loadTab2();
             //frmLogin frm = new frmLogin();
             //frm.senduser = new frmLogin.SendUser(getUser);
             //frm.ShowDialog();
@@ -103,7 +106,8 @@ namespace TCProShirts
 
         private void simpleButton1_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(User.ApiKey);
+            getAllRetailIDFromDesignID("5a254f7ad9ef9825ed8890fb");
+            //MessageBox.Show(User.ApiKey);
             //UploadProgress();
         }
 
@@ -169,7 +173,7 @@ namespace TCProShirts
 
             #region ===============Step 2: Create Design Line & Get DesignLine ID===============
             Int32 unixTimestamp = (Int32)(DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
-            var data2SendLineID = "{\"designId\":\"" + _IDDesign + "\",\"entityId\":\"" + User.EntityID + "\",\"printSize\":\"general-standard\",\"id\":\""+ unixTimestamp + "-9779\",\"sides\":{\"front\":{\"artworkId\":\"" + atworkID + "\",\"position\":{\"vertical\":{\"origin\":\"T\",\"offset\":2},\"horizontal\":{\"origin\":\"C\",\"offset\":0}},\"size\":{\"width\":14,\"unit\":\"inch\"}}},\"handling\":\"default\"}";
+            var data2SendLineID = "{\"designId\":\"" + _IDDesign + "\",\"entityId\":\"" + User.EntityID + "\",\"printSize\":\"general-standard\",\"id\":\"" + unixTimestamp + "-9779\",\"sides\":{\"front\":{\"artworkId\":\"" + atworkID + "\",\"position\":{\"vertical\":{\"origin\":\"T\",\"offset\":2},\"horizontal\":{\"origin\":\"C\",\"offset\":0}},\"size\":{\"width\":14,\"unit\":\"inch\"}}},\"handling\":\"default\"}";
             HttpWebRequest wLines = (HttpWebRequest)WebRequest.Create("https://api.scalablelicensing.com/rest/design-lines");
             wLines.Accept = "application/json, text/plain, */*";
             wLines.ContentType = "application/json";
@@ -190,27 +194,66 @@ namespace TCProShirts
 
             //Step 3 -- Tham số cần truyền: 
             //      1. productId, color, price: người dùng chọn
-            //      2. 
-            var data2SendRetail = "{\"designLineId\":\"" + _IDDesignLine + "\",\"productId\":\"587d0d8ff43ea40e13382dad\",\"color\":\"Chocolate\",\"price\":2838,\"images\":[]}";
-            HttpWebRequest wRetail = (HttpWebRequest)WebRequest.Create("https://api.scalablelicensing.com/rest/retail-products");
-            wRetail.Accept = "application/json, text/plain, */*";
-            wRetail.ContentType = "application/json";
-            wRetail.PreAuthenticate = true;
-            wRetail.Headers.Add("Authorization", User.Authorization);
-
-            Dictionary<string, object> dataUploadRetail = PostDataAPI(wRetail, data2SendRetail);
-            var rsUploadRetail = dataUploadRetail["data"].ToString();
-            var statusRetail = int.Parse(dataUploadRetail["status"].ToString());
-            if (statusRetail == -1)
-            {
-                ApplicationLibary.writeLog(lsBoxLog, rsUploadRetail, 2);
-                return;
-            }
-            var objUploadRetail = JObject.Parse(rsUploadRetail);
-            var _IDDesignRetail = objUploadRetail["_id"].ToString();
+            var objIDReail = getAllRetailIDFromDesignID(_IDDesignLine);
 
             //Step 4 -- Nhận giá trị 1 mảng _IDDesignRetail từ Step 3
-            var data2SendCampaigns = "{\"url\":\"hoangtest3333\",\"title\":\"HoangTesst3333\",\"description\":\"<div> Mo ta haong mo ta</div>\",\"duration\":24,\"policies\":{\"forever\":true,\"fulfillment\":24,\"private\":false,\"checkout\":\"direct\"},\"social\":{\"trackingTags\":{}},\"entityId\":\"" + User.EntityID + "\",\"upsells\":[],\"tags\":{\"style\":[\"usa-colleges-p_to_t\",\"usa-colleges\",\"usa-colleges-u_to_z\",\"Goddaughter\",\"Children\",\"Family & Relationships\"]},\"related\":[{\"id\":\"" + _IDDesignRetail + "\",\"price\":2939,\"default\":true}]}";
+            var data2SendCampaigns = "{\"url\":\"hoangtest3333\",\"title\":\"HoangTesst3333\",\"description\":\"<div> Mo ta haong mo ta</div>\",\"duration\":24,\"policies\":{\"forever\":true,\"fulfillment\":24,\"private\":false,\"checkout\":\"direct\"},\"social\":{\"trackingTags\":{}},\"entityId\":\"" + User.EntityID + "\",\"upsells\":[],\"tags\":{\"style\":[\"usa-colleges-p_to_t\",\"usa-colleges\",\"usa-colleges-u_to_z\",\"Goddaughter\",\"Children\",\"Family & Relationships\"]},\"related\": " + objIDReail + "}";
+            finishUploadImage(data2SendCampaigns);
+        }
+        //Step 3: Get Retail ID
+        private string getAllRetailIDFromDesignID(string designID)
+        {
+            List<Dictionary<string, object>> lsData = new List<Dictionary<string, object>>();
+            Dictionary<string, object> data;
+            List<string> lsCommand = new List<string>();
+            //b1
+            List<Dictionary<string, object>> themes = listThemes();
+            foreach (Dictionary<string, object> item in themes)
+            {
+                var colors = (List<string>)item["colors"];
+                foreach (string color in colors)
+                {
+                    var data2SendRetail = "{\"designLineId\":\"" + designID + "\",\"productId\":\"" + item["productId"] + "\",\"color\":\"" + color + "\",\"price\":" + item["price"] + ",\"images\":[]}";
+                    lsCommand.Add(data2SendRetail);
+                }
+            }
+            foreach (var item in lsCommand)
+            {
+                try
+                {
+                    data = new Dictionary<string, object>();
+                    HttpWebRequest wRetail = (HttpWebRequest)WebRequest.Create("https://api.scalablelicensing.com/rest/retail-products");
+                    wRetail.Accept = "application/json, text/plain, */*";
+                    wRetail.ContentType = "application/json";
+                    wRetail.PreAuthenticate = true;
+                    wRetail.Headers.Add("Authorization", User.Authorization);
+
+                    Dictionary<string, object> dataUploadRetail = PostDataAPI(wRetail, item);
+                    var rsUploadRetail = dataUploadRetail["data"].ToString();
+                    var statusRetail = int.Parse(dataUploadRetail["status"].ToString());
+                    if (statusRetail == -1)
+                    {
+                        ApplicationLibary.writeLog(lsBoxLog, rsUploadRetail, 2);
+                    }
+                    else
+                    {
+                        var objUploadRetail = JObject.Parse(rsUploadRetail);
+                        data.Add("id", objUploadRetail["_id"].ToString());
+                        data.Add("price", double.Parse(objUploadRetail["price"].ToString()).ToString("N2"));
+                        lsData.Add(data);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    ApplicationLibary.writeLog(lsBoxLog, ex.Message, 2);
+                }
+            }
+            var jsData = JsonConvert.SerializeObject(lsData);
+            return jsData;
+        }
+        //Step 4: Finish
+        private void finishUploadImage(string data2SendCampaigns)
+        {
             HttpWebRequest wCampaigns = (HttpWebRequest)WebRequest.Create("https://api.scalablelicensing.com/rest/campaigns");
             wCampaigns.Accept = "application/json, text/plain, */*";
             wCampaigns.ContentType = "application/json";
@@ -227,10 +270,9 @@ namespace TCProShirts
             }
             var objUploadCampaigns = JObject.Parse(rsUploadCampaigns);
             var titleCampaigns = objUploadCampaigns["title"].ToString();
-            var urlCampaigns = "https://pro.teechip.com" + objUploadCampaigns["url"].ToString();
+            var urlCampaigns = "https://pro.teechip.com/" + objUploadCampaigns["url"].ToString();
             ApplicationLibary.writeLog(lsBoxLog, "Upload finish: " + titleCampaigns + ", Link:" + urlCampaigns, 1);
         }
-
         #region ==============Function===============
         public static Dictionary<string, object> HttpUploadFile(string url, string file, string paramName, string contentType, NameValueCollection nvc)
         {
@@ -404,7 +446,6 @@ namespace TCProShirts
             var rs = Resources.bulkCode;
             List<Product> lsProduct = new List<Product>();
             JArray jArray = JArray.Parse(rs);
-            int length = jArray.Count;
             foreach (var item in jArray)
             {
                 Product p = new Product();
@@ -427,21 +468,53 @@ namespace TCProShirts
             }
             return lsProduct;
         }
-        private List<Dictionary<string,object>> getAllRetailIDFromDesignID(string designID)
-        {
-            List<Dictionary<string, object>> lsData = new List<Dictionary<string, object>>();
-
-
-            return lsData;
-        }
         #endregion
 
-        private void test()
+        private List<Dictionary<string, object>> listThemes()
         {
-            var listColor = new List<OColor>();
-            listColor.Add(new OColor() { Name = "" });
-            List <Product> data = new List<Product>();
-            data.Add(new Product() { _Id = "", Colors = listColor });
+            List<Dictionary<string, object>> lsData = new List<Dictionary<string, object>>();
+            Dictionary<string, object> data = new Dictionary<string, object>();
+            List<string> lsColor = new List<string>();
+            lsColor.Add("Chocolate");
+            lsColor.Add("Red");
+            lsColor.Add("White");
+            lsColor.Add("Black");
+
+            data.Add("productId", "587d0d8ff43ea40e13382dad");
+            data.Add("colors", lsColor);
+            data.Add("price", "10.00");
+
+            lsData.Add(data);
+            return lsData;
+        }
+
+        //Tab 2
+        private void loadTab2()
+        {
+            UCItemProduct frm = new UCItemProduct();
+            frm.Location = new Point(10, (lsUserControlTheme.Count * frm.Height) + (lsUserControlTheme.Count * 10) + 10);
+            frm.Width = xtraScrollableMain.Width - 30;
+
+            UCItemProduct frm2 = new UCItemProduct();
+            frm2.Location = new Point(10, (lsUserControlTheme.Count * frm.Height) + (lsUserControlTheme.Count * 10) + 10);
+            frm2.Width = xtraScrollableMain.Width - 30;
+
+            addThemes(frm);
+            addThemes(frm2);
+
+        }
+
+        private void addThemes(UCItemProduct frm)
+        {
+            frm.Location = new Point(10, (lsUserControlTheme.Count * frm.Height) + (lsUserControlTheme.Count * 10) + 10);
+            frm.Width = xtraScrollableMain.Width - 30;
+            lsUserControlTheme.Add(frm);
+
+            xtraScrollableMain.Controls.Clear();
+            foreach (var item in lsUserControlTheme)
+            {
+                xtraScrollableMain.Controls.Add(item);
+            }
         }
     }
 }

@@ -77,5 +77,14 @@ namespace TCProShirts.Properties {
                 return ResourceManager.GetString("category", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {&quot;poster&quot;:{&quot;designId&quot;:&quot;@DesignID&quot;,&quot;entityId&quot;:&quot;@EntityID&quot;,&quot;printSize&quot;:&quot;poster-standard&quot;,&quot;id&quot;:&quot;@TimeSpanID-36710&quot;,&quot;sides&quot;:{&quot;front&quot;:{&quot;artworkId&quot;:&quot;@ArtworkID&quot;,&quot;position&quot;:{&quot;vertical&quot;:{&quot;origin&quot;:&quot;C&quot;,&quot;offset&quot;:0},&quot;horizontal&quot;:{&quot;origin&quot;:&quot;C&quot;,&quot;offset&quot;:0}},&quot;size&quot;:{&quot;width&quot;:0.85,&quot;unit&quot;:&quot;percentage&quot;}}},&quot;handling&quot;:&quot;default&quot;},&quot;case&quot;:{&quot;designId&quot;:&quot;@DesignID&quot;,&quot;entityId&quot;:&quot;@EntityID&quot;,&quot;printSize&quot;:&quot;case-standard&quot;,&quot;id&quot;:&quot;@TimeSpanID-38916&quot;,&quot;sides&quot;:{&quot;front&quot;:{&quot;artworkId&quot;:&quot;@ArtworkID&quot;,&quot;position&quot;:{&quot;vertical&quot;:{&quot;origin&quot;:&quot;C&quot;,&quot;offset&quot;:-0.002 [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string template {
+            get {
+                return ResourceManager.GetString("template", resourceCulture);
+            }
+        }
     }
 }

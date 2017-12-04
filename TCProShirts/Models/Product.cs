@@ -16,6 +16,7 @@ namespace TCProShirts.Models
         public string Code { get; set; }
         public string SizeFormat { get; set; }
         public string Msrp { get; set; }
+        public double Price { get; set; }
         public List<OColor> Colors { get; set; }
 
     }

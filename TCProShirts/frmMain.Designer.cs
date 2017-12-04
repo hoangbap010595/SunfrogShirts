@@ -34,7 +34,11 @@
             this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
             this.pictureShowImage = new DevExpress.XtraEditors.PictureEdit();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.txtPrice = new DevExpress.XtraEditors.TextEdit();
+            this.label1 = new System.Windows.Forms.Label();
+            this.panelControlColor = new DevExpress.XtraEditors.PanelControl();
             this.simpleButton4 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton5 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
             this.info_cbbProduct = new DevExpress.XtraEditors.LookUpEdit();
             this.btnDesignNext = new DevExpress.XtraEditors.SimpleButton();
@@ -44,13 +48,12 @@
             this.xtraTabControlMain = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPageUpload = new DevExpress.XtraTab.XtraTabPage();
             this.xtraTabPageDesign = new DevExpress.XtraTab.XtraTabPage();
-            this.panelControlColor = new DevExpress.XtraEditors.PanelControl();
-            this.label1 = new System.Windows.Forms.Label();
-            this.simpleButton5 = new DevExpress.XtraEditors.SimpleButton();
-            this.txtPrice = new DevExpress.XtraEditors.TextEdit();
+            this.xtraScrollableMain = new DevExpress.XtraEditors.XtraScrollableControl();
             ((System.ComponentModel.ISupportInitialize)(this.pictureShowImage.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPrice.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControlColor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.info_cbbProduct.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl5)).BeginInit();
             this.groupControl5.SuspendLayout();
@@ -58,8 +61,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControlMain)).BeginInit();
             this.xtraTabControlMain.SuspendLayout();
             this.xtraTabPageUpload.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControlColor)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtPrice.Properties)).BeginInit();
+            this.xtraTabPageDesign.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnLogin
@@ -91,6 +93,9 @@
             // 
             // pictureShowImage
             // 
+            this.pictureShowImage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureShowImage.Cursor = System.Windows.Forms.Cursors.Default;
             this.pictureShowImage.Location = new System.Drawing.Point(4, 23);
             this.pictureShowImage.Name = "pictureShowImage";
@@ -120,8 +125,39 @@
             this.groupControl1.TabIndex = 0;
             this.groupControl1.Text = "Design";
             // 
+            // txtPrice
+            // 
+            this.txtPrice.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.txtPrice.EditValue = "10.00";
+            this.txtPrice.Location = new System.Drawing.Point(91, 575);
+            this.txtPrice.Name = "txtPrice";
+            this.txtPrice.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.txtPrice.Properties.Appearance.Options.UseFont = true;
+            this.txtPrice.Size = new System.Drawing.Size(76, 26);
+            this.txtPrice.TabIndex = 0;
+            // 
+            // label1
+            // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.label1.Location = new System.Drawing.Point(6, 581);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(79, 17);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Enter Price:";
+            // 
+            // panelControlColor
+            // 
+            this.panelControlColor.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.panelControlColor.Location = new System.Drawing.Point(4, 450);
+            this.panelControlColor.Name = "panelControlColor";
+            this.panelControlColor.Size = new System.Drawing.Size(280, 118);
+            this.panelControlColor.TabIndex = 2;
+            // 
             // simpleButton4
             // 
+            this.simpleButton4.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.simpleButton4.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.simpleButton4.Appearance.Options.UseFont = true;
             this.simpleButton4.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
@@ -131,8 +167,24 @@
             this.simpleButton4.TabIndex = 0;
             this.simpleButton4.Text = "Back";
             // 
+            // simpleButton5
+            // 
+            this.simpleButton5.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.simpleButton5.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.simpleButton5.Appearance.ForeColor = System.Drawing.Color.DarkGreen;
+            this.simpleButton5.Appearance.Options.UseFont = true;
+            this.simpleButton5.Appearance.Options.UseForeColor = true;
+            this.simpleButton5.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
+            this.simpleButton5.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton5.ImageOptions.Image")));
+            this.simpleButton5.Location = new System.Drawing.Point(173, 572);
+            this.simpleButton5.Name = "simpleButton5";
+            this.simpleButton5.Size = new System.Drawing.Size(111, 35);
+            this.simpleButton5.TabIndex = 0;
+            this.simpleButton5.Text = "Apply";
+            // 
             // simpleButton3
             // 
+            this.simpleButton3.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.simpleButton3.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.simpleButton3.Appearance.Options.UseFont = true;
             this.simpleButton3.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
@@ -144,6 +196,7 @@
             // 
             // info_cbbProduct
             // 
+            this.info_cbbProduct.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.info_cbbProduct.Location = new System.Drawing.Point(37, 414);
             this.info_cbbProduct.Name = "info_cbbProduct";
             this.info_cbbProduct.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
@@ -160,6 +213,7 @@
             // 
             // btnDesignNext
             // 
+            this.btnDesignNext.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnDesignNext.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
             this.btnDesignNext.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnDesignNext.ImageOptions.Image")));
             this.btnDesignNext.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
@@ -170,6 +224,7 @@
             // 
             // btnDesignBack
             // 
+            this.btnDesignBack.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnDesignBack.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
             this.btnDesignBack.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnDesignBack.ImageOptions.Image")));
             this.btnDesignBack.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
@@ -182,9 +237,9 @@
             // 
             this.groupControl5.Controls.Add(this.lsBoxLog);
             this.groupControl5.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.groupControl5.Location = new System.Drawing.Point(0, 370);
+            this.groupControl5.Location = new System.Drawing.Point(0, 394);
             this.groupControl5.Name = "groupControl5";
-            this.groupControl5.Size = new System.Drawing.Size(695, 241);
+            this.groupControl5.Size = new System.Drawing.Size(695, 217);
             this.groupControl5.TabIndex = 4;
             this.groupControl5.Text = "Progress";
             // 
@@ -194,10 +249,10 @@
             this.lsBoxLog.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lsBoxLog.HorizontalScrollbar = true;
             this.lsBoxLog.ItemHeight = 22;
-            this.lsBoxLog.Location = new System.Drawing.Point(2, 22);
+            this.lsBoxLog.Location = new System.Drawing.Point(2, 20);
             this.lsBoxLog.Name = "lsBoxLog";
             this.lsBoxLog.ShowFocusRect = false;
-            this.lsBoxLog.Size = new System.Drawing.Size(691, 217);
+            this.lsBoxLog.Size = new System.Drawing.Size(691, 195);
             this.lsBoxLog.TabIndex = 0;
             // 
             // xtraTabControlMain
@@ -206,7 +261,7 @@
             this.xtraTabControlMain.Location = new System.Drawing.Point(0, 0);
             this.xtraTabControlMain.Name = "xtraTabControlMain";
             this.xtraTabControlMain.SelectedTabPage = this.xtraTabPageUpload;
-            this.xtraTabControlMain.Size = new System.Drawing.Size(695, 370);
+            this.xtraTabControlMain.Size = new System.Drawing.Size(695, 394);
             this.xtraTabControlMain.TabIndex = 5;
             this.xtraTabControlMain.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPageUpload,
@@ -218,55 +273,27 @@
             this.xtraTabPageUpload.Controls.Add(this.btnLogin);
             this.xtraTabPageUpload.Controls.Add(this.simpleButton2);
             this.xtraTabPageUpload.Name = "xtraTabPageUpload";
-            this.xtraTabPageUpload.Size = new System.Drawing.Size(687, 340);
+            this.xtraTabPageUpload.Size = new System.Drawing.Size(689, 342);
             this.xtraTabPageUpload.Text = "Upload";
             // 
             // xtraTabPageDesign
             // 
+            this.xtraTabPageDesign.Controls.Add(this.xtraScrollableMain);
             this.xtraTabPageDesign.Name = "xtraTabPageDesign";
-            this.xtraTabPageDesign.Size = new System.Drawing.Size(687, 290);
+            this.xtraTabPageDesign.Size = new System.Drawing.Size(689, 366);
             this.xtraTabPageDesign.Text = "Themes";
             // 
-            // panelControlColor
+            // xtraScrollableMain
             // 
-            this.panelControlColor.Location = new System.Drawing.Point(4, 450);
-            this.panelControlColor.Name = "panelControlColor";
-            this.panelControlColor.Size = new System.Drawing.Size(280, 118);
-            this.panelControlColor.TabIndex = 2;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.label1.Location = new System.Drawing.Point(6, 581);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(79, 17);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Enter Price:";
-            // 
-            // simpleButton5
-            // 
-            this.simpleButton5.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
-            this.simpleButton5.Appearance.ForeColor = System.Drawing.Color.DarkGreen;
-            this.simpleButton5.Appearance.Options.UseFont = true;
-            this.simpleButton5.Appearance.Options.UseForeColor = true;
-            this.simpleButton5.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
-            this.simpleButton5.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton5.ImageOptions.Image")));
-            this.simpleButton5.Location = new System.Drawing.Point(173, 572);
-            this.simpleButton5.Name = "simpleButton5";
-            this.simpleButton5.Size = new System.Drawing.Size(111, 35);
-            this.simpleButton5.TabIndex = 0;
-            this.simpleButton5.Text = "Apply";
-            // 
-            // txtPrice
-            // 
-            this.txtPrice.EditValue = "10.00";
-            this.txtPrice.Location = new System.Drawing.Point(91, 575);
-            this.txtPrice.Name = "txtPrice";
-            this.txtPrice.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.txtPrice.Properties.Appearance.Options.UseFont = true;
-            this.txtPrice.Size = new System.Drawing.Size(76, 26);
-            this.txtPrice.TabIndex = 0;
+            this.xtraScrollableMain.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.xtraScrollableMain.Appearance.BackColor = System.Drawing.Color.LightGray;
+            this.xtraScrollableMain.Appearance.Options.UseBackColor = true;
+            this.xtraScrollableMain.Location = new System.Drawing.Point(3, 62);
+            this.xtraScrollableMain.Name = "xtraScrollableMain";
+            this.xtraScrollableMain.Size = new System.Drawing.Size(683, 301);
+            this.xtraScrollableMain.TabIndex = 1;
             // 
             // frmMain
             // 
@@ -285,6 +312,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
             this.groupControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPrice.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControlColor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.info_cbbProduct.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl5)).EndInit();
             this.groupControl5.ResumeLayout(false);
@@ -292,8 +321,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControlMain)).EndInit();
             this.xtraTabControlMain.ResumeLayout(false);
             this.xtraTabPageUpload.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.panelControlColor)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtPrice.Properties)).EndInit();
+            this.xtraTabPageDesign.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -319,6 +347,7 @@
         private DevExpress.XtraEditors.TextEdit txtPrice;
         private System.Windows.Forms.Label label1;
         private DevExpress.XtraEditors.SimpleButton simpleButton5;
+        private DevExpress.XtraEditors.XtraScrollableControl xtraScrollableMain;
     }
 }
 
