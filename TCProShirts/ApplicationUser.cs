@@ -16,5 +16,7 @@ namespace TCProShirts
         public string GroupID { get; set; }
         public string EntityID { get; set; }
         public string PayableId { get; set; }
+        public string Authorization { get; set; }
+        public string UnAuthorization { get; set; }
     }
 }
