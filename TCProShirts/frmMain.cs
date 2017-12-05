@@ -32,7 +32,10 @@ namespace TCProShirts
         private ApplicationUser User;
         private string currToken = "";
         private List<Product> lsBulkProduct;
+        private List<Category> lsCategoryProduct;
+        private DataTable dtDataTemp;
         private List<UserControl> lsUserControlTheme = new List<UserControl>();
+        private List<string> lsImageFileNames;
         public frmMain()
         {
             InitializeComponent();
@@ -48,11 +51,20 @@ namespace TCProShirts
         }
         private void frmMain_Load(object sender, EventArgs e)
         {
-            loadBulkProduct();
-            loadTab2();
             //frmLogin frm = new frmLogin();
             //frm.senduser = new frmLogin.SendUser(getUser);
             //frm.ShowDialog();
+            Thread t = new Thread(new ThreadStart(() =>
+            {
+                this.Invoke((MethodInvoker)delegate
+                {
+                    loadBulkProduct();
+                    loadBulkCategory();
+                    loadBulkThemes();
+                });
+            }));
+            t.Start();
+            
         }
         #region =======LoadData=======
         private void loadBulkProduct()
@@ -64,6 +76,23 @@ namespace TCProShirts
 
             info_cbbProduct.ItemIndex = 0;
         }
+        private void loadBulkThemes()
+        {
+            lueThemes.Properties.DataSource = GetListThemes();
+            lueThemes.Properties.DisplayMember = "Name";
+            lueThemes.Properties.ValueMember = "Id";
+            lueThemes.ItemIndex = 0;
+        }
+        private void loadBulkCategory()
+        {
+            lsCategoryProduct = GetListCategory();
+            lueCategory.Properties.DataSource = lsCategoryProduct;
+            lueCategory.Properties.DisplayMember = "Name";
+            lueCategory.Properties.ValueMember = "Id";
+            lueCategory.ItemIndex = 0;
+        }
+
+
         #endregion
         private void btnLogin_Click(object sender, EventArgs e)
         {
@@ -104,101 +133,267 @@ namespace TCProShirts
             ApplicationLibary.writeLog(lsBoxLog, "Login Successfully", 1);
         }
 
-        private void simpleButton1_Click(object sender, EventArgs e)
+        private void btnStart_Click(object sender, EventArgs e)
         {
-            getAllRetailIDFromDesignID("5a254f7ad9ef9825ed8890fb");
-            //MessageBox.Show(User.ApiKey);
-            //UploadProgress();
+            btnLogin_Click(sender, e);
+            btnStart.Enabled = false;
+            btnViewData.Enabled = false;
+            btnApplyTheme.Enabled = false;
+            if (ckUsingFileUpload.Checked) { }
+            else
+            {
+                Thread tStart = new Thread(new ThreadStart(() =>
+                {
+                    UploadProgress();
+                    btnStart.Invoke((MethodInvoker)delegate { btnStart.Enabled = true; });
+                    btnViewData.Invoke((MethodInvoker)delegate { btnViewData.Enabled = true; });
+                    btnApplyTheme.Invoke((MethodInvoker)delegate { btnApplyTheme.Enabled = true; });
+                }));
+                tStart.Start();  
+            }
         }
 
-        private void simpleButton2_Click(object sender, EventArgs e)
+        private void btnAddCategory_Click(object sender, EventArgs e)
         {
-            string url = "https://oo-prod.s3.amazonaws.com/public/blanks/unisex-crewneck-tshirt-v2-front/DBDBDB.png";
-            loadImage(url);
+            var obj = lueCategory.GetSelectedDataRow();
+            string currCate = ((Category)obj).Name.Replace("(", "|").Replace(")", "|");
+            var x = currCate.Split('|');
+            var data = memoCategory.Text;
+            foreach (string item in x)
+            {
+                var crrText = item.Trim();
+                if (crrText != "" && crrText != " " && data.IndexOf(crrText) == -1)
+                    memoCategory.Text += crrText.Trim() + ",";
+            }
+        }
+        private void btnApplyTheme_Click(object sender, EventArgs e)
+        {
+            Product p = new Product();
+            var obj = info_cbbProduct.GetSelectedDataRow();
+            p._Id = ((Product)obj)._Id;
+            p.Name = ((Product)obj).Name;
+            p.Price = double.Parse(txtPrice.Text.Trim());
+            p.Colors = new List<OColor>();
+
+            List<string> selColors = new List<string>();
+            for (int i = 0; i < ckListBoxColor.Items.Count; i++)
+            {
+                if (ckListBoxColor.GetItemChecked(i))
+                {
+                    string str = ckListBoxColor.GetItemText(ckListBoxColor.Items[i]);
+                    selColors.Add(str);
+                }
+            }
+            if(selColors.Count == 0)
+            {
+                XtraMessageBox.Show("No color selected!", "Message");
+                return;
+            }
+            var rs = Resources.bulkCode;
+            JArray jArray = JArray.Parse(rs);
+            foreach (var item in jArray)
+            {
+                if (p._Id.Equals(item["_id"].ToString()))
+                {
+                    var colors = JArray.Parse(item["colors"].ToString());
+                    foreach (var selcolor in selColors)
+                    {
+                        foreach (var color in colors)
+                        {
+                            if (color["name"].ToString() == selcolor)
+                            {
+                                OColor c = new OColor();
+                                c.Name = color["name"].ToString();
+                                c.Hex = color["hex"].ToString();
+                                c.Image = color["image"].ToString();
+                                p.Colors.Add(c);
+                            }
+                        }
+                    }
+                }
+
+            }
+            UCItemProduct frm = new UCItemProduct();
+            frm.Name = p._Id;
+            frm.Product = p;
+            int check = -1;
+            foreach (UCItemProduct item in lsUserControlTheme)
+            {
+                if (item.Product._Id == frm.Product._Id)
+                {
+                    check = 1;
+                    break;
+                }
+            }
+            if (check == -1)
+                addThemeToPanel(frm);
+            else
+            {
+                XtraMessageBox.Show("Style was selected...!", "Message");
+            }
+
+        }
+        private void btnChooesImage_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                OpenFileDialog op = new OpenFileDialog();
+                op.Multiselect = true;
+                op.Filter = "Image .png|*.png";
+                if (DialogResult.OK == op.ShowDialog())
+                {
+                    lsImageFileNames = op.FileNames.ToList();
+                    foreach (var item in lsImageFileNames)
+                    {
+                        lsBoxImage.Items.Add(Path.GetFileName(item));
+                    }
+                    ApplicationLibary.writeLog(lsBoxLog, "Selected " + lsImageFileNames.Count + " file(s)", 1);
+                }
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show("Error: " + ex.Message);
+            }
+        }
+        /// <summary>
+        /// Chọn file Excel chứa dữ liệu cần upload
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnOpenFileExcel_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                OpenFileDialog op = new OpenFileDialog();
+                op.Filter = "Excel .xlsx|*.xlsx|Excel .xls|*.xls";
+                if (DialogResult.OK == op.ShowDialog())
+                {
+                    txtPath.Text = op.FileName;
+                    dtDataTemp = new DataTable();
+                    dtDataTemp = ApplicationLibary.getDataExcelFromFileToDataTable(op.FileName);
+                    ApplicationLibary.writeLog(lsBoxLog, "Success " + dtDataTemp.Rows.Count + " record(s) is opened", 1);
+                }
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show("Error: " + ex.Message);
+            }
+        }
+        /// <summary>
+        /// Xóa log event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            lsBoxLog.Items.Clear();
+            ApplicationLibary.writeLog(lsBoxLog, "CLEAR", 1);
         }
 
         private void GetProductFromUser()
         {
             var url = "https://api.scalablelicensing.com/rest/campaigns/search?entityId=" + User.EntityID + "&status=active&limit=10000";
         }
+        //1.Upload From FormData
         private void UploadProgress()
         {
-            var urlUploadImage = "https://scalable-licensing.s3.amazonaws.com/";
-            //string fileUrl = @"C:\Users\Administrator\Desktop\Up TC pro\PNG\da upload\4 CL031017.png";
-            string fileUrl = @"C:\Users\HoangLe\Desktop\Up TC pro\PNG\da upload\4 CL031017.png";
-            #region ============== Upload Image & Get AtWork==================
-            ApplicationLibary.writeLog(lsBoxLog, "Uploading: " + Path.GetFileName(fileUrl), 1);
-            string fileUpload = "uploads/" + DateTime.Now.ToString("yyyy") + "/" + DateTime.Now.ToString("MM") + "/" + DateTime.Now.ToString("dd") + "/" + DateTime.Now.Ticks.ToString("x") + ".png";
-            NameValueCollection nvc = new NameValueCollection();
-            nvc.Add("key", fileUpload);
-            nvc.Add("bucket", "scalable-licensing");
-            nvc.Add("AWSAccessKeyId", "AKIAJE4QLGLTY4DH4WRA");
-            nvc.Add("Policy", "eyJleHBpcmF0aW9uIjoiMzAwMC0wMS0wMVQwMDowMDowMFoiLCJjb25kaXRpb25zIjpbeyJidWNrZXQiOiJzY2FsYWJsZS1saWNlbnNpbmcifSxbInN0YXJ0cy13aXRoIiwiJGtleSIsInVwbG9hZHMvIl0seyJhY2wiOiJwdWJsaWMtcmVhZCJ9XX0=");
-            nvc.Add("Signature", "4yVrFVzCgzWg2BH8RkrI6LVi11Y=");
-            nvc.Add("acl", "public-read");
-            Dictionary<string, object> data = HttpUploadFile(urlUploadImage, fileUrl, "file", "image/png", nvc);
-
-            var urlImage = HttpUtility.UrlDecode(data["data"].ToString());
-            var data2Send = "{\"artwork\":\"" + urlImage + "\",\"AB\":{\"ab-use-dpi\":false}}";
-            HttpWebRequest wAtWork = (HttpWebRequest)WebRequest.Create("https://api.scalablelicensing.com/rest/artworks");
-            wAtWork.Host = "api.scalablelicensing.com";
-            wAtWork.Accept = "application/json, text/plain, */*";
-            wAtWork.ContentType = "application/json";
-
-            Dictionary<string, object> dataAtwork = PostDataAPI(wAtWork, data2Send);
-            var rs = dataAtwork["data"].ToString();
-            var obj = JObject.Parse(rs);
-            var atworkID = obj["artworkId"].ToString();
-            #endregion
-
-            #region ===============Step 1: Create Design & Get ID Design=============
-            var data2SendUpload = "{\"name\":\"HoangTesst2202\",\"entityId\":\"" + User.EntityID + "\",\"tags\":{\"style\":[\"usa-colleges-p_to_t\",\"usa-colleges\",\"usa-colleges-u_to_z\",\"Goddaughter\",\"Children\",\"Family & Relationships\"]}}";
-            HttpWebRequest wCost = (HttpWebRequest)WebRequest.Create("https://api.scalablelicensing.com/rest/designs");
-            wCost.Accept = "application/json, text/plain, */*";
-            wCost.ContentType = "application/json";
-            wCost.PreAuthenticate = true;
-            wCost.Headers.Add("Authorization", User.Authorization);
-
-            Dictionary<string, object> dataUpload = PostDataAPI(wCost, data2SendUpload);
-            var rsUpload = dataUpload["data"].ToString();
-            var statusUpload = int.Parse(dataUpload["status"].ToString());
-            if (statusUpload == -1)
+            foreach (var item in lsImageFileNames)
             {
-                ApplicationLibary.writeLog(lsBoxLog, rsUpload, 2);
-                return;
+                try
+                {
+                    var uTitle = txtTitle.Text.Trim();
+                    var uDescription = memoDescription.Text;
+                    var uCategory = ApplicationLibary.convertStringToJson(memoCategory.Text);
+                    var uUrl = txtUrl.Text.ToLower();
+                    var uStore = txtStore.Text;
+
+                    var urlUploadImage = "https://scalable-licensing.s3.amazonaws.com/";
+                    //string fileUrl = @"C:\Users\Administrator\Desktop\Up TC pro\PNG\da upload\4 CL031017.png";
+                    //string fileUrl = @"C:\Users\HoangLe\Desktop\Up TC pro\PNG\da upload\4 CL031017.png";
+                    string fileUrl = item;
+                    var imgDessign = Path.GetFileName(fileUrl);
+                    #region ============== Upload Image & Get AtWork==================
+                    ApplicationLibary.writeLogThread(lsBoxLog, "Uploading: " + imgDessign, 1);
+                    string fileUpload = "uploads/" + DateTime.Now.ToString("yyyy") + "/" + DateTime.Now.ToString("MM") + "/" + DateTime.Now.ToString("dd") + "/" + DateTime.Now.Ticks.ToString("x") + ".png";
+                    NameValueCollection nvc = new NameValueCollection();
+                    nvc.Add("key", fileUpload);
+                    nvc.Add("bucket", "scalable-licensing");
+                    nvc.Add("AWSAccessKeyId", "AKIAJE4QLGLTY4DH4WRA");
+                    nvc.Add("Policy", "eyJleHBpcmF0aW9uIjoiMzAwMC0wMS0wMVQwMDowMDowMFoiLCJjb25kaXRpb25zIjpbeyJidWNrZXQiOiJzY2FsYWJsZS1saWNlbnNpbmcifSxbInN0YXJ0cy13aXRoIiwiJGtleSIsInVwbG9hZHMvIl0seyJhY2wiOiJwdWJsaWMtcmVhZCJ9XX0=");
+                    nvc.Add("Signature", "4yVrFVzCgzWg2BH8RkrI6LVi11Y=");
+                    nvc.Add("acl", "public-read");
+                    Dictionary<string, object> data = HttpUploadFile(urlUploadImage, fileUrl, "file", "image/png", nvc);
+
+                    var urlImage = HttpUtility.UrlDecode(data["data"].ToString());
+                    var data2Send = "{\"artwork\":\"" + urlImage + "\",\"AB\":{\"ab-use-dpi\":false}}";
+                    HttpWebRequest wAtWork = (HttpWebRequest)WebRequest.Create("https://api.scalablelicensing.com/rest/artworks");
+                    wAtWork.Host = "api.scalablelicensing.com";
+                    wAtWork.Accept = "application/json, text/plain, */*";
+                    wAtWork.ContentType = "application/json";
+
+                    Dictionary<string, object> dataAtwork = PostDataAPI(wAtWork, data2Send);
+                    var rs = dataAtwork["data"].ToString();
+                    var obj = JObject.Parse(rs);
+                    var atworkID = obj["artworkId"].ToString();
+                    #endregion
+
+                    #region ===============Step 1: Create Design & Get ID Design=============
+                    var data2SendUpload = "{\"name\":\"" + uTitle + "\",\"entityId\":\"" + User.EntityID + "\",\"tags\":{\"style\":[" + uCategory + "]}}";
+                    HttpWebRequest wCost = (HttpWebRequest)WebRequest.Create("https://api.scalablelicensing.com/rest/designs");
+                    wCost.Accept = "application/json, text/plain, */*";
+                    wCost.ContentType = "application/json";
+                    wCost.PreAuthenticate = true;
+                    wCost.Headers.Add("Authorization", User.Authorization);
+
+                    Dictionary<string, object> dataUpload = PostDataAPI(wCost, data2SendUpload);
+                    var rsUpload = dataUpload["data"].ToString();
+                    var statusUpload = int.Parse(dataUpload["status"].ToString());
+                    if (statusUpload == -1)
+                    {
+                        ApplicationLibary.writeLogThread(lsBoxLog, rsUpload, 2);
+                        return;
+                    }
+                    var objUpload = JObject.Parse(rsUpload);
+                    var _IDDesign = objUpload["_id"].ToString();
+                    #endregion
+
+                    #region ===============Step 2: Create Design Line & Get DesignLine ID===============
+                    Int32 unixTimestamp = (Int32)(DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
+                    var data2SendLineID = "{\"designId\":\"" + _IDDesign + "\",\"entityId\":\"" + User.EntityID + "\",\"printSize\":\"general-standard\",\"id\":\"" + unixTimestamp + "-9779\",\"sides\":{\"front\":{\"artworkId\":\"" + atworkID + "\",\"position\":{\"vertical\":{\"origin\":\"T\",\"offset\":2},\"horizontal\":{\"origin\":\"C\",\"offset\":0}},\"size\":{\"width\":14,\"unit\":\"inch\"}}},\"handling\":\"default\"}";
+                    HttpWebRequest wLines = (HttpWebRequest)WebRequest.Create("https://api.scalablelicensing.com/rest/design-lines");
+                    wLines.Accept = "application/json, text/plain, */*";
+                    wLines.ContentType = "application/json";
+                    wLines.PreAuthenticate = true;
+                    wLines.Headers.Add("Authorization", User.Authorization);
+
+                    Dictionary<string, object> dataUploadLines = PostDataAPI(wLines, data2SendLineID);
+                    var rsUploadLines = dataUploadLines["data"].ToString();
+                    var statusLines = int.Parse(dataUploadLines["status"].ToString());
+                    if (statusLines == -1)
+                    {
+                        ApplicationLibary.writeLogThread(lsBoxLog, rsUploadLines, 2);
+                        return;
+                    }
+                    var objUploadLines = JObject.Parse(rsUploadLines);
+                    var _IDDesignLine = objUploadLines["_id"].ToString();
+                    #endregion
+
+                    //Step 3 -- Tham số cần truyền: 
+                    //      1. productId, color, price: người dùng chọn
+                    var objIDReail = getAllRetailIDFromDesignID(_IDDesignLine);
+
+                    if (string.IsNullOrEmpty(uUrl))
+                        uUrl = string.Format("{0}", imgDessign.Split('.')[0].Replace(" ", "").Trim());
+                    else
+                        uUrl = uUrl.Replace(" ", "").Trim();
+                    //Step 4 -- Nhận giá trị 1 mảng _IDDesignRetail từ Step 3
+                    var data2SendCampaigns = "{\"url\":\"" + uUrl + "\",\"title\":\"" + uTitle + "\",\"description\":\"<div>" + uDescription + "</div>\",\"duration\":24,\"policies\":{\"forever\":true,\"fulfillment\":24,\"private\":false,\"checkout\":\"direct\"},\"social\":{\"trackingTags\":{}},\"entityId\":\"" + User.EntityID + "\",\"upsells\":[],\"tags\":{\"style\":[" + uCategory + "]},\"related\": " + objIDReail + "}";
+                    finishUploadImage(data2SendCampaigns);
+                }
+                catch (Exception ex){
+                    ApplicationLibary.writeLogThread(lsBoxLog, ex.Message, 2);
+                }
             }
-            var objUpload = JObject.Parse(rsUpload);
-            var _IDDesign = objUpload["_id"].ToString();
-            #endregion
-
-            #region ===============Step 2: Create Design Line & Get DesignLine ID===============
-            Int32 unixTimestamp = (Int32)(DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
-            var data2SendLineID = "{\"designId\":\"" + _IDDesign + "\",\"entityId\":\"" + User.EntityID + "\",\"printSize\":\"general-standard\",\"id\":\"" + unixTimestamp + "-9779\",\"sides\":{\"front\":{\"artworkId\":\"" + atworkID + "\",\"position\":{\"vertical\":{\"origin\":\"T\",\"offset\":2},\"horizontal\":{\"origin\":\"C\",\"offset\":0}},\"size\":{\"width\":14,\"unit\":\"inch\"}}},\"handling\":\"default\"}";
-            HttpWebRequest wLines = (HttpWebRequest)WebRequest.Create("https://api.scalablelicensing.com/rest/design-lines");
-            wLines.Accept = "application/json, text/plain, */*";
-            wLines.ContentType = "application/json";
-            wLines.PreAuthenticate = true;
-            wLines.Headers.Add("Authorization", User.Authorization);
-
-            Dictionary<string, object> dataUploadLines = PostDataAPI(wLines, data2SendLineID);
-            var rsUploadLines = dataUploadLines["data"].ToString();
-            var statusLines = int.Parse(dataUploadLines["status"].ToString());
-            if (statusLines == -1)
-            {
-                ApplicationLibary.writeLog(lsBoxLog, rsUploadLines, 2);
-                return;
-            }
-            var objUploadLines = JObject.Parse(rsUploadLines);
-            var _IDDesignLine = objUploadLines["_id"].ToString();
-            #endregion
-
-            //Step 3 -- Tham số cần truyền: 
-            //      1. productId, color, price: người dùng chọn
-            var objIDReail = getAllRetailIDFromDesignID(_IDDesignLine);
-
-            //Step 4 -- Nhận giá trị 1 mảng _IDDesignRetail từ Step 3
-            var data2SendCampaigns = "{\"url\":\"hoangtest3333\",\"title\":\"HoangTesst3333\",\"description\":\"<div> Mo ta haong mo ta</div>\",\"duration\":24,\"policies\":{\"forever\":true,\"fulfillment\":24,\"private\":false,\"checkout\":\"direct\"},\"social\":{\"trackingTags\":{}},\"entityId\":\"" + User.EntityID + "\",\"upsells\":[],\"tags\":{\"style\":[\"usa-colleges-p_to_t\",\"usa-colleges\",\"usa-colleges-u_to_z\",\"Goddaughter\",\"Children\",\"Family & Relationships\"]},\"related\": " + objIDReail + "}";
-            finishUploadImage(data2SendCampaigns);
         }
         //Step 3: Get Retail ID
         private string getAllRetailIDFromDesignID(string designID)
@@ -207,7 +402,7 @@ namespace TCProShirts
             Dictionary<string, object> data;
             List<string> lsCommand = new List<string>();
             //b1
-            List<Dictionary<string, object>> themes = listThemes();
+            List<Dictionary<string, object>> themes = listCurrentThemes();
             foreach (Dictionary<string, object> item in themes)
             {
                 var colors = (List<string>)item["colors"];
@@ -233,19 +428,21 @@ namespace TCProShirts
                     var statusRetail = int.Parse(dataUploadRetail["status"].ToString());
                     if (statusRetail == -1)
                     {
-                        ApplicationLibary.writeLog(lsBoxLog, rsUploadRetail, 2);
+                        ApplicationLibary.writeLogThread(lsBoxLog, rsUploadRetail, 2);
                     }
                     else
                     {
                         var objUploadRetail = JObject.Parse(rsUploadRetail);
                         data.Add("id", objUploadRetail["_id"].ToString());
                         data.Add("price", double.Parse(objUploadRetail["price"].ToString()).ToString("N2"));
+                        if (lsData.Count == 0)
+                            data.Add("default", true);
                         lsData.Add(data);
                     }
                 }
                 catch (Exception ex)
                 {
-                    ApplicationLibary.writeLog(lsBoxLog, ex.Message, 2);
+                    ApplicationLibary.writeLogThread(lsBoxLog, ex.Message, 2);
                 }
             }
             var jsData = JsonConvert.SerializeObject(lsData);
@@ -265,13 +462,13 @@ namespace TCProShirts
             var statusCampaigns = int.Parse(dataUploadCampaigns["status"].ToString());
             if (statusCampaigns == -1)
             {
-                ApplicationLibary.writeLog(lsBoxLog, rsUploadCampaigns, 2);
+                ApplicationLibary.writeLogThread(lsBoxLog, rsUploadCampaigns, 2);
                 return;
             }
             var objUploadCampaigns = JObject.Parse(rsUploadCampaigns);
             var titleCampaigns = objUploadCampaigns["title"].ToString();
             var urlCampaigns = "https://pro.teechip.com/" + objUploadCampaigns["url"].ToString();
-            ApplicationLibary.writeLog(lsBoxLog, "Upload finish: " + titleCampaigns + ", Link:" + urlCampaigns, 1);
+            ApplicationLibary.writeLogThread(lsBoxLog, "Upload finish: " + titleCampaigns + ", Link:" + urlCampaigns, 1);
         }
         #region ==============Function===============
         public static Dictionary<string, object> HttpUploadFile(string url, string file, string paramName, string contentType, NameValueCollection nvc)
@@ -443,77 +640,212 @@ namespace TCProShirts
         }
         private List<Product> GetListBulk()
         {
-            var rs = Resources.bulkCode;
             List<Product> lsProduct = new List<Product>();
-            JArray jArray = JArray.Parse(rs);
-            foreach (var item in jArray)
+            try
+            {
+                var rs = Resources.bulkCode;
+                JArray jArray = JArray.Parse(rs);
+                if (jArray.Count == 0)
+                    return null;
+                foreach (var item in jArray)
+                {
+                    Product p = new Product();
+                    p._Id = item["_id"].ToString();
+                    p.Name = item["name"].ToString();
+                    p.Category = item["category"].ToString();
+                    p.Code = item["code"].ToString();
+                    p.Type = item["type"].ToString();
+                    var colors = JArray.Parse(item["colors"].ToString());
+                    p.Colors = new List<OColor>();
+                    foreach (var color in colors)
+                    {
+                        OColor c = new OColor();
+                        c.Name = color["name"].ToString();
+                        c.Hex = color["hex"].ToString();
+                        c.Image = color["image"].ToString();
+                        p.Colors.Add(c);
+                    }
+                    lsProduct.Add(p);
+                }
+                return lsProduct;
+            }
+            catch
             {
                 Product p = new Product();
-                p._Id = item["_id"].ToString();
-                p.Name = item["name"].ToString();
-                p.Category = item["category"].ToString();
-                p.Code = item["code"].ToString();
-                p.Type = item["type"].ToString();
-                var colors = JArray.Parse(item["colors"].ToString());
-                p.Colors = new List<OColor>();
-                foreach (var color in colors)
-                {
-                    OColor c = new OColor();
-                    c.Name = color["name"].ToString();
-                    c.Hex = color["hex"].ToString();
-                    c.Image = color["image"].ToString();
-                    p.Colors.Add(c);
-                }
+                p._Id = "321as5df1as3df12";
+                p.Name = "-----Select Product-----";
                 lsProduct.Add(p);
+                return lsProduct;
             }
-            return lsProduct;
+        }
+        private List<Category> GetListCategory()
+        {
+            List<Category> lsCategory = new List<Category>();
+            try
+            {
+                var rs = Resources.category;
+                JArray jArray = JArray.Parse(rs);
+                foreach (var item in jArray)
+                {
+                    Category cate = new Category();
+                    cate.Id = item["_id"].ToString();
+                    cate.Name = item["fullName"].ToString();
+
+                    lsCategory.Add(cate);
+                }
+                return lsCategory;
+            }
+            catch
+            {
+                Category cate = new Category();
+                cate.Id = "321as5df1as3df12";
+                cate.Name = "-----Select category-----";
+                lsCategory.Add(cate);
+                return lsCategory;
+            }
+        }
+        private List<OTheme> GetListThemes()
+        {
+            List<OTheme> lsThemes = new List<OTheme>();
+            try
+            {
+                var rs = Resources.dataThemes;
+                JArray jArray = JArray.Parse(rs);
+                foreach (var item in jArray)
+                {
+                    OTheme theme = new OTheme();
+                    theme.Id = item["_id"].ToString();
+                    theme.Name = item["name"].ToString();
+
+                    lsThemes.Add(theme);
+                }
+                return lsThemes;
+            }
+            catch
+            {
+                OTheme theme = new OTheme();
+                theme.Id = "321as5df1as3df12";
+                theme.Name = "-----Select theme-----";
+                lsThemes.Add(theme);
+                return lsThemes;
+            }
         }
         #endregion
-
-        private List<Dictionary<string, object>> listThemes()
+        private List<Dictionary<string, object>> listCurrentThemes()
         {
             List<Dictionary<string, object>> lsData = new List<Dictionary<string, object>>();
-            Dictionary<string, object> data = new Dictionary<string, object>();
-            List<string> lsColor = new List<string>();
-            lsColor.Add("Chocolate");
-            lsColor.Add("Red");
-            lsColor.Add("White");
-            lsColor.Add("Black");
+            Dictionary<string, object> data;
+            List<string> lsColor;
 
-            data.Add("productId", "587d0d8ff43ea40e13382dad");
-            data.Add("colors", lsColor);
-            data.Add("price", "10.00");
-
-            lsData.Add(data);
+            foreach (UCItemProduct item in lsUserControlTheme)
+            {
+                Product currP = item.Product;
+                data = new Dictionary<string, object>();
+                lsColor = new List<string>();
+                foreach (var color in currP.Colors)
+                {
+                    lsColor.Add(color.Name);
+                }
+                data.Add("productId", currP._Id);
+                data.Add("colors", lsColor);
+                data.Add("price", currP.Price);
+                lsData.Add(data);
+            }
             return lsData;
         }
 
-        //Tab 2
-        private void loadTab2()
-        {
-            UCItemProduct frm = new UCItemProduct();
-            frm.Location = new Point(10, (lsUserControlTheme.Count * frm.Height) + (lsUserControlTheme.Count * 10) + 10);
-            frm.Width = xtraScrollableMain.Width - 30;
-
-            UCItemProduct frm2 = new UCItemProduct();
-            frm2.Location = new Point(10, (lsUserControlTheme.Count * frm.Height) + (lsUserControlTheme.Count * 10) + 10);
-            frm2.Width = xtraScrollableMain.Width - 30;
-
-            addThemes(frm);
-            addThemes(frm2);
-
-        }
-
-        private void addThemes(UCItemProduct frm)
+        /// <summary>
+        /// Thêm 1 style vào theme và load vào panel
+        /// </summary>
+        /// <param name="frm"></param>
+        private void addThemeToPanel(UCItemProduct frm)
         {
             frm.Location = new Point(10, (lsUserControlTheme.Count * frm.Height) + (lsUserControlTheme.Count * 10) + 10);
-            frm.Width = xtraScrollableMain.Width - 30;
+            frm.Width = xtraScrollableTheme.Width - 30;
             lsUserControlTheme.Add(frm);
 
-            xtraScrollableMain.Controls.Clear();
+            xtraScrollableTheme.Controls.Clear();
             foreach (var item in lsUserControlTheme)
             {
-                xtraScrollableMain.Controls.Add(item);
+                xtraScrollableTheme.Controls.Add(item);
+            }
+        }
+
+        private void ckUsingFileUpload_CheckedChanged(object sender, EventArgs e)
+        {
+            if (ckUsingFileUpload.Checked)
+                btnOpenFileExcel.Enabled = true;
+            else
+                btnOpenFileExcel.Enabled = false;
+        }
+
+        private void info_cbbProduct_EditValueChanged(object sender, EventArgs e)
+        {   
+            ckListBoxColor.Items.Clear();
+            var obj = info_cbbProduct.GetSelectedDataRow();
+            var data = ((Product)obj)._Id;
+            var rs = Resources.bulkCode;
+            JArray jArray = JArray.Parse(rs);
+            foreach (var item in jArray)
+            {
+                if (data.Equals(item["_id"].ToString()))
+                {
+                    var colors = JArray.Parse(item["colors"].ToString());
+                    foreach (var color in colors)
+                    {
+                        ckListBoxColor.Items.Add(color["name"]);
+                    }
+                }
+            }
+            //btnViewData.PerformClick();
+            ckCheckAll.Checked = false;
+        }
+
+        private void ckCheckAll_CheckedChanged(object sender, EventArgs e)
+        {
+            if (ckCheckAll.Checked)
+                for (int i = 0; i < ckListBoxColor.Items.Count; i++)
+                {
+                    ckListBoxColor.SetItemChecked(i, true);
+
+                }
+            else
+                for (int i = 0; i < ckListBoxColor.Items.Count; i++)
+                {
+                    ckListBoxColor.SetItemChecked(i, false);
+
+                }
+        }
+
+        private void btnViewData_Click(object sender, EventArgs e)
+        {try
+            {
+                btnViewData.Enabled = false;
+                Thread t = new Thread(new ThreadStart(() =>
+                {
+                    var obj = info_cbbProduct.GetSelectedDataRow();
+                    var data = ((Product)obj)._Id;
+                    var rs = Resources.bulkCode;
+                    JArray jArray = JArray.Parse(rs);
+                    foreach (var item in jArray)
+                    {
+                        if (data.Equals(item["_id"].ToString()))
+                        {
+                            var colors = JArray.Parse(item["colors"].ToString());
+                            foreach (var color in colors)
+                            {
+                                var url = color["image"].ToString();
+                                loadImage(url);
+                                break;
+                            }
+                        }
+                    }
+                    btnViewData.Invoke((MethodInvoker)delegate { btnViewData.Enabled = true; });
+                }));
+                t.Start();
+            }
+            catch (Exception ex){
+                XtraMessageBox.Show("Error: " + ex.Message, "Message");
             }
         }
     }

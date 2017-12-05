@@ -17,9 +17,7 @@ namespace TCProShirts.UControls
 {
     public partial class UCItemProduct : XtraUserControl
     {
-        private Graphics g;
         private Rectangle r;
-        private Pen p;
 
         public Product Product;
         public UCItemProduct(Product product)
@@ -30,19 +28,40 @@ namespace TCProShirts.UControls
         public UCItemProduct()
         {
             InitializeComponent();
-            Product = new Product();
-            Product.Name = "Thieu Den";
-            Product.Price = 12;
-            List<OColor> ls = new List<OColor>();
-            ls.Add(new OColor() { Hex = "#59591", Name = "white", Image = "" });
-            Product.Colors = ls;
         }
 
-        private void loadColor()
+        private void UCItemProduct_Paint(object sender, PaintEventArgs e)
+        {
+            for (int i = 0; i < Product.Colors.Count; i++)
+            {
+                if (i < 11)
+                {
+                    SolidBrush brush = new SolidBrush(ColorTranslator.FromHtml("#" + Product.Colors[i].Hex));
+                    r = new Rectangle(140 + (i * 45) + 10, 50, 30, 30);
+                    e.Graphics.DrawEllipse(Pens.WhiteSmoke, r);
+                    e.Graphics.FillEllipse(brush, r);
+                    brush.Dispose();
+                }
+            }
+            for (int i = 11; i < Product.Colors.Count; i++)
+            {
+                SolidBrush brush = new SolidBrush(ColorTranslator.FromHtml("#" + Product.Colors[i].Hex));
+                r = new Rectangle(140 + ((i-11) * 45) + 10, 90, 30, 30);
+                e.Graphics.DrawEllipse(Pens.WhiteSmoke, r);
+                e.Graphics.FillEllipse(brush, r);
+                brush.Dispose();
+            }
+            e.Graphics.Dispose();
+        }
+        private void UCItemProduct_Load(object sender, EventArgs e)
         {
             Thread t = new Thread(new ThreadStart(() =>
             {
-                if (Product.Colors[0].Image == "")
+                this.Invoke((MethodInvoker)delegate {
+                    productTitleName.Text = Product.Name;
+                    productPrice.Text = "$" + Product.Price.ToString("N2");
+                });
+                if (Product.Colors.Count > 0 && Product.Colors[0].Image == "")
                     return;
                 try
                 {
@@ -56,33 +75,8 @@ namespace TCProShirts.UControls
                 }
                 catch { }
             }));
+           
             t.Start();
-            productTitleName.Text = Product.Name;
-            productPrice.Text = "$"+ Product.Price.ToString("N2");
-            g = CreateGraphics();
-            // Create solid brush.
-            for (int i = 0; i < 10; i++)
-            {
-                if (i < 10)
-                {
-                    SolidBrush brush = new SolidBrush(ColorTranslator.FromHtml("#595912" + i));
-                    r = new Rectangle(140 + (i * 45) + 10, 50, 35, 35);
-                    g.FillEllipse(brush, r);
-                }
-            }
-            for (int i = 10; i < Product.Colors.Count; i++)
-            {
-                SolidBrush brush = new SolidBrush(ColorTranslator.FromHtml(Product.Colors[0].Hex + i));
-                r = new Rectangle(140 + (i * 45) + 10, 100, 35, 35);
-                g.FillEllipse(brush, r);
-            }
-
-            g.Dispose();
-        }
-
-        private void UCItemProduct_Paint(object sender, PaintEventArgs e)
-        {
-            loadColor();
         }
     }
 }

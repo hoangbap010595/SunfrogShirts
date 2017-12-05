@@ -43,9 +43,11 @@
             this.productImage.Name = "productImage";
             this.productImage.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
             this.productImage.Properties.Appearance.Options.UseBackColor = true;
+            this.productImage.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.productImage.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
+            this.productImage.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Stretch;
             this.productImage.Properties.ZoomAccelerationFactor = 1D;
-            this.productImage.Size = new System.Drawing.Size(94, 123);
+            this.productImage.Size = new System.Drawing.Size(90, 110);
             this.productImage.TabIndex = 0;
             // 
             // productTitleName
@@ -96,7 +98,8 @@
             this.Controls.Add(this.productImage);
             this.Name = "UCItemProduct";
             this.Padding = new System.Windows.Forms.Padding(10);
-            this.Size = new System.Drawing.Size(819, 139);
+            this.Size = new System.Drawing.Size(819, 126);
+            this.Load += new System.EventHandler(this.UCItemProduct_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.UCItemProduct_Paint);
             ((System.ComponentModel.ISupportInitialize)(this.productImage.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.separatorControl1)).EndInit();
