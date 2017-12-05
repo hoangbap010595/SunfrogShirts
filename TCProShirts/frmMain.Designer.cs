@@ -31,9 +31,12 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.pictureShowImage = new DevExpress.XtraEditors.PictureEdit();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.ckCheckAll = new DevExpress.XtraEditors.CheckEdit();
+            this.btnViewData = new DevExpress.XtraEditors.SimpleButton();
             this.txtPrice = new DevExpress.XtraEditors.TextEdit();
             this.label1 = new System.Windows.Forms.Label();
             this.panelControlColor = new DevExpress.XtraEditors.PanelControl();
+            this.ckListBoxColor = new System.Windows.Forms.CheckedListBox();
             this.simpleButton4 = new DevExpress.XtraEditors.SimpleButton();
             this.btnApplyTheme = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
@@ -62,20 +65,20 @@
             this.panelControlAction = new DevExpress.XtraEditors.PanelControl();
             this.btnStart = new DevExpress.XtraEditors.SimpleButton();
             this.groupControlFile = new DevExpress.XtraEditors.GroupControl();
-            this.btnViewData = new DevExpress.XtraEditors.SimpleButton();
+            this.ckUsingFileUpload = new DevExpress.XtraEditors.CheckEdit();
             this.btnClear = new DevExpress.XtraEditors.SimpleButton();
             this.btnOpenFileExcel = new DevExpress.XtraEditors.SimpleButton();
             this.txtPath = new DevExpress.XtraEditors.TextEdit();
             this.xtraTabPageDesign = new DevExpress.XtraTab.XtraTabPage();
+            this.btnSaveThemes = new DevExpress.XtraEditors.SimpleButton();
+            this.btnClearThemes = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.lueThemes = new DevExpress.XtraEditors.LookUpEdit();
             this.xtraScrollableTheme = new DevExpress.XtraEditors.XtraScrollableControl();
-            this.ckUsingFileUpload = new DevExpress.XtraEditors.CheckEdit();
-            this.ckListBoxColor = new System.Windows.Forms.CheckedListBox();
-            this.ckCheckAll = new DevExpress.XtraEditors.CheckEdit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureShowImage.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ckCheckAll.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPrice.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControlColor)).BeginInit();
             this.panelControlColor.SuspendLayout();
@@ -97,11 +100,10 @@
             this.panelControlAction.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControlFile)).BeginInit();
             this.groupControlFile.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ckUsingFileUpload.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPath.Properties)).BeginInit();
             this.xtraTabPageDesign.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lueThemes.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ckUsingFileUpload.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ckCheckAll.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureShowImage
@@ -140,6 +142,30 @@
             this.groupControl1.TabIndex = 0;
             this.groupControl1.Text = "Design";
             // 
+            // ckCheckAll
+            // 
+            this.ckCheckAll.Location = new System.Drawing.Point(8, 399);
+            this.ckCheckAll.Name = "ckCheckAll";
+            this.ckCheckAll.Properties.Caption = "Check all/ Uncheck all";
+            this.ckCheckAll.Size = new System.Drawing.Size(134, 19);
+            this.ckCheckAll.TabIndex = 0;
+            this.ckCheckAll.CheckedChanged += new System.EventHandler(this.ckCheckAll_CheckedChanged);
+            // 
+            // btnViewData
+            // 
+            this.btnViewData.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btnViewData.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
+            this.btnViewData.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnViewData.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnViewData.ImageOptions.Image")));
+            this.btnViewData.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleLeft;
+            this.btnViewData.Location = new System.Drawing.Point(212, 399);
+            this.btnViewData.Name = "btnViewData";
+            this.btnViewData.Size = new System.Drawing.Size(70, 23);
+            this.btnViewData.TabIndex = 9;
+            this.btnViewData.Text = "View";
+            this.btnViewData.ToolTip = "View Data From File Excel";
+            this.btnViewData.Click += new System.EventHandler(this.btnViewData_Click);
+            // 
             // txtPrice
             // 
             this.txtPrice.EditValue = "10.00";
@@ -167,6 +193,32 @@
             this.panelControlColor.Name = "panelControlColor";
             this.panelControlColor.Size = new System.Drawing.Size(280, 143);
             this.panelControlColor.TabIndex = 0;
+            // 
+            // ckListBoxColor
+            // 
+            this.ckListBoxColor.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ckListBoxColor.FormattingEnabled = true;
+            this.ckListBoxColor.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5"});
+            this.ckListBoxColor.Location = new System.Drawing.Point(2, 2);
+            this.ckListBoxColor.MultiColumn = true;
+            this.ckListBoxColor.Name = "ckListBoxColor";
+            this.ckListBoxColor.Size = new System.Drawing.Size(276, 139);
+            this.ckListBoxColor.TabIndex = 1;
             // 
             // simpleButton4
             // 
@@ -246,9 +298,9 @@
             // 
             this.groupControl5.Controls.Add(this.lsBoxLog);
             this.groupControl5.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.groupControl5.Location = new System.Drawing.Point(0, 403);
+            this.groupControl5.Location = new System.Drawing.Point(0, 405);
             this.groupControl5.Name = "groupControl5";
-            this.groupControl5.Size = new System.Drawing.Size(687, 178);
+            this.groupControl5.Size = new System.Drawing.Size(689, 178);
             this.groupControl5.TabIndex = 0;
             this.groupControl5.Text = "Progress";
             // 
@@ -258,10 +310,10 @@
             this.lsBoxLog.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lsBoxLog.HorizontalScrollbar = true;
             this.lsBoxLog.ItemHeight = 22;
-            this.lsBoxLog.Location = new System.Drawing.Point(2, 22);
+            this.lsBoxLog.Location = new System.Drawing.Point(2, 20);
             this.lsBoxLog.Name = "lsBoxLog";
             this.lsBoxLog.ShowFocusRect = false;
-            this.lsBoxLog.Size = new System.Drawing.Size(683, 154);
+            this.lsBoxLog.Size = new System.Drawing.Size(685, 156);
             this.lsBoxLog.TabIndex = 0;
             // 
             // xtraTabControlMain
@@ -297,7 +349,7 @@
             this.xtraTabPageUpload.Controls.Add(this.panelControlAction);
             this.xtraTabPageUpload.Controls.Add(this.groupControlFile);
             this.xtraTabPageUpload.Name = "xtraTabPageUpload";
-            this.xtraTabPageUpload.Size = new System.Drawing.Size(687, 581);
+            this.xtraTabPageUpload.Size = new System.Drawing.Size(689, 583);
             this.xtraTabPageUpload.Text = "Upload";
             // 
             // lsBoxImage
@@ -512,20 +564,21 @@
             this.groupControlFile.TabIndex = 0;
             this.groupControlFile.Text = "Open File Excel (*.xlsx)";
             // 
-            // btnViewData
+            // ckUsingFileUpload
             // 
-            this.btnViewData.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.btnViewData.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
-            this.btnViewData.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnViewData.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnViewData.ImageOptions.Image")));
-            this.btnViewData.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleLeft;
-            this.btnViewData.Location = new System.Drawing.Point(212, 399);
-            this.btnViewData.Name = "btnViewData";
-            this.btnViewData.Size = new System.Drawing.Size(70, 23);
-            this.btnViewData.TabIndex = 9;
-            this.btnViewData.Text = "View";
-            this.btnViewData.ToolTip = "View Data From File Excel";
-            this.btnViewData.Click += new System.EventHandler(this.btnViewData_Click);
+            this.ckUsingFileUpload.Location = new System.Drawing.Point(6, 55);
+            this.ckUsingFileUpload.Name = "ckUsingFileUpload";
+            this.ckUsingFileUpload.Properties.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.ckUsingFileUpload.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 11F);
+            this.ckUsingFileUpload.Properties.Appearance.ForeColor = System.Drawing.Color.Olive;
+            this.ckUsingFileUpload.Properties.Appearance.Options.UseBackColor = true;
+            this.ckUsingFileUpload.Properties.Appearance.Options.UseFont = true;
+            this.ckUsingFileUpload.Properties.Appearance.Options.UseForeColor = true;
+            this.ckUsingFileUpload.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
+            this.ckUsingFileUpload.Properties.Caption = "Using upload from File";
+            this.ckUsingFileUpload.Size = new System.Drawing.Size(214, 26);
+            this.ckUsingFileUpload.TabIndex = 0;
+            this.ckUsingFileUpload.CheckedChanged += new System.EventHandler(this.ckUsingFileUpload_CheckedChanged);
             // 
             // btnClear
             // 
@@ -534,9 +587,9 @@
             this.btnClear.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnClear.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnClear.ImageOptions.Image")));
             this.btnClear.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleLeft;
-            this.btnClear.Location = new System.Drawing.Point(411, 58);
+            this.btnClear.Location = new System.Drawing.Point(397, 58);
             this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(70, 23);
+            this.btnClear.Size = new System.Drawing.Size(84, 23);
             this.btnClear.TabIndex = 10;
             this.btnClear.Text = "Log";
             this.btnClear.ToolTip = "Clear Log";
@@ -550,7 +603,7 @@
             this.btnOpenFileExcel.Enabled = false;
             this.btnOpenFileExcel.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnOpenFileExcel.ImageOptions.Image")));
             this.btnOpenFileExcel.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleLeft;
-            this.btnOpenFileExcel.Location = new System.Drawing.Point(245, 58);
+            this.btnOpenFileExcel.Location = new System.Drawing.Point(309, 58);
             this.btnOpenFileExcel.Name = "btnOpenFileExcel";
             this.btnOpenFileExcel.Size = new System.Drawing.Size(84, 23);
             this.btnOpenFileExcel.TabIndex = 8;
@@ -572,12 +625,40 @@
             // 
             this.xtraTabPageDesign.Appearance.PageClient.BackColor = System.Drawing.Color.Silver;
             this.xtraTabPageDesign.Appearance.PageClient.Options.UseBackColor = true;
+            this.xtraTabPageDesign.Controls.Add(this.btnSaveThemes);
+            this.xtraTabPageDesign.Controls.Add(this.btnClearThemes);
             this.xtraTabPageDesign.Controls.Add(this.labelControl7);
             this.xtraTabPageDesign.Controls.Add(this.lueThemes);
             this.xtraTabPageDesign.Controls.Add(this.xtraScrollableTheme);
             this.xtraTabPageDesign.Name = "xtraTabPageDesign";
-            this.xtraTabPageDesign.Size = new System.Drawing.Size(687, 581);
+            this.xtraTabPageDesign.Size = new System.Drawing.Size(689, 583);
             this.xtraTabPageDesign.Text = "Themes";
+            // 
+            // btnSaveThemes
+            // 
+            this.btnSaveThemes.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.btnSaveThemes.Appearance.Options.UseFont = true;
+            this.btnSaveThemes.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
+            this.btnSaveThemes.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnSaveThemes.ImageOptions.Image")));
+            this.btnSaveThemes.Location = new System.Drawing.Point(490, 8);
+            this.btnSaveThemes.Name = "btnSaveThemes";
+            this.btnSaveThemes.Size = new System.Drawing.Size(95, 39);
+            this.btnSaveThemes.TabIndex = 2;
+            this.btnSaveThemes.Text = "Save";
+            this.btnSaveThemes.Click += new System.EventHandler(this.btnSaveThemes_Click);
+            // 
+            // btnClearThemes
+            // 
+            this.btnClearThemes.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.btnClearThemes.Appearance.Options.UseFont = true;
+            this.btnClearThemes.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
+            this.btnClearThemes.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnClearThemes.ImageOptions.Image")));
+            this.btnClearThemes.Location = new System.Drawing.Point(591, 8);
+            this.btnClearThemes.Name = "btnClearThemes";
+            this.btnClearThemes.Size = new System.Drawing.Size(90, 39);
+            this.btnClearThemes.TabIndex = 2;
+            this.btnClearThemes.Text = "Clear";
+            this.btnClearThemes.Click += new System.EventHandler(this.btnClearThemes_Click);
             // 
             // labelControl7
             // 
@@ -620,57 +701,6 @@
             this.xtraScrollableTheme.Size = new System.Drawing.Size(688, 522);
             this.xtraScrollableTheme.TabIndex = 0;
             // 
-            // ckUsingFileUpload
-            // 
-            this.ckUsingFileUpload.Location = new System.Drawing.Point(6, 55);
-            this.ckUsingFileUpload.Name = "ckUsingFileUpload";
-            this.ckUsingFileUpload.Properties.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.ckUsingFileUpload.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 11F);
-            this.ckUsingFileUpload.Properties.Appearance.ForeColor = System.Drawing.Color.Olive;
-            this.ckUsingFileUpload.Properties.Appearance.Options.UseBackColor = true;
-            this.ckUsingFileUpload.Properties.Appearance.Options.UseFont = true;
-            this.ckUsingFileUpload.Properties.Appearance.Options.UseForeColor = true;
-            this.ckUsingFileUpload.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
-            this.ckUsingFileUpload.Properties.Caption = "Using upload from File";
-            this.ckUsingFileUpload.Size = new System.Drawing.Size(214, 26);
-            this.ckUsingFileUpload.TabIndex = 0;
-            this.ckUsingFileUpload.CheckedChanged += new System.EventHandler(this.ckUsingFileUpload_CheckedChanged);
-            // 
-            // ckListBoxColor
-            // 
-            this.ckListBoxColor.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ckListBoxColor.FormattingEnabled = true;
-            this.ckListBoxColor.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "1",
-            "2",
-            "3",
-            "4",
-            "5"});
-            this.ckListBoxColor.Location = new System.Drawing.Point(2, 2);
-            this.ckListBoxColor.MultiColumn = true;
-            this.ckListBoxColor.Name = "ckListBoxColor";
-            this.ckListBoxColor.Size = new System.Drawing.Size(276, 139);
-            this.ckListBoxColor.TabIndex = 1;
-            // 
-            // ckCheckAll
-            // 
-            this.ckCheckAll.Location = new System.Drawing.Point(8, 399);
-            this.ckCheckAll.Name = "ckCheckAll";
-            this.ckCheckAll.Properties.Caption = "Check all/ Uncheck all";
-            this.ckCheckAll.Size = new System.Drawing.Size(134, 20);
-            this.ckCheckAll.TabIndex = 0;
-            this.ckCheckAll.CheckedChanged += new System.EventHandler(this.ckCheckAll_CheckedChanged);
-            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -687,6 +717,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
             this.groupControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ckCheckAll.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPrice.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControlColor)).EndInit();
             this.panelControlColor.ResumeLayout(false);
@@ -709,12 +740,11 @@
             this.panelControlAction.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupControlFile)).EndInit();
             this.groupControlFile.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ckUsingFileUpload.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPath.Properties)).EndInit();
             this.xtraTabPageDesign.ResumeLayout(false);
             this.xtraTabPageDesign.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lueThemes.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ckUsingFileUpload.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ckCheckAll.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -764,6 +794,8 @@
         private DevExpress.XtraEditors.CheckEdit ckUsingFileUpload;
         private System.Windows.Forms.CheckedListBox ckListBoxColor;
         private DevExpress.XtraEditors.CheckEdit ckCheckAll;
+        private DevExpress.XtraEditors.SimpleButton btnClearThemes;
+        private DevExpress.XtraEditors.SimpleButton btnSaveThemes;
     }
 }
 
