@@ -27,7 +27,7 @@ namespace TCProShirts
     public partial class frmMain : XtraForm
     {
         private static CookieContainer cookieApplication = new CookieContainer();
-        private string BROWSER_CHROME = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36";
+        //private string BROWSER_CHROME = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36";
         private string BROWSER_FIREFOX = "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:49.0) Gecko/20100101 Firefox/49.0";
         private ApplicationUser User;
         private string currToken = "";
@@ -46,25 +46,29 @@ namespace TCProShirts
             if (user != null)
             {
                 User = user;
-                ApplicationLibary.writeLog(lsBoxLog, "Login Successfully", 1);
+                ApplicationLibary.writeLogThread(lsBoxLog, "Login Successfully", 1);
+                this.Invoke((MethodInvoker)delegate { this.Text += " - [" + User.Email + "]"; });
+            }else
+            {
+                this.Close();
             }
         }
         private void frmMain_Load(object sender, EventArgs e)
         {
-            //frmLogin frm = new frmLogin();
-            //frm.senduser = new frmLogin.SendUser(getUser);
-            //frm.ShowDialog();
+            //var x = ApplicationLibary.convertStringToJson(getStringCategory("Fishing"));
+            frmLogin frm = new frmLogin();
+            frm.senduser = new frmLogin.SendUser(getUser);
+            frm.ShowDialog();
             Thread t = new Thread(new ThreadStart(() =>
             {
                 this.Invoke((MethodInvoker)delegate
                 {
                     loadBulkProduct();
                     loadBulkCategory();
-                    loadBulkThemes();
                 });
             }));
             t.Start();
-
+            loadBulkThemes();
         }
         #region =======LoadData=======
         private void loadBulkProduct()
@@ -134,10 +138,15 @@ namespace TCProShirts
         }
         private void btnStart_Click(object sender, EventArgs e)
         {
-            btnLogin_Click(sender, e);
+            //btnLogin_Click(sender, e);
             btnStart.Enabled = false;
             btnViewData.Enabled = false;
             btnApplyTheme.Enabled = false;
+            if (lsUserControlTheme.Count == 0)
+            {
+                XtraMessageBox.Show("No Style is not selected...!", "Message");
+                return;
+            }
             if (ckUsingFileUpload.Checked)
             {
                 if (dtDataTemp == null || dtDataTemp.Rows.Count == 0)
@@ -155,9 +164,9 @@ namespace TCProShirts
                 }));
                 tStart.Start();
                 next:
-                btnStart.Invoke((MethodInvoker)delegate { btnStart.Enabled = true; });
-                btnViewData.Invoke((MethodInvoker)delegate { btnViewData.Enabled = true; });
-                btnApplyTheme.Invoke((MethodInvoker)delegate { btnApplyTheme.Enabled = true; });
+                btnStart.Enabled = true;
+                btnViewData.Enabled = true;
+                btnApplyTheme.Enabled = true;
             }
             else
             {
@@ -180,9 +189,9 @@ namespace TCProShirts
                 }));
                 tStart.Start();
                 next:
-                btnStart.Invoke((MethodInvoker)delegate { btnStart.Enabled = true; });
-                btnViewData.Invoke((MethodInvoker)delegate { btnViewData.Enabled = true; });
-                btnApplyTheme.Invoke((MethodInvoker)delegate { btnApplyTheme.Enabled = true; });
+                btnStart.Enabled = true;
+                btnViewData.Enabled = true;
+                btnApplyTheme.Enabled = true;
             }
         }
         private void btnAddCategory_Click(object sender, EventArgs e)
@@ -227,6 +236,7 @@ namespace TCProShirts
             {
                 if (p._Id.Equals(item["_id"].ToString()))
                 {
+                    p.PrintSize = item["printSize"].ToString();
                     var colors = JArray.Parse(item["colors"].ToString());
                     foreach (var selcolor in selColors)
                     {
@@ -321,7 +331,76 @@ namespace TCProShirts
             lsBoxLog.Items.Clear();
             ApplicationLibary.writeLog(lsBoxLog, "CLEAR", 1);
         }
+        private void btnViewData_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                pictureShowImage.ImageLocation = "";
+                btnViewData.Enabled = false;
+                Thread t = new Thread(new ThreadStart(() =>
+                {
+                    var obj = info_cbbProduct.GetSelectedDataRow();
+                    var data = ((Product)obj)._Id;
+                    var rs = Resources.bulkCode;
+                    JArray jArray = JArray.Parse(rs);
+                    foreach (var item in jArray)
+                    {
+                        if (data.Equals(item["_id"].ToString()))
+                        {
+                            var colors = JArray.Parse(item["colors"].ToString());
+                            Random r = new Random();
+                            int x = r.Next(0, colors.Count);
+                            var url = colors[x]["image"].ToString();
+                            loadImage(url);
+                        }
+                    }
+                    btnViewData.Invoke((MethodInvoker)delegate { btnViewData.Enabled = true; });
+                }));
+                t.Start();
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show("Error: " + ex.Message, "Message");
+            }
+        }
+        private void btnViewHashPass_Click(object sender, EventArgs e)
+        {
+            frmDialog frm = new frmDialog(User.HasPassword);
+            frm.Text = "View HasPassword";
+            frm.ShowDialog();
+        }
+        private void btnSaveThemes_Click(object sender, EventArgs e)
+        {
+            if(lsUserControlTheme.Count == 0)
+            {
+                XtraMessageBox.Show("No Style is not selected...!","Message");
+                return;
+            }
+            frmDialog frm = new frmDialog(1);
+            frm.sendText = new frmDialog.SendText(getTextDialog);
+            frm.Text = "Enter design name...";
+            frm.ShowDialog();
 
+        }
+        private void getTextDialog(string text)
+        {
+            var data = "[";
+            foreach (UCItemProduct item in lsUserControlTheme)
+            {
+                var jsData = JsonConvert.SerializeObject(item.Product);
+                data += jsData + ",";
+            }
+            data = data.TrimEnd(',');
+            data += "]";
+
+            ApplicationLibary.writeFileToResource(text, data);
+            loadBulkThemes();
+        } 
+        private void btnClearThemes_Click(object sender, EventArgs e)
+        {
+            lsUserControlTheme.Clear();
+            xtraScrollableTheme.Controls.Clear();
+        }
         /*
          * Upload From File Excel
          */
@@ -334,7 +413,7 @@ namespace TCProShirts
                 {
                     var uTitle = item["Title"];
                     var uDescription = item["Description"];
-                    var uCategory = item["Category"];
+                    var uCategory = ApplicationLibary.convertStringToJson(getStringCategory(item["Category"].ToString()));
                     var uUrl = item["URL"].ToString().ToLower();
                     var uStore = item["Store"].ToString();
                     var uImage = item["Image"].ToString();
@@ -424,7 +503,7 @@ namespace TCProShirts
                         uUrl = uUrl.Replace(" ", "").Trim();
                     //Step 4 -- Nhận giá trị 1 mảng _IDDesignRetail từ Step 3
                     var data2SendCampaigns = "{\"url\":\"" + uUrl + "\",\"title\":\"" + uTitle + "\",\"description\":\"<div>" + uDescription + "</div>\",\"duration\":24,\"policies\":{\"forever\":true,\"fulfillment\":24,\"private\":false,\"checkout\":\"direct\"},\"social\":{\"trackingTags\":{}},\"entityId\":\"" + User.EntityID + "\",\"upsells\":[],\"tags\":{\"style\":[" + uCategory + "]},\"related\": " + objIDReail + "}";
-                    finishUploadImage(data2SendCampaigns);
+                    finishUploadImage(data2SendCampaigns, uImage);
                 }
                 catch (Exception ex)
                 {
@@ -531,7 +610,7 @@ namespace TCProShirts
 
                     //Step 4 -- Nhận giá trị 1 mảng _IDDesignRetail từ Step 3
                     var data2SendCampaigns = "{\"url\":\"" + uUrl + "\",\"title\":\"" + uTitle + "\",\"description\":\"<div>" + uDescription + "</div>\",\"duration\":24,\"policies\":{\"forever\":true,\"fulfillment\":24,\"private\":false,\"checkout\":\"direct\"},\"social\":{\"trackingTags\":{}},\"entityId\":\"" + User.EntityID + "\",\"upsells\":[],\"tags\":{\"style\":[" + uCategory + "]},\"related\": " + objIDReail + "}";
-                    finishUploadImage(data2SendCampaigns);
+                    finishUploadImage(data2SendCampaigns, fileImage);
                 }
                 catch (Exception ex)
                 {
@@ -578,7 +657,7 @@ namespace TCProShirts
                     {
                         var objUploadRetail = JObject.Parse(rsUploadRetail);
                         data.Add("id", objUploadRetail["_id"].ToString());
-                        data.Add("price", double.Parse(objUploadRetail["price"].ToString()).ToString("N2"));
+                        data.Add("price", double.Parse(objUploadRetail["price"].ToString()));
                         if (lsData.Count == 0)
                             data.Add("default", true);
                         lsData.Add(data);
@@ -593,7 +672,7 @@ namespace TCProShirts
             return jsData;
         }
         //Step 4: Finish
-        private void finishUploadImage(string data2SendCampaigns)
+        private void finishUploadImage(string data2SendCampaigns,string uImage)
         {
             HttpWebRequest wCampaigns = (HttpWebRequest)WebRequest.Create("https://api.scalablelicensing.com/rest/campaigns");
             wCampaigns.Accept = "application/json, text/plain, */*";
@@ -613,6 +692,7 @@ namespace TCProShirts
             var titleCampaigns = objUploadCampaigns["title"].ToString();
             var urlCampaigns = "https://pro.teechip.com/" + objUploadCampaigns["url"].ToString();
             ApplicationLibary.writeLogThread(lsBoxLog, "Upload finish: " + titleCampaigns + ", Link:" + urlCampaigns, 1);
+            MoveFileUploaded(uImage);
         }
         #region ==============Function===============
         public static Dictionary<string, object> HttpUploadFile(string url, string file, string paramName, string contentType, NameValueCollection nvc)
@@ -774,13 +854,31 @@ namespace TCProShirts
         }
         private void loadImage(string url)
         {
-            var request = WebRequest.Create(url);
-
-            using (var response = request.GetResponse())
-            using (var stream = response.GetResponseStream())
+            pictureShowImage.ImageLocation = url;
+        }
+        private string getStringCategory(string text)
+        {
+            string kq = "";
+            var rs = Resources.category;
+            JArray jArray = JArray.Parse(rs);
+            foreach (var item in jArray)
             {
-                pictureShowImage.Invoke((MethodInvoker)delegate { pictureShowImage.Image = Bitmap.FromStream(stream); });
+                if (item["name"].ToString().Contains(text) || item["fullName"].ToString().Contains(text)
+                    || item["slug"].ToString().Contains(text))
+                {
+                    kq += item["fullName"];
+                }
             }
+            var currKQ = kq.Replace("(", "|").Replace(")", "|");
+            var x = currKQ.Split('|');
+            string ressult = "";
+            foreach (string item in x)
+            {
+                var crrText = item.Trim();
+                if (crrText != "" && crrText != " " && ressult.IndexOf(crrText) == -1)
+                    ressult += crrText.Trim() + ",";
+            }
+            return ressult;
         }
         private List<Product> GetListBulk()
         {
@@ -853,16 +951,17 @@ namespace TCProShirts
             List<OTheme> lsThemes = new List<OTheme>();
             try
             {
-                var rs = Resources.dataThemes;
-                JArray jArray = JArray.Parse(rs);
-                foreach (var item in jArray)
-                {
-                    OTheme theme = new OTheme();
-                    theme.Id = item["_id"].ToString();
-                    theme.Name = item["name"].ToString();
+                //var rs = Resources.dataThemes;
+                //JArray jArray = JArray.Parse(rs);
+                //foreach (var item in jArray)
+                //{
+                //    OTheme theme = new OTheme();
+                //    theme.Id = item["_id"].ToString();
+                //    theme.Name = item["name"].ToString();
 
-                    lsThemes.Add(theme);
-                }
+                //    lsThemes.Add(theme);
+                //}
+                lsThemes = ApplicationLibary.getThemeSaved();
                 return lsThemes;
             }
             catch
@@ -898,6 +997,15 @@ namespace TCProShirts
             return lsData;
         }
 
+        private void MoveFileUploaded(string fileName)
+        {
+            var path = Path.GetDirectoryName(fileName) + "\\Uploaded\\";
+            var name = Path.GetFileName(fileName);
+            var newDir = Path.Combine(path, name);
+            if (!Directory.Exists(path))
+                Directory.CreateDirectory(path);
+            File.Move(fileName, newDir);
+        }
         /// <summary>
         /// Thêm 1 style vào theme và load vào panel
         /// </summary>
@@ -918,9 +1026,15 @@ namespace TCProShirts
         private void ckUsingFileUpload_CheckedChanged(object sender, EventArgs e)
         {
             if (ckUsingFileUpload.Checked)
+            {
                 btnOpenFileExcel.Enabled = true;
+                ApplicationLibary.writeLog(lsBoxLog, "Enable upload styles using file", 1);
+            }
             else
+            {
                 btnOpenFileExcel.Enabled = false;
+                ApplicationLibary.writeLog(lsBoxLog, "Disable upload styles using file", 1);
+            }
         }
 
         private void info_cbbProduct_EditValueChanged(object sender, EventArgs e)
@@ -941,7 +1055,7 @@ namespace TCProShirts
                     }
                 }
             }
-            //btnViewData.PerformClick();
+            btnViewData.PerformClick();
             ckCheckAll.Checked = false;
         }
 
@@ -961,49 +1075,22 @@ namespace TCProShirts
                 }
         }
 
-        private void btnViewData_Click(object sender, EventArgs e)
+        private void lueThemes_EditValueChanged(object sender, EventArgs e)
         {
             try
             {
-                btnViewData.Enabled = false;
-                Thread t = new Thread(new ThreadStart(() =>
+                lsUserControlTheme.Clear();
+                var obj = lueThemes.GetSelectedDataRow();
+                var id = ((OTheme)obj).Id;
+                List<Product> lsProduct = ApplicationLibary.loadThemeSaveByName(id);
+                foreach (Product p in lsProduct)
                 {
-                    var obj = info_cbbProduct.GetSelectedDataRow();
-                    var data = ((Product)obj)._Id;
-                    var rs = Resources.bulkCode;
-                    JArray jArray = JArray.Parse(rs);
-                    foreach (var item in jArray)
-                    {
-                        if (data.Equals(item["_id"].ToString()))
-                        {
-                            var colors = JArray.Parse(item["colors"].ToString());
-                            foreach (var color in colors)
-                            {
-                                var url = color["image"].ToString();
-                                loadImage(url);
-                                break;
-                            }
-                        }
-                    }
-                    btnViewData.Invoke((MethodInvoker)delegate { btnViewData.Enabled = true; });
-                }));
-                t.Start();
+                    UCItemProduct uc = new UCItemProduct();
+                    uc.Product = p;
+                    addThemeToPanel(uc);
+                }
             }
-            catch (Exception ex)
-            {
-                XtraMessageBox.Show("Error: " + ex.Message, "Message");
-            }
-        }
-
-        private void btnSaveThemes_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnClearThemes_Click(object sender, EventArgs e)
-        {
-            lsUserControlTheme.Clear();
-            xtraScrollableTheme.Controls.Clear();
+            catch { }
         }
     }
 }

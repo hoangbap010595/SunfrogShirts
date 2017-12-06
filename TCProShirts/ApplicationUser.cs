@@ -18,5 +18,6 @@ namespace TCProShirts
         public string PayableId { get; set; }
         public string Authorization { get; set; }
         public string UnAuthorization { get; set; }
+        public string HasPassword { get; set; }
     }
 }

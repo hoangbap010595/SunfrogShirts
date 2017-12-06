@@ -29,17 +29,18 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
-            this.pictureShowImage = new DevExpress.XtraEditors.PictureEdit();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.simpleButton4 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
+            this.pictureShowImage = new System.Windows.Forms.PictureBox();
             this.ckCheckAll = new DevExpress.XtraEditors.CheckEdit();
+            this.btnViewHashPass = new DevExpress.XtraEditors.SimpleButton();
             this.btnViewData = new DevExpress.XtraEditors.SimpleButton();
             this.txtPrice = new DevExpress.XtraEditors.TextEdit();
             this.label1 = new System.Windows.Forms.Label();
             this.panelControlColor = new DevExpress.XtraEditors.PanelControl();
             this.ckListBoxColor = new System.Windows.Forms.CheckedListBox();
-            this.simpleButton4 = new DevExpress.XtraEditors.SimpleButton();
             this.btnApplyTheme = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
             this.info_cbbProduct = new DevExpress.XtraEditors.LookUpEdit();
             this.btnDesignNext = new DevExpress.XtraEditors.SimpleButton();
             this.btnDesignBack = new DevExpress.XtraEditors.SimpleButton();
@@ -75,9 +76,9 @@
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.lueThemes = new DevExpress.XtraEditors.LookUpEdit();
             this.xtraScrollableTheme = new DevExpress.XtraEditors.XtraScrollableControl();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureShowImage.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureShowImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ckCheckAll.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPrice.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControlColor)).BeginInit();
@@ -106,35 +107,21 @@
             ((System.ComponentModel.ISupportInitialize)(this.lueThemes.Properties)).BeginInit();
             this.SuspendLayout();
             // 
-            // pictureShowImage
-            // 
-            this.pictureShowImage.Cursor = System.Windows.Forms.Cursors.Default;
-            this.pictureShowImage.Location = new System.Drawing.Point(4, 23);
-            this.pictureShowImage.Name = "pictureShowImage";
-            this.pictureShowImage.Properties.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.pictureShowImage.Properties.Appearance.Options.UseBackColor = true;
-            this.pictureShowImage.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
-            this.pictureShowImage.Properties.Padding = new System.Windows.Forms.Padding(0, 0, 0, 20);
-            this.pictureShowImage.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
-            this.pictureShowImage.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Stretch;
-            this.pictureShowImage.Properties.ZoomAccelerationFactor = 1D;
-            this.pictureShowImage.Size = new System.Drawing.Size(280, 342);
-            this.pictureShowImage.TabIndex = 0;
-            // 
             // groupControl1
             // 
+            this.groupControl1.Controls.Add(this.simpleButton4);
+            this.groupControl1.Controls.Add(this.simpleButton3);
+            this.groupControl1.Controls.Add(this.pictureShowImage);
             this.groupControl1.Controls.Add(this.ckCheckAll);
+            this.groupControl1.Controls.Add(this.btnViewHashPass);
             this.groupControl1.Controls.Add(this.btnViewData);
             this.groupControl1.Controls.Add(this.txtPrice);
             this.groupControl1.Controls.Add(this.label1);
             this.groupControl1.Controls.Add(this.panelControlColor);
-            this.groupControl1.Controls.Add(this.simpleButton4);
             this.groupControl1.Controls.Add(this.btnApplyTheme);
-            this.groupControl1.Controls.Add(this.simpleButton3);
             this.groupControl1.Controls.Add(this.info_cbbProduct);
             this.groupControl1.Controls.Add(this.btnDesignNext);
             this.groupControl1.Controls.Add(this.btnDesignBack);
-            this.groupControl1.Controls.Add(this.pictureShowImage);
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Right;
             this.groupControl1.Location = new System.Drawing.Point(695, 0);
             this.groupControl1.Name = "groupControl1";
@@ -142,14 +129,64 @@
             this.groupControl1.TabIndex = 0;
             this.groupControl1.Text = "Design";
             // 
+            // simpleButton4
+            // 
+            this.simpleButton4.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.simpleButton4.Appearance.Options.UseFont = true;
+            this.simpleButton4.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
+            this.simpleButton4.Location = new System.Drawing.Point(146, 328);
+            this.simpleButton4.Name = "simpleButton4";
+            this.simpleButton4.Size = new System.Drawing.Size(135, 33);
+            this.simpleButton4.TabIndex = 21;
+            this.simpleButton4.Text = "Back";
+            this.simpleButton4.Visible = false;
+            // 
+            // simpleButton3
+            // 
+            this.simpleButton3.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.simpleButton3.Appearance.Options.UseFont = true;
+            this.simpleButton3.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
+            this.simpleButton3.Location = new System.Drawing.Point(8, 328);
+            this.simpleButton3.Name = "simpleButton3";
+            this.simpleButton3.Size = new System.Drawing.Size(135, 33);
+            this.simpleButton3.TabIndex = 20;
+            this.simpleButton3.Text = "Front";
+            this.simpleButton3.Visible = false;
+            // 
+            // pictureShowImage
+            // 
+            this.pictureShowImage.BackColor = System.Drawing.Color.Silver;
+            this.pictureShowImage.InitialImage = null;
+            this.pictureShowImage.Location = new System.Drawing.Point(4, 23);
+            this.pictureShowImage.Name = "pictureShowImage";
+            this.pictureShowImage.Padding = new System.Windows.Forms.Padding(0, 0, 0, 20);
+            this.pictureShowImage.Size = new System.Drawing.Size(280, 339);
+            this.pictureShowImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureShowImage.TabIndex = 19;
+            this.pictureShowImage.TabStop = false;
+            // 
             // ckCheckAll
             // 
-            this.ckCheckAll.Location = new System.Drawing.Point(8, 399);
+            this.ckCheckAll.Location = new System.Drawing.Point(7, 399);
             this.ckCheckAll.Name = "ckCheckAll";
             this.ckCheckAll.Properties.Caption = "Check all/ Uncheck all";
-            this.ckCheckAll.Size = new System.Drawing.Size(134, 19);
+            this.ckCheckAll.Size = new System.Drawing.Size(128, 19);
             this.ckCheckAll.TabIndex = 0;
             this.ckCheckAll.CheckedChanged += new System.EventHandler(this.ckCheckAll_CheckedChanged);
+            // 
+            // btnViewHashPass
+            // 
+            this.btnViewHashPass.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btnViewHashPass.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
+            this.btnViewHashPass.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnViewHashPass.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleLeft;
+            this.btnViewHashPass.Location = new System.Drawing.Point(212, 399);
+            this.btnViewHashPass.Name = "btnViewHashPass";
+            this.btnViewHashPass.Size = new System.Drawing.Size(70, 23);
+            this.btnViewHashPass.TabIndex = 9;
+            this.btnViewHashPass.Text = "Hash";
+            this.btnViewHashPass.ToolTip = "View Data From File Excel";
+            this.btnViewHashPass.Click += new System.EventHandler(this.btnViewHashPass_Click);
             // 
             // btnViewData
             // 
@@ -158,7 +195,7 @@
             this.btnViewData.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnViewData.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnViewData.ImageOptions.Image")));
             this.btnViewData.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleLeft;
-            this.btnViewData.Location = new System.Drawing.Point(212, 399);
+            this.btnViewData.Location = new System.Drawing.Point(141, 399);
             this.btnViewData.Name = "btnViewData";
             this.btnViewData.Size = new System.Drawing.Size(70, 23);
             this.btnViewData.TabIndex = 9;
@@ -220,17 +257,6 @@
             this.ckListBoxColor.Size = new System.Drawing.Size(276, 139);
             this.ckListBoxColor.TabIndex = 1;
             // 
-            // simpleButton4
-            // 
-            this.simpleButton4.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.simpleButton4.Appearance.Options.UseFont = true;
-            this.simpleButton4.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
-            this.simpleButton4.Location = new System.Drawing.Point(146, 330);
-            this.simpleButton4.Name = "simpleButton4";
-            this.simpleButton4.Size = new System.Drawing.Size(135, 33);
-            this.simpleButton4.TabIndex = 18;
-            this.simpleButton4.Text = "Back";
-            // 
             // btnApplyTheme
             // 
             this.btnApplyTheme.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
@@ -245,17 +271,6 @@
             this.btnApplyTheme.TabIndex = 16;
             this.btnApplyTheme.Text = "Apply";
             this.btnApplyTheme.Click += new System.EventHandler(this.btnApplyTheme_Click);
-            // 
-            // simpleButton3
-            // 
-            this.simpleButton3.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.simpleButton3.Appearance.Options.UseFont = true;
-            this.simpleButton3.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
-            this.simpleButton3.Location = new System.Drawing.Point(8, 330);
-            this.simpleButton3.Name = "simpleButton3";
-            this.simpleButton3.Size = new System.Drawing.Size(135, 33);
-            this.simpleButton3.TabIndex = 17;
-            this.simpleButton3.Text = "Front";
             // 
             // info_cbbProduct
             // 
@@ -359,9 +374,9 @@
             this.lsBoxImage.Appearance.Options.UseFont = true;
             this.lsBoxImage.Appearance.Options.UseForeColor = true;
             this.lsBoxImage.Cursor = System.Windows.Forms.Cursors.Default;
-            this.lsBoxImage.Location = new System.Drawing.Point(512, 42);
+            this.lsBoxImage.Location = new System.Drawing.Point(501, 42);
             this.lsBoxImage.Name = "lsBoxImage";
-            this.lsBoxImage.Size = new System.Drawing.Size(172, 261);
+            this.lsBoxImage.Size = new System.Drawing.Size(183, 261);
             this.lsBoxImage.TabIndex = 0;
             // 
             // btnChooesImage
@@ -420,7 +435,7 @@
             this.labelControl6.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.labelControl6.Appearance.Options.UseFont = true;
             this.labelControl6.Appearance.Options.UseForeColor = true;
-            this.labelControl6.Location = new System.Drawing.Point(512, 17);
+            this.labelControl6.Location = new System.Drawing.Point(504, 17);
             this.labelControl6.Name = "labelControl6";
             this.labelControl6.Size = new System.Drawing.Size(45, 19);
             this.labelControl6.TabIndex = 0;
@@ -498,6 +513,7 @@
             // 
             // txtUrl
             // 
+            this.txtUrl.EditValue = "{0}";
             this.txtUrl.Location = new System.Drawing.Point(113, 245);
             this.txtUrl.Name = "txtUrl";
             this.txtUrl.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
@@ -533,9 +549,9 @@
             // panelControlAction
             // 
             this.panelControlAction.Controls.Add(this.btnStart);
-            this.panelControlAction.Location = new System.Drawing.Point(496, 313);
+            this.panelControlAction.Location = new System.Drawing.Point(501, 313);
             this.panelControlAction.Name = "panelControlAction";
-            this.panelControlAction.Size = new System.Drawing.Size(188, 88);
+            this.panelControlAction.Size = new System.Drawing.Size(183, 88);
             this.panelControlAction.TabIndex = 0;
             // 
             // btnStart
@@ -545,7 +561,7 @@
             this.btnStart.Appearance.Options.UseFont = true;
             this.btnStart.Appearance.Options.UseForeColor = true;
             this.btnStart.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
-            this.btnStart.Location = new System.Drawing.Point(11, 6);
+            this.btnStart.Location = new System.Drawing.Point(8, 6);
             this.btnStart.Name = "btnStart";
             this.btnStart.Size = new System.Drawing.Size(167, 77);
             this.btnStart.TabIndex = 12;
@@ -560,7 +576,7 @@
             this.groupControlFile.Controls.Add(this.txtPath);
             this.groupControlFile.Location = new System.Drawing.Point(3, 313);
             this.groupControlFile.Name = "groupControlFile";
-            this.groupControlFile.Size = new System.Drawing.Size(487, 87);
+            this.groupControlFile.Size = new System.Drawing.Size(492, 87);
             this.groupControlFile.TabIndex = 0;
             this.groupControlFile.Text = "Open File Excel (*.xlsx)";
             // 
@@ -587,7 +603,7 @@
             this.btnClear.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnClear.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnClear.ImageOptions.Image")));
             this.btnClear.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleLeft;
-            this.btnClear.Location = new System.Drawing.Point(397, 58);
+            this.btnClear.Location = new System.Drawing.Point(402, 58);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(84, 23);
             this.btnClear.TabIndex = 10;
@@ -603,7 +619,7 @@
             this.btnOpenFileExcel.Enabled = false;
             this.btnOpenFileExcel.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnOpenFileExcel.ImageOptions.Image")));
             this.btnOpenFileExcel.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleLeft;
-            this.btnOpenFileExcel.Location = new System.Drawing.Point(309, 58);
+            this.btnOpenFileExcel.Location = new System.Drawing.Point(314, 58);
             this.btnOpenFileExcel.Name = "btnOpenFileExcel";
             this.btnOpenFileExcel.Size = new System.Drawing.Size(84, 23);
             this.btnOpenFileExcel.TabIndex = 8;
@@ -618,7 +634,7 @@
             this.txtPath.Name = "txtPath";
             this.txtPath.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
             this.txtPath.Properties.Appearance.Options.UseFont = true;
-            this.txtPath.Size = new System.Drawing.Size(476, 26);
+            this.txtPath.Size = new System.Drawing.Size(481, 26);
             this.txtPath.TabIndex = 7;
             // 
             // xtraTabPageDesign
@@ -678,6 +694,7 @@
             this.lueThemes.Name = "lueThemes";
             this.lueThemes.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
             this.lueThemes.Properties.Appearance.Options.UseFont = true;
+            this.lueThemes.Properties.BestFitMode = DevExpress.XtraEditors.Controls.BestFitMode.BestFit;
             this.lueThemes.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
             this.lueThemes.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -685,9 +702,9 @@
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Id", "ID", 20, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Default),
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", 100, "Name")});
             this.lueThemes.Properties.DropDownRows = 10;
-            this.lueThemes.Properties.SearchMode = DevExpress.XtraEditors.Controls.SearchMode.AutoComplete;
             this.lueThemes.Size = new System.Drawing.Size(377, 28);
             this.lueThemes.TabIndex = 1;
+            this.lueThemes.EditValueChanged += new System.EventHandler(this.lueThemes_EditValueChanged);
             // 
             // xtraScrollableTheme
             // 
@@ -713,10 +730,10 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Auto TCProShirts - [1.0.0]";
             this.Load += new System.EventHandler(this.frmMain_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureShowImage.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
             this.groupControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureShowImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ckCheckAll.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPrice.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControlColor)).EndInit();
@@ -750,15 +767,12 @@
         }
 
         #endregion
-        private DevExpress.XtraEditors.PictureEdit pictureShowImage;
         private DevExpress.XtraEditors.GroupControl groupControl1;
         private DevExpress.XtraEditors.SimpleButton btnDesignNext;
         private DevExpress.XtraEditors.SimpleButton btnDesignBack;
         private DevExpress.XtraEditors.LookUpEdit info_cbbProduct;
         private DevExpress.XtraEditors.GroupControl groupControl5;
         private DevExpress.XtraEditors.ListBoxControl lsBoxLog;
-        private DevExpress.XtraEditors.SimpleButton simpleButton4;
-        private DevExpress.XtraEditors.SimpleButton simpleButton3;
         private DevExpress.XtraTab.XtraTabControl xtraTabControlMain;
         private DevExpress.XtraTab.XtraTabPage xtraTabPageDesign;
         private DevExpress.XtraTab.XtraTabPage xtraTabPageUpload;
@@ -796,6 +810,10 @@
         private DevExpress.XtraEditors.CheckEdit ckCheckAll;
         private DevExpress.XtraEditors.SimpleButton btnClearThemes;
         private DevExpress.XtraEditors.SimpleButton btnSaveThemes;
+        private DevExpress.XtraEditors.SimpleButton simpleButton4;
+        private DevExpress.XtraEditors.SimpleButton simpleButton3;
+        private System.Windows.Forms.PictureBox pictureShowImage;
+        private DevExpress.XtraEditors.SimpleButton btnViewHashPass;
     }
 }
 

@@ -37,7 +37,7 @@ namespace TCProShirts
             frm.SetCaption("Login");
             frm.SetDescription("Connecting...");
             var username = txtUserName.Text.Trim();
-            var password = txtPassword.Text.Trim();
+            var password = txtPassword.Text.Trim(); // ApplicationLibary.Base64Decode("");
             var urlLogin = "https://pro.teechip.com/manager/auth/login";
             var data2Send = "{\"email\":\""+ username + "\",\"password\":\""+ password + "\"}";
             Thread t = new Thread(new ThreadStart(()=> {
@@ -76,6 +76,7 @@ namespace TCProShirts
                     User.PayableId = obj["payable"]["payableId"].ToString();
                     User.Authorization = "Basic " + ApplicationLibary.Base64Encode(":" + User.ApiKey);
                     User.UnAuthorization = "Basic " + ApplicationLibary.Base64Encode("undefined:" + User.ApiKey);
+                    User.HasPassword = ApplicationLibary.Base64Encode(password);
                     frm.Invoke((MethodInvoker)delegate { frm.Close(); });
                     if (senduser != null)
                     {
@@ -173,6 +174,18 @@ namespace TCProShirts
             dataReturn.Add("data", htmlString);
 
             return dataReturn;
+        }
+
+        private void txtUserName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+                txtPassword.Focus();
+        }
+
+        private void txtPassword_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+                btnLogin.PerformClick();
         }
     }
 }

@@ -43,6 +43,7 @@
             // 
             // txtUserName
             // 
+            this.txtUserName.EditValue = "lchoang1995@gmail.com";
             this.txtUserName.Location = new System.Drawing.Point(18, 196);
             this.txtUserName.Name = "txtUserName";
             this.txtUserName.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 14F);
@@ -51,9 +52,11 @@
             this.txtUserName.Properties.Appearance.Options.UseForeColor = true;
             this.txtUserName.Size = new System.Drawing.Size(239, 30);
             this.txtUserName.TabIndex = 1;
+            this.txtUserName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtUserName_KeyPress);
             // 
             // txtPassword
             // 
+            this.txtPassword.EditValue = "Thienan@111";
             this.txtPassword.Location = new System.Drawing.Point(18, 253);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 14F);
@@ -63,6 +66,7 @@
             this.txtPassword.Properties.PasswordChar = '•';
             this.txtPassword.Size = new System.Drawing.Size(239, 30);
             this.txtPassword.TabIndex = 2;
+            this.txtPassword.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPassword_KeyPress);
             // 
             // labelControl1
             // 
@@ -137,6 +141,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(274, 431);
+            this.ControlBox = false;
             this.Controls.Add(this.pictureEdit1);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.labelControl2);

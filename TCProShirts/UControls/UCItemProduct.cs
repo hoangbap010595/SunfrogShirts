@@ -65,13 +65,7 @@ namespace TCProShirts.UControls
                     return;
                 try
                 {
-                    var request = WebRequest.Create(Product.Colors[0].Image);
-
-                    using (var response = request.GetResponse())
-                    using (var stream = response.GetResponseStream())
-                    {
-                        productImage.Invoke((MethodInvoker)delegate { productImage.Image = Bitmap.FromStream(stream); });
-                    }
+                    pictureBoxImage.ImageLocation = Product.Colors[0].Image;
                 }
                 catch { }
             }));

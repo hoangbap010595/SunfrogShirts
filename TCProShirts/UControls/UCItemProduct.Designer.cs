@@ -28,27 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.productImage = new DevExpress.XtraEditors.PictureEdit();
             this.productTitleName = new DevExpress.XtraEditors.LabelControl();
             this.separatorControl1 = new DevExpress.XtraEditors.SeparatorControl();
             this.productPrice = new DevExpress.XtraEditors.LabelControl();
-            ((System.ComponentModel.ISupportInitialize)(this.productImage.Properties)).BeginInit();
+            this.pictureBoxImage = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.separatorControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxImage)).BeginInit();
             this.SuspendLayout();
-            // 
-            // productImage
-            // 
-            this.productImage.Cursor = System.Windows.Forms.Cursors.Default;
-            this.productImage.Location = new System.Drawing.Point(12, 7);
-            this.productImage.Name = "productImage";
-            this.productImage.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
-            this.productImage.Properties.Appearance.Options.UseBackColor = true;
-            this.productImage.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.productImage.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
-            this.productImage.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Stretch;
-            this.productImage.Properties.ZoomAccelerationFactor = 1D;
-            this.productImage.Size = new System.Drawing.Size(90, 110);
-            this.productImage.TabIndex = 0;
             // 
             // productTitleName
             // 
@@ -86,33 +72,43 @@
             this.productPrice.TabIndex = 2;
             this.productPrice.Text = "$10.00";
             // 
+            // pictureBoxImage
+            // 
+            this.pictureBoxImage.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBoxImage.InitialImage = null;
+            this.pictureBoxImage.Location = new System.Drawing.Point(13, 3);
+            this.pictureBoxImage.Name = "pictureBoxImage";
+            this.pictureBoxImage.Size = new System.Drawing.Size(93, 118);
+            this.pictureBoxImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxImage.TabIndex = 3;
+            this.pictureBoxImage.TabStop = false;
+            // 
             // UCItemProduct
             // 
             this.Appearance.BackColor = System.Drawing.Color.White;
             this.Appearance.Options.UseBackColor = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.pictureBoxImage);
             this.Controls.Add(this.productPrice);
             this.Controls.Add(this.separatorControl1);
             this.Controls.Add(this.productTitleName);
-            this.Controls.Add(this.productImage);
             this.Name = "UCItemProduct";
             this.Padding = new System.Windows.Forms.Padding(10);
             this.Size = new System.Drawing.Size(819, 126);
             this.Load += new System.EventHandler(this.UCItemProduct_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.UCItemProduct_Paint);
-            ((System.ComponentModel.ISupportInitialize)(this.productImage.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.separatorControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxImage)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private DevExpress.XtraEditors.PictureEdit productImage;
         private DevExpress.XtraEditors.LabelControl productTitleName;
         private DevExpress.XtraEditors.SeparatorControl separatorControl1;
         private DevExpress.XtraEditors.LabelControl productPrice;
+        private System.Windows.Forms.PictureBox pictureBoxImage;
     }
 }
