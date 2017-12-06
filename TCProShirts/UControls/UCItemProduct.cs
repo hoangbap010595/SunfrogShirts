@@ -59,7 +59,7 @@ namespace TCProShirts.UControls
             {
                 this.Invoke((MethodInvoker)delegate {
                     productTitleName.Text = Product.Name;
-                    productPrice.Text = "$" + Product.Price.ToString("N2");
+                    productPrice.Text = "$" + Product.Price;
                 });
                 if (Product.Colors.Count > 0 && Product.Colors[0].Image == "")
                     return;

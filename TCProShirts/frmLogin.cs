@@ -187,5 +187,15 @@ namespace TCProShirts
             if (e.KeyChar == 13)
                 btnLogin.PerformClick();
         }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void frmLogin_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

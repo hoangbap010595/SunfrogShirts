@@ -68,6 +68,7 @@
             this.groupControlFile = new DevExpress.XtraEditors.GroupControl();
             this.ckUsingFileUpload = new DevExpress.XtraEditors.CheckEdit();
             this.btnClear = new DevExpress.XtraEditors.SimpleButton();
+            this.btnWriteLog = new DevExpress.XtraEditors.SimpleButton();
             this.btnOpenFileExcel = new DevExpress.XtraEditors.SimpleButton();
             this.txtPath = new DevExpress.XtraEditors.TextEdit();
             this.xtraTabPageDesign = new DevExpress.XtraTab.XtraTabPage();
@@ -205,7 +206,7 @@
             // 
             // txtPrice
             // 
-            this.txtPrice.EditValue = "10.00";
+            this.txtPrice.EditValue = "1000";
             this.txtPrice.Location = new System.Drawing.Point(91, 575);
             this.txtPrice.Name = "txtPrice";
             this.txtPrice.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
@@ -572,6 +573,7 @@
             // 
             this.groupControlFile.Controls.Add(this.ckUsingFileUpload);
             this.groupControlFile.Controls.Add(this.btnClear);
+            this.groupControlFile.Controls.Add(this.btnWriteLog);
             this.groupControlFile.Controls.Add(this.btnOpenFileExcel);
             this.groupControlFile.Controls.Add(this.txtPath);
             this.groupControlFile.Location = new System.Drawing.Point(3, 313);
@@ -610,6 +612,21 @@
             this.btnClear.Text = "Log";
             this.btnClear.ToolTip = "Clear Log";
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            // 
+            // btnWriteLog
+            // 
+            this.btnWriteLog.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btnWriteLog.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
+            this.btnWriteLog.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnWriteLog.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnWriteLog.ImageOptions.Image")));
+            this.btnWriteLog.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleLeft;
+            this.btnWriteLog.Location = new System.Drawing.Point(226, 58);
+            this.btnWriteLog.Name = "btnWriteLog";
+            this.btnWriteLog.Size = new System.Drawing.Size(84, 23);
+            this.btnWriteLog.TabIndex = 8;
+            this.btnWriteLog.Text = "View log";
+            this.btnWriteLog.ToolTip = "Open File Data";
+            this.btnWriteLog.Click += new System.EventHandler(this.btnWriteLog_Click);
             // 
             // btnOpenFileExcel
             // 
@@ -814,6 +831,7 @@
         private DevExpress.XtraEditors.SimpleButton simpleButton3;
         private System.Windows.Forms.PictureBox pictureShowImage;
         private DevExpress.XtraEditors.SimpleButton btnViewHashPass;
+        private DevExpress.XtraEditors.SimpleButton btnWriteLog;
     }
 }
 

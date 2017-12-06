@@ -116,6 +116,17 @@ namespace TCProShirts
                 file.WriteLine(data);
             }
         }
+        public static string writeDataToFileText(string data)
+        {
+            var name = DateTime.Now.Ticks.ToString("x");
+            string fileName = Path.Combine(currentFolderUser, "TCP\\" + name + "_log.txt");
+            //if the file doesn't exist, create it
+            using (StreamWriter file = new StreamWriter(fileName, true))
+            {
+                file.WriteLine(data);
+            }
+            return fileName;
+        }
         public static List<Product> loadThemeSaveByName(string name)
         {
             try
