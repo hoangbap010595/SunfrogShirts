@@ -39,32 +39,27 @@ namespace TCProShirts
             var username = txtUserName.Text.Trim();
             var password = txtPassword.Text.Trim(); // ApplicationLibary.Base64Decode("");
             var urlLogin = "https://pro.teechip.com/manager/auth/login";
-            var data2Send = "{\"email\":\""+ username + "\",\"password\":\""+ password + "\"}";
-            Thread t = new Thread(new ThreadStart(()=> {
+            var data2Send = "{\"email\":\"" + username + "\",\"password\":\"" + password + "\"}";
+            Thread t = new Thread(new ThreadStart(() =>
+            {
                 try
                 {
-                    //Step 1
-                    HttpWebRequest wRequest = (HttpWebRequest)WebRequest.Create(urlLogin);
-                    wRequest.Host = "pro.teechip.com";
-                    wRequest.CookieContainer = new CookieContainer();
-                    Dictionary<string, object> stepLogin = GetDataAPI(wRequest);
-                    cookieApplication = (CookieContainer)stepLogin["cookies"];
-                    //Step 2
-                    HttpWebRequest wRequestLogin = (HttpWebRequest)WebRequest.Create(urlLogin);
-                    wRequestLogin.Referer = "https://pro.teechip.com/manager/auth/login";
-                    wRequestLogin.ContentType = "application/json";
-                    wRequestLogin.Host = "pro.teechip.com";
-                    wRequestLogin.CookieContainer = cookieApplication;
-                    wRequestLogin.Headers.Add("x-xsrf-token", currToken);
-                    Dictionary<string, object> step2Login = PostDataAPI(wRequestLogin, data2Send);
-                    cookieApplication = (CookieContainer)step2Login["cookies"];
-                    var rs = step2Login["data"].ToString();
-                    if (int.Parse(step2Login["status"].ToString()) == -1)
+
+                    var data1 = login(urlLogin, data2Send);
+                    var rs = data1["data"].ToString();
+                    if (int.Parse(data1["status"].ToString()) == -1)
                     {
-                        frm.Invoke((MethodInvoker)delegate { frm.Close(); });
-                        XtraMessageBox.Show("Sai thông tin tài khoản hoặc mật khẩu\n" + rs, "Thông báo");
-                        return;
+                        var data2Send2 = "{\"email\":\"" + username + "\",\"password\":\"" + ApplicationLibary.Base64Decode(password) + "\"}";
+                        var data2 = login(urlLogin, data2Send2);
+                        if (int.Parse(data2["status"].ToString()) == -1)
+                        {
+                            frm.Invoke((MethodInvoker)delegate { frm.Close(); });
+                            XtraMessageBox.Show("Sai thông tin tài khoản hoặc mật khẩu\n" + data2["data"], "Thông báo");
+                            return;
+                        }
+                        rs = data2["data"].ToString();
                     }
+                   
                     var obj = JObject.Parse(rs);
                     User.UserID = obj["_id"].ToString();
                     User.Email = obj["email"].ToString();
@@ -77,6 +72,7 @@ namespace TCProShirts
                     User.Authorization = "Basic " + ApplicationLibary.Base64Encode(":" + User.ApiKey);
                     User.UnAuthorization = "Basic " + ApplicationLibary.Base64Encode("undefined:" + User.ApiKey);
                     User.HasPassword = ApplicationLibary.Base64Encode(password);
+
                     frm.Invoke((MethodInvoker)delegate { frm.Close(); });
                     if (senduser != null)
                     {
@@ -87,10 +83,38 @@ namespace TCProShirts
                 catch (Exception ex)
                 {
                     XtraMessageBox.Show(ex.Message, "Error");
+                    frm.Invoke((MethodInvoker)delegate { frm.Close(); });
                 }
             }));
             t.Start();
             frm.ShowDialog();
+        }
+
+        private Dictionary<string, object> login(string urlLogin, string data2Send)
+        {
+            Dictionary<string, object> data = new Dictionary<string, object>();
+            //Step 1
+            HttpWebRequest wRequest = (HttpWebRequest)WebRequest.Create(urlLogin);
+            wRequest.Host = "pro.teechip.com";
+            wRequest.CookieContainer = new CookieContainer();
+            Dictionary<string, object> stepLogin = GetDataAPI(wRequest);
+            cookieApplication = (CookieContainer)stepLogin["cookies"];
+            //Step 2
+            HttpWebRequest wRequestLogin = (HttpWebRequest)WebRequest.Create(urlLogin);
+            wRequestLogin.Referer = "https://pro.teechip.com/manager/auth/login";
+            wRequestLogin.ContentType = "application/json";
+            wRequestLogin.Host = "pro.teechip.com";
+            wRequestLogin.CookieContainer = cookieApplication;
+            wRequestLogin.Headers.Add("x-xsrf-token", currToken);
+            Dictionary<string, object> step2Login = PostDataAPI(wRequestLogin, data2Send);
+            cookieApplication = (CookieContainer)step2Login["cookies"];
+            var rs = step2Login["data"].ToString();
+            var status = step2Login["status"].ToString();
+
+            data.Add("data", rs);
+            data.Add("status", status);
+
+            return data;
         }
 
         private Dictionary<string, object> PostDataAPI(HttpWebRequest wRequest, string data2Send)
@@ -195,7 +219,7 @@ namespace TCProShirts
 
         private void frmLogin_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Application.Exit();
+            //Application.Exit();
         }
     }
 }

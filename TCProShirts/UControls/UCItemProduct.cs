@@ -46,7 +46,7 @@ namespace TCProShirts.UControls
             for (int i = 11; i < Product.Colors.Count; i++)
             {
                 SolidBrush brush = new SolidBrush(ColorTranslator.FromHtml("#" + Product.Colors[i].Hex));
-                r = new Rectangle(140 + ((i-11) * 45) + 10, 90, 30, 30);
+                r = new Rectangle(140 + ((i - 11) * 45) + 10, 90, 30, 30);
                 e.Graphics.DrawEllipse(Pens.WhiteSmoke, r);
                 e.Graphics.FillEllipse(brush, r);
                 brush.Dispose();
@@ -57,7 +57,8 @@ namespace TCProShirts.UControls
         {
             Thread t = new Thread(new ThreadStart(() =>
             {
-                this.Invoke((MethodInvoker)delegate {
+                this.Invoke((MethodInvoker)delegate
+                {
                     productTitleName.Text = Product.Name;
                     productPrice.Text = "$" + Product.Price;
                 });
@@ -69,7 +70,7 @@ namespace TCProShirts.UControls
                 }
                 catch { }
             }));
-           
+
             t.Start();
         }
     }
