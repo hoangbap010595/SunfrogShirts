@@ -37,6 +37,7 @@ namespace TCProShirts
         private DataTable dtDataTemp;
         private List<UserControl> lsUserControlTheme = new List<UserControl>();
         private List<string> lsImageFileNames;
+        private string _IDDesign = "5a291e8b13725c5c1bf80020";
 
 
         private string POSTER = "{\"designId\":\"{0}\",\"entityId\":\"{1}\",\"printSize\":\"poster-standard\",\"id\":\"{2}-36710\",\"sides\":{\"front\":{\"artworkId\":\"{3}\",\"position\":{\"vertical\":{\"origin\":\"C\",\"offset\":0},\"horizontal\":{\"origin\":\"C\",\"offset\":0}},\"size\":{\"width\":0.85,\"unit\":\"percentage\"}}},\"handling\":\"default\"}";
@@ -45,7 +46,7 @@ namespace TCProShirts
         private string MUG = "{\"designId\":\"{0}\",\"entityId\":\"{1}\",\"printSize\":\"mug-standard\",\"id\":\"{2}-67858\",\"sides\":{\"front\":{\"artworkId\":\"{3}\",\"position\":{\"vertical\":{\"origin\":\"C\",\"offset\":0},\"horizontal\":{\"origin\":\"C\",\"offset\":-0.019047619047619035}},\"size\":{\"width\":0.9307932069690922,\"unit\":\"percentage\"}}},\"handling\":\"default\"}";
         private string GENRAL = "{\"designId\":\"{0}\",\"entityId\":\"{1}\",\"printSize\":\"general-standard\",\"id\":\"{2}-75642\",\"sides\":{\"front\":{\"artworkId\":\"{3}\",\"position\":{\"vertical\":{\"origin\":\"T\",\"offset\":2},\"horizontal\":{\"origin\":\"C\",\"offset\":0}},\"size\":{\"width\":14,\"unit\":\"inch\"}}},\"handling\":\"default\"}";
         private string HAT = "{\"designId\":\"{0}\",\"entityId\":\"{1}\",\"printSize\":\"hat-standard\",\"id\":\"{2}-21944\",\"sides\":{\"front\":{\"artworkId\":\"{3}\",\"position\":{\"vertical\":{\"origin\":\"T\",\"offset\":0},\"horizontal\":{\"origin\":\"C\",\"offset\":0}},\"size\":{\"width\":2.8083610329838917,\"unit\":\"inch\"}}},\"handling\":\"default\"}";
-
+        private string GENERAL_REDUCED = "{\"designId\":\"{0}\",\"entityId\":\"{1}}\",\"id\":\"{2}-94026\",\"printSize\":\"general-reduced\",\"sides\":{\"front\":{\"artworkId\":\"{3}\",\"position\":{\"vertical\":{\"origin\":\"T\",\"offset\":0},\"horizontal\":{\"origin\":\"C\",\"offset\":0}},\"size\":{\"width\":4,\"unit\":\"inch\"}}},\"handling\":\"default\"}";
         public frmMain()
         {
             InitializeComponent();
@@ -159,6 +160,7 @@ namespace TCProShirts
             if (lsUserControlTheme.Count == 0)
             {
                 XtraMessageBox.Show("No Style is not selected...!", "Message");
+                enableB(true);
                 return;
             }
             if (ckUsingFileUpload.Checked)
@@ -222,9 +224,8 @@ namespace TCProShirts
             var obj = info_cbbProduct.GetSelectedDataRow();
             p._Id = ((Product)obj)._Id;
             p.Name = ((Product)obj).Name;
-            p.Price = int.Parse(txtPrice.Text.Trim().Replace(".",string.Empty));
             p.Colors = new List<OColor>();
-
+            var price = txtPrice.Text.Trim().Replace(".", string.Empty);
             List<string> selColors = new List<string>();
             for (int i = 0; i < ckListBoxColor.Items.Count; i++)
             {
@@ -246,6 +247,7 @@ namespace TCProShirts
                 if (p._Id.Equals(item["_id"].ToString()))
                 {
                     p.PrintSize = item["printSize"].ToString();
+                    p.Price = (price == "" || price == "0" || price == "00") ? int.Parse(item["msrp"].ToString()) : int.Parse(price);
                     var colors = JArray.Parse(item["colors"].ToString());
                     foreach (var selcolor in selColors)
                     {
@@ -316,12 +318,16 @@ namespace TCProShirts
             try
             {
                 OpenFileDialog op = new OpenFileDialog();
-                op.Filter = "Excel .xlsx|*.xlsx|Excel .xls|*.xls";
+                op.Filter = "Excel .csv|*.csv|Excel .xlsx|*.xlsx|Excel .xls|*.xls";
                 if (DialogResult.OK == op.ShowDialog())
                 {
                     txtPath.Text = op.FileName;
                     dtDataTemp = new DataTable();
-                    dtDataTemp = ApplicationLibary.getDataExcelFromFileToDataTable(op.FileName);
+                    var x = Path.GetExtension(op.FileName);
+                    if (x == ".csv")
+                        dtDataTemp = ApplicationLibary.getDataExcelFromFileCSVToDataTable(op.FileName);
+                    else
+                        dtDataTemp = ApplicationLibary.getDataExcelFromFileToDataTable(op.FileName);
                     ApplicationLibary.writeLog(lsBoxLog, "Success " + dtDataTemp.Rows.Count + " record(s) is opened", 1);
                 }
             }
@@ -427,7 +433,8 @@ namespace TCProShirts
                     var uCategory = cate1;
                     var uUrl = item["URL"].ToString().ToLower();
                     var uStore = item["Store"].ToString();
-                    var uImage = item["Image"].ToString() + ".png";
+                    var image = item["Image"].ToString();
+                    var uImage = image.Split('.').Length == 1 ? image + ".png" : image;
                     var urlUploadImage = "https://scalable-licensing.s3.amazonaws.com/";
 
                     ApplicationLibary.writeLogThread(lsBoxLog, "Category: " + uCategory, 1);
@@ -435,7 +442,7 @@ namespace TCProShirts
                     //string fileUrl = @"C:\Users\HoangLe\Desktop\Up TC pro\PNG\da upload\4 CL031017.png";
                     if (!File.Exists(uImage))
                     {
-                        ApplicationLibary.writeLogThread(lsBoxLog, uImage + " - File do not exists in folder!", 2);
+                        ApplicationLibary.writeLogThread(lsBoxLog, "File do not exists in folder: [" + uImage + "]", 2);
                         continue;
                     }
                     string fileUrl = uImage;
@@ -487,7 +494,6 @@ namespace TCProShirts
                     #endregion
 
                     #region ===============Step 2: Create Design Line & Get DesignLine ID===============
-                    var _IDDesign = "5a2802a340a6095d0994c9b4";
                     Int32 unixTimestamp = (Int32)(DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
                     var data2SendLineIDPOSTER = @POSTER.Replace("{0}", _IDDesign).Replace("{1}", User.EntityID).Replace("{2}", unixTimestamp.ToString()).Replace("{3}", atworkID);
                     var data2SendLineIDCASE = @CASE.Replace("{0}", _IDDesign).Replace("{1}", User.EntityID).Replace("{2}", unixTimestamp.ToString()).Replace("{3}", atworkID);
@@ -495,29 +501,28 @@ namespace TCProShirts
                     var data2SendLineIDHAT = @HAT.Replace("{0}", _IDDesign).Replace("{1}", User.EntityID).Replace("{2}", unixTimestamp.ToString()).Replace("{3}", atworkID);
                     var data2SendLineIDGENRAL = @GENRAL.Replace("{0}", _IDDesign).Replace("{1}", User.EntityID).Replace("{2}", unixTimestamp.ToString()).Replace("{3}", atworkID);
                     var data2SendLineIDMUG = @MUG.Replace("{0}", _IDDesign).Replace("{1}", User.EntityID).Replace("{2}", unixTimestamp.ToString()).Replace("{3}", atworkID);
+                    var data2SendLineIDREDUCED = GENERAL_REDUCED.Replace("{0}", _IDDesign).Replace("{1}", User.EntityID).Replace("{2}", unixTimestamp.ToString()).Replace("{3}", atworkID);
 
                     //var data2SendLineID = "{\"designId\":\"" + _IDDesign + "\",\"entityId\":\"" + User.EntityID + "\",\"printSize\":\"general-standard\",\"id\":\"" + unixTimestamp + "-9779\",\"sides\":{\"front\":{\"artworkId\":\"" + atworkID + "\",\"position\":{\"vertical\":{\"origin\":\"T\",\"offset\":2},\"horizontal\":{\"origin\":\"C\",\"offset\":0}},\"size\":{\"width\":14,\"unit\":\"inch\"}}},\"handling\":\"default\"}";
-
-                    HttpWebRequest wLines = (HttpWebRequest)WebRequest.Create("https://api.scalablelicensing.com/rest/design-lines");
-                    wLines.Accept = "application/json, text/plain, */*";
-                    wLines.ContentType = "application/json";
-                    wLines.PreAuthenticate = true;
-                    wLines.Headers.Add("Authorization", User.Authorization);
-
-                    Dictionary<string, object> dataUploadLines = PostDataAPI(wLines, data2SendLineIDGENRAL);
-                    var rsUploadLines = dataUploadLines["data"].ToString();
-                    var statusLines = int.Parse(dataUploadLines["status"].ToString());
-                    if (statusLines == -1)
-                    {
-                        ApplicationLibary.writeLogThread(lsBoxLog, "Step 2: " + rsUploadLines, 2);
-                        return;
-                    }
-                    var objUploadLines = JObject.Parse(rsUploadLines);
-                    var _IDDesignLine = objUploadLines["_id"].ToString();
+                    Dictionary<string, object> lineID = new Dictionary<string, object>();
+                    if (lsUserControlTheme.Find(x => ((UCItemProduct)x).Product.PrintSize == "general-standard") != null)
+                        lineID.Add("LineIDGENRAL", getDesignLineID(data2SendLineIDGENRAL));
+                    if (lsUserControlTheme.Find(x => ((UCItemProduct)x).Product.PrintSize == "mug-standard") != null)
+                        lineID.Add("LineIDMUG", getDesignLineID(data2SendLineIDMUG));
+                    if (lsUserControlTheme.Find(x => ((UCItemProduct)x).Product.PrintSize == "poster-standard") != null)
+                        lineID.Add("LineIDPOSTER", getDesignLineID(data2SendLineIDPOSTER));
+                    if (lsUserControlTheme.Find(x => ((UCItemProduct)x).Product.PrintSize == "case-standard") != null)
+                        lineID.Add("LineIDCASE", getDesignLineID(data2SendLineIDCASE));
+                    if (lsUserControlTheme.Find(x => ((UCItemProduct)x).Product.PrintSize == "general-slim") != null)
+                        lineID.Add("LineIDGENERAL_SLIM", getDesignLineID(data2SendLineIDGENERAL_SLIM));
+                    if (lsUserControlTheme.Find(x => ((UCItemProduct)x).Product.PrintSize == "hat-standard") != null)
+                        lineID.Add("LineIDHAT", getDesignLineID(data2SendLineIDHAT));
+                    if (lsUserControlTheme.Find(x => ((UCItemProduct)x).Product.PrintSize == "general-reduced") != null)
+                        lineID.Add("LineIDREDUCED", getDesignLineID(data2SendLineIDREDUCED));
                     #endregion
                     //Step 3 -- Tham số cần truyền: 
                     //      1. productId, color, price: người dùng chọn
-                    var objIDReail = getAllRetailIDFromDesignID(_IDDesignLine);
+                    var objIDReail = getAllRetailIDFromDesignID(lineID);
 
                     if (string.IsNullOrEmpty(uUrl))
                         uUrl = string.Format("{0}", imgDessign.Split('.')[0].Replace(" ", "").Trim());
@@ -587,49 +592,54 @@ namespace TCProShirts
                     #endregion
 
                     #region ===============Step 1: Create Design & Get ID Design=============
-                    var data2SendUpload = "{\"name\":\"" + uTitle + "\",\"entityId\":\"" + User.EntityID + "\",\"tags\":{\"style\":[" + uCategory + "]}}";
-                    HttpWebRequest wCost = (HttpWebRequest)WebRequest.Create("https://api.scalablelicensing.com/rest/designs");
-                    wCost.Accept = "application/json, text/plain, */*";
-                    wCost.ContentType = "application/json";
-                    wCost.PreAuthenticate = true;
-                    wCost.Headers.Add("Authorization", User.Authorization);
+                    //var data2SendUpload = "{\"name\":\"" + uTitle + "\",\"entityId\":\"" + User.EntityID + "\",\"tags\":{\"style\":[" + uCategory + "]}}";
+                    //HttpWebRequest wCost = (HttpWebRequest)WebRequest.Create("https://api.scalablelicensing.com/rest/designs");
+                    //wCost.Accept = "application/json, text/plain, */*";
+                    //wCost.ContentType = "application/json";
+                    //wCost.PreAuthenticate = true;
+                    //wCost.Headers.Add("Authorization", User.Authorization);
 
-                    Dictionary<string, object> dataUpload = PostDataAPI(wCost, data2SendUpload);
-                    var rsUpload = dataUpload["data"].ToString();
-                    var statusUpload = int.Parse(dataUpload["status"].ToString());
-                    if (statusUpload == -1)
-                    {
-                        ApplicationLibary.writeLogThread(lsBoxLog, rsUpload, 2);
-                        return;
-                    }
-                    var objUpload = JObject.Parse(rsUpload);
-                    var _IDDesign = objUpload["_id"].ToString();
+                    //Dictionary<string, object> dataUpload = PostDataAPI(wCost, data2SendUpload);
+                    //var rsUpload = dataUpload["data"].ToString();
+                    //var statusUpload = int.Parse(dataUpload["status"].ToString());
+                    //if (statusUpload == -1)
+                    //{
+                    //    ApplicationLibary.writeLogThread(lsBoxLog, rsUpload, 2);
+                    //    return;
+                    //}
+                    //var objUpload = JObject.Parse(rsUpload);
+                    //var _IDDesign = objUpload["_id"].ToString();
                     #endregion
+                    Int32 unixTimestamp = (Int32)(DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
+                    var data2SendLineIDPOSTER = @POSTER.Replace("{0}", _IDDesign).Replace("{1}", User.EntityID).Replace("{2}", unixTimestamp.ToString()).Replace("{3}", atworkID);
+                    var data2SendLineIDCASE = @CASE.Replace("{0}", _IDDesign).Replace("{1}", User.EntityID).Replace("{2}", unixTimestamp.ToString()).Replace("{3}", atworkID);
+                    var data2SendLineIDGENERAL_SLIM = @GENERAL_SLIM.Replace("{0}", _IDDesign).Replace("{1}", User.EntityID).Replace("{2}", unixTimestamp.ToString()).Replace("{3}", atworkID);
+                    var data2SendLineIDHAT = @HAT.Replace("{0}", _IDDesign).Replace("{1}", User.EntityID).Replace("{2}", unixTimestamp.ToString()).Replace("{3}", atworkID);
+                    var data2SendLineIDGENRAL = @GENRAL.Replace("{0}", _IDDesign).Replace("{1}", User.EntityID).Replace("{2}", unixTimestamp.ToString()).Replace("{3}", atworkID);
+                    var data2SendLineIDMUG = @MUG.Replace("{0}", _IDDesign).Replace("{1}", User.EntityID).Replace("{2}", unixTimestamp.ToString()).Replace("{3}", atworkID);
+                    var data2SendLineIDREDUCED = GENERAL_REDUCED.Replace("{0}", _IDDesign).Replace("{1}", User.EntityID).Replace("{2}", unixTimestamp.ToString()).Replace("{3}", atworkID);
 
                     #region ===============Step 2: Create Design Line & Get DesignLine ID===============
-                    Int32 unixTimestamp = (Int32)(DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
-                    var data2SendLineID = "{\"designId\":\"" + _IDDesign + "\",\"entityId\":\"" + User.EntityID + "\",\"printSize\":\"general-standard\",\"id\":\"" + unixTimestamp + "-9779\",\"sides\":{\"front\":{\"artworkId\":\"" + atworkID + "\",\"position\":{\"vertical\":{\"origin\":\"T\",\"offset\":2},\"horizontal\":{\"origin\":\"C\",\"offset\":0}},\"size\":{\"width\":14,\"unit\":\"inch\"}}},\"handling\":\"default\"}";
-                    HttpWebRequest wLines = (HttpWebRequest)WebRequest.Create("https://api.scalablelicensing.com/rest/design-lines");
-                    wLines.Accept = "application/json, text/plain, */*";
-                    wLines.ContentType = "application/json";
-                    wLines.PreAuthenticate = true;
-                    wLines.Headers.Add("Authorization", User.Authorization);
-
-                    Dictionary<string, object> dataUploadLines = PostDataAPI(wLines, data2SendLineID);
-                    var rsUploadLines = dataUploadLines["data"].ToString();
-                    var statusLines = int.Parse(dataUploadLines["status"].ToString());
-                    if (statusLines == -1)
-                    {
-                        ApplicationLibary.writeLogThread(lsBoxLog, rsUploadLines, 2);
-                        return;
-                    }
-                    var objUploadLines = JObject.Parse(rsUploadLines);
-                    var _IDDesignLine = objUploadLines["_id"].ToString();
+                    Dictionary<string, object> lineID = new Dictionary<string, object>();
+                    if (lsUserControlTheme.Find(x => ((UCItemProduct)x).Product.PrintSize == "general-standard") != null)
+                        lineID.Add("LineIDGENRAL", getDesignLineID(data2SendLineIDGENRAL));
+                    if (lsUserControlTheme.Find(x => ((UCItemProduct)x).Product.PrintSize == "mug-standard") != null)
+                        lineID.Add("LineIDMUG", getDesignLineID(data2SendLineIDMUG));
+                    if (lsUserControlTheme.Find(x => ((UCItemProduct)x).Product.PrintSize == "poster-standard") != null)
+                        lineID.Add("LineIDPOSTER", getDesignLineID(data2SendLineIDPOSTER));
+                    if (lsUserControlTheme.Find(x => ((UCItemProduct)x).Product.PrintSize == "case-standard") != null)
+                        lineID.Add("LineIDCASE", getDesignLineID(data2SendLineIDCASE));
+                    if (lsUserControlTheme.Find(x => ((UCItemProduct)x).Product.PrintSize == "general-slim") != null)
+                        lineID.Add("LineIDGENERAL_SLIM", getDesignLineID(data2SendLineIDGENERAL_SLIM));
+                    if (lsUserControlTheme.Find(x => ((UCItemProduct)x).Product.PrintSize == "hat-standard") != null)
+                        lineID.Add("LineIDHAT", getDesignLineID(data2SendLineIDHAT));
+                    if (lsUserControlTheme.Find(x => ((UCItemProduct)x).Product.PrintSize == "general-reduced") != null)
+                        lineID.Add("LineIDREDUCED", getDesignLineID(data2SendLineIDREDUCED));
                     #endregion
 
                     //Step 3 -- Tham số cần truyền: 
                     //      1. productId, color, price: người dùng chọn
-                    var objIDReail = getAllRetailIDFromDesignID(_IDDesignLine);
+                    var objIDReail = getAllRetailIDFromDesignID(lineID);
 
                     //Step 4 -- Nhận giá trị 1 mảng _IDDesignRetail từ Step 3
                     var data2SendCampaigns = "{\"url\":\"" + uUrl + "\",\"title\":\"" + uTitle + "\",\"description\":\"" + uDescription + "\",\"duration\":24,\"policies\":{\"forever\":true,\"fulfillment\":24,\"private\":false,\"checkout\":\"direct\"},\"social\":{\"trackingTags\":{}},\"entityId\":\"" + User.EntityID + "\",\"upsells\":[],\"tags\":{\"style\":[" + uCategory + "]},\"related\": " + objIDReail + "}";
@@ -641,8 +651,28 @@ namespace TCProShirts
                 }
             }
         }
+        //Step 2: Get create Design Line & Get DesignLine ID
+        private string getDesignLineID(string data2Send)
+        {
+            HttpWebRequest wLines = (HttpWebRequest)WebRequest.Create("https://api.scalablelicensing.com/rest/design-lines");
+            wLines.Accept = "application/json, text/plain, */*";
+            wLines.ContentType = "application/json";
+            wLines.PreAuthenticate = true;
+            wLines.Headers.Add("Authorization", User.Authorization);
+
+            Dictionary<string, object> dataUploadLines = PostDataAPI(wLines, data2Send);
+            var rsUploadLines = dataUploadLines["data"].ToString();
+            var statusLines = int.Parse(dataUploadLines["status"].ToString());
+            if (statusLines == -1)
+            {
+                ApplicationLibary.writeLogThread(lsBoxLog, "Step 2: " + rsUploadLines, 2);
+                return "";
+            }
+            var objUploadLines = JObject.Parse(rsUploadLines);
+            return objUploadLines["_id"].ToString();
+        }
         //Step 3: Get Retail ID
-        private string getAllRetailIDFromDesignID(string designID)
+        private string getAllRetailIDFromDesignID(Dictionary<string, object> dataDesignID)
         {
             List<Dictionary<string, object>> lsData = new List<Dictionary<string, object>>();
             Dictionary<string, object> data;
@@ -651,6 +681,31 @@ namespace TCProShirts
             List<Dictionary<string, object>> themes = listCurrentThemes();
             foreach (Dictionary<string, object> item in themes)
             {
+                var designID = "";
+                switch (item["printSize"].ToString())
+                {
+                    case "mug-standard":
+                        designID = dataDesignID["LineIDMUG"].ToString();
+                        break;
+                    case "poster-standard":
+                        designID = dataDesignID["LineIDPOSTER"].ToString();
+                        break;
+                    case "case-standard":
+                        designID = dataDesignID["LineIDCASE"].ToString();
+                        break;
+                    case "general-slim":
+                        designID = dataDesignID["LineIDGENERAL_SLIM"].ToString();
+                        break;
+                    case "hat-standard":
+                        designID = dataDesignID["LineIDHAT"].ToString();
+                        break;
+                    case "general-reduced":
+                        designID = dataDesignID["LineIDREDUCED"].ToString();
+                        break;
+                    default:
+                        designID = dataDesignID["LineIDGENRAL"].ToString();
+                        break;
+                }
                 var colors = (List<string>)item["colors"];
                 foreach (string color in colors)
                 {
@@ -1011,7 +1066,9 @@ namespace TCProShirts
                 foreach (var color in currP.Colors)
                 {
                     lsColor.Add(color.Name);
+
                 }
+                data.Add("printSize", currP.PrintSize);
                 data.Add("productId", currP._Id);
                 data.Add("colors", lsColor);
                 data.Add("price", currP.Price);
@@ -1135,7 +1192,7 @@ namespace TCProShirts
             {
 
             }
-                
+
         }
     }
 }

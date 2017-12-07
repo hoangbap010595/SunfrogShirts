@@ -1,6 +1,7 @@
 [
   {
     "_id": "587d0d8ff43ea40e13382dad",
+    "price": 850,
     "printSize": "general-standard",
     "type": "shirt",
     "category": "garment",
@@ -503,6 +504,7 @@
   },
   {
     "_id": "587d0d8ff43ea40e13382dae",
+    "price": 850,
     "printSize": "general-standard",
     "type": "shirt",
     "category": "garment",
@@ -969,6 +971,7 @@
   },
   {
     "_id": "587d0d8ff43ea40e13382db3",
+    "price": 850,
     "printSize": "general-standard",
     "type": "shirt",
     "category": "garment",
@@ -1209,6 +1212,7 @@
   },
   {
     "_id": "587d0d90f43ea40e13382dc3",
+    "price": 850,
     "printSize": "mug-standard",
     "type": "mug",
     "category": "mug",
@@ -1362,6 +1366,7 @@
   },
   {
     "_id": "587d0d8ff43ea40e13382db2",
+    "price": 850,
     "printSize": "general-standard",
     "type": "shirt",
     "category": "garment",
@@ -1724,6 +1729,7 @@
   },
   {
     "_id": "587d0d8ff43ea40e13382daf",
+    "price": 850,
     "printSize": "general-standard",
     "type": "shirt",
     "category": "garment",
@@ -2082,6 +2088,7 @@
   },
   {
     "_id": "587d0d90f43ea40e13382dbc",
+    "price": 850,
     "printSize": "general-standard",
     "type": "tanktop",
     "category": "garment",
@@ -2312,6 +2319,7 @@
   },
   {
     "_id": "587d0d90f43ea40e13382dc2",
+    "price": 850,
     "printSize": "case-standard",
     "type": "case",
     "category": "case",
@@ -2876,6 +2884,7 @@
   },
   {
     "_id": "587d0d8ff43ea40e13382db1",
+    "price": 850,
     "printSize": "general-standard",
     "type": "hoodie",
     "category": "garment",
@@ -3270,6 +3279,7 @@
   },
   {
     "_id": "587d0d90f43ea40e13382db9",
+    "price": 850,
     "printSize": "general-standard",
     "type": "sweatshirt",
     "category": "garment",
@@ -3652,6 +3662,7 @@
   },
   {
     "_id": "587d0d8ff43ea40e13382db4",
+    "price": 850,
     "printSize": "general-standard",
     "type": "longsleeve",
     "category": "garment",
@@ -4014,6 +4025,7 @@
   },
   {
     "_id": "587d0d90f43ea40e13382db7",
+    "price": 850,
     "printSize": "general-standard",
     "type": "tanktop",
     "category": "garment",
@@ -4169,6 +4181,7 @@
   },
   {
     "_id": "587d0d90f43ea40e13382dba",
+    "price": 850,
     "printSize": "general-standard",
     "type": "tanktop",
     "category": "garment",
@@ -4248,6 +4261,7 @@
   },
   {
     "_id": "587d0d90f43ea40e13382dbe",
+    "price": 850,
     "printSize": "general-standard",
     "type": "shirt",
     "category": "garment",
@@ -4558,6 +4572,7 @@
   },
   {
     "_id": "587d0d90f43ea40e13382dc4",
+    "price": 850,
     "printSize": "poster-standard",
     "type": "poster",
     "category": "poster",
@@ -4776,6 +4791,7 @@
   },
   {
     "_id": "587d0d90f43ea40e13382dc5",
+    "price": 850,
     "printSize": "poster-standard",
     "type": "poster",
     "category": "poster",
@@ -4994,6 +5010,7 @@
   },
   {
     "_id": "587d0d90f43ea40e13382dc6",
+    "price": 850,
     "printSize": "poster-standard",
     "type": "poster",
     "category": "poster",
@@ -5212,6 +5229,7 @@
   },
   {
     "_id": "58b9458e9c17f1783b8603d2",
+    "price": 850,
     "type": "legging",
     "category": "garment",
     "printSize": "general-slim",
@@ -5271,6 +5289,7 @@
   },
   {
     "_id": "58a152f2866044456370c794",
+    "price": 850,
     "type": "tote",
     "category": "bag",
     "printSize": "general-standard",
@@ -5425,6 +5444,7 @@
   },
   {
     "_id": "58bb705c560d6013588a2b67",
+    "price": 850,
     "name": "Color Changing Mug",
     "code": "TC1002",
     "category": "mug",
@@ -5578,6 +5598,7 @@
   },
   {
     "_id": "58d5c9b9bb1c2a506ae7a940",
+    "price": 1495,
     "type": "creeper",
     "printSize": "general-reduced",
     "category": "garment",
@@ -5654,6 +5675,7 @@
   },
   {
     "_id": "58df289987b47d8b2cadbbc7",
+    "price": 850,
     "msrp": 1895,
     "type": "drawstring",
     "printSize": "general-standard",
@@ -5714,6 +5736,7 @@
   },
   {
     "_id": "58f1a70880aa26726c7770db",
+    "price": 850,
     "msrp": 1695,
     "type": "hat",
     "category": "hat",
@@ -5767,6 +5790,7 @@
   },
   {
     "_id": "58f1a70880aa26726c7770dd",
+    "price": 850,
     "msrp": 1795,
     "type": "hat",
     "category": "hat",

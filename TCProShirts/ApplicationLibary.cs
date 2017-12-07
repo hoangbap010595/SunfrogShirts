@@ -9,6 +9,7 @@ using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TCProShirts.Models;
@@ -62,7 +63,42 @@ namespace TCProShirts
 
             }
         }
+        public static DataTable getDataExcelFromFileCSVToDataTable(string filePath)
+        {
+            DataTable dt = new DataTable();
+            using (StreamReader reader = new StreamReader(filePath))
+            {
+                string line;
+                int column = 1;
+                while ((line = reader.ReadLine()) != null)
+                {
+                    //Define pattern
+                    Regex CSVParser = new Regex(",(?=(?:[^\"]*\"[^\"]*\")*(?![^\"]*\"))");
 
+                    //Separating columns to array
+                    string[] X = CSVParser.Split(line);
+                    if (column == 1)
+                    {
+                        for (int i = 0; i < X.Length; i++)
+                        {
+                            dt.Columns.Add(X[i] == "" ? "Column" + i : X[i]);
+                        }
+                        column++;
+                    }
+                    else
+                    {
+                        DataRow dr = dt.NewRow();
+                        for (int i = 0; i < X.Length; i++)
+                        {
+                            dr[i] = X[i];
+                        }
+                        dt.Rows.Add(dr);
+                    }
+                    /* Do something with X */
+                }
+            }
+            return dt;
+        }
         public static string Base64Encode(string plainText)
         {
             var plainTextBytes = System.Text.Encoding.UTF8.GetBytes(plainText);
