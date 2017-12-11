@@ -69,6 +69,12 @@
   <ItemGroup>
     <Compile Include="ApplicationUser.cs" />
     <Compile Include="ApplicationLibary.cs" />
+    <Compile Include="frmActive.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmActive.Designer.cs">
+      <DependentUpon>frmActive.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -105,6 +111,9 @@
     <Compile Include="UControls\UCItemProduct.Designer.cs">
       <DependentUpon>UCItemProduct.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="frmActive.resx">
+      <DependentUpon>frmActive.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmDialog.resx">
       <DependentUpon>frmDialog.cs</DependentUpon>
     </EmbeddedResource>

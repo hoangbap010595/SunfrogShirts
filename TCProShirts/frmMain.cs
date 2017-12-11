@@ -220,33 +220,37 @@ namespace TCProShirts
 
         private void loadDataToTable()
         {
-            int x1, x2;
+            int x1, x2, index;
+            index = 0;
             x1 = dtDataTemp.Rows.Count / 3;
             x2 = (dtDataTemp.Rows.Count - x1) / 2;
+
             Dictionary<string, object> data;
-            for (int i = 0; i < x1; i++)
+            for (; index < x1; index++)
             {
                 data = new Dictionary<string, object>();
                 for (int j = 0; j < dtDataTemp.Columns.Count; j++)
                 {
                     var col = dtDataTemp.Columns[j].ColumnName;
-                    var dr = dtDataTemp.Rows[i][col].ToString();
+                    var dr = dtDataTemp.Rows[index][col].ToString();
                     data.Add(col, dr);
                 }
                 dt1.Add(data);
             }
-            for (int i = x1; i < x2; i++)
+            var nextDT2 = x1 + x2;
+            for (; index < nextDT2; index++)
             {
                 data = new Dictionary<string, object>();
                 for (int j = 0; j < dtDataTemp.Columns.Count; j++)
                 {
                     var col = dtDataTemp.Columns[j].ColumnName;
-                    var dr = dtDataTemp.Rows[i][col].ToString();
+                    var dr = dtDataTemp.Rows[index][col].ToString();
                     data.Add(col, dr);
                 }
                 dt2.Add(data);
             }
-            for (int i = x2; i < dtDataTemp.Rows.Count; i++)
+
+            for (int i = nextDT2; i < dtDataTemp.Rows.Count; i++)
             {
                 data = new Dictionary<string, object>();
                 for (int j = 0; j < dtDataTemp.Columns.Count; j++)
@@ -382,6 +386,7 @@ namespace TCProShirts
                         dtDataTemp = ApplicationLibary.getDataExcelFromFileCSVToDataTable(op.FileName);
                     else
                         dtDataTemp = ApplicationLibary.getDataExcelFromFileToDataTable(op.FileName);
+                    loadDataToTable();
                     ApplicationLibary.writeLog(lsBoxLog, "Success " + dtDataTemp.Rows.Count + " record(s) is opened", 1);
                 }
             }

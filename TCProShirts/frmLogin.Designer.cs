@@ -51,6 +51,7 @@
             this.txtUserName.Properties.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtUserName.Properties.Appearance.Options.UseFont = true;
             this.txtUserName.Properties.Appearance.Options.UseForeColor = true;
+            this.txtUserName.Properties.ReadOnly = true;
             this.txtUserName.Size = new System.Drawing.Size(239, 30);
             this.txtUserName.TabIndex = 1;
             this.txtUserName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtUserName_KeyPress);
@@ -65,6 +66,7 @@
             this.txtPassword.Properties.Appearance.Options.UseFont = true;
             this.txtPassword.Properties.Appearance.Options.UseForeColor = true;
             this.txtPassword.Properties.PasswordChar = '•';
+            this.txtPassword.Properties.ReadOnly = true;
             this.txtPassword.Size = new System.Drawing.Size(239, 30);
             this.txtPassword.TabIndex = 2;
             this.txtPassword.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPassword_KeyPress);
@@ -176,6 +178,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmLogin_FormClosing);
+            this.Load += new System.EventHandler(this.frmLogin_Load);
             ((System.ComponentModel.ISupportInitialize)(this.txtUserName.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPassword.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).EndInit();

@@ -18,6 +18,16 @@ namespace TCProShirts
 {
     public static class ApplicationLibary
     {
+
+        public static bool getActive()
+        {
+            return TCProShirts.Properties.Settings.Default.IsActive;
+        }
+        public static void setActive(bool b)
+        {
+            TCProShirts.Properties.Settings.Default.IsActive = b;
+            TCProShirts.Properties.Settings.Default.Save();
+        }
         public static string ConvertImageToBase64(string path)
         {
             string base64String = string.Empty;
@@ -106,8 +116,15 @@ namespace TCProShirts
         }
         public static string Base64Decode(string base64EncodedData)
         {
-            var base64EncodedBytes = System.Convert.FromBase64String(base64EncodedData);
-            return System.Text.Encoding.UTF8.GetString(base64EncodedBytes);
+            try
+            {
+                var base64EncodedBytes = System.Convert.FromBase64String(base64EncodedData);
+                return System.Text.Encoding.UTF8.GetString(base64EncodedBytes);
+            }
+            catch
+            {
+                throw new Exception("Something's wrong. Please try again !");
+            }
         }
 
         public static void writeLog(this ListBoxControl lsbox, string message, int status)

@@ -33,11 +33,43 @@ namespace TCProShirts
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
+            try
+            {
+                var username = txtUserName.Text.Trim();
+                var password = txtPassword.Text.Trim(); // ApplicationLibary.Base64Decode("");
+                OpenFileDialog open = new OpenFileDialog();
+                if (DialogResult.OK == open.ShowDialog())
+                {
+                    string dataFile = File.ReadAllText(open.FileName);
+                    var encodeData = ApplicationLibary.Base64Decode(dataFile);
+                    JObject jObj = JObject.Parse(encodeData);
+
+                    var data = jObj["data"].ToString();
+                    var offset = jObj["offset"].ToString();
+
+                    var dataLogin = data.Remove(0, int.Parse(offset));
+                    var afterDecode = ApplicationLibary.Base64Decode(dataLogin);
+
+                    JObject jObjLogin = JObject.Parse(afterDecode);
+                    username = jObjLogin["username"].ToString();
+                    password = jObjLogin["password"].ToString();
+
+                }
+                if(username != "" && password != "")
+                {
+                    execLogin(username, password);
+                }
+            }catch(Exception ex)
+            {
+                XtraMessageBox.Show(ex.Message, "Message");
+            }
+        }
+        
+        private void execLogin(string username, string password)
+        {
             frmWait frm = new frmWait();
             frm.SetCaption("Login");
             frm.SetDescription("Connecting...");
-            var username = txtUserName.Text.Trim();
-            var password = txtPassword.Text.Trim(); // ApplicationLibary.Base64Decode("");
             var urlLogin = "https://pro.teechip.com/manager/auth/login";
             var data2Send = "{\"email\":\"" + username + "\",\"password\":\"" + password + "\"}";
             Thread t = new Thread(new ThreadStart(() =>
@@ -59,7 +91,7 @@ namespace TCProShirts
                         }
                         rs = data2["data"].ToString();
                     }
-                   
+
                     var obj = JObject.Parse(rs);
                     User.UserID = obj["_id"].ToString();
                     User.Email = obj["email"].ToString();
@@ -89,7 +121,6 @@ namespace TCProShirts
             t.Start();
             frm.ShowDialog();
         }
-
         private Dictionary<string, object> login(string urlLogin, string data2Send)
         {
             Dictionary<string, object> data = new Dictionary<string, object>();
@@ -219,7 +250,17 @@ namespace TCProShirts
 
         private void frmLogin_FormClosing(object sender, FormClosingEventArgs e)
         {
+            //Application.ExitThread();
             //Application.Exit();
+        }
+
+        private void frmLogin_Load(object sender, EventArgs e)
+        {
+            if (!ApplicationLibary.getActive())
+            {
+                frmActive frm = new frmActive();
+                frm.ShowDialog();
+            }
         }
     }
 }
