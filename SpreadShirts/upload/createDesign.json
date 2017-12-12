@@ -1,6 +1,6 @@
 ﻿{
   "commission": {
-    "amount": 0,
+    "amount": 0,//Tiền
     "currencyId": "3"
   },
   "publishingDetails": [ ],
@@ -8,12 +8,12 @@
   "id": "5a0ac4a0aa0c6d5484cf1e98",//ID designs
   "userId": "302719724",
   "state": "ACTIVE",
-  "mainDesignId": "1013521844",
+  "mainDesignId": "1013521844", //designId
   "translations": [
     {
-      "name": "2 PT011117",
-      "description": "hoanádfákdjf",
-      "tags": [ "ádlfkjádf", "ádfọiádò", "áodịaádò", "ádfjádfkjádf", "a", "LeCongHoang" ],
+      "name": "2 PT011117", // Tên
+      "description": "hoanádfákdjf",// Mô tả
+      "tags": [ "ádlfkjádf", "ádfọiádò", "áodịaádò", "ádfjádfkjádf", "a", "LeCongHoang" ],//Tag
       "locale": "en_US",
       "autotranslated": false
     }
@@ -3386,9 +3386,9 @@
       "mediaType": "json",
       "locale": "us_US",
       "reductions": true,
-      "apiKey": "912dac48-fb39-4aef-af8c-d1260755bcad",
-      "sig": "f42055bf4d757f036d5046f19870eca51adf5e60",
-      "time": 1510629925587
+      "apiKey": "912dac48-fb39-4aef-af8c-d1260755bcad", //Api Key
+      "sig": "f42055bf4d757f036d5046f19870eca51adf5e60", // SIG
+      "time": 1510629925587 //Time span
     },
     "restangularized": true,
     "fromServer": true,
@@ -3400,7 +3400,7 @@
           "route": "users",
           "parentResource": null
         },
-        "id": "302719724",
+        "id": "302719724", //ID User
         "href": "https://partner.spreadshirt.com/api/v1/users/302719724"
       },
       "id": "5a0ac4a0aa0c6d5484cf1e98",
