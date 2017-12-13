@@ -133,8 +133,7 @@ namespace TCProShirts
                 {
                     File.Delete(path);
                 }
-                string text = "No";
-                int i = 1;
+                string text = "";
                 foreach (DataColumn col in data.Columns)
                 {
                     text += "," + col.ColumnName;
@@ -142,12 +141,11 @@ namespace TCProShirts
                 text += "\r\n";
                 foreach (DataRow dr in data.Rows)
                 {
-                    text += i;
+                    text += "";
                     foreach (DataColumn col in data.Columns)
                     {
-                        text += "," + dr[col].ToString().Replace("\n", "").Replace("\r", "");
+                        text += "," + dr[col].ToString().Replace("\n", "").Replace("\r", "").Trim();
                     }
-                    i++;
                     text += "\r\n";
                 }
                 File.AppendAllText(path, text);

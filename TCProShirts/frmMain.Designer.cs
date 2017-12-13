@@ -562,9 +562,9 @@
             this.btnStart.Appearance.Options.UseFont = true;
             this.btnStart.Appearance.Options.UseForeColor = true;
             this.btnStart.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
-            this.btnStart.Location = new System.Drawing.Point(8, 6);
+            this.btnStart.Location = new System.Drawing.Point(8, 7);
             this.btnStart.Name = "btnStart";
-            this.btnStart.Size = new System.Drawing.Size(167, 77);
+            this.btnStart.Size = new System.Drawing.Size(167, 76);
             this.btnStart.TabIndex = 12;
             this.btnStart.Text = "Start";
             this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
