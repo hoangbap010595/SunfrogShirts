@@ -109,6 +109,51 @@ namespace TCProShirts
             }
             return dt;
         }
+        public static void setDataExcelToFileCSV(string path, string data)
+        {
+            if (!File.Exists(path))
+            {
+                string clientHeader = "Image,Title,Description,Category,URL,Store,Status" + Environment.NewLine;
+
+                File.WriteAllText(path, clientHeader);
+            }
+
+            File.AppendAllText(path, data);
+        }
+        public static void saveDataTableToFileCSV(string path, DataTable data)
+        {
+            try
+            {
+                string ex1 = Path.GetExtension(path);
+                if (ex1 != ".csv")
+                {
+                    path = Path.GetDirectoryName(path) + "\\" + Path.GetFileName(path).Split('.')[0] + "_copy.csv";
+                }
+                if (File.Exists(path))
+                {
+                    File.Delete(path);
+                }
+                string text = "No";
+                int i = 1;
+                foreach (DataColumn col in data.Columns)
+                {
+                    text += "," + col.ColumnName;
+                }
+                text += "\r\n";
+                foreach (DataRow dr in data.Rows)
+                {
+                    text += i;
+                    foreach (DataColumn col in data.Columns)
+                    {
+                        text += "," + dr[col].ToString().Replace("\n", "").Replace("\r", "");
+                    }
+                    i++;
+                    text += "\r\n";
+                }
+                File.AppendAllText(path, text);
+            }
+            catch { }
+        }
         public static string Base64Encode(string plainText)
         {
             var plainTextBytes = System.Text.Encoding.UTF8.GetBytes(plainText);

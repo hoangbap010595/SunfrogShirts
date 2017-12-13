@@ -10,7 +10,6 @@ namespace TCProShirts
     {
         public string UserID { get; set; }
         public string Email { get; set; }
-        public string Code { get; set; }
         public string ApiKey { get; set; }
         public string ViewOnlyApiKey { get; set; }
         public string GroupID { get; set; }

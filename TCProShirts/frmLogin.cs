@@ -95,12 +95,12 @@ namespace TCProShirts
                     var obj = JObject.Parse(rs);
                     User.UserID = obj["_id"].ToString();
                     User.Email = obj["email"].ToString();
-                    User.Code = obj["referralCode"].ToString();
+                    //User.Code = obj["referralCode"].ToString();
                     User.ApiKey = obj["apiKey"].ToString();
-                    User.ViewOnlyApiKey = obj["viewOnlyApiKey"].ToString();
+                    //User.ViewOnlyApiKey = obj["viewOnlyApiKey"].ToString();
                     User.GroupID = obj["groupId"].ToString();
                     User.EntityID = obj["entities"][0]["entityId"].ToString();
-                    User.PayableId = obj["payable"]["payableId"].ToString();
+                    //User.PayableId = obj["payable"]["payableId"].ToString();
                     User.Authorization = "Basic " + ApplicationLibary.Base64Encode(":" + User.ApiKey);
                     User.UnAuthorization = "Basic " + ApplicationLibary.Base64Encode("undefined:" + User.ApiKey);
                     User.HasPassword = ApplicationLibary.Base64Encode(password);

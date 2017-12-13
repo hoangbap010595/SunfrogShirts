@@ -40,6 +40,7 @@ namespace TCProShirts
         private List<Dictionary<string, object>> dt3 = new List<Dictionary<string, object>>();
         private List<UserControl> lsUserControlTheme = new List<UserControl>();
         private List<string> lsImageFileNames;
+        private int currentIndexUpload = -1;
         //private string _IDDesign = "5a291e8b13725c5c1bf80020";
 
         private string POSTER = "{\"designId\":\"{0}\",\"entityId\":\"{1}\",\"printSize\":\"poster-standard\",\"id\":\"{2}-36710\",\"sides\":{\"front\":{\"artworkId\":\"{3}\",\"position\":{\"vertical\":{\"origin\":\"C\",\"offset\":0},\"horizontal\":{\"origin\":\"C\",\"offset\":0}},\"size\":{\"width\":0.85,\"unit\":\"percentage\"}}},\"handling\":\"default\"}";
@@ -67,16 +68,21 @@ namespace TCProShirts
                 this.Close();
             }
         }
+        private void testSaveFile()
+        {
+            ApplicationLibary.saveDataTableToFileCSV(txtPath.Text, dtDataTemp);
+        }
         private void frmMain_Load(object sender, EventArgs e)
         {
+            //btnLogin_Click(sender, e);
             User = new ApplicationUser();
-            frmLogin frm = new frmLogin();
-            frm.senduser = new frmLogin.SendUser(getUser);
-            frm.ShowDialog();
-            //Test
+            //frmLogin frm = new frmLogin();
+            //frm.senduser = new frmLogin.SendUser(getUser);
+            //frm.ShowDialog();
             loadBulkProduct();
             loadBulkCategory();
             loadBulkThemes();
+      
         }
         #region =======LoadData=======
         private void loadBulkProduct()
@@ -116,7 +122,8 @@ namespace TCProShirts
         private void btnLogin_Click(object sender, EventArgs e)
         {
             var urlLogin = "https://pro.teechip.com/manager/auth/login";
-            var data2Send = "{\"email\":\"lchoang1995@gmail.com\",\"password\":\"Thienan@111\"}";
+            //var data2Send = "{\"email\":\"lchoang1995@gmail.com\",\"password\":\"Thienan@111\"}";
+            var data2Send = "{\"email\":\"quach555@yahoo.com\",\"password\":\"quach555\"}";
             //Step 1
             HttpWebRequest wRequest = (HttpWebRequest)WebRequest.Create(urlLogin);
             wRequest.Host = "pro.teechip.com";
@@ -141,19 +148,17 @@ namespace TCProShirts
             var obj = JObject.Parse(rs);
             User.UserID = obj["_id"].ToString();
             User.Email = obj["email"].ToString();
-            User.Code = obj["referralCode"].ToString();
             User.ApiKey = obj["apiKey"].ToString();
-            User.ViewOnlyApiKey = obj["viewOnlyApiKey"].ToString();
+            //User.ViewOnlyApiKey = obj["viewOnlyApiKey"].ToString();
             User.GroupID = obj["groupId"].ToString();
             User.EntityID = obj["entities"][0]["entityId"].ToString();
-            User.PayableId = obj["payable"]["payableId"].ToString();
             User.Authorization = "Basic " + ApplicationLibary.Base64Encode(":" + User.ApiKey);
             User.UnAuthorization = "Basic " + ApplicationLibary.Base64Encode("undefined:" + User.ApiKey);
             ApplicationLibary.writeLog(lsBoxLog, "Login Successfully", 1);
         }
         private void btnStart_Click(object sender, EventArgs e)
         {
-            //btnLogin_Click(sender, e);
+            currentIndexUpload = -1;
             enableB(false);
             if (lsUserControlTheme.Count == 0)
             {
@@ -388,6 +393,7 @@ namespace TCProShirts
                         dtDataTemp = ApplicationLibary.getDataExcelFromFileToDataTable(op.FileName);
                     loadDataToTable();
                     ApplicationLibary.writeLog(lsBoxLog, "Success " + dtDataTemp.Rows.Count + " record(s) is opened", 1);
+                   // testSaveFile();
                 }
             }
             catch (Exception ex)
@@ -584,6 +590,11 @@ namespace TCProShirts
                     //Step 4 -- Nhận giá trị 1 mảng _IDDesignRetail từ Step 3
                     var data2SendCampaigns = "{\"url\":\"" + uUrl + "\",\"title\":\"" + uTitle + "\",\"description\":\"" + uDescription + "\",\"duration\":24,\"policies\":{\"forever\":true,\"fulfillment\":24,\"private\":false,\"checkout\":\"direct\"},\"social\":{\"trackingTags\":{}},\"entityId\":\"" + User.EntityID + "\",\"upsells\":[],\"tags\":{\"style\":[" + uCategory + "]},\"related\": " + objIDReail + "}";
                     finishUploadImage(data2SendCampaigns, uImage);
+                    currentIndexUpload++;
+                    if (currentIndexUpload % 5 == 0)
+                    {
+                        ApplicationLibary.saveDataTableToFileCSV(txtPath.Text, dtDataTemp);
+                    }
                 }
                 catch (Exception ex)
                 {
