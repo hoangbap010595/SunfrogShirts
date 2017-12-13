@@ -28,7 +28,6 @@ namespace TCProShirts
         public frmLogin()
         {
             InitializeComponent();
-            User = new ApplicationUser();
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
@@ -91,7 +90,7 @@ namespace TCProShirts
                         }
                         rs = data2["data"].ToString();
                     }
-
+                    User = new ApplicationUser();
                     var obj = JObject.Parse(rs);
                     User.UserID = obj["_id"].ToString();
                     User.Email = obj["email"].ToString();
@@ -250,8 +249,11 @@ namespace TCProShirts
 
         private void frmLogin_FormClosing(object sender, FormClosingEventArgs e)
         {
-            //Application.ExitThread();
-            //Application.Exit();
+            if (User == null)
+            {
+                Application.ExitThread();
+                Application.Exit();
+            }
         }
 
         private void frmLogin_Load(object sender, EventArgs e)

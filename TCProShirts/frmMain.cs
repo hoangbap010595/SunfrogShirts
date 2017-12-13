@@ -76,9 +76,9 @@ namespace TCProShirts
         {
             //btnLogin_Click(sender, e);
             User = new ApplicationUser();
-            //frmLogin frm = new frmLogin();
-            //frm.senduser = new frmLogin.SendUser(getUser);
-            //frm.ShowDialog();
+            frmLogin frm = new frmLogin();
+            frm.senduser = new frmLogin.SendUser(getUser);
+            frm.ShowDialog();
             loadBulkProduct();
             loadBulkCategory();
             loadBulkThemes();
