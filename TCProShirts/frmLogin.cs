@@ -75,7 +75,6 @@ namespace TCProShirts
             {
                 try
                 {
-
                     var data1 = login(urlLogin, data2Send);
                     var rs = data1["data"].ToString();
                     if (int.Parse(data1["status"].ToString()) == -1)

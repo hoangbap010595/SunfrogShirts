@@ -1,5 +1,6 @@
 ﻿using DevExpress.XtraEditors;
 using ExcelDataReader;
+using Microsoft.VisualBasic.FileIO;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -75,40 +76,51 @@ namespace TCProShirts
         }
         public static DataTable getDataExcelFromFileCSVToDataTable(string filePath)
         {
-            DataTable dt = new DataTable();
-            using (StreamReader reader = new StreamReader(filePath))
-            {
-                string line;
-                int column = 1;
-                while ((line = reader.ReadLine()) != null)
-                {
-                    //Define pattern
-                    Regex CSVParser = new Regex(",(?=(?:[^\"]*\"[^\"]*\")*(?![^\"]*\"))");
+            // Return the values.
+            return GetDataTabletFromCSVFile(filePath);
+        }
 
-                    //Separating columns to array
-                    string[] X = CSVParser.Split(line);
-                    if (column == 1)
+        private static DataTable GetDataTabletFromCSVFile(string csv_file_path)
+
+        {
+
+            DataTable csvData = new DataTable();
+            try
+            {
+                using (TextFieldParser csvReader = new TextFieldParser(csv_file_path))
+                {
+                    csvReader.SetDelimiters(new string[] { "," });
+                    csvReader.HasFieldsEnclosedInQuotes = true;
+                    string[] colFields = csvReader.ReadFields();
+                    foreach (string column in colFields)
                     {
-                        for (int i = 0; i < X.Length; i++)
-                        {
-                            dt.Columns.Add(X[i] == "" ? "Column" + i : X[i]);
-                        }
-                        column++;
+                        DataColumn datecolumn = new DataColumn(column);
+                        datecolumn.AllowDBNull = true;
+                        csvData.Columns.Add(datecolumn);
                     }
-                    else
+                    while (!csvReader.EndOfData)
                     {
-                        DataRow dr = dt.NewRow();
-                        for (int i = 0; i < X.Length; i++)
+                        string[] fieldData = csvReader.ReadFields();
+                        //Making empty value as null
+                        for (int i = 0; i < fieldData.Length; i++)
                         {
-                            dr[i] = X[i];
+                            if (fieldData[i] == "")
+                            {
+                                fieldData[i] = null;
+                            }
                         }
-                        dt.Rows.Add(dr);
+                        csvData.Rows.Add(fieldData);
                     }
-                    /* Do something with X */
                 }
             }
-            return dt;
+            catch (Exception ex)
+            {
+
+            }
+            return csvData;
+
         }
+
         public static void setDataExcelToFileCSV(string path, string data)
         {
             if (!File.Exists(path))

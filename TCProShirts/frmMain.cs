@@ -74,6 +74,7 @@ namespace TCProShirts
         }
         private void frmMain_Load(object sender, EventArgs e)
         {
+            //string a = getStringCategory("fish","hunting");
             //btnLogin_Click(sender, e);
             User = new ApplicationUser();
             frmLogin frm = new frmLogin();
@@ -175,16 +176,16 @@ namespace TCProShirts
                     enableB(true);
                 }
 
-                Thread tStart = new Thread(new ThreadStart(() =>
-                {
-                    Thread.Sleep(800);
-                    UploadFromFile(dt1);
-                }));
-                tStart.Start();
+                //Thread tStart = new Thread(new ThreadStart(() =>
+                //{
+                //    Thread.Sleep(800);
+                //    UploadFromFile(dt1);
+                //}));
+                //tStart.Start();
 
                 Thread tStart1 = new Thread(new ThreadStart(() =>
                 {
-                    UploadFromFile2(dt2);
+                    UploadFromFile(dt2);
                     btnStart.Invoke((MethodInvoker)delegate { btnStart.Enabled = true; });
                     btnViewData.Invoke((MethodInvoker)delegate { btnViewData.Enabled = true; });
                     btnApplyTheme.Invoke((MethodInvoker)delegate { btnApplyTheme.Enabled = true; });
@@ -216,25 +217,25 @@ namespace TCProShirts
             }
         }
 
-        private void loadDataToTable()
+        private void loadDataToTable(DataTable dt)
         {
             int x1, index;
             index = 0;
-            x1 = dtDataTemp.Rows.Count / 2;
+            x1 = dt.Rows.Count / 2;
 
             Dictionary<string, object> data;
-            for (; index < x1; index++)
-            {
-                data = new Dictionary<string, object>();
-                for (int j = 0; j < dtDataTemp.Columns.Count; j++)
-                {
-                    var col = dtDataTemp.Columns[j].ColumnName;
-                    var dr = dtDataTemp.Rows[index][col].ToString();
-                    data.Add(col, dr);
-                }
-                dt1.Add(data);
-            }
-            for (; index < dtDataTemp.Rows.Count; index++)
+            //for (; index < x1; index++)
+            //{
+            //    data = new Dictionary<string, object>();
+            //    for (int j = 0; j < dtDataTemp.Columns.Count; j++)
+            //    {
+            //        var col = dtDataTemp.Columns[j].ColumnName;
+            //        var dr = dtDataTemp.Rows[index][col].ToString();
+            //        data.Add(col, dr);
+            //    }
+            //    dt1.Add(data);
+            //}
+            for (; index < dt.Rows.Count; index++)
             {
                 data = new Dictionary<string, object>();
                 for (int j = 0; j < dtDataTemp.Columns.Count; j++)
@@ -373,7 +374,7 @@ namespace TCProShirts
                         dtDataTemp = ApplicationLibary.getDataExcelFromFileCSVToDataTable(op.FileName);
                     else
                         dtDataTemp = ApplicationLibary.getDataExcelFromFileToDataTable(op.FileName);
-                    loadDataToTable();
+                    loadDataToTable(dtDataTemp);
                     ApplicationLibary.writeLog(lsBoxLog, "Success " + dtDataTemp.Rows.Count + " record(s) is opened", 1);
                     // testSaveFile();
                 }
@@ -471,9 +472,9 @@ namespace TCProShirts
                     currentIndexUpload++;
                     var uTitle = item["Title"];
                     var uDescription = @"<div>" + item["Description"].ToString().Trim() + "</div>";
-                    var cate1 = ApplicationLibary.convertStringToJson(getStringCategory(item["Category"].ToString()));
-                    var cate2 = ApplicationLibary.convertStringToJson(getStringCategory(item["Category2"].ToString()));
-                    var uCategory = cate1 == cate2 ? cate1 : cate1 + "," + cate2;
+                    //var cate1 = ApplicationLibary.convertStringToJson(getStringCategory(item["Category"].ToString()));
+                    //var cate2 = ApplicationLibary.convertStringToJson(getStringCategory(item["Category2"].ToString()));
+                    var uCategory = getStringCategory(item["Category"].ToString(), item["Category2"].ToString());
                     var uUrl = item["URL"].ToString().ToLower();
                     var uStore = item["Store"].ToString();
                     var image = item["Image"].ToString();
@@ -572,6 +573,7 @@ namespace TCProShirts
                     uUrl += DateTime.Now.ToString("mmss");
                     //Step 4 -- Nhận giá trị 1 mảng _IDDesignRetail từ Step 3
                     var data2SendCampaigns = "{\"url\":\"" + uUrl + "\",\"title\":\"" + uTitle + "\",\"description\":\"" + uDescription + "\",\"duration\":24,\"policies\":{\"forever\":true,\"fulfillment\":24,\"private\":false,\"checkout\":\"direct\"},\"social\":{\"trackingTags\":{}},\"entityId\":\"" + User.EntityID + "\",\"upsells\":[],\"tags\":{\"style\":[" + uCategory + "]},\"related\": " + objIDReail + "}";
+                    data2SendCampaigns = data2SendCampaigns.Replace("\n", "<br />");
                     finishUploadImage(data2SendCampaigns, uImage);
                     dtDataTemp.Rows[currentIndexUpload]["Status"] = "Done";
                     ApplicationLibary.saveDataTableToFileCSV(txtPath.Text, dtDataTemp);
@@ -1105,10 +1107,73 @@ namespace TCProShirts
             JArray jArray = JArray.Parse(rs);
             foreach (var item in jArray)
             {
-                if (item["name"].ToString().Contains(text) || item["fullName"].ToString().Contains(text)
-                    || item["slug"].ToString().Contains(text))
+                if (item["name"].ToString().ToLower().IndexOf(text.ToLower()) > -1 || item["fullName"].ToString().ToLower().IndexOf(text.ToLower()) > -1
+                    || item["slug"].ToString().ToLower().IndexOf(text.ToLower()) > -1)
                 {
-                    kq += item["fullName"];
+                    kq += item["fullName"].ToString();
+                }
+                JArray jArray2 = JArray.Parse(item["children"].ToString());
+                if (jArray2.Count > 0)
+                {
+                    foreach (var item2 in jArray2)
+                    {
+                        if (item2["slug"].ToString().ToLower().IndexOf(text.ToLower()) > -1)
+                        {
+                            foreach (var item3 in jArray)
+                            {
+                                if (item2["tagId"].ToString().ToLower().Equals(item3["_id"].ToString().ToLower()))
+                                {
+                                    kq += item3["fullName"].ToString();
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            var currKQ = kq.Replace("(", "|").Replace(")", "|");
+            var x = currKQ.Split('|');
+            string ressult = "";
+            foreach (string item in x)
+            {
+                var crrText = item.Trim();
+                if (crrText != "" && crrText != " " && ressult.IndexOf(crrText) == -1)
+                    ressult += crrText.Trim() + ",";
+            }
+            return ressult;
+        }
+        private string getStringCategory(string text, string text2)
+        {
+            string kq = "";
+            var rs = Resources.category;
+            JArray jArray = JArray.Parse(rs);
+            foreach (var item in jArray)
+            {
+                if (item["name"].ToString().ToLower().IndexOf(text.ToLower()) > -1 
+                    || item["fullName"].ToString().ToLower().IndexOf(text.ToLower()) > -1
+                    || item["slug"].ToString().ToLower().IndexOf(text.ToLower()) > -1 
+                    || item["name"].ToString().ToLower().IndexOf(text2.ToLower()) > -1 
+                    || item["fullName"].ToString().ToLower().IndexOf(text2.ToLower()) > -1
+                    || item["slug"].ToString().ToLower().IndexOf(text2.ToLower()) > -1)
+                {
+                    kq += item["fullName"].ToString();
+                }
+                JArray jArray2 = JArray.Parse(item["children"].ToString());
+                if (jArray2.Count > 0)
+                {
+                    foreach (var item2 in jArray2)
+                    {
+                        if (item2["slug"].ToString().ToLower().IndexOf(text.ToLower()) > -1
+                            || item2["slug"].ToString().ToLower().IndexOf(text2.ToLower()) > -1)
+                        {
+                            foreach (var item3 in jArray)
+                            {
+                                if (item2["tagId"].ToString().ToLower().Equals(item3["_id"].ToString().ToLower()))
+                                {
+                                    kq += item3["fullName"].ToString();
+                                }
+                            }
+                        }
+                    }
                 }
             }
             var currKQ = kq.Replace("(", "|").Replace(")", "|");
