@@ -139,7 +139,7 @@ namespace TCProShirts
                 string ex1 = Path.GetExtension(path);
                 if (ex1 != ".csv")
                 {
-                    path = Path.GetDirectoryName(path) + "\\" + Path.GetFileName(path).Split('.')[0] + "_copy.csv";
+                    path = Path.GetDirectoryName(path) + "\\" + Path.GetFileName(path).Split('.')[0] + ".csv";
                 }
                 if (File.Exists(path))
                 {

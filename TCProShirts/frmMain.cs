@@ -474,7 +474,7 @@ namespace TCProShirts
                     var uDescription = @"<div>" + item["Description"].ToString().Trim() + "</div>";
                     //var cate1 = ApplicationLibary.convertStringToJson(getStringCategory(item["Category"].ToString()));
                     //var cate2 = ApplicationLibary.convertStringToJson(getStringCategory(item["Category2"].ToString()));
-                    var uCategory = getStringCategory(item["Category"].ToString(), item["Category2"].ToString());
+                    var uCategory = ApplicationLibary.convertStringToJson(getStringCategory(item["Category"].ToString(), item["Category2"].ToString()));
                     var uUrl = item["URL"].ToString().ToLower();
                     var uStore = item["Store"].ToString();
                     var image = item["Image"].ToString();
