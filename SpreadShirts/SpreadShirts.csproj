@@ -105,6 +105,7 @@
     <Compile Include="frmWait.Designer.cs">
       <DependentUpon>frmWait.cs</DependentUpon>
     </Compile>
+    <Compile Include="OShop.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frmMain.resx">
@@ -137,6 +138,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="upload\tsconfig1.json" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="data2send.txt" />

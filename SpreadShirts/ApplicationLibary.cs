@@ -18,9 +18,11 @@ namespace SpreadShirts
 {
     public static class ApplicationLibary
     {
+        public static string BROWSER_CHROME = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36";
+        public static string BROWSER_FIREFOX = "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:49.0) Gecko/20100101 Firefox/49.0";
         public static string API_KEY = "1c711bf5-b82d-40de-bea6-435b5473cf9b";
         public static string SECRET = "fd9f23cc-2432-4a69-9dad-bbd57b7b9fdd";
-
+        public static string Origin = "https://partner.spreadshirt.com";
         public static string ConvertImageToBase64(string path)
         {
             string base64String = string.Empty;
@@ -120,6 +122,15 @@ namespace SpreadShirts
             }
         }
 
+        public static string readDataFromFile(string filePath)
+        {
+            var data = "";
+            using(StreamReader reader = new StreamReader(filePath))
+            {
+                data = reader.ReadToEnd();
+            }
+            return data;
+        }
         public static void writeLog(this ListBoxControl lsbox, string message, int status)
         {
             string space = "...................................." + (status == 1 ? "Done" : status == 2 ? "Faild" : "In Progress");
@@ -196,6 +207,7 @@ namespace SpreadShirts
         {
             using (SHA1Managed sha1 = new SHA1Managed())
             {
+                byte[] keyByte = Encoding.UTF8.GetBytes(SECRET);
                 var hash = sha1.ComputeHash(Encoding.UTF8.GetBytes(data));
                 var sb = new StringBuilder(hash.Length * 2);
                 foreach (byte b in hash)
@@ -206,22 +218,38 @@ namespace SpreadShirts
                 return sb.ToString();
             }
         }
-
+        public static string sha1Generate(string data, string secretAccessKey)
+        {
+            String rs = "";
+            byte[] keyByte = Encoding.UTF8.GetBytes(secretAccessKey);
+            byte[] messageBytes = Encoding.UTF8.GetBytes(data);
+            using (var hmacsha256 = new HMACSHA1(keyByte))
+            {
+                byte[] hashmessage = hmacsha256.ComputeHash(messageBytes);
+                for (int i = 0; i < hashmessage.Length; i++)
+                {
+                    byte bit = hashmessage[i];
+                    rs += bit.ToString("x2");
+                }
+            }
+            return rs;
+        }
         public static string getTimeStamp()
         {
-            double unixTimestamp = Math.Round((DateTime.Now.Subtract(new DateTime(1970, 1, 1))).TotalSeconds, 3);
-            return unixTimestamp.ToString().Replace(".", "");
+            int unixTimestamp = (int)(DateTime.Now.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
+            return (unixTimestamp * 1000).ToString();
         }
-        public static string encodeURL(string url, string defaultParam = "", string method = "POST", string locale = "", string mediaType = "", string sessionId = "")
+        public static string encodeURL(string url, string defaultParam = "", string method = "POST", string locale = "", string mediaType = "", string sessionId = "", string time = "")
         {
 
             string t_url = url.Split('?')[0];
-            string t_time = getTimeStamp();
-            string t_data = method + t_url + " " + t_time + " " + SECRET;
-            string t_sig = GetSHA1HashData(t_data);
+            string t_time = time == "" ? getTimeStamp() : time;
+            string t_data = method + " " + t_url + " " + t_time;
+            //string t_sig = GetSHA1HashData(t_data);
+            string t_sig = sha1Generate(t_data, SECRET);
 
             int index = t_url.IndexOf('?');
-            var newUrl = t_url;
+            var newUrl = "";// t_url;
             if (index == -1)
                 newUrl += "?";
             else
@@ -235,7 +263,7 @@ namespace SpreadShirts
             newUrl += "&sig=" + t_sig + "&time=" + t_time;
             if (sessionId != "")
                 newUrl += "&sessionId=" + sessionId;
-            return newUrl;
+            return t_url + newUrl;
         }
 
     }

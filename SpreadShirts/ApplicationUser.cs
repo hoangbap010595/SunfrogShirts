@@ -14,5 +14,6 @@ namespace SpreadShirts
         public string SESSION_HREF { get; set; }
         public string IDENTITY_ID { get; set; }
         public string IDENTITY_HREF { get; set; }
+        public List<OShop> SHOPS { get; set; }
     }
 }

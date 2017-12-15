@@ -18,8 +18,6 @@ namespace SpreadShirts
     public partial class frmLogin : XtraForm
     {
         private static CookieContainer cookieApplication = new CookieContainer();
-        private string BROWSER_CHROME = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36";
-        private string BROWSER_FIREFOX = "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:49.0) Gecko/20100101 Firefox/49.0";
         private ApplicationUser User;
         private string currToken = "";
 
@@ -28,7 +26,6 @@ namespace SpreadShirts
         public frmLogin()
         {
             InitializeComponent();
-            User = new ApplicationUser();
         }
         private void btnLogin_Click(object sender, EventArgs e)
         {
@@ -54,82 +51,100 @@ namespace SpreadShirts
                     password = jObjLogin["password"].ToString();
 
                 }
-                if(username != "" && password != "")
+                if (username != "" && password != "")
                 {
                     executeLogin(username, password);
                 }
-            }catch(Exception ex)
+                else
+                {
+                    XtraMessageBox.Show("Không tìm thấy dữ liệu!", "Message");
+                }
+            }
+            catch (Exception ex)
             {
                 XtraMessageBox.Show(ex.Message, "Message");
             }
         }
         private void executeLogin(string username, string password)
         {
-            try
+            frmWait frm = new frmWait();
+            frm.SetCaption("Login");
+            frm.SetDescription("Connecting...");
+            Thread t = new Thread(new ThreadStart(() =>
             {
-                //Login Page
-                //https://partner.spreadshirt.com/api/v1/sessions?apiKey=1c711bf5-b82d-40de-bea6-435b5473cf9b&locale=us_US&mediaType=json&sig=3a0fa71c6252416ba5479f2fd749eb586f34d1b7&time=1513042887199
-
-                var urlLogin = ApplicationLibary.encodeURL("https://partner.spreadshirt.com/api/v1/sessions", "", "POST", "us_US", "json", "");
-                //string urlLogin = "https://www.spreadshirt.com/api/v1/sessions?mediaType=json";
-                string data2Send = "{\"rememberMe\":false,\"username\":\"" + username + "\",\"password\":\"" + password + "\"}";
-
-                HttpWebRequest wRequestLogin = (HttpWebRequest)WebRequest.Create(urlLogin);
-                // wRequestLogin.CookieContainer = cookieApplication;
-                wRequestLogin.Headers.Add("Accept-Language", "vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3");
-                wRequestLogin.Accept = "application/json, text/plain, */*";
-                wRequestLogin.Host = "partner.spreadshirt.com";
-                wRequestLogin.ContentType = "application/json;charset=utf-8";
-                wRequestLogin.Referer = "https://partner.spreadshirt.com/login";
-                wRequestLogin.CookieContainer = new CookieContainer();
-
-                Dictionary<string, object> step2Login = PostDataAPI(wRequestLogin, data2Send);
-                cookieApplication = (CookieContainer)step2Login["cookies"];
-                var rs = step2Login["data"].ToString();
-                if (int.Parse(step2Login["status"].ToString()) == -1)
+                try
                 {
-                    XtraMessageBox.Show("Sai thông tin tài khoản hoặc mật khẩu\n" + rs, "Thông báo");
-                    return;
+                    var urlLogin = ApplicationLibary.encodeURL("https://partner.spreadshirt.com/api/v1/sessions", "", "POST", "us_US", "json", "");
+                    string data2Send = "{\"rememberMe\":false,\"username\":\"" + username + "\",\"password\":\"" + password + "\"}";
+
+                    HttpWebRequest wRequestLogin = (HttpWebRequest)WebRequest.Create(urlLogin);
+                    wRequestLogin.Headers.Add("Accept-Language", "vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3");
+                    wRequestLogin.Accept = "application/json, text/plain, */*";
+                    wRequestLogin.Host = "partner.spreadshirt.com";
+                    wRequestLogin.ContentType = "application/json;charset=utf-8";
+                    wRequestLogin.Referer = "https://partner.spreadshirt.com/login";
+                    wRequestLogin.CookieContainer = new CookieContainer();
+
+                    Dictionary<string, object> step2Login = PostDataAPI(wRequestLogin, data2Send);
+                    cookieApplication = (CookieContainer)step2Login["cookies"];
+                    var rs = step2Login["data"].ToString();
+                    if (int.Parse(step2Login["status"].ToString()) == -1)
+                    {
+                        XtraMessageBox.Show("Sai thông tin tài khoản hoặc mật khẩu\n" + rs, "Thông báo");
+                        return;
+                    }
+
+                    var obj = JObject.Parse(rs);
+                    User = new ApplicationUser();
+                    User.SESSION_ID = obj["id"].ToString();
+                    User.SESSION_HREF = obj["href"].ToString();
+                    User.IDENTITY_ID = obj["identity"]["id"].ToString();
+                    User.IDENTITY_HREF = obj["identity"]["href"].ToString();
+                    User.USER_ID = obj["user"]["id"].ToString();
+                    User.USER_HREF = obj["user"]["href"].ToString();
+
+                    string urlShop = User.USER_HREF + "/pointsOfSale";
+                    urlShop = ApplicationLibary.encodeURL(urlShop, "", "GET", "us_US", "json", "");
+
+                    HttpWebRequest wRequestShopping = (HttpWebRequest)WebRequest.Create(urlShop);
+                    wRequestShopping.Headers.Add("Accept-Language", "vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3");
+                    wRequestShopping.Accept = "application/json, text/plain, */*";
+                    wRequestShopping.Host = "partner.spreadshirt.com";
+                    wRequestShopping.ContentType = "application/json;charset=utf-8";
+                    wRequestShopping.CookieContainer = cookieApplication;
+                    Dictionary<string, object> dataShop = GetDataAPI(wRequestShopping);
+
+                    JObject objShop = JObject.Parse(dataShop["data"].ToString());
+                    var listShop = objShop["list"].ToString();
+                    JArray arrShop = JArray.Parse(listShop);
+                    User.SHOPS = new List<OShop>();
+                    foreach (var item in arrShop)
+                    {
+                        if (!item["type"].ToString().Equals("MARKETPLACE") && !item["type"].ToString().Equals("CYO"))
+                        {
+                            OShop o = new OShop();
+                            o.Id = item["id"].ToString();
+                            o.Name = item["name"].ToString();
+                            o.TargetID = item["target"]["id"].ToString();
+                            o.Type = item["type"].ToString();
+                            User.SHOPS.Add(o);
+                        }
+                    }
+                    frm.Invoke((MethodInvoker)delegate { frm.Close(); });
+                    if (senduser != null)
+                    {
+                        senduser(User);
+                        this.Invoke((MethodInvoker)delegate { this.Close(); });
+                    }
                 }
-                cookieApplication = (CookieContainer)step2Login["cookies"];
-
-                //var locationHeader = rspLogin.Headers["location"];
-                //var cookieHeader = rspLogin.Headers["Set-Cookie"];
-                //fixCookies(wRequestLogin, (HttpWebResponse)rspLogin);
-
-                var obj = JObject.Parse(rs);
-                User = new ApplicationUser();
-                User.SESSION_ID = obj["id"].ToString();
-                User.SESSION_HREF = obj["href"].ToString();
-                User.IDENTITY_ID = obj["identity"]["id"].ToString();
-                User.IDENTITY_HREF = obj["identity"]["href"].ToString();
-                User.USER_ID = obj["user"]["id"].ToString();
-                User.USER_HREF = obj["user"]["href"].ToString();
-
-                /*
-                 *--hoangbap1595 
-                 * 73338c5b-2cbe-4333-8164-b23e30a6e0da
-                 * https://www.spreadshirt.com/api/v1/sessions/73338c5b-2cbe-4333-8164-b23e30a6e0da
-                 * NA-2832173b-7196-4e59-bf8d-3740fdb3c71a
-                 * https://www.spreadshirt.com/api/v1/identities/NA-2832173b-7196-4e59-bf8d-3740fdb3c71a
-                 * 302721328
-                 * https://www.spreadshirt.com/api/v1/users/302721328
-                 * 
-                 * --lcoang1995
-                 * 4f6e5652-e7a7-47b5-bf0a-d96c8cbaf458
-                 * https://www.spreadshirt.com/api/v1/sessions/4f6e5652-e7a7-47b5-bf0a-d96c8cbaf458
-                 * NA-776b20df-bfb4-4d47-a225-9d1252f9fd4c
-                 * https://www.spreadshirt.com/api/v1/identities/NA-776b20df-bfb4-4d47-a225-9d1252f9fd4c
-                 * 302719724
-                 * https://www.spreadshirt.com/api/v1/users/302719724
-                 * 
-                /*-------------------LOGIN FINISH-------------------*/
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Lỗi");
-            }
+                catch (Exception ex)
+                {
+                    XtraMessageBox.Show(ex.Message, "Error");
+                    frm.Invoke((MethodInvoker)delegate { frm.Close(); });
+                }
+            }));
+            t.Start();
+            frm.ShowDialog();
         }
         private void txtUserName_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -147,13 +162,16 @@ namespace SpreadShirts
         }
         private void frmLogin_FormClosing(object sender, FormClosingEventArgs e)
         {
-            //Application.ExitThread();
-            //Application.Exit();
+            if (User == null)
+            {
+                Application.ExitThread();
+                Application.Exit();
+            }
         }
 
         private void frmLogin_Load(object sender, EventArgs e)
         {
-
+            User = new ApplicationUser();
         }
         private Dictionary<string, object> PostDataAPI(HttpWebRequest wRequest, string data2Send)
         {
@@ -165,9 +183,9 @@ namespace SpreadShirts
                 ASCIIEncoding encoding = new ASCIIEncoding();
                 byte[] postDataBytes = encoding.GetBytes(data2Send);
                 wRequest.Method = "POST";
-                wRequest.UserAgent = BROWSER_FIREFOX;
+                wRequest.UserAgent = ApplicationLibary.BROWSER_FIREFOX;
                 wRequest.ContentLength = postDataBytes.Length;
-                wRequest.Headers.Add("Origin", "chrome-extension://aejoelaoggembcahagimdiliamlcdmfm");
+                wRequest.Headers.Add("Origin", ApplicationLibary.Origin);
 
                 using (Stream sr = wRequest.GetRequestStream())
                 {
@@ -202,6 +220,43 @@ namespace SpreadShirts
             }
 
         }
+        private Dictionary<string, object> GetDataAPI(HttpWebRequest wRequest, string data2Send = "")
+        {
+            wRequest.Method = "GET";
+            wRequest.UserAgent = ApplicationLibary.BROWSER_FIREFOX;
+            wRequest.Headers.Add("Origin", ApplicationLibary.Origin);
+            if (data2Send != "")
+            {
+                ASCIIEncoding encoding = new ASCIIEncoding();
+                byte[] postDataBytes = encoding.GetBytes(data2Send);
+                wRequest.ContentLength = postDataBytes.Length;
 
+                using (Stream sr = wRequest.GetRequestStream())
+                {
+                    sr.Write(postDataBytes, 0, postDataBytes.Length);
+                }
+            }
+
+            HttpWebResponse wResponse = (HttpWebResponse)wRequest.GetResponse();
+            CookieContainer cookies = new CookieContainer();
+            foreach (Cookie cookie in wResponse.Cookies)
+            {
+                if (cookie.Name.Contains("sprd_auth_token"))
+                    currToken = cookie.Value;
+                cookies.Add(cookie);
+            }
+
+            String htmlString;
+            using (var reader = new StreamReader(wResponse.GetResponseStream()))
+            {
+                htmlString = reader.ReadToEnd();
+            }
+
+            Dictionary<string, object> dataReturn = new Dictionary<string, object>();
+            dataReturn.Add("cookies", cookies);
+            dataReturn.Add("data", htmlString);
+
+            return dataReturn;
+        }
     }
 }

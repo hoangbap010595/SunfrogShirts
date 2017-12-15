@@ -1,25 +1,28 @@
 ﻿{
   "commission": {
-    "amount": 0,//Tiền
-    "currencyId": "3"
+    "currencyId": "3",
+    "amount": 0
   },
   "publishingDetails": [ ],
-  "properties": { "manualAssortmentSelection": true },
-  "id": "5a0ac4a0aa0c6d5484cf1e98",//ID designs
-  "userId": "302719724",
+  "properties": {
+    "configuration": "",
+    "manualAssortmentSelection": "true"
+  },
+  "id": "",
+  "userId": "",
   "state": "ACTIVE",
-  "mainDesignId": "1013521844", //designId
+  "mainDesignId": "",
   "translations": [
     {
-      "name": "2 PT011117", // Tên
-      "description": "hoanádfákdjf",// Mô tả
-      "tags": [ "ádlfkjádf", "ádfọiádò", "áodịaádò", "ádfjádfkjádf", "a", "LeCongHoang" ],//Tag
+      "name": "",
+      "description": "",
+      "tags": [ ],
       "locale": "en_US",
       "autotranslated": false
     }
   ],
-  "dateCreated": "2017-11-14T02:59:35.372Z",
-  "dateModified": 1510629969261,
+  "dateCreated": "",
+  "dateModified": 1513329912151,
   "legalStates": [
     {
       "pointOfSaleType": "CYO",
@@ -34,15 +37,16 @@
       "publishingAllowed": true
     }
   ],
+  "backgroundColor": "#666666",
   "flags": [ "SAFE0" ],
   "resources": [
     {
       "type": "default",
-      "href": "https://image.spreadshirtmedia.com/image-server/v1/products/1030510935/views/1"
+      "href": "https://image.spreadshirtmedia.com/image-server/v1/products/1032468931/views/1"
     },
     {
       "type": "list-preview",
-      "href": "https://image.spreadshirtmedia.com/image-server/v1/designs/1013521844"
+      "href": "https://image.spreadshirtmedia.com/image-server/v1/designs/1014127738"
     }
   ],
   "assortment": {
@@ -58,30 +62,30 @@
         "included": true,
         "available": true,
         "primarySellable": {
-          "id": "nOQgar5mvJtNDL1dD9Ej-5QT10",
+          "id": "Zbyvyxm313HgEB7182rN-5QT10",
           "productType": "812",
-          "vpKey": "T812A317PA1663PT17X49Y59D1013521844S29",
-          "defaultImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/products/T812A317PA1663PT17X49Y59D1013521844S29/views/1",
-          "productTypeImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/productTypes/812/views/1/appearances/317",
+          "vpKey": "T812A387PA1663PT17X49Y59D1014127738S29",
+          "defaultImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/products/T812A387PA1663PT17X49Y59D1014127738S29/views/1",
+          "productTypeImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/productTypes/812/views/1/appearances/387",
           "assortmentGroupIds": [ "2" ],
           "weight": 0,
           "viewId": "1"
         },
-        "assortmentSize": 26,
+        "assortmentSize": 25,
         "reductionFilters": [ ],
         "subFilters": {
           "7": {
             "filterId": "7",
-            "name": "Men’s T-Shirts",
+            "name": "Menâs T-Shirts",
             "shortName": "T-Shirts",
             "included": true,
             "available": true,
             "primarySellable": {
-              "id": "nOQgar5mvJtNDL1dD9Ej-5QT10",
+              "id": "Zbyvyxm313HgEB7182rN-5QT10",
               "productType": "812",
-              "vpKey": "T812A317PA1663PT17X49Y59D1013521844S29",
-              "defaultImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/products/T812A317PA1663PT17X49Y59D1013521844S29/views/1",
-              "productTypeImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/productTypes/812/views/1/appearances/317",
+              "vpKey": "T812A387PA1663PT17X49Y59D1014127738S29",
+              "defaultImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/products/T812A387PA1663PT17X49Y59D1014127738S29/views/1",
+              "productTypeImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/productTypes/812/views/1/appearances/387",
               "assortmentGroupIds": [ "2" ],
               "weight": 0,
               "viewId": "1"
@@ -91,18 +95,13 @@
               {
                 "name": "Bestsellers",
                 "id": "46",
-                "defaultImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/products/T812A317PA1663PT17X49Y59D1013521844S29/views/1",
+                "defaultImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/products/T812A387PA1663PT17X49Y59D1014127738S29/views/1",
                 "availableColors": [
                   {
                     "id": "grey",
                     "rgb": "999999",
                     "name": "",
                     "appearanceIds": [
-                      {
-                        "id": "645",
-                        "weight": 149,
-                        "distance": 0
-                      },
                       {
                         "id": "339",
                         "weight": 173,
@@ -203,6 +202,11 @@
                         "distance": 0
                       },
                       {
+                        "id": "645",
+                        "weight": 1000,
+                        "distance": 0
+                      },
+                      {
                         "id": "317",
                         "weight": 122,
                         "distance": 0
@@ -233,7 +237,7 @@
               {
                 "name": "Trends",
                 "id": "49",
-                "defaultImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/products/T1197A557PA2551PT17X36Y58D1013521844S29/views/1",
+                "defaultImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/products/T1197A228PA2551PT17X36Y58D1014127738S29/views/1",
                 "availableColors": [
                   {
                     "id": "grey",
@@ -300,7 +304,7 @@
               {
                 "name": "Organic",
                 "id": "50",
-                "defaultImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/products/T460A4PA1112PT17X82Y67D1013521844S29/views/1",
+                "defaultImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/products/T460A2PA1112PT17X82Y67D1014127738S29/views/1",
                 "availableColors": [
                   {
                     "id": "white",
@@ -345,7 +349,7 @@
               {
                 "name": "Sports",
                 "id": "52",
-                "defaultImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/products/T953A258PA2014PT17X24Y57D1013521844S29/views/1",
+                "defaultImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/products/T953A33PA2014PT17X24Y57D1014127738S29/views/1",
                 "availableColors": [
                   {
                     "id": "grey",
@@ -360,30 +364,6 @@
                       {
                         "id": "231",
                         "weight": 157,
-                        "distance": 0
-                      }
-                    ]
-                  },
-                  {
-                    "id": "yellow",
-                    "rgb": "FFF000",
-                    "name": "",
-                    "appearanceIds": [
-                      {
-                        "id": "413",
-                        "weight": 102,
-                        "distance": 0
-                      }
-                    ]
-                  },
-                  {
-                    "id": "white",
-                    "rgb": "FFFFFF",
-                    "name": "",
-                    "appearanceIds": [
-                      {
-                        "id": "1",
-                        "weight": 0,
                         "distance": 0
                       }
                     ]
@@ -407,8 +387,8 @@
             ],
             "orderWeight": 7,
             "baseColor": {
-              "id": "blue",
-              "rgb": "1F40AD",
+              "id": "brown",
+              "rgb": "5B3C28",
               "name": ""
             },
             "availableColors": [
@@ -417,11 +397,6 @@
                 "rgb": "999999",
                 "name": "",
                 "appearanceIds": [
-                  {
-                    "id": "645",
-                    "weight": 149,
-                    "distance": 0
-                  },
                   {
                     "id": "339",
                     "weight": 173,
@@ -522,6 +497,11 @@
                     "distance": 0
                   },
                   {
+                    "id": "645",
+                    "weight": 1000,
+                    "distance": 0
+                  },
+                  {
                     "id": "317",
                     "weight": 122,
                     "distance": 0
@@ -549,16 +529,16 @@
           },
           "12": {
             "filterId": "12",
-            "name": "Men‘s V-Neck T-Shirt",
+            "name": "Menâs V-Neck T-Shirt",
             "shortName": "V-Neck Shirts",
             "included": true,
             "available": true,
             "primarySellable": {
-              "id": "nOQgar5mvJtNDL1dD9Ej-eETMq",
+              "id": "Zbyvyxm313HgEB7182rN-eETMq",
               "productType": "686",
-              "vpKey": "T686A17PA1450PT17X59Y59D1013521844S29",
-              "defaultImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/products/T686A17PA1450PT17X59Y59D1013521844S29/views/1",
-              "productTypeImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/productTypes/686/views/1/appearances/17",
+              "vpKey": "T686A164PA1450PT17X59Y59D1014127738S29",
+              "defaultImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/products/T686A164PA1450PT17X59Y59D1014127738S29/views/1",
+              "productTypeImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/productTypes/686/views/1/appearances/164",
               "assortmentGroupIds": [ "12" ],
               "weight": 0,
               "viewId": "1"
@@ -567,8 +547,8 @@
             "reductionFilters": [ ],
             "orderWeight": 12,
             "baseColor": {
-              "id": "blue",
-              "rgb": "1F40AD",
+              "id": "grey",
+              "rgb": "999999",
               "name": ""
             },
             "availableColors": [
@@ -644,16 +624,16 @@
           },
           "15": {
             "filterId": "15",
-            "name": "Men’s Tank Tops",
+            "name": "Menâs Tank Tops",
             "shortName": "Tank Tops",
             "included": true,
             "available": true,
             "primarySellable": {
-              "id": "nOQgar5mvJtNDL1dD9Ej-l4TGj",
+              "id": "Zbyvyxm313HgEB7182rN-l4TGj",
               "productType": "916",
-              "vpKey": "T916A348PA1901PT17X23Y44D1013521844S29",
-              "defaultImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/products/T916A348PA1901PT17X23Y44D1013521844S29/views/1",
-              "productTypeImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/productTypes/916/views/1/appearances/348",
+              "vpKey": "T916A339PA1901PT17X23Y44D1014127738S29",
+              "defaultImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/products/T916A339PA1901PT17X23Y44D1014127738S29/views/1",
+              "productTypeImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/productTypes/916/views/1/appearances/339",
               "assortmentGroupIds": [ "15" ],
               "weight": 0,
               "viewId": "1"
@@ -662,8 +642,8 @@
             "reductionFilters": [ ],
             "orderWeight": 15,
             "baseColor": {
-              "id": "blue",
-              "rgb": "1F40AD",
+              "id": "grey",
+              "rgb": "999999",
               "name": ""
             },
             "availableColors": [
@@ -741,16 +721,16 @@
           },
           "18": {
             "filterId": "18",
-            "name": "Men’s Long Sleeve Shirts",
+            "name": "Menâs Long Sleeve Shirts",
             "shortName": "Long Sleeve Shirts",
             "included": true,
             "available": true,
             "primarySellable": {
-              "id": "nOQgar5mvJtNDL1dD9Ej-zmTyG",
+              "id": "Zbyvyxm313HgEB7182rN-zmTyG",
               "productType": "875",
-              "vpKey": "T875A348PA1863PT17X44Y51D1013521844S29",
-              "defaultImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/products/T875A348PA1863PT17X44Y51D1013521844S29/views/1",
-              "productTypeImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/productTypes/875/views/1/appearances/348",
+              "vpKey": "T875A339PA1863PT17X44Y51D1014127738S29",
+              "defaultImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/products/T875A339PA1863PT17X44Y51D1014127738S29/views/1",
+              "productTypeImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/productTypes/875/views/1/appearances/339",
               "assortmentGroupIds": [ "18" ],
               "weight": 0,
               "viewId": "1"
@@ -760,7 +740,7 @@
               {
                 "name": "Bestsellers",
                 "id": "46",
-                "defaultImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/products/T875A348PA1863PT17X44Y51D1013521844S29/views/1",
+                "defaultImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/products/T875A339PA1863PT17X44Y51D1014127738S29/views/1",
                 "availableColors": [
                   {
                     "id": "grey",
@@ -822,7 +802,7 @@
               {
                 "name": "Trends",
                 "id": "49",
-                "defaultImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/products/T174A2PA259PT17X57Y66D1013521844S29/views/1",
+                "defaultImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/products/T174A2PA259PT17X57Y66D1014127738S29/views/1",
                 "availableColors": [
                   {
                     "id": "grey",
@@ -832,18 +812,6 @@
                       {
                         "id": "231",
                         "weight": 157,
-                        "distance": 0
-                      }
-                    ]
-                  },
-                  {
-                    "id": "white",
-                    "rgb": "FFFFFF",
-                    "name": "",
-                    "appearanceIds": [
-                      {
-                        "id": "1",
-                        "weight": 0,
                         "distance": 0
                       }
                     ]
@@ -867,8 +835,8 @@
             ],
             "orderWeight": 18,
             "baseColor": {
-              "id": "blue",
-              "rgb": "1F40AD",
+              "id": "grey",
+              "rgb": "999999",
               "name": ""
             },
             "availableColors": [
@@ -929,16 +897,16 @@
           },
           "22": {
             "filterId": "22",
-            "name": "Men’s Hoodies",
+            "name": "Menâs Hoodies",
             "shortName": "Hoodies",
             "included": true,
             "available": true,
             "primarySellable": {
-              "id": "nOQgar5mvJtNDL1dD9Ej-0jT0",
+              "id": "Zbyvyxm313HgEB7182rN-0jT0",
               "productType": "20",
-              "vpKey": "T20A4PA18PT17X61Y3D1013521844S29",
-              "defaultImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/products/T20A4PA18PT17X61Y3D1013521844S29/views/1",
-              "productTypeImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/productTypes/20/views/1/appearances/4",
+              "vpKey": "T20A648PA18PT17X61Y3D1014127738S29",
+              "defaultImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/products/T20A648PA18PT17X61Y3D1014127738S29/views/1",
+              "productTypeImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/productTypes/20/views/1/appearances/648",
               "assortmentGroupIds": [ "22" ],
               "weight": 0,
               "viewId": "1"
@@ -948,7 +916,7 @@
               {
                 "name": "Bestsellers",
                 "id": "46",
-                "defaultImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/products/T20A4PA18PT17X61Y3D1013521844S29/views/1",
+                "defaultImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/products/T20A648PA18PT17X61Y3D1014127738S29/views/1",
                 "availableColors": [
                   {
                     "id": "grey",
@@ -1032,8 +1000,8 @@
             ],
             "orderWeight": 22,
             "baseColor": {
-              "id": "blue",
-              "rgb": "1F40AD",
+              "id": "grey",
+              "rgb": "999999",
               "name": ""
             },
             "availableColors": [
@@ -1104,16 +1072,16 @@
           },
           "26": {
             "filterId": "26",
-            "name": "Men’s Sweatshirts",
+            "name": "Menâs Sweatshirts",
             "shortName": "Sweatshirts",
             "included": true,
             "available": true,
             "primarySellable": {
-              "id": "nOQgar5mvJtNDL1dD9Ej-l4Tvg",
+              "id": "Zbyvyxm313HgEB7182rN-l4Tvg",
               "productType": "512",
-              "vpKey": "T512A258PA986PT17X46Y46D1013521844S29",
-              "defaultImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/products/T512A258PA986PT17X46Y46D1013521844S29/views/1",
-              "productTypeImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/productTypes/512/views/1/appearances/258",
+              "vpKey": "T512A339PA986PT17X46Y46D1014127738S29",
+              "defaultImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/products/T512A339PA986PT17X46Y46D1014127738S29/views/1",
+              "productTypeImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/productTypes/512/views/1/appearances/339",
               "assortmentGroupIds": [ "26" ],
               "weight": 0,
               "viewId": "1"
@@ -1122,8 +1090,8 @@
             "reductionFilters": [ ],
             "orderWeight": 26,
             "baseColor": {
-              "id": "blue",
-              "rgb": "1F40AD",
+              "id": "grey",
+              "rgb": "999999",
               "name": ""
             },
             "availableColors": [
@@ -1213,26 +1181,26 @@
           },
           "29": {
             "filterId": "29",
-            "name": "Men’s Jackets",
+            "name": "Menâs Jackets",
             "shortName": "Jackets",
             "included": true,
             "available": true,
             "primarySellable": {
-              "id": "nOQgar5mvJtNDL1dD9Ej-meTLO",
+              "id": "Zbyvyxm313HgEB7182rN-meTLO",
               "productType": "198",
-              "vpKey": "T198A4PA343PT17X43Y101D1013521844S29",
-              "defaultImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/products/T198A4PA343PT17X43Y101D1013521844S29/views/2",
-              "productTypeImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/productTypes/198/views/2/appearances/4",
+              "vpKey": "T198A2PA343PT17X43Y101D1014127738S29",
+              "defaultImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/products/T198A2PA343PT17X43Y101D1014127738S29/views/2",
+              "productTypeImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/productTypes/198/views/2/appearances/2",
               "assortmentGroupIds": [ "29" ],
               "weight": 0,
               "viewId": "2"
             },
-            "assortmentSize": 3,
+            "assortmentSize": 2,
             "reductionFilters": [ ],
             "orderWeight": 29,
             "baseColor": {
-              "id": "blue",
-              "rgb": "1F40AD",
+              "id": "black",
+              "rgb": "000000",
               "name": ""
             },
             "availableColors": [
@@ -1244,18 +1212,6 @@
                   {
                     "id": "2",
                     "weight": 0,
-                    "distance": 0
-                  }
-                ]
-              },
-              {
-                "id": "blue",
-                "rgb": "1F40AD",
-                "name": "",
-                "appearanceIds": [
-                  {
-                    "id": "4",
-                    "weight": 213,
                     "distance": 0
                   }
                 ]
@@ -1272,30 +1228,30 @@
         "included": true,
         "available": true,
         "primarySellable": {
-          "id": "nOQgar5mvJtNDL1dD9Ej-bETDm",
+          "id": "Zbyvyxm313HgEB7182rN-bETDm",
           "productType": "813",
-          "vpKey": "T813A317PA1667PT17X26Y57D1013521844S29",
-          "defaultImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/products/T813A317PA1667PT17X26Y57D1013521844S29/views/1",
-          "productTypeImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/productTypes/813/views/1/appearances/317",
+          "vpKey": "T813A339PA1667PT17X26Y57D1014127738S29",
+          "defaultImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/products/T813A339PA1667PT17X26Y57D1014127738S29/views/1",
+          "productTypeImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/productTypes/813/views/1/appearances/339",
           "assortmentGroupIds": [ "3" ],
           "weight": 0,
           "viewId": "1"
         },
-        "assortmentSize": 27,
+        "assortmentSize": 26,
         "reductionFilters": [ ],
         "subFilters": {
           "8": {
             "filterId": "8",
-            "name": "Women’s T-Shirts",
+            "name": "Womenâs T-Shirts",
             "shortName": "T-Shirts",
             "included": true,
             "available": true,
             "primarySellable": {
-              "id": "nOQgar5mvJtNDL1dD9Ej-bETDm",
+              "id": "Zbyvyxm313HgEB7182rN-bETDm",
               "productType": "813",
-              "vpKey": "T813A317PA1667PT17X26Y57D1013521844S29",
-              "defaultImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/products/T813A317PA1667PT17X26Y57D1013521844S29/views/1",
-              "productTypeImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/productTypes/813/views/1/appearances/317",
+              "vpKey": "T813A339PA1667PT17X26Y57D1014127738S29",
+              "defaultImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/products/T813A339PA1667PT17X26Y57D1014127738S29/views/1",
+              "productTypeImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/productTypes/813/views/1/appearances/339",
               "assortmentGroupIds": [ "3" ],
               "weight": 0,
               "viewId": "1"
@@ -1305,18 +1261,13 @@
               {
                 "name": "Bestsellers",
                 "id": "46",
-                "defaultImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/products/T813A317PA1667PT17X26Y57D1013521844S29/views/1",
+                "defaultImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/products/T813A339PA1667PT17X26Y57D1014127738S29/views/1",
                 "availableColors": [
                   {
                     "id": "grey",
                     "rgb": "999999",
                     "name": "",
                     "appearanceIds": [
-                      {
-                        "id": "645",
-                        "weight": 149,
-                        "distance": 0
-                      },
                       {
                         "id": "339",
                         "weight": 173,
@@ -1410,6 +1361,11 @@
                         "distance": 0
                       },
                       {
+                        "id": "645",
+                        "weight": 1000,
+                        "distance": 0
+                      },
+                      {
                         "id": "317",
                         "weight": 122,
                         "distance": 0
@@ -1452,7 +1408,7 @@
               {
                 "name": "Trends",
                 "id": "49",
-                "defaultImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/products/T943A557PA1939PT17X41Y97D1013521844S29/views/1",
+                "defaultImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/products/T943A566PA1939PT17X41Y97D1014127738S29/views/1",
                 "availableColors": [
                   {
                     "id": "grey",
@@ -1526,7 +1482,7 @@
               {
                 "name": "Organic",
                 "id": "50",
-                "defaultImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/products/T461A2PA1086PT17X38Y36D1013521844S29/views/1",
+                "defaultImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/products/T461A2PA1086PT17X38Y36D1014127738S29/views/1",
                 "availableColors": [
                   {
                     "id": "white",
@@ -1559,7 +1515,7 @@
               {
                 "name": "Sports",
                 "id": "52",
-                "defaultImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/products/T954A258PA2022PT17X20Y39D1013521844S29/views/1",
+                "defaultImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/products/T954A33PA2022PT17X20Y39D1014127738S29/views/1",
                 "availableColors": [
                   {
                     "id": "grey",
@@ -1604,8 +1560,8 @@
             ],
             "orderWeight": 8,
             "baseColor": {
-              "id": "blue",
-              "rgb": "1F40AD",
+              "id": "grey",
+              "rgb": "999999",
               "name": ""
             },
             "availableColors": [
@@ -1614,11 +1570,6 @@
                 "rgb": "999999",
                 "name": "",
                 "appearanceIds": [
-                  {
-                    "id": "645",
-                    "weight": 149,
-                    "distance": 0
-                  },
                   {
                     "id": "339",
                     "weight": 173,
@@ -1712,6 +1663,11 @@
                     "distance": 0
                   },
                   {
+                    "id": "645",
+                    "weight": 1000,
+                    "distance": 0
+                  },
+                  {
                     "id": "317",
                     "weight": 122,
                     "distance": 0
@@ -1751,16 +1707,16 @@
           },
           "13": {
             "filterId": "13",
-            "name": "Women‘s V-Neck T-Shirt",
+            "name": "Womenâs V-Neck T-Shirt",
             "shortName": "V-Neck Shirts",
             "included": true,
             "available": true,
             "primarySellable": {
-              "id": "nOQgar5mvJtNDL1dD9Ej-N3TLA",
+              "id": "Zbyvyxm313HgEB7182rN-N3TLA",
               "productType": "1038",
-              "vpKey": "T1038A710PA2248PT17X27Y64D1013521844S29",
-              "defaultImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/products/T1038A710PA2248PT17X27Y64D1013521844S29/views/1",
-              "productTypeImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/productTypes/1038/views/1/appearances/710",
+              "vpKey": "T1038A164PA2248PT17X27Y64D1014127738S29",
+              "defaultImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/products/T1038A164PA2248PT17X27Y64D1014127738S29/views/1",
+              "productTypeImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/productTypes/1038/views/1/appearances/164",
               "assortmentGroupIds": [ "13" ],
               "weight": 0,
               "viewId": "1"
@@ -1769,8 +1725,8 @@
             "reductionFilters": [ ],
             "orderWeight": 13,
             "baseColor": {
-              "id": "purple",
-              "rgb": "89539B",
+              "id": "grey",
+              "rgb": "999999",
               "name": ""
             },
             "availableColors": [
@@ -1872,16 +1828,16 @@
           },
           "16": {
             "filterId": "16",
-            "name": "Women’s Tank Tops",
+            "name": "Womenâs Tank Tops",
             "shortName": "Tank Tops",
             "included": true,
             "available": true,
             "primarySellable": {
-              "id": "nOQgar5mvJtNDL1dD9Ej-qETBq",
+              "id": "Zbyvyxm313HgEB7182rN-qETBq",
               "productType": "917",
-              "vpKey": "T917A348PA1903PT17X20Y108D1013521844S29",
-              "defaultImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/products/T917A348PA1903PT17X20Y108D1013521844S29/views/1",
-              "productTypeImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/productTypes/917/views/1/appearances/348",
+              "vpKey": "T917A339PA1903PT17X20Y108D1014127738S29",
+              "defaultImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/products/T917A339PA1903PT17X20Y108D1014127738S29/views/1",
+              "productTypeImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/productTypes/917/views/1/appearances/339",
               "assortmentGroupIds": [ "16" ],
               "weight": 0,
               "viewId": "1"
@@ -1890,8 +1846,8 @@
             "reductionFilters": [ ],
             "orderWeight": 16,
             "baseColor": {
-              "id": "blue",
-              "rgb": "1F40AD",
+              "id": "grey",
+              "rgb": "999999",
               "name": ""
             },
             "availableColors": [
@@ -1991,16 +1947,16 @@
           },
           "19": {
             "filterId": "19",
-            "name": "Women’s Long Sleeve Shirts",
+            "name": "Womenâs Long Sleeve Shirts",
             "shortName": "Long Sleeve Shirts",
             "included": true,
             "available": true,
             "primarySellable": {
-              "id": "nOQgar5mvJtNDL1dD9Ej-4nT7J",
+              "id": "Zbyvyxm313HgEB7182rN-4nT7J",
               "productType": "876",
-              "vpKey": "T876A348PA1867PT17X14Y41D1013521844S29",
-              "defaultImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/products/T876A348PA1867PT17X14Y41D1013521844S29/views/1",
-              "productTypeImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/productTypes/876/views/1/appearances/348",
+              "vpKey": "T876A2PA1867PT17X14Y41D1014127738S29",
+              "defaultImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/products/T876A2PA1867PT17X14Y41D1014127738S29/views/1",
+              "productTypeImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/productTypes/876/views/1/appearances/2",
               "assortmentGroupIds": [ "19" ],
               "weight": 0,
               "viewId": "1"
@@ -2009,8 +1965,8 @@
             "reductionFilters": [ ],
             "orderWeight": 19,
             "baseColor": {
-              "id": "blue",
-              "rgb": "1F40AD",
+              "id": "black",
+              "rgb": "000000",
               "name": ""
             },
             "availableColors": [
@@ -2083,16 +2039,16 @@
           },
           "23": {
             "filterId": "23",
-            "name": "Women’s Hoodies",
+            "name": "Womenâs Hoodies",
             "shortName": "Hoodies",
             "included": true,
             "available": true,
             "primarySellable": {
-              "id": "nOQgar5mvJtNDL1dD9Ej-VoTQJ",
+              "id": "Zbyvyxm313HgEB7182rN-VoTQJ",
               "productType": "444",
-              "vpKey": "T444A4PA801PT17X49Y0D1013521844S25",
-              "defaultImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/products/T444A4PA801PT17X49Y0D1013521844S25/views/1",
-              "productTypeImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/productTypes/444/views/1/appearances/4",
+              "vpKey": "T444A648PA801PT17X49Y0D1014127738S25",
+              "defaultImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/products/T444A648PA801PT17X49Y0D1014127738S25/views/1",
+              "productTypeImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/productTypes/444/views/1/appearances/648",
               "assortmentGroupIds": [ "23" ],
               "weight": 0,
               "viewId": "1"
@@ -2102,7 +2058,7 @@
               {
                 "name": "Bestsellers",
                 "id": "46",
-                "defaultImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/products/T444A4PA801PT17X49Y0D1013521844S25/views/1",
+                "defaultImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/products/T444A648PA801PT17X49Y0D1014127738S25/views/1",
                 "availableColors": [
                   {
                     "id": "grey",
@@ -2181,8 +2137,8 @@
             ],
             "orderWeight": 23,
             "baseColor": {
-              "id": "blue",
-              "rgb": "1F40AD",
+              "id": "grey",
+              "rgb": "999999",
               "name": ""
             },
             "availableColors": [
@@ -2248,16 +2204,16 @@
           },
           "27": {
             "filterId": "27",
-            "name": "Women’s Sweatshirts",
+            "name": "Womenâs Sweatshirts",
             "shortName": "Sweatshirts",
             "included": true,
             "available": true,
             "primarySellable": {
-              "id": "nOQgar5mvJtNDL1dD9Ej-DoTD2",
+              "id": "Zbyvyxm313HgEB7182rN-DoTD2",
               "productType": "681",
-              "vpKey": "T681A458PA1422PT17X54Y134D1013521844S29",
-              "defaultImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/products/T681A458PA1422PT17X54Y134D1013521844S29/views/1",
-              "productTypeImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/productTypes/681/views/1/appearances/458",
+              "vpKey": "T681A164PA1422PT17X54Y134D1014127738S29",
+              "defaultImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/products/T681A164PA1422PT17X54Y134D1014127738S29/views/1",
+              "productTypeImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/productTypes/681/views/1/appearances/164",
               "assortmentGroupIds": [ "27" ],
               "weight": 0,
               "viewId": "1"
@@ -2266,8 +2222,8 @@
             "reductionFilters": [ ],
             "orderWeight": 27,
             "baseColor": {
-              "id": "blue",
-              "rgb": "1F40AD",
+              "id": "grey",
+              "rgb": "999999",
               "name": ""
             },
             "availableColors": [
@@ -2321,37 +2277,66 @@
           },
           "30": {
             "filterId": "30",
-            "name": "Women’s Jackets",
+            "name": "Womenâs Jackets",
             "shortName": "Jackets",
             "included": true,
             "available": true,
             "primarySellable": {
-              "id": "nOQgar5mvJtNDL1dD9Ej-owTv4",
-              "productType": "1048",
-              "vpKey": "T1048A229PA2306PT17X23Y41D1013521844S29",
-              "defaultImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/products/T1048A229PA2306PT17X23Y41D1013521844S29/views/2",
-              "productTypeImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/productTypes/1048/views/2/appearances/229",
+              "id": "Zbyvyxm313HgEB7182rN-LoTAo",
+              "productType": "669",
+              "vpKey": "T669A648PA1393PT17X50Y58D1014127738S29",
+              "defaultImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/products/T669A648PA1393PT17X50Y58D1014127738S29/views/2",
+              "productTypeImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/productTypes/669/views/2/appearances/648",
               "assortmentGroupIds": [ "30" ],
               "weight": 0,
               "viewId": "2"
             },
-            "assortmentSize": 2,
+            "assortmentSize": 1,
             "reductionFilters": [ ],
             "orderWeight": 30,
             "baseColor": {
-              "id": "blue",
-              "rgb": "1F40AD",
+              "id": "grey",
+              "rgb": "999999",
               "name": ""
             },
             "availableColors": [
               {
-                "id": "blue",
-                "rgb": "1F40AD",
+                "id": "grey",
+                "rgb": "999999",
                 "name": "",
                 "appearanceIds": [
                   {
-                    "id": "229",
-                    "weight": 169,
+                    "id": "648",
+                    "weight": 216,
+                    "distance": 0
+                  },
+                  {
+                    "id": "33",
+                    "weight": 118,
+                    "distance": 0
+                  }
+                ]
+              },
+              {
+                "id": "cyan",
+                "rgb": "27BBBC",
+                "name": "",
+                "appearanceIds": [
+                  {
+                    "id": "448",
+                    "weight": 52,
+                    "distance": 0
+                  }
+                ]
+              },
+              {
+                "id": "black",
+                "rgb": "000000",
+                "name": "",
+                "appearanceIds": [
+                  {
+                    "id": "2",
+                    "weight": 0,
                     "distance": 0
                   }
                 ]
@@ -2369,11 +2354,11 @@
         "available": true,
         "hints": [ "ADULT_CONTENT_NOT_ALLOWED" ],
         "primarySellable": {
-          "id": "nOQgar5mvJtNDL1dD9Ej-l4TDL",
+          "id": "Zbyvyxm313HgEB7182rN-l4TDL",
           "productType": "815",
-          "vpKey": "T815A317PA1659PT17X40Y49D1013521844S29",
-          "defaultImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/products/T815A317PA1659PT17X40Y49D1013521844S29/views/1",
-          "productTypeImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/productTypes/815/views/1/appearances/317",
+          "vpKey": "T815A39PA1659PT17X40Y49D1014127738S29",
+          "defaultImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/products/T815A39PA1659PT17X40Y49D1014127738S29/views/1",
+          "productTypeImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/productTypes/815/views/1/appearances/39",
           "assortmentGroupIds": [ "4" ],
           "weight": 0,
           "viewId": "1"
@@ -2383,17 +2368,17 @@
         "subFilters": {
           "9": {
             "filterId": "9",
-            "name": "Kids’ T-Shirts",
+            "name": "Kidsâ T-Shirts",
             "shortName": "T-Shirts",
             "included": true,
             "available": true,
             "hints": [ "ADULT_CONTENT_NOT_ALLOWED" ],
             "primarySellable": {
-              "id": "nOQgar5mvJtNDL1dD9Ej-l4TDL",
+              "id": "Zbyvyxm313HgEB7182rN-l4TDL",
               "productType": "815",
-              "vpKey": "T815A317PA1659PT17X40Y49D1013521844S29",
-              "defaultImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/products/T815A317PA1659PT17X40Y49D1013521844S29/views/1",
-              "productTypeImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/productTypes/815/views/1/appearances/317",
+              "vpKey": "T815A39PA1659PT17X40Y49D1014127738S29",
+              "defaultImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/products/T815A39PA1659PT17X40Y49D1014127738S29/views/1",
+              "productTypeImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/productTypes/815/views/1/appearances/39",
               "assortmentGroupIds": [ "4" ],
               "weight": 0,
               "viewId": "1"
@@ -2402,8 +2387,8 @@
             "reductionFilters": [ ],
             "orderWeight": 9,
             "baseColor": {
-              "id": "blue",
-              "rgb": "1F40AD",
+              "id": "yellow",
+              "rgb": "FFF000",
               "name": ""
             },
             "availableColors": [
@@ -2517,17 +2502,17 @@
           },
           "20": {
             "filterId": "20",
-            "name": "Kids’ Long Sleeve Shirts",
+            "name": "Kidsâ Long Sleeve Shirts",
             "shortName": "Long Sleeve Shirts",
             "included": true,
             "available": true,
             "hints": [ "ADULT_CONTENT_NOT_ALLOWED" ],
             "primarySellable": {
-              "id": "nOQgar5mvJtNDL1dD9Ej-MaTXp",
+              "id": "Zbyvyxm313HgEB7182rN-MaTXp",
               "productType": "878",
-              "vpKey": "T878A348PA1875PT17X33Y65D1013521844S19",
-              "defaultImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/products/T878A348PA1875PT17X33Y65D1013521844S19/views/1",
-              "productTypeImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/productTypes/878/views/1/appearances/348",
+              "vpKey": "T878A2PA1875PT17X0Y26D1014127738S28",
+              "defaultImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/products/T878A2PA1875PT17X0Y26D1014127738S28/views/1",
+              "productTypeImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/productTypes/878/views/1/appearances/2",
               "assortmentGroupIds": [ "20" ],
               "weight": 0,
               "viewId": "1"
@@ -2536,8 +2521,8 @@
             "reductionFilters": [ ],
             "orderWeight": 20,
             "baseColor": {
-              "id": "blue",
-              "rgb": "1F40AD",
+              "id": "black",
+              "rgb": "000000",
               "name": ""
             },
             "availableColors": [
@@ -2605,17 +2590,17 @@
           },
           "24": {
             "filterId": "24",
-            "name": "Kids’ Hoodies",
+            "name": "Kidsâ Hoodies",
             "shortName": "Hoodies",
             "included": true,
             "available": true,
             "hints": [ "ADULT_CONTENT_NOT_ALLOWED" ],
             "primarySellable": {
-              "id": "nOQgar5mvJtNDL1dD9Ej-5QTae",
+              "id": "Zbyvyxm313HgEB7182rN-5QTae",
               "productType": "654",
-              "vpKey": "T654A418PA1338PT17X63Y0D1013521844S17",
-              "defaultImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/products/T654A418PA1338PT17X63Y0D1013521844S17/views/1",
-              "productTypeImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/productTypes/654/views/1/appearances/418",
+              "vpKey": "T654A648PA1338PT17X63Y0D1014127738S17",
+              "defaultImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/products/T654A648PA1338PT17X63Y0D1014127738S17/views/1",
+              "productTypeImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/productTypes/654/views/1/appearances/648",
               "assortmentGroupIds": [ "24" ],
               "weight": 0,
               "viewId": "1"
@@ -2624,8 +2609,8 @@
             "reductionFilters": [ ],
             "orderWeight": 24,
             "baseColor": {
-              "id": "blue",
-              "rgb": "1F40AD",
+              "id": "grey",
+              "rgb": "999999",
               "name": ""
             },
             "availableColors": [
@@ -2689,11 +2674,11 @@
         "included": true,
         "available": true,
         "primarySellable": {
-          "id": "nOQgar5mvJtNDL1dD9Ej-p7TrB",
+          "id": "Zbyvyxm313HgEB7182rN-p7TrB",
           "productType": "401",
-          "vpKey": "T401A63PA642PT17X25Y32D1013521844S15",
-          "defaultImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/products/T401A63PA642PT17X25Y32D1013521844S15/views/1",
-          "productTypeImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/productTypes/401/views/1/appearances/63",
+          "vpKey": "T401A2PA642PT17X0Y1D1014127738S22",
+          "defaultImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/products/T401A2PA642PT17X0Y1D1014127738S22/views/1",
+          "productTypeImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/productTypes/401/views/1/appearances/2",
           "assortmentGroupIds": [ "10" ],
           "weight": 0,
           "viewId": "1"
@@ -2709,11 +2694,11 @@
             "available": true,
             "hints": [ "ADULT_CONTENT_NOT_ALLOWED" ],
             "primarySellable": {
-              "id": "nOQgar5mvJtNDL1dD9Ej-p7TrB",
+              "id": "Zbyvyxm313HgEB7182rN-p7TrB",
               "productType": "401",
-              "vpKey": "T401A63PA642PT17X25Y32D1013521844S15",
-              "defaultImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/products/T401A63PA642PT17X25Y32D1013521844S15/views/1",
-              "productTypeImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/productTypes/401/views/1/appearances/63",
+              "vpKey": "T401A2PA642PT17X0Y1D1014127738S22",
+              "defaultImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/products/T401A2PA642PT17X0Y1D1014127738S22/views/1",
+              "productTypeImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/productTypes/401/views/1/appearances/2",
               "assortmentGroupIds": [ "10" ],
               "weight": 0,
               "viewId": "1"
@@ -2722,8 +2707,8 @@
             "reductionFilters": [ ],
             "orderWeight": 10,
             "baseColor": {
-              "id": "cyan",
-              "rgb": "27BBBC",
+              "id": "black",
+              "rgb": "000000",
               "name": ""
             },
             "availableColors": [
@@ -2816,11 +2801,11 @@
         "included": true,
         "available": true,
         "primarySellable": {
-          "id": "nOQgar5mvJtNDL1dD9Ej-d7T47",
+          "id": "Zbyvyxm313HgEB7182rN-d7T47",
           "productType": "842",
-          "vpKey": "T842A359PA1776PT17X45Y0D1013521844S28",
-          "defaultImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/products/T842A359PA1776PT17X45Y0D1013521844S28/views/1",
-          "productTypeImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/productTypes/842/views/1/appearances/359",
+          "vpKey": "T842A2PA1776PT17X45Y0D1014127738S28",
+          "defaultImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/products/T842A2PA1776PT17X45Y0D1014127738S28/views/1",
+          "productTypeImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/productTypes/842/views/1/appearances/2",
           "assortmentGroupIds": [ "31" ],
           "weight": 0,
           "viewId": "1"
@@ -2835,10 +2820,10 @@
             "included": true,
             "available": true,
             "primarySellable": {
-              "id": "nOQgar5mvJtNDL1dD9Ej-DoTY",
+              "id": "Zbyvyxm313HgEB7182rN-DoTY",
               "productType": "31",
-              "vpKey": "T31A1PA29PT10X9Y0D1013521844S19",
-              "defaultImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/products/T31A1PA29PT10X9Y0D1013521844S19/views/1",
+              "vpKey": "T31A1PA29PT10X1Y0D1014127738S27",
+              "defaultImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/products/T31A1PA29PT10X1Y0D1014127738S27/views/1",
               "productTypeImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/productTypes/31/views/1/appearances/1",
               "assortmentGroupIds": [ "32" ],
               "weight": 0,
@@ -2874,11 +2859,11 @@
             "included": true,
             "available": true,
             "primarySellable": {
-              "id": "nOQgar5mvJtNDL1dD9Ej-d7T47",
+              "id": "Zbyvyxm313HgEB7182rN-d7T47",
               "productType": "842",
-              "vpKey": "T842A359PA1776PT17X45Y0D1013521844S28",
-              "defaultImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/products/T842A359PA1776PT17X45Y0D1013521844S28/views/1",
-              "productTypeImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/productTypes/842/views/1/appearances/359",
+              "vpKey": "T842A2PA1776PT17X45Y0D1014127738S28",
+              "defaultImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/products/T842A2PA1776PT17X45Y0D1014127738S28/views/1",
+              "productTypeImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/productTypes/842/views/1/appearances/2",
               "assortmentGroupIds": [ "31" ],
               "weight": 0,
               "viewId": "1"
@@ -2888,7 +2873,7 @@
               {
                 "name": "Trends",
                 "id": "49",
-                "defaultImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/products/T842A359PA1776PT17X45Y0D1013521844S28/views/1",
+                "defaultImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/products/T842A2PA1776PT17X45Y0D1014127738S28/views/1",
                 "availableColors": [
                   {
                     "id": "red",
@@ -2939,8 +2924,8 @@
             ],
             "orderWeight": 33,
             "baseColor": {
-              "id": "blue",
-              "rgb": "1F40AD",
+              "id": "black",
+              "rgb": "000000",
               "name": ""
             },
             "availableColors": [
@@ -3000,11 +2985,11 @@
             "included": true,
             "available": true,
             "primarySellable": {
-              "id": "nOQgar5mvJtNDL1dD9Ej-DoTdn",
+              "id": "Zbyvyxm313HgEB7182rN-DoTdn",
               "productType": "1186",
-              "vpKey": "T1186A359PA2537PT17X31Y0D1013521844S18",
-              "defaultImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/products/T1186A359PA2537PT17X31Y0D1013521844S18/views/1",
-              "productTypeImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/productTypes/1186/views/1/appearances/359",
+              "vpKey": "T1186A2PA2537PT17X17Y0D1014127738S22",
+              "defaultImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/products/T1186A2PA2537PT17X17Y0D1014127738S22/views/1",
+              "productTypeImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/productTypes/1186/views/1/appearances/2",
               "assortmentGroupIds": [ "35" ],
               "weight": 0,
               "viewId": "1"
@@ -3013,8 +2998,8 @@
             "reductionFilters": [ ],
             "orderWeight": 35,
             "baseColor": {
-              "id": "blue",
-              "rgb": "1F40AD",
+              "id": "black",
+              "rgb": "000000",
               "name": ""
             },
             "availableColors": [
@@ -3098,10 +3083,10 @@
             "included": true,
             "available": true,
             "primarySellable": {
-              "id": "nOQgar5mvJtNDL1dD9Ej-bETNw",
+              "id": "Zbyvyxm313HgEB7182rN-bETNw",
               "productType": "914",
-              "vpKey": "T914A1PA1898PT17X31Y0D1013521844S27",
-              "defaultImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/products/T914A1PA1898PT17X31Y0D1013521844S27/views/1",
+              "vpKey": "T914A1PA1898PT17X31Y0D1014127738S27",
+              "defaultImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/products/T914A1PA1898PT17X31Y0D1014127738S27/views/1",
               "productTypeImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/productTypes/914/views/1/appearances/1",
               "assortmentGroupIds": [ "37" ],
               "weight": 0,
@@ -3137,10 +3122,10 @@
             "included": true,
             "available": true,
             "primarySellable": {
-              "id": "nOQgar5mvJtNDL1dD9Ej-GvTR8",
+              "id": "Zbyvyxm313HgEB7182rN-GvTR8",
               "productType": "1010",
-              "vpKey": "T1010A70PA2188PT10X6Y36D1013521844S23",
-              "defaultImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/products/T1010A70PA2188PT10X6Y36D1013521844S23/views/1",
+              "vpKey": "T1010A70PA2188PT10X6Y36D1014127738S23",
+              "defaultImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/products/T1010A70PA2188PT10X6Y36D1014127738S23/views/1",
               "productTypeImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/productTypes/1010/views/1/appearances/70",
               "assortmentGroupIds": [ "38" ],
               "weight": 0,
@@ -3176,10 +3161,10 @@
             "included": true,
             "available": true,
             "primarySellable": {
-              "id": "nOQgar5mvJtNDL1dD9Ej-vLTyr",
+              "id": "Zbyvyxm313HgEB7182rN-vLTyr",
               "productType": "757",
-              "vpKey": "T757A37PA1578PT10X11Y0D1013521844S21",
-              "defaultImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/products/T757A37PA1578PT10X11Y0D1013521844S21/views/3",
+              "vpKey": "T757A37PA1578PT10X0Y0D1014127738S32",
+              "defaultImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/products/T757A37PA1578PT10X0Y0D1014127738S32/views/3",
               "productTypeImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/productTypes/757/views/3/appearances/37",
               "assortmentGroupIds": [ "39" ],
               "weight": 0,
@@ -3227,10 +3212,10 @@
             "included": true,
             "available": true,
             "primarySellable": {
-              "id": "nOQgar5mvJtNDL1dD9Ej-MaTej",
+              "id": "Zbyvyxm313HgEB7182rN-MaTej",
               "productType": "127",
-              "vpKey": "T127A1PA215PT21X9Y7D1013521844S6",
-              "defaultImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/products/T127A1PA215PT21X9Y7D1013521844S6/views/1",
+              "vpKey": "T127A1PA215PT21X9Y7D1014127738S6",
+              "defaultImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/products/T127A1PA215PT21X9Y7D1014127738S6/views/1",
               "productTypeImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/productTypes/127/views/1/appearances/1",
               "assortmentGroupIds": [ "40" ],
               "weight": 0,
@@ -3266,10 +3251,10 @@
             "included": true,
             "available": true,
             "primarySellable": {
-              "id": "nOQgar5mvJtNDL1dD9Ej-bETYB",
+              "id": "Zbyvyxm313HgEB7182rN-bETYB",
               "productType": "611",
-              "vpKey": "T611A2PA1245PT17X30Y0D1013521844S29",
-              "defaultImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/products/T611A2PA1245PT17X30Y0D1013521844S29/views/1",
+              "vpKey": "T611A2PA1245PT17X30Y0D1014127738S29",
+              "defaultImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/products/T611A2PA1245PT17X30Y0D1014127738S29/views/1",
               "productTypeImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/productTypes/611/views/1/appearances/2",
               "assortmentGroupIds": [ "41" ],
               "weight": 0,
@@ -3305,10 +3290,10 @@
             "included": true,
             "available": true,
             "primarySellable": {
-              "id": "nOQgar5mvJtNDL1dD9Ej-VoTzq",
+              "id": "Zbyvyxm313HgEB7182rN-VoTzq",
               "productType": "993",
-              "vpKey": "T993A1PA2168PT10X79Y51D1013521844S40",
-              "defaultImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/products/T993A1PA2168PT10X79Y51D1013521844S40/views/1",
+              "vpKey": "T993A1PA2168PT10X79Y51D1014127738S40",
+              "defaultImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/products/T993A1PA2168PT10X79Y51D1014127738S40/views/1",
               "productTypeImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/productTypes/993/views/1/appearances/1",
               "assortmentGroupIds": [ "43" ],
               "weight": 0,
@@ -3344,10 +3329,10 @@
             "included": true,
             "available": true,
             "primarySellable": {
-              "id": "nOQgar5mvJtNDL1dD9Ej-bET5M",
+              "id": "Zbyvyxm313HgEB7182rN-bET5M",
               "productType": "1059",
-              "vpKey": "T1059A70PA2302PT10X6Y37D1013521844S24",
-              "defaultImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/products/T1059A70PA2302PT10X6Y37D1013521844S24/views/1",
+              "vpKey": "T1059A70PA2302PT10X6Y37D1014127738S24",
+              "defaultImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/products/T1059A70PA2302PT10X6Y37D1014127738S24/views/1",
               "productTypeImageUrl": "https://image.spreadshirtmedia.com/image-server/v1/productTypes/1059/views/1/appearances/70",
               "assortmentGroupIds": [ "44" ],
               "weight": 0,
@@ -3386,9 +3371,9 @@
       "mediaType": "json",
       "locale": "us_US",
       "reductions": true,
-      "apiKey": "912dac48-fb39-4aef-af8c-d1260755bcad", //Api Key
-      "sig": "f42055bf4d757f036d5046f19870eca51adf5e60", // SIG
-      "time": 1510629925587 //Time span
+      "apiKey": "",
+      "sig": "",
+      "time": 1513329846451
     },
     "restangularized": true,
     "fromServer": true,
@@ -3400,13 +3385,12 @@
           "route": "users",
           "parentResource": null
         },
-        "id": "302719724", //ID User
-        "href": "https://partner.spreadshirt.com/api/v1/users/302719724"
+        "id": "",
+        "href": ""
       },
-      "id": "5a0ac4a0aa0c6d5484cf1e98",
-      "href": "https://partner.spreadshirt.com/api/v1/users/302719724/ideas/5a0a6414aa0c6d5484b0bfdb"
+      "id": "",
+      "href": ""
     },
     "restangularCollection": false
-  },
-  "backgroundColor": "#666666"
+  }
 }
