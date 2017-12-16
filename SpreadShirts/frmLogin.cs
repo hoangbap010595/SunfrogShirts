@@ -21,7 +21,7 @@ namespace SpreadShirts
         private ApplicationUser User;
         private string currToken = "";
 
-        public delegate void SendUser(ApplicationUser user);
+        public delegate void SendUser(ApplicationUser user, CookieContainer cookies);
         public SendUser senduser;
         public frmLogin()
         {
@@ -75,6 +75,7 @@ namespace SpreadShirts
                 try
                 {
                     var urlLogin = ApplicationLibary.encodeURL("https://partner.spreadshirt.com/api/v1/sessions", "", "POST", "us_US", "json", "");
+                    //string urlLogin = "https://www.spreadshirt.com/api/v1/sessions?mediaType=json";
                     string data2Send = "{\"rememberMe\":false,\"username\":\"" + username + "\",\"password\":\"" + password + "\"}";
 
                     HttpWebRequest wRequestLogin = (HttpWebRequest)WebRequest.Create(urlLogin);
@@ -117,6 +118,7 @@ namespace SpreadShirts
                     JObject objShop = JObject.Parse(dataShop["data"].ToString());
                     var listShop = objShop["list"].ToString();
                     JArray arrShop = JArray.Parse(listShop);
+
                     User.SHOPS = new List<OShop>();
                     foreach (var item in arrShop)
                     {
@@ -133,7 +135,7 @@ namespace SpreadShirts
                     frm.Invoke((MethodInvoker)delegate { frm.Close(); });
                     if (senduser != null)
                     {
-                        senduser(User);
+                        senduser(User, cookieApplication);
                         this.Invoke((MethodInvoker)delegate { this.Close(); });
                     }
                 }

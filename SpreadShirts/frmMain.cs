@@ -17,6 +17,8 @@ using System.Collections.Specialized;
 using DevExpress.XtraEditors;
 using System.Threading;
 using Newtonsoft.Json;
+using System.Diagnostics;
+using SpreadShirts.Properties;
 
 namespace SpreadShirts
 {
@@ -29,6 +31,11 @@ namespace SpreadShirts
         private static CookieContainer cookieApplication = new CookieContainer();
         private ApplicationUser User;
         private string currToken = "";
+        private List<UCItemShopSpread> lsAllShopItem;
+        private List<string> lsImageFileNames;
+        private DataTable dtDataTemp;
+        private List<Dictionary<string, object>> listDataUpload;
+        private int currentIndexUpload = -1;
 
         private string dataCYOID = "{\"pointOfSale\":{\"id\":\"56963c0a59248d4dfb5c3852\",\"name\":\"CYO\",\"type\":\"CYO\",\"target\":{\"id\":\"93439\"}},\"id\":\"56963c0a59248d4dfb5c3852\"}";
         private string dataMarkID = @"{""id"":""55c864cc64c7436b464aeb7b"",""pointOfSale"":{""id"":""55c864cc64c7436b464aeb7b"",""type"":""MARKETPLACE"",""target"":{""id"":""93439""},""allowed"":true}}";
@@ -37,13 +44,15 @@ namespace SpreadShirts
         {
             InitializeComponent();
         }
-        private void getUser(ApplicationUser user)
+        private void getUser(ApplicationUser user, CookieContainer cookies)
         {
             if (user != null)
             {
                 User = user;
+                cookieApplication = cookies;
                 ApplicationLibary.writeLogThread(lsBoxLog, "Login Successfully", 1);
                 this.Invoke((MethodInvoker)delegate { this.Text += " - [" + User.USER_ID + "]"; });
+                loadAllShop();
             }
             else
             {
@@ -99,6 +108,8 @@ namespace SpreadShirts
                 JObject objShop = JObject.Parse(dataShop["data"].ToString());
                 var listShop = objShop["list"].ToString();
                 JArray arrShop = JArray.Parse(listShop);
+
+                lsAllShopItem = new List<UCItemShopSpread>();
                 User.SHOPS = new List<OShop>();
                 foreach (var item in arrShop)
                 {
@@ -112,6 +123,7 @@ namespace SpreadShirts
                         User.SHOPS.Add(o);
                     }
                 }
+                loadAllShop();
                 /*
                  *--hoangbap1595 
                  * 73338c5b-2cbe-4333-8164-b23e30a6e0da
@@ -137,134 +149,253 @@ namespace SpreadShirts
                 MessageBox.Show(ex.Message, "Lỗi");
             }
         }
+
         private void simpleButton1_Click(object sender, EventArgs e)
         {
-            string username = "hoangbap1595@gmail.com";
-            //string username = "lchoang1995@gmail.com";
+            //string username = "hoangbap1595@gmail.com";
+            string username = "lchoang1995@gmail.com";
             string password = "Thienan@111";
             executeLogin(username, password);
         }
         private void simpleButton2_Click(object sender, EventArgs e)
         {
-            string file = @"D:\SOFT_HOANG\Project\SunfrogShirts\trunk\SpreadShirts\data2send.txt";
-            string data2SendFromFile = ApplicationLibary.readDataFromFile(file);
-            JObject obj = JObject.Parse(data2SendFromFile);
-            //publishingDetails
-            JArray item = (JArray)obj["publishingDetails"];
-            string dataX = "[";
-            foreach (string str in getPublishingDetails("SHIO1"))
-            {
-                var x = str.Replace("\\\"", "");
-                item.AddFirst(x);
-                dataX += x + ",";
-            }
-            dataX = dataX.TrimEnd(',') + "]";
-            //UploadFileProgress();
+
+            UploadProgress();
         }
 
-        private void UploadFileProgress()
+        private void UploadFileProgress(List<Dictionary<string, object>> listDataUpload)
         {
-            string image = @"C:\Users\HoangLe\Desktop\Tool up spreadshirt\file anh\6 PT011117.png";
-            string title = "HoangLe" + DateTime.Now.ToString("mmss");
-            string description = "Day La Mo Ta Tesst";
-            string tags = "tag11,tag22,tag33";
-            string shop = "SHIO1";
-            double amount = 19.29;
-            if (!File.Exists(image))
+            foreach (Dictionary<string, object> itemUpload in listDataUpload)
             {
-                ApplicationLibary.writeLog(lsBoxLog, "File not found: " + Path.GetFileName(image), 3);
+                try
+                {
+                    currentIndexUpload++;
+                    var t_image = itemUpload["Image"].ToString();
+                    var t_price = itemUpload["Price"].ToString();
+
+                    string image = t_image.Split('.').Length == 1 ? t_image + ".png" : t_image;
+                    string title = itemUpload["Title"].ToString();
+                    string description = itemUpload["Description"].ToString();
+                    string tags = itemUpload["Tag"].ToString();
+                    string shop = itemUpload["Shop"].ToString();
+                    double amount = string.IsNullOrEmpty(t_price) ? double.Parse(double.Parse(txtPrice.Text).ToString("N2")) : double.Parse(double.Parse(t_price).ToString("N2"));
+                    if (!File.Exists(image))
+                    {
+                        ApplicationLibary.writeLogThread(lsBoxLog, "File not found: " + Path.GetFileName(image), 3);
+                        continue;
+                    }
+                    #region -----------Step 1: Upload Image-----------
+                    ApplicationLibary.writeLogThread(lsBoxLog, "Uploadding " + Path.GetFileName(image), 3);
+                    string img_UrlUpload = User.USER_HREF + "/design-uploads";
+                    var urlUploadImage = ApplicationLibary.encodeURL(url: img_UrlUpload, defaultParam: "createProductIdea=true", time: ApplicationLibary.getTimeStamp());
+                    NameValueCollection nvc = new NameValueCollection();
+                    var data = HttpUploadFile(urlUploadImage, image, "filedata", "image/png", nvc);
+                    if (int.Parse(data["status"].ToString()) == -1)
+                    {
+                        ApplicationLibary.writeLogThread(lsBoxLog, "Step 1: " + data["data"].ToString(), 3);
+                        continue;
+                    }
+                    JObject jObj = JObject.Parse(data["data"].ToString());
+                    var designId = jObj["designId"].ToString();
+                    var ideaId = jObj["ideaId"].ToString();
+                    var name = jObj["name"].ToString();
+                    #endregion
+                    #region -----------Step 2: Upload Data-----------
+                    string u_method = "PUT";
+                    //https://partner.spreadshirt.com/api/v1/users/302721328/ideas/5a33342faa0c6d3e511164f3?apiKey=1c711bf5-b82d-40de-bea6-435b5473cf9b&locale=us_US&mediaType=json&sig=5a88e6520a13a9aa1f7b39036a7c120cd445ccab&time=1513305661500
+                    string u_urlUpload = User.USER_HREF + "/ideas/" + ideaId;
+                    string u_time = ApplicationLibary.getTimeStamp();
+                    string u_dataUrl = u_method + " " + u_urlUpload + " " + u_time + "";
+                    string u_sig = ApplicationLibary.sha1Generate(u_dataUrl, ApplicationLibary.SECRET);
+                    Dictionary<string, object> dataObj = new Dictionary<string, object>();
+                    dataObj.Add("amount", amount);
+                    dataObj.Add("shop", shop);
+                    dataObj.Add("ideaID", ideaId);
+                    dataObj.Add("designID", designId);
+                    dataObj.Add("title", title);
+                    dataObj.Add("description", description);
+                    dataObj.Add("tags", tags);
+                    dataObj.Add("sig", u_sig);
+
+                    string rs_UrlUpload = ApplicationLibary.encodeURL(url: u_urlUpload, method: u_method, locale: "us_US", mediaType: "json", time: u_time);
+                    string rs_Data2Send = refixData2Send(dataObj);
+
+                    HttpWebRequest wRequestUpload = (HttpWebRequest)WebRequest.Create(rs_UrlUpload);
+                    wRequestUpload.Headers.Add("Accept-Language", "vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3");
+                    wRequestUpload.Accept = "application/json, text/plain, */*";
+                    wRequestUpload.Host = "partner.spreadshirt.com";
+                    wRequestUpload.ContentType = "application/json;charset=utf-8";
+                    wRequestUpload.Referer = "https://partner.spreadshirt.com/designs/" + ideaId;
+                    wRequestUpload.CookieContainer = cookieApplication;
+
+                    Dictionary<string, object> step2Upload = PutDataAPI(wRequestUpload, rs_Data2Send);
+                    if (int.Parse(step2Upload["status"].ToString()) == -1)
+                    {
+                        ApplicationLibary.writeLogThread(lsBoxLog, "Step 2: " + step2Upload["data"].ToString(), 1);
+                        continue;
+                    }
+                    var objUploadEnd = JObject.Parse(step2Upload["data"].ToString());
+                    var linkIdea = objUploadEnd["href"].ToString();
+                    #endregion
+                    #region -----------Step 3: Publish-----------
+                    //https://partner.spreadshirt.com/api/v1/users/302721328/ideas/5a339e2aaa0c6d3e511e3268/publishingDetails?apiKey=1c711bf5-b82d-40de-bea6-435b5473cf9b&locale=us_US&mediaType=json&sig=ff531cb9b45015934d699c796dc013033dcff8e8&time=1513333983186
+                    var urlPublish = User.USER_HREF + "/ideas/" + ideaId + "/publishingDetails";
+                    string p_urlPublish = ApplicationLibary.encodeURL(url: urlPublish, method: "PUT", locale: "us_US", mediaType: "json");
+                    var p_data2SendPublish = @"{""list"": [" + dataCYOID;
+                    foreach (string str in getPublishingDetailsPublish(shop))
+                    {
+                        var x = str.Replace(@"\", "");
+                        p_data2SendPublish += "," + x;
+                    }
+                    p_data2SendPublish = p_data2SendPublish.TrimEnd(',') + "]}";
+
+                    HttpWebRequest wRequestPublish = (HttpWebRequest)WebRequest.Create(p_urlPublish);
+                    wRequestPublish.Headers.Add("Accept-Language", "vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3");
+                    wRequestPublish.Accept = "application/json, text/plain, */*";
+                    wRequestPublish.Host = "partner.spreadshirt.com";
+                    wRequestPublish.ContentType = "application/json;charset=utf-8";
+                    wRequestPublish.Referer = "https://partner.spreadshirt.com/designs/" + ideaId;
+                    wRequestPublish.CookieContainer = cookieApplication;
+
+                    Dictionary<string, object> step3Publish = PutDataAPI(wRequestPublish, p_data2SendPublish);
+                    if (int.Parse(step3Publish["status"].ToString()) == -1)
+                    {
+                        ApplicationLibary.writeLogThread(lsBoxLog, "Step 3: " + step3Publish["data"].ToString(), 1);
+                        continue;
+                    }
+                    ApplicationLibary.writeLogThread(lsBoxLog, "Upload & Publish finish: " + "https://partner.spreadshirt.com/designs/" + ideaId, 1);
+                    #endregion
+                    MoveFileUploaded(image); 
+                    dtDataTemp.Rows[currentIndexUpload]["Status"] = "Done";
+                    ApplicationLibary.saveDataTableToFileCSV(txtPath.Text, dtDataTemp);
+                }
+                catch (Exception ex)
+                {
+                    ApplicationLibary.writeLogThread(lsBoxLog, ex.Message, 3);
+                    continue;
+                }
             }
-            #region -----------Step 1: Upload Image-----------
-            ApplicationLibary.writeLog(lsBoxLog, "Uploadding " + Path.GetFileName(image), 3);
-            string img_UrlUpload = User.USER_HREF + "/design-uploads";
-            var urlUploadImage = ApplicationLibary.encodeURL(url: img_UrlUpload, defaultParam: "createProductIdea=true", time: ApplicationLibary.getTimeStamp());
-            NameValueCollection nvc = new NameValueCollection();
-            var data = HttpUploadFile(urlUploadImage, image, "filedata", "image/png", nvc);
-            if (int.Parse(data["status"].ToString()) == -1)
+        }
+        private void UploadProgress()
+        {
+            foreach (var fileImage in lsImageFileNames)
             {
-                ApplicationLibary.writeLog(lsBoxLog, "Step 1: " + data["data"].ToString(), 3);
-                return;
+                try
+                {
+                    string image = fileImage;
+                    string title = txtName.Text;
+                    string description = memoDescription.Text;
+                    string tags = memoTag.Text;
+                    string shop = getSelectShop();
+                    double amount = double.Parse(double.Parse(txtPrice.Text).ToString("N2"));
+                    if (!File.Exists(image))
+                    {
+                        ApplicationLibary.writeLogThread(lsBoxLog, "File not found: " + Path.GetFileName(image), 1);
+                        continue;
+                    }
+                    #region -----------Step 1: Upload Image-----------
+                    ApplicationLibary.writeLog(lsBoxLog, "Uploadding " + Path.GetFileName(image), 3);
+                    string img_UrlUpload = User.USER_HREF + "/design-uploads";
+                    var urlUploadImage = ApplicationLibary.encodeURL(url: img_UrlUpload, defaultParam: "createProductIdea=true", time: ApplicationLibary.getTimeStamp());
+                    NameValueCollection nvc = new NameValueCollection();
+                    var data = HttpUploadFile(urlUploadImage, image, "filedata", "image/png", nvc);
+                    if (int.Parse(data["status"].ToString()) == -1)
+                    {
+                        ApplicationLibary.writeLogThread(lsBoxLog, "Step 1: " + data["data"].ToString(), 3);
+                        continue;
+                    }
+                    JObject jObj = JObject.Parse(data["data"].ToString());
+                    var designId = jObj["designId"].ToString();
+                    var ideaId = jObj["ideaId"].ToString();
+                    var name = jObj["name"].ToString();
+
+                    #endregion
+                    #region -----------Step 2: Upload Data-----------
+                    string u_method = "PUT";
+                    //https://partner.spreadshirt.com/api/v1/users/302721328/ideas/5a33342faa0c6d3e511164f3?apiKey=1c711bf5-b82d-40de-bea6-435b5473cf9b&locale=us_US&mediaType=json&sig=5a88e6520a13a9aa1f7b39036a7c120cd445ccab&time=1513305661500
+                    string u_urlUpload = User.USER_HREF + "/ideas/" + ideaId;
+                    string u_time = ApplicationLibary.getTimeStamp();
+                    string u_dataUrl = u_method + " " + u_urlUpload + " " + u_time + "";
+                    string u_sig = ApplicationLibary.sha1Generate(u_dataUrl, ApplicationLibary.SECRET);
+                    Dictionary<string, object> dataObj = new Dictionary<string, object>();
+                    dataObj.Add("amount", amount);
+                    dataObj.Add("shop", shop);
+                    dataObj.Add("ideaID", ideaId);
+                    dataObj.Add("designID", designId);
+                    dataObj.Add("title", title);
+                    dataObj.Add("description", description);
+                    dataObj.Add("tags", tags);
+                    dataObj.Add("sig", u_sig);
+
+                    string rs_UrlUpload = ApplicationLibary.encodeURL(url: u_urlUpload, method: u_method, locale: "us_US", mediaType: "json", time: u_time);
+                    string rs_Data2Send = refixData2Send(dataObj);
+
+                    HttpWebRequest wRequestUpload = (HttpWebRequest)WebRequest.Create(rs_UrlUpload);
+                    wRequestUpload.Headers.Add("Accept-Language", "vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3");
+                    wRequestUpload.Accept = "application/json, text/plain, */*";
+                    wRequestUpload.Host = "partner.spreadshirt.com";
+                    wRequestUpload.ContentType = "application/json;charset=utf-8";
+                    wRequestUpload.Referer = "https://partner.spreadshirt.com/designs/" + ideaId;
+                    wRequestUpload.CookieContainer = cookieApplication;
+
+                    Dictionary<string, object> step2Upload = PutDataAPI(wRequestUpload, rs_Data2Send);
+                    if (int.Parse(step2Upload["status"].ToString()) == -1)
+                    {
+                        ApplicationLibary.writeLogThread(lsBoxLog, "Step 2: " + step2Upload["data"].ToString(), 1);
+                        continue;
+                    }
+                    var objUploadEnd = JObject.Parse(step2Upload["data"].ToString());
+                    var linkIdea = objUploadEnd["href"].ToString();
+                    #endregion
+                    #region -----------Step 3: Publish-----------
+                    //https://partner.spreadshirt.com/api/v1/users/302721328/ideas/5a339e2aaa0c6d3e511e3268/publishingDetails?apiKey=1c711bf5-b82d-40de-bea6-435b5473cf9b&locale=us_US&mediaType=json&sig=ff531cb9b45015934d699c796dc013033dcff8e8&time=1513333983186
+                    var urlPublish = User.USER_HREF + "/ideas/" + ideaId + "/publishingDetails";
+                    string p_urlPublish = ApplicationLibary.encodeURL(url: urlPublish, method: "PUT", locale: "us_US", mediaType: "json");
+                    var p_data2SendPublish = @"{""list"": [" + dataCYOID;
+                    foreach (string str in getPublishingDetailsPublish(shop))
+                    {
+                        var x = str.Replace(@"\", "");
+                        p_data2SendPublish += "," + x;
+                    }
+                    p_data2SendPublish = p_data2SendPublish.TrimEnd(',') + "]}";
+
+                    HttpWebRequest wRequestPublish = (HttpWebRequest)WebRequest.Create(p_urlPublish);
+                    wRequestPublish.Headers.Add("Accept-Language", "vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3");
+                    wRequestPublish.Accept = "application/json, text/plain, */*";
+                    wRequestPublish.Host = "partner.spreadshirt.com";
+                    wRequestPublish.ContentType = "application/json;charset=utf-8";
+                    wRequestPublish.Referer = "https://partner.spreadshirt.com/designs/" + ideaId;
+                    wRequestPublish.CookieContainer = cookieApplication;
+
+                    Dictionary<string, object> step3Publish = PutDataAPI(wRequestPublish, p_data2SendPublish);
+                    if (int.Parse(step3Publish["status"].ToString()) == -1)
+                    {
+                        ApplicationLibary.writeLogThread(lsBoxLog, "Step 3: " + step3Publish["data"].ToString(), 1);
+                        continue;
+                    }
+
+                    ApplicationLibary.writeLogThread(lsBoxLog, "Upload & Publish finish: " + "https://partner.spreadshirt.com/designs/" + ideaId, 1);
+                    #endregion
+                    //MoveFileUploaded(image); 
+                }
+                catch (Exception ex)
+                {
+                    ApplicationLibary.writeLogThread(lsBoxLog, "Upload Error: " + ex.Message, 1);
+                }
             }
-            JObject jObj = JObject.Parse(data["data"].ToString());
-            var designId = jObj["designId"].ToString();
-            var ideaId = jObj["ideaId"].ToString();
-            var name = jObj["name"].ToString();
-
-            //var locationUrl = data["location"].ToString();
-            //HttpWebRequest wrLocation = (HttpWebRequest)WebRequest.Create(locationUrl);
-            //wrLocation.Host = "partner.spreadshirt.com";
-            //wrLocation.Referer = "https://partner.spreadshirt.com/designs";
-            //wrLocation.CookieContainer = cookieApplication;
-            //Dictionary<string, object> dataDesign = GetDataAPI(wrLocation);
-            #endregion
-            #region -----------Step 2-----------
-            string u_method = "PUT";
-            //https://partner.spreadshirt.com/api/v1/users/302721328/ideas/5a33342faa0c6d3e511164f3?apiKey=1c711bf5-b82d-40de-bea6-435b5473cf9b&locale=us_US&mediaType=json&sig=5a88e6520a13a9aa1f7b39036a7c120cd445ccab&time=1513305661500
-            string u_urlUpload = User.USER_HREF + "/ideas/" + ideaId;
-            string u_time = ApplicationLibary.getTimeStamp();
-            string u_dataUrl = u_method + " " + u_urlUpload + " " + u_time + "";
-            string u_sig = ApplicationLibary.sha1Generate(u_dataUrl, ApplicationLibary.SECRET);
-            Dictionary<string, object> dataObj = new Dictionary<string, object>();
-            dataObj.Add("amount", amount);
-            dataObj.Add("shop", shop);
-            dataObj.Add("ideaID", ideaId);
-            dataObj.Add("designID", designId);
-            dataObj.Add("title", title);
-            dataObj.Add("description", description);
-            dataObj.Add("tags", tags);
-            dataObj.Add("sig", u_sig);
-
-            string rs_UrlUpload = ApplicationLibary.encodeURL(url: u_urlUpload, method: u_method, locale: "us_US", mediaType: "json", time: u_time);
-            string rs_Data2Send = refixData2Send(dataObj);
-
-            HttpWebRequest wRequestUpload = (HttpWebRequest)WebRequest.Create(rs_UrlUpload);
-            wRequestUpload.Headers.Add("Accept-Language", "vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3");
-            wRequestUpload.Accept = "application/json, text/plain, */*";
-            wRequestUpload.Host = "partner.spreadshirt.com";
-            wRequestUpload.ContentType = "application/json;charset=utf-8";
-            wRequestUpload.Referer = "https://partner.spreadshirt.com/designs/" + ideaId;
-            wRequestUpload.CookieContainer = cookieApplication;
-
-            Dictionary<string, object> step2Upload = PutDataAPI(wRequestUpload, rs_Data2Send);
-            if (int.Parse(step2Upload["status"].ToString()) == -1)
+        }
+        private string getSelectShop()
+        {
+            string data = "";
+            foreach (UCItemShopSpread item in lsAllShopItem)
             {
-                ApplicationLibary.writeLog(lsBoxLog, "Step 2: " + step2Upload["data"].ToString(), 1);
-                return;
+                if (item.Shop.isSelected)
+                {
+                    data += item.Shop.Name + ",";
+                }
             }
-            var objUploadEnd = JObject.Parse(step2Upload["data"].ToString());
-            var linkIdea = objUploadEnd["href"].ToString();
-
-            //MoveFileUploaded(image);
-            #endregion
-            #region -----------Step 3: Publish-----------
-            //https://partner.spreadshirt.com/api/v1/users/302721328/ideas/5a339e2aaa0c6d3e511e3268/publishingDetails?apiKey=1c711bf5-b82d-40de-bea6-435b5473cf9b&locale=us_US&mediaType=json&sig=ff531cb9b45015934d699c796dc013033dcff8e8&time=1513333983186
-            var urlPublish = User.USER_HREF + "/ideas/" + ideaId + "/publishingDetails";
-            string p_urlPublish = ApplicationLibary.encodeURL(url: urlPublish, method: "PUT", locale: "us_US", mediaType: "json");
-            var p_data2SendPublish = @"{""list"": [" + dataCYOID;
-            foreach (string str in getPublishingDetails(shop))
-            {
-                var x = str.Replace(@"\", "");
-                p_data2SendPublish += "," + x;
-            }
-            p_data2SendPublish = p_data2SendPublish.TrimEnd(',') + "]}";
-
-            HttpWebRequest wRequestPublish = (HttpWebRequest)WebRequest.Create(p_urlPublish);
-            wRequestPublish.Headers.Add("Accept-Language", "vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3");
-            wRequestPublish.Accept = "application/json, text/plain, */*";
-            wRequestPublish.Host = "partner.spreadshirt.com";
-            wRequestPublish.ContentType = "application/json;charset=utf-8";
-            wRequestPublish.Referer = "https://partner.spreadshirt.com/designs/" + ideaId;
-            wRequestPublish.CookieContainer = cookieApplication;
-
-            Dictionary<string, object> step3Publish = PutDataAPI(wRequestPublish, p_data2SendPublish);
-            if (int.Parse(step3Publish["status"].ToString()) == -1)
-            {
-                ApplicationLibary.writeLog(lsBoxLog, "Step 3: " + step3Publish["data"].ToString(), 1);
-                return;
-            }
-
-            ApplicationLibary.writeLogThread(lsBoxLog, "Upload & Publish finish: " + linkIdea, 1);
-            #endregion
+            data = data.TrimEnd(',');
+            return data;
         }
         private string createSprdAuthHeader(string method, string url, string time)
         {
@@ -486,8 +617,7 @@ namespace SpreadShirts
         }
         private string refixData2Send(Dictionary<string, object> dataObj)
         {
-            string file = @"D:\SOFT_HOANG\Project\SunfrogShirts\trunk\SpreadShirts\data2send.txt";
-            string data2SendFromFile = ApplicationLibary.readDataFromFile(file);
+            string data2SendFromFile = Resources.data2send;
             JObject obj = JObject.Parse(data2SendFromFile);
             int time = int.Parse(ApplicationLibary.getTimeStamp());
             //set Amount
@@ -495,10 +625,18 @@ namespace SpreadShirts
 
             //publishingDetails
             JArray item = (JArray)obj["publishingDetails"];
-            foreach (string str in getPublishingDetails(dataObj["shop"].ToString()))
+            foreach (Dictionary<string, object> itemShop in getPublishingDetails(dataObj["shop"].ToString()))
             {
-                var x = str.Replace(@"\", "");
-                item.Add(x);
+                if (itemShop["type"].ToString().Equals("MARKETPLACE"))
+                {
+                    item.Add(JObject.Parse(dataMarkID));
+                }
+                else
+                {
+                    var xDa = dataShopID.Replace("@ShopID", itemShop["id"].ToString()).Replace("@ShopName", itemShop["name"].ToString()).Replace("@TargetID", itemShop["targetID"].ToString());
+                    item.Add(JObject.Parse(xDa));
+
+                }
             }
             //set Time configuration
             obj["properties"]["configuration"] = time;
@@ -551,7 +689,38 @@ namespace SpreadShirts
             var data2Send = obj.ToString(Newtonsoft.Json.Formatting.None);
             return data2Send;
         }
-        private List<string> getPublishingDetails(string shopName)
+        private List<Dictionary<string, object>> getPublishingDetails(string shopName)
+        {
+            List<Dictionary<string, object>> lsData = new List<Dictionary<string, object>>();
+            Dictionary<string, object> currDic = new Dictionary<string, object>();
+            currDic.Add("id", "55c864cc64c7436b464aeb7b");
+            currDic.Add("name", "");
+            currDic.Add("targetID", "93439");
+            currDic.Add("type", "MARKETPLACE");
+            lsData.Add(currDic);
+            var lsShop = shopName.Split(',');
+            foreach (string strShop in lsShop)
+            {
+                if (!string.IsNullOrEmpty(strShop))
+                {
+                    currDic = new Dictionary<string, object>();
+                    foreach (OShop shop in User.SHOPS)
+                    {
+                        if (shop.Name.Contains(strShop) || shop.TargetID.Contains(strShop))
+                        {
+                            currDic.Add("id", shop.Id);
+                            currDic.Add("name", shop.Name);
+                            currDic.Add("targetID", shop.TargetID);
+                            currDic.Add("type", "SHOP");
+                            lsData.Add(currDic);
+                        }
+                    }
+                }
+            }
+
+            return lsData;
+        }
+        private List<string> getPublishingDetailsPublish(string shopName)
         {
             List<string> data = new List<string>();
             data.Add(dataMarkID);
@@ -580,5 +749,241 @@ namespace SpreadShirts
                 Directory.CreateDirectory(path);
             File.Move(fileName, newDir);
         }
+        private void loadAllShop()
+        {
+            foreach (OShop item in User.SHOPS)
+            {
+                UCItemShopSpread frm = new UCItemShopSpread();
+                frm.Shop = item;
+                addShopToPanel(frm);
+            }
+        }
+        private void addShopToPanel(UCItemShopSpread frm)
+        {
+            frm.Location = new Point(10, (lsAllShopItem.Count * frm.Height) + (lsAllShopItem.Count * 10) + 10);
+            frm.Width = xtraScrollableShop.Width - 30;
+            lsAllShopItem.Add(frm);
+
+            xtraScrollableShop.Invoke((MethodInvoker)delegate { xtraScrollableShop.Controls.Clear(); });
+            foreach (var item in lsAllShopItem)
+            {
+                xtraScrollableShop.Invoke((MethodInvoker)delegate { xtraScrollableShop.Controls.Add(item); });            
+            }
+        }
+        private void loadDataToTable(DataTable dt)
+        {
+            int index = 0;
+            Dictionary<string, object> data;
+            for (; index < dt.Rows.Count; index++)
+            {
+                data = new Dictionary<string, object>();
+                for (int j = 0; j < dtDataTemp.Columns.Count; j++)
+                {
+                    var col = dtDataTemp.Columns[j].ColumnName;
+                    var dr = dtDataTemp.Rows[index][col].ToString();
+                    data.Add(col, dr);
+                }
+                listDataUpload.Add(data);
+            }
+
+        }
+        private void frmMain_Load(object sender, EventArgs e)
+        {
+            User = new ApplicationUser();
+            lsAllShopItem = new List<UCItemShopSpread>();
+            frmLogin frm = new frmLogin();
+            frm.senduser = new frmLogin.SendUser(getUser);
+            frm.ShowDialog();
+        }
+        private void btnChooesImage_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                OpenFileDialog op = new OpenFileDialog();
+                op.Multiselect = true;
+                op.Filter = "Image .png|*.png";
+                if (DialogResult.OK == op.ShowDialog())
+                {
+                    lsImageFileNames = op.FileNames.ToList();
+                    foreach (var item in lsImageFileNames)
+                    {
+                        lsBoxImage.Items.Add(Path.GetFileName(item));
+                    }
+                    ApplicationLibary.writeLog(lsBoxLog, "Selected " + lsImageFileNames.Count + " file(s)", 1);
+                }
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show("Error: " + ex.Message);
+            }
+        }
+        private void btnWriteLog_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string data = "========================LOG EVENT========================";
+                foreach (var item in lsBoxLog.Items)
+                {
+                    data += "\r\n" + item.ToString();
+                }
+                if (data != "")
+                {
+                    string file = ApplicationLibary.writeDataToFileText(data);
+                    Process.Start(file);
+                }
+            }
+            catch
+            {
+
+            }
+        }
+        private void btnOpenFileExcel_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                OpenFileDialog op = new OpenFileDialog();
+                op.Filter = "Excel .csv|*.csv|Excel .xlsx|*.xlsx|Excel .xls|*.xls";
+                if (DialogResult.OK == op.ShowDialog())
+                {
+                    txtPath.Text = op.FileName;
+                    dtDataTemp = new DataTable();
+                    listDataUpload = new List<Dictionary<string, object>>();
+                    var x = Path.GetExtension(op.FileName);
+                    if (x == ".csv")
+                        dtDataTemp = ApplicationLibary.getDataExcelFromFileCSVToDataTable(op.FileName);
+                    else
+                        dtDataTemp = ApplicationLibary.getDataExcelFromFileToDataTable(op.FileName);
+                    loadDataToTable(dtDataTemp);
+                    ApplicationLibary.writeLog(lsBoxLog, "Success " + dtDataTemp.Rows.Count + " record(s) is opened", 1);
+                    // testSaveFile();
+                }
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show("Error: " + ex.Message);
+            }
+        }
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            if (lsBoxLog.Items.Count > 0)
+            {
+                lsBoxLog.Items.Clear();
+                ApplicationLibary.writeLog(lsBoxLog, "Cleared", 1);
+            }
+        }
+        private void enableB(bool b)
+        {
+            btnStart.Enabled = b;
+            btnClear.Enabled = b;
+            btnOpenFileExcel.Enabled = b;
+        }
+        private void enableBThread(bool b)
+        {
+            btnStart.Invoke((MethodInvoker)delegate { btnStart.Enabled = b; });
+            btnClear.Invoke((MethodInvoker)delegate { btnClear.Enabled = b; });
+            btnOpenFileExcel.Invoke((MethodInvoker)delegate { btnOpenFileExcel.Enabled = b; });
+        }
+        private void btnStart_Click(object sender, EventArgs e)
+        {
+            currentIndexUpload = -1;
+            enableB(false);
+
+            if (ckUsingFileUpload.Checked)
+            {
+                if (dtDataTemp == null || dtDataTemp.Rows.Count == 0)
+                {
+                    XtraMessageBox.Show("File data is not found!", "Message");
+                    enableB(true);
+                    return;
+                }
+                if (double.Parse(txtPrice.Text) < 0 || double.Parse(txtPrice.Text) > 20)
+                {
+                    XtraMessageBox.Show("Choose a design price between $0.00 and $20.00", "Message");
+                    enableB(true);
+                    return;
+                }
+                Thread tStart1 = new Thread(new ThreadStart(() =>
+                {
+                    UploadFileProgress(listDataUpload);
+                    enableBThread(true);
+                }));
+                tStart1.Start();
+            }
+            else
+            {
+                if (txtName.Text == "")
+                {
+                    XtraMessageBox.Show("Please enter field name!", "Message");
+                    enableB(true);
+                    return;
+                }
+                if (memoDescription.Text == "")
+                {
+                    XtraMessageBox.Show("Please enter field description!", "Message");
+                    enableB(true);
+                    return;
+                }
+                if (memoDescription.Text == "")
+                {
+                    XtraMessageBox.Show("Please enter field tag!", "Message");
+                    enableB(true);
+                    return;
+                }
+                if (double.Parse(txtPrice.Text) < 0 || double.Parse(txtPrice.Text) > 20)
+                {
+                    XtraMessageBox.Show("Choose a design price between $0.00 and $20.00", "Message");
+                    enableB(true);
+                    return;
+                }
+                else
+                {
+                    var x = memoDescription.Text.Trim().Split(',');
+                    if (x.Count() < 3)
+                    {
+                        XtraMessageBox.Show("Please enter more than 3 keywords!", "Message");
+                        enableB(true);
+                        return;
+                    }
+                }
+                Thread tStart = new Thread(new ThreadStart(() =>
+                {
+                    UploadProgress();
+                    enableBThread(true);
+                }));
+                tStart.Start();
+            }
+        }
+
+        private void txtPrice_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == '.')
+            {
+                var x = txtPrice.Text;
+                if (x.IndexOf('.') > -1 && x != "")
+                    e.Handled = true;
+            }
+            else if (!(char.IsControl(e.KeyChar) || char.IsDigit(e.KeyChar)))
+            {
+                e.Handled = true;
+            }
+            if (txtPrice.Text == "")
+            {
+                txtPrice.Text = "00.00";
+            }
+        }
+        private void ckUsingFileUpload_CheckedChanged(object sender, EventArgs e)
+        {
+            if (ckUsingFileUpload.Checked)
+            {
+                btnOpenFileExcel.Enabled = true;
+                ApplicationLibary.writeLog(lsBoxLog, "Enable upload styles using file", 1);
+            }
+            else
+            {
+                btnOpenFileExcel.Enabled = false;
+                ApplicationLibary.writeLog(lsBoxLog, "Disable upload styles using file", 1);
+            }
+        }
+
     }
 }

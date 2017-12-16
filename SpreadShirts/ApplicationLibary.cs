@@ -1,5 +1,6 @@
 ﻿using DevExpress.XtraEditors;
 using ExcelDataReader;
+using Microsoft.VisualBasic.FileIO;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -20,6 +21,9 @@ namespace SpreadShirts
     {
         public static string BROWSER_CHROME = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36";
         public static string BROWSER_FIREFOX = "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:49.0) Gecko/20100101 Firefox/49.0";
+        private static string ApplicationName = "SpreadShirt";
+        private static string FolderUser = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + ApplicationName;
+
         public static string API_KEY = "1c711bf5-b82d-40de-bea6-435b5473cf9b";
         public static string SECRET = "fd9f23cc-2432-4a69-9dad-bbd57b7b9fdd";
         public static string Origin = "https://partner.spreadshirt.com";
@@ -42,8 +46,6 @@ namespace SpreadShirts
             }
             return base64String;
         }
-
-        private static string currentFolderUser = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
         public static DataTable getDataExcelFromFileToDataTable(string filePath)
         {
             using (var stream = File.Open(filePath, FileMode.Open, FileAccess.Read))
@@ -70,40 +72,49 @@ namespace SpreadShirts
         }
         public static DataTable getDataExcelFromFileCSVToDataTable(string filePath)
         {
-            DataTable dt = new DataTable();
-            using (StreamReader reader = new StreamReader(filePath))
-            {
-                string line;
-                int column = 1;
-                while ((line = reader.ReadLine()) != null)
-                {
-                    //Define pattern
-                    Regex CSVParser = new Regex(",(?=(?:[^\"]*\"[^\"]*\")*(?![^\"]*\"))");
+            return GetDataTabletFromCSVFile(filePath);
+        }
+        private static DataTable GetDataTabletFromCSVFile(string csv_file_path)
 
-                    //Separating columns to array
-                    string[] X = CSVParser.Split(line);
-                    if (column == 1)
+        {
+
+            DataTable csvData = new DataTable();
+            try
+            {
+                using (TextFieldParser csvReader = new TextFieldParser(csv_file_path))
+                {
+                    csvReader.SetDelimiters(new string[] { "," });
+                    csvReader.HasFieldsEnclosedInQuotes = true;
+                    string[] colFields = csvReader.ReadFields();
+                    foreach (string column in colFields)
                     {
-                        for (int i = 0; i < X.Length; i++)
-                        {
-                            dt.Columns.Add(X[i] == "" ? "Column" + i : X[i]);
-                        }
-                        column++;
+                        DataColumn datecolumn = new DataColumn(column);
+                        datecolumn.AllowDBNull = true;
+                        csvData.Columns.Add(datecolumn);
                     }
-                    else
+                    while (!csvReader.EndOfData)
                     {
-                        DataRow dr = dt.NewRow();
-                        for (int i = 0; i < X.Length; i++)
+                        string[] fieldData = csvReader.ReadFields();
+                        //Making empty value as null
+                        for (int i = 0; i < fieldData.Length; i++)
                         {
-                            dr[i] = X[i];
+                            if (fieldData[i] == "")
+                            {
+                                fieldData[i] = null;
+                            }
                         }
-                        dt.Rows.Add(dr);
+                        csvData.Rows.Add(fieldData);
                     }
-                    /* Do something with X */
                 }
             }
-            return dt;
+            catch (Exception ex)
+            {
+
+            }
+            return csvData;
+
         }
+
         public static string Base64Encode(string plainText)
         {
             var plainTextBytes = System.Text.Encoding.UTF8.GetBytes(plainText);
@@ -121,7 +132,6 @@ namespace SpreadShirts
                 throw new Exception("Something's wrong. Please try again !");
             }
         }
-
         public static string readDataFromFile(string filePath)
         {
             var data = "";
@@ -152,7 +162,7 @@ namespace SpreadShirts
         public static void writeFileToResource(string templateName, string data)
         {
             var name = DateTime.Now.Ticks.ToString("x");
-            string fileNameTheme = Path.Combine(currentFolderUser, "TCP\\themesaved.txt");
+            string fileNameTheme = Path.Combine(FolderUser, "\\themesaved.txt");
             //if the file doesn't exist, create it
             if (!File.Exists(fileNameTheme))
             {
@@ -166,7 +176,7 @@ namespace SpreadShirts
                 sw.Close();
                 sw.Dispose();
             }
-            string fileName = Path.Combine(currentFolderUser, "TCP\\" + name + ".txt");
+            string fileName = Path.Combine(FolderUser, "\\" + name + ".txt");
             //if the file doesn't exist, create it
             using (StreamWriter file = new StreamWriter(fileName, true))
             {
@@ -176,7 +186,7 @@ namespace SpreadShirts
         public static string writeDataToFileText(string data)
         {
             var name = DateTime.Now.Ticks.ToString("x");
-            string fileName = Path.Combine(currentFolderUser, "TCP\\" + name + "_log.txt");
+            string fileName = Path.Combine(FolderUser, "\\" + name + "_log.txt");
             //if the file doesn't exist, create it
             using (StreamWriter file = new StreamWriter(fileName, true))
             {
@@ -184,7 +194,38 @@ namespace SpreadShirts
             }
             return fileName;
         }
-
+        public static void saveDataTableToFileCSV(string path, DataTable data)
+        {
+            try
+            {
+                string ex1 = Path.GetExtension(path);
+                if (ex1 != ".csv")
+                {
+                    path = Path.GetDirectoryName(path) + "\\" + Path.GetFileName(path).Split('.')[0] + ".csv";
+                }
+                if (File.Exists(path))
+                {
+                    File.Delete(path);
+                }
+                string text = "";
+                foreach (DataColumn col in data.Columns)
+                {
+                    text += "," + col.ColumnName;
+                }
+                text += "\r\n";
+                foreach (DataRow dr in data.Rows)
+                {
+                    text += "";
+                    foreach (DataColumn col in data.Columns)
+                    {
+                        text += "," + dr[col].ToString().Replace("\n", "").Replace("\r", "").Trim();
+                    }
+                    text += "\r\n";
+                }
+                File.AppendAllText(path, text);
+            }
+            catch { }
+        }
         public static string convertStringToJson(string text)
         {
             var result = "";

@@ -12,6 +12,7 @@ namespace SpreadShirts
         public string Name { get; set; }
         public string Type { get; set; }
         public string TargetID { get; set; }
+        public bool isSelected { get; set; }
 
     }
 }

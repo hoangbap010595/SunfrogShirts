@@ -566,7 +566,7 @@
             this.btnStart.Name = "btnStart";
             this.btnStart.Size = new System.Drawing.Size(167, 76);
             this.btnStart.TabIndex = 12;
-            this.btnStart.Text = "Start";
+            this.btnStart.Text = "Upload";
             this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
             // 
             // groupControlFile
@@ -620,7 +620,7 @@
             this.btnWriteLog.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnWriteLog.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnWriteLog.ImageOptions.Image")));
             this.btnWriteLog.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleLeft;
-            this.btnWriteLog.Location = new System.Drawing.Point(226, 58);
+            this.btnWriteLog.Location = new System.Drawing.Point(315, 58);
             this.btnWriteLog.Name = "btnWriteLog";
             this.btnWriteLog.Size = new System.Drawing.Size(84, 23);
             this.btnWriteLog.TabIndex = 8;
@@ -636,7 +636,7 @@
             this.btnOpenFileExcel.Enabled = false;
             this.btnOpenFileExcel.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnOpenFileExcel.ImageOptions.Image")));
             this.btnOpenFileExcel.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleLeft;
-            this.btnOpenFileExcel.Location = new System.Drawing.Point(314, 58);
+            this.btnOpenFileExcel.Location = new System.Drawing.Point(228, 58);
             this.btnOpenFileExcel.Name = "btnOpenFileExcel";
             this.btnOpenFileExcel.Size = new System.Drawing.Size(84, 23);
             this.btnOpenFileExcel.TabIndex = 8;
