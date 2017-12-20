@@ -937,7 +937,7 @@ namespace SpreadShirts
                 }
                 else
                 {
-                    var x = memoDescription.Text.Trim().Split(',');
+                    var x = memoTag.Text.Trim().Split(',');
                     if (x.Count() < 3)
                     {
                         XtraMessageBox.Show("Please enter more than 3 keywords!", "Message");
