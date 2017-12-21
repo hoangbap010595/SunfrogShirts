@@ -227,6 +227,11 @@ namespace SpreadShirts
                     wRequestUpload.ContentType = "application/json;charset=utf-8";
                     wRequestUpload.Referer = "https://partner.spreadshirt.com/designs/" + ideaId;
                     wRequestUpload.CookieContainer = cookieApplication;
+                    wRequestUpload.ServicePoint.Expect100Continue = false;
+                    wRequestUpload.ProtocolVersion = HttpVersion.Version11;
+                    wRequestUpload.Timeout = 90000;
+                    wRequestUpload.ReadWriteTimeout = 90000;
+                    wRequestUpload.KeepAlive = true;
 
                     Dictionary<string, object> step2Upload = PutDataAPI(wRequestUpload, rs_Data2Send);
                     if (int.Parse(step2Upload["status"].ToString()) == -1)
@@ -265,7 +270,7 @@ namespace SpreadShirts
                     }
                     ApplicationLibary.writeLogThread(lsBoxLog, "Upload & Publish finish: " + "https://partner.spreadshirt.com/designs/" + ideaId, 1);
                     #endregion
-                    MoveFileUploaded(image); 
+                    MoveFileUploaded(image);
                     dtDataTemp.Rows[currentIndexUpload]["Status"] = "Done";
                     ApplicationLibary.saveDataTableToFileCSV(txtPath.Text, dtDataTemp);
                 }
@@ -376,7 +381,7 @@ namespace SpreadShirts
 
                     ApplicationLibary.writeLogThread(lsBoxLog, "Upload & Publish finish: " + "https://partner.spreadshirt.com/designs/" + ideaId, 1);
                     #endregion
-                    MoveFileUploaded(image); 
+                    MoveFileUploaded(image);
                 }
                 catch (Exception ex)
                 {
@@ -561,6 +566,7 @@ namespace SpreadShirts
                     {
                         htmlString = reader.ReadToEnd();
                     }
+                    wResponse.Close();
                 }
 
                 dataReturn.Add("cookies", cookies);
@@ -767,7 +773,7 @@ namespace SpreadShirts
             xtraScrollableShop.Invoke((MethodInvoker)delegate { xtraScrollableShop.Controls.Clear(); });
             foreach (var item in lsAllShopItem)
             {
-                xtraScrollableShop.Invoke((MethodInvoker)delegate { xtraScrollableShop.Controls.Add(item); });            
+                xtraScrollableShop.Invoke((MethodInvoker)delegate { xtraScrollableShop.Controls.Add(item); });
             }
         }
         private void loadDataToTable(DataTable dt)
@@ -985,5 +991,10 @@ namespace SpreadShirts
             }
         }
 
+        private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.ExitThread();
+            Application.Exit();
+        }
     }
 }
