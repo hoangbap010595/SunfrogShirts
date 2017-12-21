@@ -61,6 +61,15 @@ namespace SunfrogShirts.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {&quot;ArtOwnerID&quot;:0,&quot;IAgree&quot;:true,&quot;Title&quot;:&quot;@Title&quot;,&quot;Category&quot;:&quot;@CategoryID&quot;,&quot;Description&quot;:&quot;@Desciption&quot;,&quot;Collections&quot;:&quot;@Collection&quot;,&quot;Keywords&quot;:[&quot;ahihi&quot;,&quot;test&quot;,&quot;ahiahiaâ&quot;],&quot;imageFront&quot;:&quot;@imgFront&quot;,&quot;imageBack&quot;:&quot;@imgBack&quot;,&quot;types&quot;:[{&quot;id&quot;:8,&quot;name&quot;:&quot;Guys Tee&quot;,&quot;price&quot;:19,&quot;colors&quot;:[&quot;White&quot;,&quot;Yellow&quot;,&quot;Green&quot;,&quot;Purple&quot;,&quot;Navy Blue&quot;]}],&quot;images&quot;:[{&quot;id&quot;:&quot;__dataURI:0__&quot;,&quot;uri&quot;:&quot;data:image/png;base64,@imgBase64&quot;}]}.
+        /// </summary>
+        internal static string data2Send {
+            get {
+                return ResourceManager.GetString("data2Send", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap Logo {

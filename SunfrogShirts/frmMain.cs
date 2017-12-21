@@ -13,6 +13,7 @@ using System.Web;
 using Newtonsoft.Json.Linq;
 using System.Text.RegularExpressions;
 using Newtonsoft.Json;
+using SunfrogShirts.Properties;
 
 namespace SunfrogShirts
 {
@@ -259,6 +260,23 @@ namespace SunfrogShirts
             frm.SetDescription("Please wait...");
             Thread t = new Thread(new ThreadStart(() =>
             {
+                HttpWebRequest wRequest1 = (HttpWebRequest)WebRequest.Create("https://manager.sunfrogshirts.com/");
+                //wRequest.UserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:56.0) Gecko/20100101 Firefox/56.0";
+                //wRequest.Accept = "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8";
+                //wRequest.Referer = "https://manager.sunfrogshirts.com/";
+                wRequest1.Method = "GET";
+                //wRequest.KeepAlive = true;lo
+                wRequest1.CookieContainer = cookieContainer;
+                var cookieHeader1 = "";
+                WebResponse resp1 = wRequest1.GetResponse();
+                cookieHeader1 = resp1.Headers["Set-cookie"];
+
+                foreach (Cookie cookie in ((HttpWebResponse)resp1).Cookies)
+                {
+                    cookieContainer.Add(cookie);
+                }
+
+
                 var userName = sys_txtAccount.Text;
                 var password = sys_txtPassword.Text;
                 //data
@@ -480,8 +498,8 @@ namespace SunfrogShirts
         /// </summary>
         private void clearContent()
         {
-            txtPath.Text = sys_txtPassword.Text = sys_txtAccount.Text 
-                = info_txtCollection.Text = info_txtDescription.Text 
+            txtPath.Text = sys_txtPassword.Text = sys_txtAccount.Text
+                = info_txtCollection.Text = info_txtDescription.Text
                 = info_txtKeyWord.Text = info_txtTitle.Text = "";
         }
         /// <summary>
@@ -514,6 +532,36 @@ namespace SunfrogShirts
             result = result.TrimEnd(',');
             result += "]";
             return result;
+        }
+        /// <summary>
+        /// Lấy chuỗi json màu sắc và danh mục
+        /// </summary>
+        /// <returns>Chuỗi json các màu sắc và category đã chọn</returns>
+        private List<string> getListThemeObject()
+        {
+            List<string> data = new List<string>();
+            //  themes = "{\"id\":8,\"name\":\"Guys Tee\",\"price\":19,\"colors\":[\"Orange\",\"Yellow\"]}";
+            foreach (DataRow drTheme in dtDataTempColor.Rows)
+            {
+                var result = "";
+                var color = "";
+                result += "{\"id\": " + drTheme["Id"] + ", \"name\": \"" + drTheme["Name"] + "\", \"price\": " + drTheme["Price"] + ",";
+                result += "\"colors\":[";
+                if (!string.IsNullOrEmpty(drTheme["Color1"].ToString()))
+                    color += drTheme["Color1"].ToString() + ",";
+                if (!string.IsNullOrEmpty(drTheme["Color2"].ToString()))
+                    color += drTheme["Color2"].ToString() + ",";
+                if (!string.IsNullOrEmpty(drTheme["Color3"].ToString()))
+                    color += drTheme["Color3"].ToString() + ",";
+                if (!string.IsNullOrEmpty(drTheme["Color4"].ToString()))
+                    color += drTheme["Color4"].ToString() + ",";
+                if (!string.IsNullOrEmpty(drTheme["Color5"].ToString()))
+                    color += drTheme["Color5"].ToString() + ",";
+                result += CoreLibary.convertStringToJson(color);
+                result += "]}";
+                data.Add(result);
+            }
+            return data;
         }
         /// <summary>
         /// Lấy giá trị Id của category
@@ -611,19 +659,39 @@ namespace SunfrogShirts
             dataToSend += ",\"types\":" + themes;
             dataToSend += ",\"images\":[{\"id\":\"__dataURI: 0__\",\"uri\":\"data:image/png;base64," + imgBase64 + "\"}]";
             dataToSend += "}";
+
+            Dictionary<string, object> dataObj = new Dictionary<string, object>();
+            dataObj.Add("Title", title);
+            dataObj.Add("Category", category);
+            dataObj.Add("Description", description);
+            dataObj.Add("Collections", collection);
+            dataObj.Add("Keywords", dr["Keyword"].ToString().Trim());
+            dataObj.Add("imageFront", strFront);
+            dataObj.Add("imageBack", strBack);
+            dataObj.Add("images", imgBase64);
+
+            
+            dataToSend = refixData2Send(dataObj);
             byte[] postDataBytes2 = Encoding.ASCII.GetBytes(dataToSend);
             string getUrl = "https://manager.sunfrogshirts.com/Designer/php/upload-handler.cfm";
 
             HttpWebRequest getRequest = (HttpWebRequest)WebRequest.Create(getUrl);
-            //getRequest.UserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:56.0) Gecko/20100101 Firefox/56.0";
+            //getRequest.UserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:49.0) Gecko/20100101 Firefox/49.0";
             //getRequest.Accept = "*/*";
+            getRequest.Method = "POST";
             //getRequest.AllowWriteStreamBuffering = true;
             //getRequest.AllowAutoRedirect = true;
-            getRequest.Method = "POST";
+            //getRequest.Host = "manager.sunfrogshirts.com";
+            //getRequest.Headers.Add("X-Requested-With", "XMLHttpRequest");
+            //getRequest.Headers.Add("Accept-Language", "vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3");
+            //getRequest.Headers.Add("Accept-Encoding", "gzip, deflate, br");
             getRequest.ContentType = "application/json; charset=UTF-8";
-            getRequest.ContentLength = postDataBytes2.Length;
-            //getRequest.KeepAlive = true;
+            getRequest.Referer = "https://manager.sunfrogshirts.com/Designer/";
             getRequest.CookieContainer = cookieContainer;
+            getRequest.ContentLength = postDataBytes2.Length;
+            getRequest.Headers.Add("Origin", "https://sunfrogshirts.com");
+            getRequest.KeepAlive = true;
+
             using (StreamWriter sr = new StreamWriter(getRequest.GetRequestStream()))
             {
                 sr.Write(dataToSend);
@@ -631,12 +699,19 @@ namespace SunfrogShirts
                 sr.Flush();
                 sr.Close();
             }
-            string sourceCode = "";
             HttpWebResponse getResponse = (HttpWebResponse)getRequest.GetResponse();
+            string sourceCode = "";
             using (StreamReader sr = new StreamReader(getResponse.GetResponseStream()))
             {
                 sourceCode = sr.ReadToEnd();
             }
+
+            //Dictionary<string, object> dataUpload = PostDataAPI(getRequest, dataToSend);
+            //if (int.Parse(dataUpload["status"].ToString()) == -1)
+            //{
+            //    CoreLibary.writeLogThread(lsBoxLog, "Step 2: " + dataUpload["data"].ToString(), 1);
+            //}
+            //sourceCode = dataUpload["data"].ToString();
             var obj = JObject.Parse(sourceCode);
             if (int.Parse(obj["result"].ToString()) == 0)
                 CoreLibary.writeLogThread(lsBoxLog, "Collection:" + obj["collectionName"].ToString() + " - " + obj["description"].ToString(), 2);
@@ -644,29 +719,39 @@ namespace SunfrogShirts
                 CoreLibary.writeLogThread(lsBoxLog, "Uploaded " + obj["description"].ToString(), 1);
             //Chuyển hình sang folder Uploaded
             //moveImageUploaded(pathImage);
-            Thread tDownFile = new Thread(new ThreadStart(() =>
+        }
+
+        private string refixData2Send(Dictionary<string, object> dataObj)
+        {
+            string data2SendFromFile = Resources.data2Send;
+            JObject obj = JObject.Parse(data2SendFromFile);
+
+            obj["Title"] = dataObj["Title"].ToString();
+            obj["Category"] = dataObj["Category"].ToString();
+            obj["Description"] = dataObj["Description"].ToString();
+            obj["Collections"] = dataObj["Collections"].ToString();
+            //set keyworks
+            var keyworks = dataObj["Keywords"].ToString().Split(',');
+            JArray itemTag = (JArray)obj["Keywords"];
+            foreach (string str in keyworks)
             {
-                var newObj = obj;
-                for (int i = 0; i < newObj["products"].Count(); i++)
-                {
-                    string url = "";
-                    string name = "";
-                    if (frontbackImage == "F")
-                    {
-                        name = newObj["products"][i]["imageFront"].ToString().Split('/').Last();
-                        url = "http:" + newObj["products"][i]["imageFront"].ToString();
-                    }
-                    else
-                    {
-                        name = newObj["products"][i]["imageBack"].ToString().Split('/').Last();
-                        url = "http:" + newObj["products"][i]["imageBack"].ToString();
-                    }
-                    string fileName = dirSaveImageSunUploaded + name;
-                    WebClient webClient = new WebClient();
-                    webClient.DownloadFile(url, fileName);
-                }
-            }));
-            tDownFile.Start();
+                if (!string.IsNullOrEmpty(str))
+                    itemTag.Add(str);
+            }
+            obj["imageFront"] = dataObj["imageFront"].ToString();
+            obj["imageBack"] = dataObj["imageBack"].ToString();
+            //types
+            JArray item = (JArray)obj["types"];
+            foreach (string itemThemes in getListThemeObject())
+            {
+                var x = JObject.Parse(itemThemes);
+                item.Add(x);
+            }
+
+            obj["images"][0]["uri"] = "data:image/png;base64," + dataObj["images"].ToString();
+
+            var data2Send = obj.ToString(Newtonsoft.Json.Formatting.None);
+            return data2Send;
         }
         /// <summary>
         /// Add màu tương ứng với themes đã chọn
@@ -694,9 +779,57 @@ namespace SunfrogShirts
                     File.Move(fileName, newFileName);
                 }
             }
-            catch(Exception ex) {
+            catch (Exception ex)
+            {
                 CoreLibary.writeLogThread(lsBoxLog, ex.Message, 2);
             }
+        }
+
+        private Dictionary<string, object> PostDataAPI(HttpWebRequest wRequest, string data2Send)
+        {
+            Dictionary<string, object> dataReturn = new Dictionary<string, object>();
+            CookieContainer cookies = new CookieContainer();
+            String htmlString;
+            try
+            {
+                ASCIIEncoding encoding = new ASCIIEncoding();
+                byte[] postDataBytes = encoding.GetBytes(data2Send);
+                wRequest.Method = "POST";
+                wRequest.ContentLength = postDataBytes.Length;
+                wRequest.Headers.Add("Origin", "https://sunfrogshirts.com");
+                using (StreamWriter sr = new StreamWriter(wRequest.GetRequestStream()))
+                {
+                    sr.Write(data2Send);
+                    //sr.Write(postDataBytes, 0, postDataBytes.Length);
+                    sr.Flush();
+                    sr.Close();
+                }
+
+                using (HttpWebResponse wResponse = (HttpWebResponse)wRequest.GetResponse())
+                {
+                    foreach (Cookie cookie in wResponse.Cookies)
+                    {
+                        cookies.Add(cookie);
+                    }
+                    using (var reader = new StreamReader(wResponse.GetResponseStream()))
+                    {
+                        htmlString = reader.ReadToEnd();
+                    }
+                }
+
+                dataReturn.Add("cookies", cookies);
+                dataReturn.Add("data", htmlString);
+                dataReturn.Add("status", 1);
+                return dataReturn;
+            }
+            catch (Exception ex)
+            {
+                dataReturn.Add("cookies", cookies);
+                dataReturn.Add("data", ex.Message);
+                dataReturn.Add("status", -1);
+                return dataReturn;
+            }
+
         }
         #endregion
     }

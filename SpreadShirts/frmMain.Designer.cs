@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
@@ -55,6 +56,7 @@
             this.lsBoxImage = new DevExpress.XtraEditors.ListBoxControl();
             this.btnChooesImage = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
+            this.defaultLookAndFeel = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl5)).BeginInit();
@@ -137,10 +139,10 @@
             this.lsBoxLog.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lsBoxLog.HorizontalScrollbar = true;
             this.lsBoxLog.ItemHeight = 22;
-            this.lsBoxLog.Location = new System.Drawing.Point(2, 20);
+            this.lsBoxLog.Location = new System.Drawing.Point(2, 22);
             this.lsBoxLog.Name = "lsBoxLog";
             this.lsBoxLog.ShowFocusRect = false;
-            this.lsBoxLog.Size = new System.Drawing.Size(753, 168);
+            this.lsBoxLog.Size = new System.Drawing.Size(753, 166);
             this.lsBoxLog.TabIndex = 0;
             // 
             // groupControlFile
@@ -397,6 +399,10 @@
             this.labelControl6.TabIndex = 0;
             this.labelControl6.Text = "Image Design";
             // 
+            // defaultLookAndFeel
+            // 
+            this.defaultLookAndFeel.LookAndFeel.SkinName = "McSkin";
+            // 
             // frmMain
             // 
             this.Appearance.BackColor = System.Drawing.Color.White;
@@ -421,6 +427,8 @@
             this.Controls.Add(this.simpleButton2);
             this.Controls.Add(this.simpleButton1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximumSize = new System.Drawing.Size(1100, 605);
+            this.MinimumSize = new System.Drawing.Size(1100, 605);
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Auto Upload Spread Shirts 1.0.0";
@@ -477,6 +485,7 @@
         private DevExpress.XtraEditors.ListBoxControl lsBoxImage;
         private DevExpress.XtraEditors.SimpleButton btnChooesImage;
         private DevExpress.XtraEditors.LabelControl labelControl6;
+        private DevExpress.LookAndFeel.DefaultLookAndFeel defaultLookAndFeel;
     }
 }
 

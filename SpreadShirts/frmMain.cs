@@ -294,7 +294,7 @@ namespace SpreadShirts
                         continue;
                     }
                     #region -----------Step 1: Upload Image-----------
-                    ApplicationLibary.writeLog(lsBoxLog, "Uploadding " + Path.GetFileName(image), 3);
+                    ApplicationLibary.writeLogThread(lsBoxLog, "Uploadding " + Path.GetFileName(image), 3);
                     string img_UrlUpload = User.USER_HREF + "/design-uploads";
                     var urlUploadImage = ApplicationLibary.encodeURL(url: img_UrlUpload, defaultParam: "createProductIdea=true", time: ApplicationLibary.getTimeStamp());
                     NameValueCollection nvc = new NameValueCollection();
@@ -376,7 +376,7 @@ namespace SpreadShirts
 
                     ApplicationLibary.writeLogThread(lsBoxLog, "Upload & Publish finish: " + "https://partner.spreadshirt.com/designs/" + ideaId, 1);
                     #endregion
-                    //MoveFileUploaded(image); 
+                    MoveFileUploaded(image); 
                 }
                 catch (Exception ex)
                 {
