@@ -951,6 +951,12 @@ namespace SpreadShirts
                         return;
                     }
                 }
+                if(lsImageFileNames == null || lsImageFileNames.Count == 0)
+                {
+                    XtraMessageBox.Show("Please choose image desgin!", "Message");
+                    enableB(true);
+                    return;
+                }
                 Thread tStart = new Thread(new ThreadStart(() =>
                 {
                     UploadProgress();

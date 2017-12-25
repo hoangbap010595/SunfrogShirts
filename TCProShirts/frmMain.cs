@@ -159,8 +159,6 @@ namespace TCProShirts
         }
         private void btnStart_Click(object sender, EventArgs e)
         {
-            currentIndexUpload = -1;
-            currentIndexUpload2 = dtDataTemp.Rows.Count - 1;
             enableB(false);
             if (lsUserControlTheme.Count == 0)
             {
@@ -170,18 +168,12 @@ namespace TCProShirts
             }
             if (ckUsingFileUpload.Checked)
             {
+                currentIndexUpload2 = dtDataTemp.Rows.Count - 1;
                 if (dtDataTemp == null || dtDataTemp.Rows.Count == 0)
                 {
                     XtraMessageBox.Show("File data is not found!", "Message");
                     enableB(true);
                 }
-
-                //Thread tStart = new Thread(new ThreadStart(() =>
-                //{
-                //    Thread.Sleep(800);
-                //    UploadFromFile(dt1);
-                //}));
-                //tStart.Start();
 
                 Thread tStart1 = new Thread(new ThreadStart(() =>
                 {
@@ -195,6 +187,7 @@ namespace TCProShirts
             }
             else
             {
+                currentIndexUpload = -1;
                 if (txtTitle.Text == "")
                 {
                     XtraMessageBox.Show("Title is not empty!", "Message");
@@ -248,7 +241,6 @@ namespace TCProShirts
             }
 
         }
-
         private void btnAddCategory_Click(object sender, EventArgs e)
         {
             var obj = lueCategory.GetSelectedDataRow();
@@ -376,7 +368,6 @@ namespace TCProShirts
                         dtDataTemp = ApplicationLibary.getDataExcelFromFileToDataTable(op.FileName);
                     loadDataToTable(dtDataTemp);
                     ApplicationLibary.writeLog(lsBoxLog, "Success " + dtDataTemp.Rows.Count + " record(s) is opened", 1);
-                    // testSaveFile();
                 }
             }
             catch (Exception ex)
@@ -717,15 +708,21 @@ namespace TCProShirts
                     var uUrl = txtUrl.Text.ToLower();
                     var uStore = txtStore.Text;
                     if (string.IsNullOrEmpty(uUrl) || uUrl == "{0}")
-                        uUrl = string.Format("{0}", fileImage.Split('.')[0].Replace(" ", "").Trim());
+                        uUrl = string.Format("{0}", Path.GetFileName(fileImage).Split('.')[0].Replace(" ", "").Trim());
                     else
                         uUrl = uUrl.Replace(" ", "").Trim();
                     uUrl += DateTime.Now.ToString("mmss");
                     var urlUploadImage = "https://scalable-licensing.s3.amazonaws.com/";
 
+                    if (!File.Exists(fileImage))
+                    {
+                        ApplicationLibary.writeLogThread(lsBoxLog, "File do not exists in folder: [" + fileImage + "]", 2);
+                        continue;
+                    }
+
                     var imgDessign = Path.GetFileName(fileImage);
                     #region ============== Upload Image & Get AtWork==================
-                    ApplicationLibary.writeLogThread(lsBoxLog, "Uploading: " + imgDessign, 1);
+                    ApplicationLibary.writeLogThread(lsBoxLog, "Uploading: " + imgDessign, 3);
                     string fileUpload = "uploads/" + DateTime.Now.ToString("yyyy") + "/" + DateTime.Now.ToString("MM") + "/" + DateTime.Now.ToString("dd") + "/" + DateTime.Now.Ticks.ToString("x") + ".png";
                     NameValueCollection nvc = new NameValueCollection();
                     nvc.Add("key", fileUpload);
@@ -751,6 +748,7 @@ namespace TCProShirts
 
                     #region ===============Step 1: Create Design & Get ID Design=============
                     var data2SendUpload = "{\"name\":\"" + uTitle + "\",\"entityId\":\"" + User.EntityID + "\",\"tags\":{\"style\":[" + uCategory + "]}}";
+
                     HttpWebRequest wCost = (HttpWebRequest)WebRequest.Create("https://api.scalablelicensing.com/rest/designs");
                     wCost.Accept = "application/json, text/plain, */*";
                     wCost.ContentType = "application/json";
@@ -762,8 +760,8 @@ namespace TCProShirts
                     var statusUpload = int.Parse(dataUpload["status"].ToString());
                     if (statusUpload == -1)
                     {
-                        ApplicationLibary.writeLogThread(lsBoxLog, rsUpload, 2);
-                        return;
+                        ApplicationLibary.writeLogThread(lsBoxLog, "Step 1: " + rsUpload, 2);
+                        continue;
                     }
                     var objUpload = JObject.Parse(rsUpload);
                     var _IDDesign = objUpload["_id"].ToString();
@@ -1148,10 +1146,10 @@ namespace TCProShirts
             JArray jArray = JArray.Parse(rs);
             foreach (var item in jArray)
             {
-                if (item["name"].ToString().ToLower().IndexOf(text.ToLower()) > -1 
+                if (item["name"].ToString().ToLower().IndexOf(text.ToLower()) > -1
                     || item["fullName"].ToString().ToLower().IndexOf(text.ToLower()) > -1
-                    || item["slug"].ToString().ToLower().IndexOf(text.ToLower()) > -1 
-                    || item["name"].ToString().ToLower().IndexOf(text2.ToLower()) > -1 
+                    || item["slug"].ToString().ToLower().IndexOf(text.ToLower()) > -1
+                    || item["name"].ToString().ToLower().IndexOf(text2.ToLower()) > -1
                     || item["fullName"].ToString().ToLower().IndexOf(text2.ToLower()) > -1
                     || item["slug"].ToString().ToLower().IndexOf(text2.ToLower()) > -1)
                 {
