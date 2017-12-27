@@ -46,7 +46,7 @@ namespace TCProShirts
         private string POSTER = "{\"designId\":\"{0}\",\"entityId\":\"{1}\",\"printSize\":\"poster-standard\",\"id\":\"{2}-36710\",\"sides\":{\"front\":{\"artworkId\":\"{3}\",\"position\":{\"vertical\":{\"origin\":\"C\",\"offset\":0},\"horizontal\":{\"origin\":\"C\",\"offset\":0}},\"size\":{\"width\":0.85,\"unit\":\"percentage\"}}},\"handling\":\"default\"}";
         private string CASE = "{\"designId\":\"{0}\",\"entityId\":\"{1}\",\"printSize\":\"case-standard\",\"id\":\"{2}-38916\",\"sides\":{\"front\":{\"artworkId\":\"{3}\",\"position\":{\"vertical\":{\"origin\":\"C\",\"offset\":-0.002962962962962945},\"horizontal\":{\"origin\":\"C\",\"offset\":-0.00666666666666671}},\"size\":{\"width\":0.46020776295794047,\"unit\":\"percentage\"}}},\"handling\":\"default\"}";
         private string GENERAL_SLIM = "{\"designId\":\"{0}\",\"entityId\":\"{1}\",\"printSize\":\"general-slim\",\"id\":\"{2}-7838\",\"sides\":{\"right\":{\"artworkId\":\"{3}\",\"position\":{\"vertical\":{\"origin\":\"T\",\"offset\":0},\"horizontal\":{\"origin\":\"C\",\"offset\":0}},\"size\":{\"width\":4,\"unit\":\"inch\"}},\"left\":{\"artworkId\":\"@ArtworkID\",\"position\":{\"vertical\":{\"origin\":\"T\",\"offset\":0},\"horizontal\":{\"origin\":\"C\",\"offset\":0}},\"size\":{\"width\":4,\"unit\":\"inch\"}}},\"handling\":\"default\"}";
-        private string MUG = "{\"designId\":\"{0}\",\"entityId\":\"{1}\",\"printSize\":\"mug-standard\",\"id\":\"{2}-67858\",\"sides\":{\"front\":{\"artworkId\":\"{3}\",\"position\":{\"vertical\":{\"origin\":\"C\",\"offset\":0},\"horizontal\":{\"origin\":\"C\",\"offset\":-0.019047619047619035}},\"size\":{\"width\":0.9307932069690922,\"unit\":\"percentage\"}}},\"handling\":\"default\"}";
+        private string MUG = "{\"designId\":\"{0}\",\"entityId\":\"{1}\",\"printSize\":\"mug-standard\",\"id\":\"{2}-67858\",\"sides\":{\"front\":{\"artworkId\":\"{3}\",\"position\":{\"vertical\":{\"origin\":\"C\",\"offset\":0},\"horizontal\":{\"origin\":\"C\",\"offset\": 0}},\"size\":{\"width\":0.6855757689683196,\"unit\":\"percentage\"}}},\"handling\":\"default\"}";
         private string GENRAL = "{\"designId\":\"{0}\",\"entityId\":\"{1}\",\"printSize\":\"general-standard\",\"id\":\"{2}-75642\",\"sides\":{\"front\":{\"artworkId\":\"{3}\",\"position\":{\"vertical\":{\"origin\":\"T\",\"offset\":2},\"horizontal\":{\"origin\":\"C\",\"offset\":0}},\"size\":{\"width\":14,\"unit\":\"inch\"}}},\"handling\":\"default\"}";
         private string HAT = "{\"designId\":\"{0}\",\"entityId\":\"{1}\",\"printSize\":\"hat-standard\",\"id\":\"{2}-21944\",\"sides\":{\"front\":{\"artworkId\":\"{3}\",\"position\":{\"vertical\":{\"origin\":\"T\",\"offset\":0},\"horizontal\":{\"origin\":\"C\",\"offset\":0}},\"size\":{\"width\":2.8083610329838917,\"unit\":\"inch\"}}},\"handling\":\"default\"}";
         private string GENERAL_REDUCED = "{\"designId\":\"{0}\",\"entityId\":\"{1}}\",\"id\":\"{2}-94026\",\"printSize\":\"general-reduced\",\"sides\":{\"front\":{\"artworkId\":\"{3}\",\"position\":{\"vertical\":{\"origin\":\"T\",\"offset\":0},\"horizontal\":{\"origin\":\"C\",\"offset\":0}},\"size\":{\"width\":4,\"unit\":\"inch\"}}},\"handling\":\"default\"}";
@@ -492,7 +492,11 @@ namespace TCProShirts
                     nvc.Add("Signature", "4yVrFVzCgzWg2BH8RkrI6LVi11Y=");
                     nvc.Add("acl", "public-read");
                     Dictionary<string, object> data = HttpUploadFile(urlUploadImage, fileUrl, "file", "image/png", nvc);
-
+                    if (int.Parse(data["status"].ToString()) == -1)
+                    {
+                        ApplicationLibary.writeLogThread(lsBoxLog, "Step 0: Upload Image - " + data["data"].ToString(), 2);
+                        continue;
+                    }
                     var urlImage = HttpUtility.UrlDecode(data["data"].ToString());
                     var data2Send = "{\"artwork\":\"" + urlImage + "\",\"AB\":{\"ab-use-dpi\":false}}";
                     HttpWebRequest wAtWork = (HttpWebRequest)WebRequest.Create("https://api.scalablelicensing.com/rest/artworks");
@@ -613,7 +617,11 @@ namespace TCProShirts
                     nvc.Add("Signature", "4yVrFVzCgzWg2BH8RkrI6LVi11Y=");
                     nvc.Add("acl", "public-read");
                     Dictionary<string, object> data = HttpUploadFile(urlUploadImage, fileUrl, "file", "image/png", nvc);
-
+                    if (int.Parse(data["status"].ToString()) == -1)
+                    {
+                        ApplicationLibary.writeLogThread(lsBoxLog, "Step 0: Upload Image - " + data["data"].ToString(), 2);
+                        continue;
+                    }
                     var urlImage = HttpUtility.UrlDecode(data["data"].ToString());
                     var data2Send = "{\"artwork\":\"" + urlImage + "\",\"AB\":{\"ab-use-dpi\":false}}";
                     HttpWebRequest wAtWork = (HttpWebRequest)WebRequest.Create("https://api.scalablelicensing.com/rest/artworks");
@@ -732,8 +740,13 @@ namespace TCProShirts
                     nvc.Add("Signature", "4yVrFVzCgzWg2BH8RkrI6LVi11Y=");
                     nvc.Add("acl", "public-read");
                     Dictionary<string, object> data = HttpUploadFile(urlUploadImage, fileImage, "file", "image/png", nvc);
-
+                    if (int.Parse(data["status"].ToString()) == -1)
+                    {
+                        ApplicationLibary.writeLogThread(lsBoxLog, "Step 0: Upload Image - " + data["data"].ToString(), 2);
+                        continue;
+                    }
                     var urlImage = HttpUtility.UrlDecode(data["data"].ToString());
+
                     var data2Send = "{\"artwork\":\"" + urlImage + "\",\"AB\":{\"ab-use-dpi\":false}}";
                     HttpWebRequest wAtWork = (HttpWebRequest)WebRequest.Create("https://api.scalablelicensing.com/rest/artworks");
                     wAtWork.Host = "api.scalablelicensing.com";
