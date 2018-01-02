@@ -468,9 +468,11 @@ namespace SpreadShirts
                 wresp = wr.GetResponse();
                 Stream stream2 = wresp.GetResponseStream();
                 StreamReader reader2 = new StreamReader(stream2);
+               
                 data.Add("location", wresp.Headers["Location"]);
                 data.Add("data", reader2.ReadToEnd());
                 data.Add("status", 1);
+                wresp.Close();
             }
             catch (Exception ex)
             {
@@ -519,8 +521,9 @@ namespace SpreadShirts
                     {
                         htmlString = reader.ReadToEnd();
                     }
+                    wResponse.Close();
                 }
-
+               
                 dataReturn.Add("cookies", cookies);
                 dataReturn.Add("data", htmlString);
                 dataReturn.Add("status", 1);
@@ -614,7 +617,7 @@ namespace SpreadShirts
             {
                 htmlString = reader.ReadToEnd();
             }
-
+            wResponse.Close();
             Dictionary<string, object> dataReturn = new Dictionary<string, object>();
             dataReturn.Add("cookies", cookies);
             dataReturn.Add("data", htmlString);

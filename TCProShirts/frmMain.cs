@@ -970,6 +970,10 @@ namespace TCProShirts
                 wr.Headers.Add("Origin", "https://pro.teechip.com");
                 wr.Headers.Add("Accept-Language", "vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3");
                 wr.Headers.Add("Accept-Encoding", "gzip, deflate, br");
+                wr.ServicePoint.Expect100Continue = false;
+                wr.ProtocolVersion = HttpVersion.Version11;
+                wr.Timeout = 600000;
+                wr.ReadWriteTimeout = 600000;
                 wr.KeepAlive = true;
 
                 Stream rs = wr.GetRequestStream();
@@ -1006,8 +1010,10 @@ namespace TCProShirts
                 wresp = wr.GetResponse();
                 Stream stream2 = wresp.GetResponseStream();
                 StreamReader reader2 = new StreamReader(stream2);
+   
                 data.Add("data", wresp.Headers["Location"]);
                 data.Add("status", 1);
+                wresp.Close();
             }
             catch (Exception ex)
             {
@@ -1037,6 +1043,11 @@ namespace TCProShirts
                 wRequest.Method = "POST";
                 wRequest.UserAgent = BROWSER_FIREFOX;
                 wRequest.ContentLength = postDataBytes.Length;
+                wRequest.ServicePoint.Expect100Continue = false;
+                wRequest.ProtocolVersion = HttpVersion.Version11;
+                wRequest.Timeout = 600000;
+                wRequest.ReadWriteTimeout = 600000;
+                wRequest.KeepAlive = true;
 
                 using (Stream sr = wRequest.GetRequestStream())
                 {
@@ -1056,6 +1067,7 @@ namespace TCProShirts
                 {
                     htmlString = reader.ReadToEnd();
                 }
+                wResponse.Close();
                 dataReturn.Add("cookies", cookies);
                 dataReturn.Add("data", htmlString);
                 dataReturn.Add("status", 1);
@@ -1079,6 +1091,11 @@ namespace TCProShirts
                 ASCIIEncoding encoding = new ASCIIEncoding();
                 byte[] postDataBytes = encoding.GetBytes(data2Send);
                 wRequest.ContentLength = postDataBytes.Length;
+                wRequest.ServicePoint.Expect100Continue = false;
+                wRequest.ProtocolVersion = HttpVersion.Version11;
+                wRequest.Timeout = 600000;
+                wRequest.ReadWriteTimeout = 600000;
+                wRequest.KeepAlive = true;
 
                 using (Stream sr = wRequest.GetRequestStream())
                 {
@@ -1100,7 +1117,7 @@ namespace TCProShirts
             {
                 htmlString = reader.ReadToEnd();
             }
-
+            wResponse.Close();
             Dictionary<string, object> dataReturn = new Dictionary<string, object>();
             dataReturn.Add("cookies", cookies);
             dataReturn.Add("data", htmlString);

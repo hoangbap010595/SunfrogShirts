@@ -259,20 +259,20 @@ namespace TCProShirts
         {
             Int64 currTime = (int)(DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
             //Int64 dueTime = 1514188724000;
-            Int64 dueTime = 1514446169000;
-            currTime = currTime * 1000;
-            if (currTime > dueTime)
-            {
-                btnLogin.Enabled = false;
-                btnLogin.Visible = false;
-                txtUserName.Enabled = false;
-                txtPassword.Enabled = false;
-                XtraMessageBox.Show("Thời gian dùng thử đã kết thúc", "Thông báo");
-            }
-            else
-            {
-                XtraMessageBox.Show("Thời gian dùng thử kết thúc Thursday, December 28, 2017 7:29:29 AM", "Thông báo");
-            }
+            //Int64 dueTime = 1514446169000;
+            //currTime = currTime * 1000;
+            //if (currTime > dueTime)
+            //{
+            //    btnLogin.Enabled = false;
+            //    btnLogin.Visible = false;
+            //    txtUserName.Enabled = false;
+            //    txtPassword.Enabled = false;
+            //    XtraMessageBox.Show("Thời gian dùng thử đã kết thúc", "Thông báo");
+            //}
+            //else
+            //{
+            //    XtraMessageBox.Show("Thời gian dùng thử kết thúc Thursday, December 28, 2017 7:29:29 AM", "Thông báo");
+            //}
 
             //if (!ApplicationLibary.getActive())
             //{
