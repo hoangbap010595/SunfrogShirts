@@ -227,11 +227,6 @@ namespace SpreadShirts
                     wRequestUpload.ContentType = "application/json;charset=utf-8";
                     wRequestUpload.Referer = "https://partner.spreadshirt.com/designs/" + ideaId;
                     wRequestUpload.CookieContainer = cookieApplication;
-                    wRequestUpload.ServicePoint.Expect100Continue = false;
-                    wRequestUpload.ProtocolVersion = HttpVersion.Version11;
-                    wRequestUpload.Timeout = 90000;
-                    wRequestUpload.ReadWriteTimeout = 90000;
-                    wRequestUpload.KeepAlive = true;
 
                     Dictionary<string, object> step2Upload = PutDataAPI(wRequestUpload, rs_Data2Send);
                     if (int.Parse(step2Upload["status"].ToString()) == -1)
@@ -287,12 +282,17 @@ namespace SpreadShirts
             {
                 try
                 {
+                    string text_all = Path.GetFileName(fileImage).Split('.')[0];
                     string image = fileImage;
                     string title = txtName.Text;
                     string description = memoDescription.Text;
                     string tags = memoTag.Text;
                     string shop = getSelectShop();
                     double amount = double.Parse(double.Parse(txtPrice.Text).ToString("N2"));
+
+                    title = title.Replace("$name", text_all);
+                    description = description.Replace("$name", text_all);
+
                     if (!File.Exists(image))
                     {
                         ApplicationLibary.writeLogThread(lsBoxLog, "File not found: " + Path.GetFileName(image), 1);
@@ -434,6 +434,10 @@ namespace SpreadShirts
                 wr.Referer = "https://partner.spreadshirt.com/designs";
                 wr.UserAgent = ApplicationLibary.BROWSER_FIREFOX;
                 wr.CookieContainer = cookieApplication;
+                wr.ServicePoint.Expect100Continue = false;
+                wr.ProtocolVersion = HttpVersion.Version11;
+                wr.Timeout = 90000;
+                wr.ReadWriteTimeout = 90000;
                 wr.KeepAlive = true;
 
                 Stream rs = wr.GetRequestStream();
@@ -503,7 +507,11 @@ namespace SpreadShirts
                 wRequest.UserAgent = ApplicationLibary.BROWSER_FIREFOX;
                 wRequest.ContentLength = postDataBytes.Length;
                 wRequest.Headers.Add("Origin", ApplicationLibary.Origin);//chrome-extension://aejoelaoggembcahagimdiliamlcdmfm
-
+                wRequest.ServicePoint.Expect100Continue = false;
+                wRequest.ProtocolVersion = HttpVersion.Version11;
+                wRequest.Timeout = 90000;
+                wRequest.ReadWriteTimeout = 90000;
+                wRequest.KeepAlive = true;
                 using (Stream sr = wRequest.GetRequestStream())
                 {
                     sr.Write(postDataBytes, 0, postDataBytes.Length);
@@ -551,6 +559,11 @@ namespace SpreadShirts
                 wRequest.UserAgent = ApplicationLibary.BROWSER_FIREFOX;
                 wRequest.ContentLength = postDataBytes.Length;
                 wRequest.Headers.Add("Origin", ApplicationLibary.Origin);//chrome-extension://aejoelaoggembcahagimdiliamlcdmfm
+                wRequest.ServicePoint.Expect100Continue = false;
+                wRequest.ProtocolVersion = HttpVersion.Version11;
+                wRequest.Timeout = 90000;
+                wRequest.ReadWriteTimeout = 90000;
+                wRequest.KeepAlive = true;
 
                 using (Stream sr = wRequest.GetRequestStream())
                 {
@@ -591,6 +604,12 @@ namespace SpreadShirts
             wRequest.Method = "GET";
             wRequest.UserAgent = ApplicationLibary.BROWSER_FIREFOX;
             wRequest.Headers.Add("Origin", ApplicationLibary.Origin);
+            wRequest.ServicePoint.Expect100Continue = false;
+            wRequest.ProtocolVersion = HttpVersion.Version11;
+            wRequest.Timeout = 90000;
+            wRequest.ReadWriteTimeout = 90000;
+            wRequest.KeepAlive = true;
+
             if (data2Send != "")
             {
                 ASCIIEncoding encoding = new ASCIIEncoding();

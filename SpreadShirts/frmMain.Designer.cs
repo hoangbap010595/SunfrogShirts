@@ -261,6 +261,7 @@
             // 
             // memoDescription
             // 
+            this.memoDescription.EditValue = "$name";
             this.memoDescription.Location = new System.Drawing.Point(112, 43);
             this.memoDescription.Name = "memoDescription";
             this.memoDescription.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
@@ -284,6 +285,7 @@
             // 
             // txtName
             // 
+            this.txtName.EditValue = "$name";
             this.txtName.Location = new System.Drawing.Point(112, 12);
             this.txtName.Name = "txtName";
             this.txtName.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
