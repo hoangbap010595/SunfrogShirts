@@ -27,7 +27,7 @@ namespace SunfrogShirtsV2
         private List<OProduct> listProductDesign;
         private List<string> lsImageFileNames;
         private List<UCItemDesign> lsItemDesign;
-
+        private List<Cookie> lsCookies;
         //Data
         private DataTable dtDataTemp;
         List<Dictionary<string, object>> listDataUpload;
@@ -37,10 +37,10 @@ namespace SunfrogShirtsV2
             InitializeComponent();
         }
 
-        private void getUser(ApplicationUser user, CookieContainer cookies, List<OProduct> oProduct)
+        private void getUser(ApplicationUser user, List<Cookie> cookies, List<OProduct> oProduct)
         {
             this.User = user;
-            this.cookieContainer = cookies;
+            this.lsCookies = cookies;
             this.listProductDesign = oProduct;
             this.Invoke((MethodInvoker)delegate { this.Text = "[Your Seller ID]: " + user.Id; });
 
@@ -65,7 +65,7 @@ namespace SunfrogShirtsV2
             lsImageFileNames = new List<string>();
             lsItemDesign = new List<UCItemDesign>();
             listProductDesign = new List<OProduct>();
-            loadDesign();
+            //loadDesign();
             //Load Login
             frmLogin frm = new frmLogin();
             frm.senduser = new frmLogin.SendUser(getUser);
@@ -76,8 +76,8 @@ namespace SunfrogShirtsV2
         private void loadDesign()
         {
             HttpWebRequest rDesign = (HttpWebRequest)WebRequest.Create(ApplicationLibary.UrlDataDesign);
-            rDesign.Host = "manager.sunfrogshirts.com";
-            rDesign.Referer = "https://manager.sunfrogshirts.com/Designer/";
+            rDesign.Host = "manager.sunfrog.com";
+            rDesign.Referer = "https://manager.sunfrog.com/Designer/";
 
             Dictionary<string, object> dataDesign = GetDataAPI(rDesign);
             JArray objDesign = JArray.Parse(dataDesign["data"].ToString());
@@ -138,6 +138,7 @@ namespace SunfrogShirtsV2
                 var collection = txtCollections.Text;
                 var themes = getListTheme();
                 var imgBase64 = ApplicationLibary.ConvertImageToBase64(pathImage);
+                System.Drawing.Image img = System.Drawing.Image.FromFile(pathImage);
 
                 if (title == "")
                     title = text_all;
@@ -147,9 +148,9 @@ namespace SunfrogShirtsV2
                 var strBack = "";
                 var strFront = "";
                 if (ckSetBack.Checked)
-                    strBack = "<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" xmlns:xlink=\\\"http://www.w3.org/1999/xlink\\\" id=\\\"SvgjsSvg1006\\\" version=\\\"1.1\\\" width=\\\"2400\\\" height=\\\"3200\\\" viewBox=\\\"311.00000000008 100 387.99999999984004 517.33333333312\\\"><g id=\\\"SvgjsG1052\\\" transform=\\\"scale(0.08399999999996445 0.08399999999996445) translate(3761.9047619073062 1569.8412698418072)\\\"><image id=\\\"SvgjsImage1053\\\" xlink:href=\\\"__dataURI:0__\\\" width=\\\"4500\\\" height=\\\"5400\\\"></image></g><defs id=\\\"SvgjsDefs1007\\\"></defs></svg>";
+                    strBack = "<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" xmlns:xlink=\\\"http://www.w3.org/1999/xlink\\\" id=\\\"SvgjsSvg1006\\\" version=\\\"1.1\\\" width=\\\"2400\\\" height=\\\"3200\\\" viewBox=\\\"311.00000000008 100 387.99999999984004 517.33333333312\\\"><g id=\\\"SvgjsG1052\\\" transform=\\\"scale(0.08399999999996445 0.08399999999996445) translate(3761.9047619073062 1569.8412698418072)\\\"><image id=\\\"SvgjsImage1053\\\" xlink:href=\\\"__dataURI:0__\\\" width=\\\"" + img.Width + "\\\" height=\\\"" + img.Height + "\\\"></image></g><defs id=\\\"SvgjsDefs1007\\\"></defs></svg>";
                 if (ckSetFront.Checked)
-                    strFront = "<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" xmlns:xlink=\\\"http://www.w3.org/1999/xlink\\\" id=\\\"SvgjsSvg1000\\\" version=\\\"1.1\\\" width=\\\"2400\\\" height=\\\"3200\\\" viewBox=\\\"311.00000000008 150 387.99999999984004 517.33333333312\\\"><g id=\\\"SvgjsG1052\\\" transform=\\\"scale(0.08399999999996445 0.08399999999996445) translate(3761.9047619073062 2165.0793650801543)\\\"><image id=\\\"SvgjsImage1053\\\" xlink:href=\\\"__dataURI:0__\\\" width=\\\"4500\\\" height=\\\"5400\\\"></image></g><defs id=\\\"SvgjsDefs1001\\\"></defs></svg>";
+                    strFront = "<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" xmlns:xlink=\\\"http://www.w3.org/1999/xlink\\\" id=\\\"SvgjsSvg1000\\\" version=\\\"1.1\\\" width=\\\"2400\\\" height=\\\"3200\\\" viewBox=\\\"311.00000000008 150 387.99999999984004 517.33333333312\\\"><g id=\\\"SvgjsG1052\\\" transform=\\\"scale(0.08399999999996445 0.08399999999996445) translate(3761.9047619073062 2165.0793650801543)\\\"><image id=\\\"SvgjsImage1053\\\" xlink:href=\\\"__dataURI:0__\\\" width=\\\"" + img.Width + "\\\" height=\\\"" + img.Height + "\\\"></image></g><defs id=\\\"SvgjsDefs1001\\\"></defs></svg>";
 
                 var dataToSend = "";
                 dataToSend = "{";
@@ -165,25 +166,15 @@ namespace SunfrogShirtsV2
                 dataToSend += ",\"images\":[{\"id\":\"__dataURI:0__\",\"uri\":\"data:image/png;base64," + imgBase64 + "\"}]";
                 dataToSend += "}";
 
-                //string urlFirstUpload = "https://manager.sunfrogshirts.com/Designer/";
-                //HttpWebRequest requestFirstUpload = (HttpWebRequest)WebRequest.Create(urlFirstUpload);
-                //requestFirstUpload.Host = "manager.sunfrogshirts.com";
-                //requestFirstUpload.Headers.Add("Upgrade-Insecure-Requests", "1");
-                //requestFirstUpload.Referer = "https://manager.sunfrogshirts.com/index.cfm?dashboard";
-                //requestFirstUpload.CookieContainer = cookieContainer;
-
-                //Dictionary<string, object> dataFirstUpload = GetDataAPI(requestFirstUpload);
-                //cookieContainer = (CookieContainer)dataFirstUpload["cookies"];
-
-
-                string urlUpload = "https://manager.sunfrogshirts.com/Designer/php/upload-handler.cfm";
+                string urlUpload = "https://manager.sunfrog.com/Designer/php/upload-handler.cfm";
                 HttpWebRequest requestUpload = (HttpWebRequest)WebRequest.Create(urlUpload);
                 requestUpload.Accept = "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8";
-                requestUpload.Host = "manager.sunfrogshirts.com";
+                requestUpload.Host = "manager.sunfrog.com";
                 requestUpload.Headers.Add("X-Requested-With", "XMLHttpRequest");
                 requestUpload.ContentType = "application/json";
-                requestUpload.Referer = "https://manager.sunfrogshirts.com/Designer/";
-                requestUpload.CookieContainer = cookieContainer;
+                requestUpload.Referer = "https://manager.sunfrog.com/Designer/";
+                //requestUpload.CookieContainer = cookieContainer;
+                ApplicationLibary.TryAddCookie(requestUpload, lsCookies);
 
                 Dictionary<string, object> dataUpload = PostDataAPI(requestUpload, dataToSend);
                 if (int.Parse(dataUpload["status"].ToString()) == -1)

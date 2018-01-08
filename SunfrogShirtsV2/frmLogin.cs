@@ -24,10 +24,11 @@ namespace SunfrogShirtsV2
     {
         private ApplicationUser User;
         private MaterialSkinManager mSkin;
-        private CookieContainer cookieContainer;
+        private CookieContainer cookieContainer = new CookieContainer();
         private List<OProduct> listProductDesign;
+        private List<Cookie> lsCookies = new List<Cookie>();
 
-        public delegate void SendUser(ApplicationUser user, CookieContainer cookies, List<OProduct> oProduct);
+        public delegate void SendUser(ApplicationUser user, List<Cookie> cookies, List<OProduct> oProduct);
         public SendUser senduser;
         public frmLogin()
         {
@@ -39,13 +40,13 @@ namespace SunfrogShirtsV2
             mSkin = MaterialSkinManager.Instance;
             mSkin.AddFormToManage(this);
             mSkin.Theme = MaterialSkinManager.Themes.LIGHT;
-            mSkin.ColorScheme = new ColorScheme(Primary.Amber900, Primary.BlueGrey900, Primary.DeepPurple100, Accent.DeepPurple400, TextShade.WHITE);
+            mSkin.ColorScheme = new ColorScheme(Primary.Cyan800, Primary.BlueGrey900, Primary.DeepPurple100, Accent.Cyan700, TextShade.WHITE);
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
             try
-            { 
+            {
                 var username = txtUserName.Text.Trim();
                 var password = txtPassword.Text.Trim(); // ApplicationLibary.Base64Decode("");
                 //OpenFileDialog open = new OpenFileDialog();
@@ -89,6 +90,17 @@ namespace SunfrogShirtsV2
             {
                 try
                 {
+                    lsCookies = new List<Cookie>();
+                    HttpWebRequest wRequest_1 = (HttpWebRequest)WebRequest.Create("https://manager.sunfrog.com/");
+                    wRequest_1.Method = "GET";
+                    wRequest_1.CookieContainer = new CookieContainer();
+                    WebResponse resp_1 = wRequest_1.GetResponse();
+
+                    foreach (Cookie cookie in ((HttpWebResponse)resp_1).Cookies)
+                    {
+                        lsCookies.Add(cookie);
+                    }
+
                     //data
                     //username=lchoang1995%40gmail.com&password=Omega%40111&login=Login
                     ASCIIEncoding encoding = new ASCIIEncoding();
@@ -97,23 +109,23 @@ namespace SunfrogShirtsV2
                     string data = "username=" + enUserName + "&password=" + enPassword + "&login=Login";
                     byte[] postDataBytes = encoding.GetBytes(data);
 
-                    HttpWebRequest wRequest = (HttpWebRequest)WebRequest.Create("https://manager.sunfrogshirts.com/");
+                    //cookieContainer.Add()
+
+                    HttpWebRequest wRequest = (HttpWebRequest)WebRequest.Create("https://manager.sunfrog.com/");
                     wRequest.Method = "POST";
                     wRequest.ContentType = "application/x-www-form-urlencoded";
                     wRequest.ContentLength = postDataBytes.Length;
-                    wRequest.CookieContainer = new CookieContainer(); ;
+                    ApplicationLibary.TryAddCookie(wRequest, lsCookies);
 
                     using (Stream sr = wRequest.GetRequestStream())
                     {
                         sr.Write(postDataBytes, 0, postDataBytes.Length);
                     }
-                    var cookieHeader = "";
                     WebResponse resp = wRequest.GetResponse();
-                    cookieHeader = resp.Headers["Set-cookie"];
-                    cookieContainer = new CookieContainer();
                     foreach (Cookie cookie in ((HttpWebResponse)resp).Cookies)
                     {
-                        cookieContainer.Add(cookie);
+                        //cookieContainer.Add(cookie);
+                        lsCookies[2] = cookie;
                     }
 
                     var pageSource = "";
@@ -133,7 +145,7 @@ namespace SunfrogShirtsV2
                         progressLogin.Invoke((MethodInvoker)delegate { progressLogin.Value = 0; });
                         XtraMessageBox.Show("Email or Password incorrect!", "Message");
                         return;
-                    }             
+                    }
                     foreach (Match match in matchCollection)
                     {
                         var id = match.Groups["myId"].Value;
@@ -142,8 +154,8 @@ namespace SunfrogShirtsV2
 
                         //Load Design
                         HttpWebRequest rDesign = (HttpWebRequest)WebRequest.Create(ApplicationLibary.UrlDataDesign);
-                        rDesign.Host = "manager.sunfrogshirts.com";
-                        rDesign.Referer = "https://manager.sunfrogshirts.com/Designer/";
+                        rDesign.Host = "manager.sunfrog.com";
+                        rDesign.Referer = "https://manager.sunfrog.com/Designer/";
 
                         Dictionary<string, object> dataDesign = GetDataAPI(rDesign);
                         JArray objDesign = JArray.Parse(dataDesign["data"].ToString());
@@ -173,7 +185,7 @@ namespace SunfrogShirtsV2
                         //Send data
                         if (senduser != null)
                         {
-                            senduser(User, cookieContainer, listProductDesign);
+                            senduser(User, lsCookies, listProductDesign);
                             this.Invoke((MethodInvoker)delegate { this.Close(); });
                         }
                     }
@@ -206,6 +218,7 @@ namespace SunfrogShirtsV2
                 Application.Exit();
             }
         }
+        
         private Dictionary<string, object> GetDataAPI(HttpWebRequest wRequest, string data2Send = "")
         {
             wRequest.Method = "GET";

@@ -9,6 +9,7 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -29,9 +30,9 @@ namespace SunfrogShirtsV2
 
         public static string API_KEY = "1c711bf5-b82d-40de-bea6-435b5473cf9b";
         public static string SECRET = "fd9f23cc-2432-4a69-9dad-bbd57b7b9fdd";
-        public static string Origin = "https://sunfrogshirts.com";
-        public static string UrlDataDesign = "https://manager.sunfrogshirts.com/Designer/data/sunfrog-products.json";
-        public static string URL_Desgin = "https://manager.sunfrogshirts.com/Designer/";
+        public static string Origin = "https://manager.sunfrog.com";
+        public static string UrlDataDesign = "https://manager.sunfrog.com/Designer/data/sunfrog-products.json";
+        public static string URL_Desgin = "https://manager.sunfrog.com/Designer/";
         public static string ConvertImageToBase64(string path)
         {
             string base64String = string.Empty;
@@ -119,7 +120,7 @@ namespace SunfrogShirtsV2
             return csvData;
 
         }
-
+    
         public static string Base64Encode(string plainText)
         {
             var plainTextBytes = System.Text.Encoding.UTF8.GetBytes(plainText);
@@ -153,7 +154,24 @@ namespace SunfrogShirtsV2
             lsbox.Items.Insert(0, "[" + time + "] " + message + space);
             lsbox.Refresh();
         }
+        public static bool TryAddCookie(this HttpWebRequest httpRequest, List<Cookie> cookies)
+        {
+            if (httpRequest == null)
+            {
+                return false;
+            }
 
+            if (httpRequest.CookieContainer == null)
+            {
+                httpRequest.CookieContainer = new CookieContainer();
+            }
+            foreach (Cookie cookie in cookies)
+            {
+                httpRequest.CookieContainer.Add(cookie);
+            }
+
+            return true;
+        }
         public static void writeLogThread(this ListBoxControl lsbox, string message, int status)
         {
             string space = "...................................." + (status == 1 ? "Done" : status == 2 ? "Faild" : "In Progress");
