@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SunfrogShirtsV2</RootNamespace>
     <AssemblyName>SunfrogShirtsV2</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -93,9 +93,7 @@
     <Compile Include="frmMainSunfrogV2.Designer.cs">
       <DependentUpon>frmMainSunfrogV2.cs</DependentUpon>
     </Compile>
-    <Compile Include="UCItemDesign.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="UCItemDesign.cs" />
     <Compile Include="UCItemDesign.Designer.cs">
       <DependentUpon>UCItemDesign.cs</DependentUpon>
     </Compile>
