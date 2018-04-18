@@ -37,6 +37,7 @@ namespace MainUploadV2.SpreadShirts
         private DataTable dtDataTemp;
         private List<Dictionary<string, object>> listDataUpload;
         private int currentIndexUpload = -1;
+        private int CurrentImageUpload = 0;
 
         private string dataCYOID = "{\"pointOfSale\":{\"id\":\"56963c0a59248d4dfb5c3852\",\"name\":\"CYO\",\"type\":\"CYO\",\"target\":{\"id\":\"93439\"}},\"id\":\"56963c0a59248d4dfb5c3852\"}";
         private string dataMarkID = @"{""id"":""55c864cc64c7436b464aeb7b"",""pointOfSale"":{""id"":""55c864cc64c7436b464aeb7b"",""type"":""MARKETPLACE"",""target"":{""id"":""93439""},""allowed"":true}}";
@@ -281,10 +282,22 @@ namespace MainUploadV2.SpreadShirts
         }
         private void UploadProgress()
         {
-            foreach (var fileImage in lsImageFileNames)
+            if (lsImageFileNames.Count == 0)
+            {
+                ApplicationLibary.writeLogThread(lsBoxLog, "Image Design Upload Finish. Please reload new Design", 1);
+                return;
+            }
+            for (int i = 0; i < lsImageFileNames.Count; i++)
             {
                 try
                 {
+                    string fileImage = lsImageFileNames[0].ToString();
+                    if (CurrentImageUpload == 50)
+                    {
+                        CurrentImageUpload = 0;
+                        ApplicationLibary.writeLogThread(lsBoxLog, "Change Account. Continiue upload...", 1);
+                        return;
+                    }
                     string text_all = Path.GetFileName(fileImage).Split('.')[0];
                     string image = fileImage;
                     string title = txtName.Text;
@@ -385,7 +398,9 @@ namespace MainUploadV2.SpreadShirts
                     ApplicationLibary.writeLogThread(lsBoxLog, "Upload & Publish finish: " + "https://partner.spreadshirt.com/designs/" + ideaId, 1);
                     #endregion
                     MoveFileUploaded(image);
-                    lsImageFileNames.Remove(fileImage);
+                    lsImageFileNames.RemoveAt(0);
+                    CurrentImageUpload++;
+                    i--;
                 }
                 catch (Exception ex)
                 {
@@ -994,13 +1009,14 @@ namespace MainUploadV2.SpreadShirts
                 {
                     foreach (OAccount item in listAccountUpload)
                     {
-                        cbbShowAccount.SelectedValue = item.Password;
+                        cbbShowAccount.Invoke((MethodInvoker)delegate { cbbShowAccount.SelectedValue = item.Password; });
                         int rsLogin = executeLogin(item.Username, item.Password);
                         if (rsLogin == 1)
                         {
                             UploadProgress();
                             enableBThread(true);
                         }
+                        ApplicationLibary.writeLogThread(lsBoxLog, "Upload Finish For Account: " + item.Username, 1);
                     }
                 }));
                 tStart.Start();

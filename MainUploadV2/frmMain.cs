@@ -64,10 +64,15 @@ namespace MainUploadV2
         private void TimerOnline_Tick(object sender, EventArgs e)
         {
             _CurrentTime++;
-            int hour = _CurrentTime / 24;
-            int min = _CurrentTime / 60;
-            lblTimeLive.Text = hour.ToString("00") + ":" + min.ToString("00") + ":" + _CurrentTime.ToString("00");
+            lblTimeLive.Text = convertTime(_CurrentTime);
         }
 
+        private string convertTime(int secs)
+        {
+            int hours = secs / 3600;
+            int mins = (secs % 3600) / 60;
+            secs = secs % 60;
+            return string.Format("{0:D2}:{1:D2}:{2:D2}", hours, mins, secs);
+        }
     }
 }
