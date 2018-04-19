@@ -563,7 +563,7 @@ namespace TCProShirts
                     var objIDReail = getAllRetailIDFromDesignID(lineID);
 
                     if (string.IsNullOrEmpty(uUrl))
-                        uUrl = string.Format("{0}", imgDessign.Split('.')[0].Replace(" ", "").Trim());
+                        uUrl = GenUrl(12);
                     else
                         uUrl = uUrl.Replace(" ", "").Trim();
                     uUrl += DateTime.Now.ToString("mmss");
@@ -580,7 +580,7 @@ namespace TCProShirts
                 }
             }
         }
-    
+
         //1.Upload From FormData
         private void UploadProgress()
         {
@@ -588,13 +588,29 @@ namespace TCProShirts
             {
                 try
                 {
+                    string text_all = Path.GetFileName(fileImage).Split('.')[0];
+
+                    var cate = memoCategory.Text.Split(',');
+                    string cate1 = "";
+                    string cate2 = "";
+                    if (cate.Length == 1)
+                        cate1 = cate[0];
+                    else
+                    {
+                        cate1 = cate[0];
+                        cate2 = cate[1];
+                    }
                     var uTitle = txtTitle.Text.Trim();
                     var uDescription = @"<div>" + memoDescription.Text.ToString() + "</div>";
-                    var uCategory = ApplicationLibary.convertStringToJson(memoCategory.Text);
+                    var uCategory = ApplicationLibary.convertStringToJson(getStringCategory(cate1, cate2));
                     var uUrl = txtUrl.Text.ToLower();
                     var uStore = txtStore.Text;
+
+                    uTitle = uTitle.Replace("$name", text_all);
+                    uDescription = uDescription.Replace("$name", text_all);
+
                     if (string.IsNullOrEmpty(uUrl) || uUrl == "{0}")
-                        uUrl = string.Format("{0}", Path.GetFileName(fileImage).Split('.')[0].Replace(" ", "").Trim());
+                        uUrl = GenUrl(12);
                     else
                         uUrl = uUrl.Replace(" ", "").Trim();
                     uUrl += DateTime.Now.ToString("mmss");
@@ -890,7 +906,7 @@ namespace TCProShirts
                 wresp = wr.GetResponse();
                 Stream stream2 = wresp.GetResponseStream();
                 StreamReader reader2 = new StreamReader(stream2);
-   
+
                 data.Add("data", wresp.Headers["Location"]);
                 data.Add("status", 1);
                 wresp.Close();
@@ -1243,7 +1259,17 @@ namespace TCProShirts
                 xtraScrollableTheme.Controls.Add(item);
             }
         }
-
+        private string GenUrl(int length)
+        {
+            const string valid = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+            StringBuilder res = new StringBuilder();
+            Random rnd = new Random();
+            while (0 < length--)
+            {
+                res.Append(valid[rnd.Next(valid.Length)]);
+            }
+            return res.ToString();
+        }
         private void ckUsingFileUpload_CheckedChanged(object sender, EventArgs e)
         {
             if (ckUsingFileUpload.Checked)
