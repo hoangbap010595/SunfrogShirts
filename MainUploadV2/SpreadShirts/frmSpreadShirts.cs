@@ -36,6 +36,8 @@ namespace MainUploadV2.SpreadShirts
         private List<OAccount> listAccountUpload;
         private DataTable dtDataTemp;
         private List<Dictionary<string, object>> listDataUpload;
+        private List<string> listAccountUploadDone = new List<string>();
+        private List<string> listAccountUploadFaild = new List<string>();
         private int currentIndexUpload = -1;
         private int CurrentImageUpload = 0;
 
@@ -315,7 +317,7 @@ namespace MainUploadV2.SpreadShirts
                         continue;
                     }
                     #region -----------Step 1: Upload Image-----------
-                    ApplicationLibary.writeLogThread(lsBoxLog, "["+ CurrentImageUpload + "]Uploadding " + Path.GetFileName(image), 3);
+                    ApplicationLibary.writeLogThread(lsBoxLog, "[" + CurrentImageUpload + "]Uploadding " + Path.GetFileName(image), 3);
                     string img_UrlUpload = User.USER_HREF + "/design-uploads";
                     var urlUploadImage = ApplicationLibary.encodeURL(url: img_UrlUpload, defaultParam: "createProductIdea=true", time: ApplicationLibary.getTimeStamp());
                     NameValueCollection nvc = new NameValueCollection();
@@ -1007,9 +1009,12 @@ namespace MainUploadV2.SpreadShirts
                 }
                 Thread tStart = new Thread(new ThreadStart(() =>
                 {
+                    listAccountUploadDone = new List<string>();
+                    listAccountUploadFaild = new List<string>();
                     foreach (OAccount item in listAccountUpload)
                     {
-                        if(lsImageFileNames.Count == 0)
+                        string account = item.Username + "|" + item.Password;
+                        if (lsImageFileNames.Count == 0)
                         {
                             ApplicationLibary.writeLogThread(lsBoxLog, "[DONE] Upload Finish", 1);
                             return;
@@ -1018,11 +1023,16 @@ namespace MainUploadV2.SpreadShirts
                         int rsLogin = executeLogin(item.Username, @item.Password);
                         if (rsLogin == 1)
                         {
+                            btnAccountDone.Invoke((MethodInvoker)delegate { btnAccountDone.Text = "Done (" + listAccountUploadDone.Count + ")"; });
+                            listAccountUploadDone.Add(account);
                             UploadProgress();
                             enableBThread(true);
-                        }else
+                        }
+                        else
                         {
-                            ApplicationLibary.writeLogThread(lsBoxLog, "[LOGIN] Result: " +rsLogin + ", Login Faild. Next Account", 1);
+                            btnAccountFaild.Invoke((MethodInvoker)delegate { btnAccountFaild.Text = "Done (" + listAccountUploadFaild.Count + ")"; });
+                            listAccountUploadFaild.Add(account);
+                            ApplicationLibary.writeLogThread(lsBoxLog, "[LOGIN] Result: " + rsLogin + ", Login Faild. Next Account", 1);
                         }
                         ApplicationLibary.writeLogThread(lsBoxLog, "Upload Finish For Account: " + item.Username, 1);
                     }
@@ -1110,6 +1120,42 @@ namespace MainUploadV2.SpreadShirts
             cbbShowAccount.DataSource = listAccountUpload;
             cbbShowAccount.DisplayMember = "Username";
             cbbShowAccount.ValueMember = "Password";
+        }
+
+        private void btnAccountDone_Click(object sender, EventArgs e)
+        {
+            if (listAccountUploadDone.Count > 0)
+            {
+                try
+                {
+                    string file = ApplicationLibary.writeDataToFileTextAppend(listAccountUploadDone);
+                    Process.Start(file);
+                }
+                catch (Exception exx)
+                {
+                    XtraMessageBox.Show("Error: " + exx.Message);
+                }
+            }
+            else
+                XtraMessageBox.Show("Not found data!");
+        }
+
+        private void btnAccountFaild_Click(object sender, EventArgs e)
+        {
+            if (listAccountUploadFaild.Count > 0)
+            {
+                try
+                {
+                    string file = ApplicationLibary.writeDataToFileTextAppend(listAccountUploadFaild);
+                    Process.Start(file);
+                }
+                catch (Exception exx)
+                {
+                    XtraMessageBox.Show("Error: " + exx.Message);
+                }
+            }
+            else
+                XtraMessageBox.Show("Not found data!");
         }
     }
 }

@@ -197,6 +197,20 @@ namespace MainUploadV2.SpreadShirts
             }
             return fileName;
         }
+        public static string writeDataToFileTextAppend(List<string> data)
+        {
+            var name = DateTime.Now.Ticks.ToString("x");
+            string fileName = Path.Combine(FolderUser, "\\" + name + "_InfoAccount.txt");
+            //if the file doesn't exist, create it
+            using (StreamWriter file = new StreamWriter(fileName, true))
+            {
+                foreach (string item in data)
+                {
+                    file.WriteLine(item);
+                }
+            }
+            return fileName;
+        }
         public static void saveDataTableToFileCSV(string path, DataTable data)
         {
             try

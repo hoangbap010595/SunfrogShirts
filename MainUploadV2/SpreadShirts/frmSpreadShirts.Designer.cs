@@ -59,10 +59,11 @@
             this.defaultLookAndFeel = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
             this.cbbShowAccount = new System.Windows.Forms.ComboBox();
-            this.btnSettingUpload = new DevExpress.XtraEditors.SimpleButton();
+            this.btnAccountDone = new DevExpress.XtraEditors.SimpleButton();
             this.btnClearAccount = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.btnImportAccount = new DevExpress.XtraEditors.SimpleButton();
+            this.btnAccountFaild = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl5)).BeginInit();
@@ -147,10 +148,10 @@
             this.lsBoxLog.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lsBoxLog.HorizontalScrollbar = true;
             this.lsBoxLog.ItemHeight = 22;
-            this.lsBoxLog.Location = new System.Drawing.Point(2, 20);
+            this.lsBoxLog.Location = new System.Drawing.Point(2, 22);
             this.lsBoxLog.Name = "lsBoxLog";
             this.lsBoxLog.ShowFocusRect = false;
-            this.lsBoxLog.Size = new System.Drawing.Size(753, 168);
+            this.lsBoxLog.Size = new System.Drawing.Size(753, 166);
             this.lsBoxLog.TabIndex = 0;
             // 
             // groupControlFile
@@ -416,7 +417,8 @@
             // groupControl2
             // 
             this.groupControl2.Controls.Add(this.cbbShowAccount);
-            this.groupControl2.Controls.Add(this.btnSettingUpload);
+            this.groupControl2.Controls.Add(this.btnAccountFaild);
+            this.groupControl2.Controls.Add(this.btnAccountDone);
             this.groupControl2.Controls.Add(this.btnClearAccount);
             this.groupControl2.Controls.Add(this.labelControl5);
             this.groupControl2.Controls.Add(this.btnImportAccount);
@@ -436,21 +438,20 @@
             this.cbbShowAccount.Size = new System.Drawing.Size(278, 27);
             this.cbbShowAccount.TabIndex = 0;
             // 
-            // btnSettingUpload
+            // btnAccountDone
             // 
-            this.btnSettingUpload.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.btnSettingUpload.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
-            this.btnSettingUpload.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSettingUpload.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnSettingUpload.ImageOptions.Image")));
-            this.btnSettingUpload.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleLeft;
-            this.btnSettingUpload.Location = new System.Drawing.Point(391, 29);
-            this.btnSettingUpload.Name = "btnSettingUpload";
-            this.btnSettingUpload.Size = new System.Drawing.Size(84, 23);
-            this.btnSettingUpload.TabIndex = 10;
-            this.btnSettingUpload.Text = "Setting";
-            this.btnSettingUpload.ToolTip = "Setting upload";
-            this.btnSettingUpload.Visible = false;
-            this.btnSettingUpload.Click += new System.EventHandler(this.btnClear_Click);
+            this.btnAccountDone.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btnAccountDone.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
+            this.btnAccountDone.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAccountDone.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnSettingUpload.ImageOptions.Image")));
+            this.btnAccountDone.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleLeft;
+            this.btnAccountDone.Location = new System.Drawing.Point(295, 29);
+            this.btnAccountDone.Name = "btnAccountDone";
+            this.btnAccountDone.Size = new System.Drawing.Size(90, 23);
+            this.btnAccountDone.TabIndex = 10;
+            this.btnAccountDone.Text = "Acc Done";
+            this.btnAccountDone.ToolTip = "Acc Done";
+            this.btnAccountDone.Click += new System.EventHandler(this.btnAccountDone_Click);
             // 
             // btnClearAccount
             // 
@@ -494,6 +495,21 @@
             this.btnImportAccount.ToolTip = "Open File Data";
             this.btnImportAccount.Click += new System.EventHandler(this.btnImportAccount_Click);
             // 
+            // btnAccountFaild
+            // 
+            this.btnAccountFaild.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btnAccountFaild.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
+            this.btnAccountFaild.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAccountFaild.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton3.ImageOptions.Image")));
+            this.btnAccountFaild.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleLeft;
+            this.btnAccountFaild.Location = new System.Drawing.Point(391, 29);
+            this.btnAccountFaild.Name = "btnAccountFaild";
+            this.btnAccountFaild.Size = new System.Drawing.Size(84, 23);
+            this.btnAccountFaild.TabIndex = 10;
+            this.btnAccountFaild.Text = "Acc Faild";
+            this.btnAccountFaild.ToolTip = "Acc Faild";
+            this.btnAccountFaild.Click += new System.EventHandler(this.btnAccountFaild_Click);
+            // 
             // frmSpreadShirts
             // 
             this.Appearance.BackColor = System.Drawing.Color.White;
@@ -523,7 +539,7 @@
             this.MinimumSize = new System.Drawing.Size(1100, 705);
             this.Name = "frmSpreadShirts";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Auto Upload Spread Shirts 1.0.0";
+            this.Text = "d";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMain_FormClosing);
             this.Load += new System.EventHandler(this.frmMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
@@ -585,9 +601,10 @@
         private DevExpress.XtraEditors.GroupControl groupControl2;
         private System.Windows.Forms.ComboBox cbbShowAccount;
         private DevExpress.XtraEditors.LabelControl labelControl5;
-        private DevExpress.XtraEditors.SimpleButton btnSettingUpload;
+        private DevExpress.XtraEditors.SimpleButton btnAccountDone;
         private DevExpress.XtraEditors.SimpleButton btnClearAccount;
         private DevExpress.XtraEditors.SimpleButton btnImportAccount;
+        private DevExpress.XtraEditors.SimpleButton btnAccountFaild;
     }
 }
 
