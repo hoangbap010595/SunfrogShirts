@@ -68,7 +68,7 @@ namespace MainUploadV2.SpreadShirts
                 ApplicationLibary.writeLogThread(lsBoxLog, "[CURRENT UPLOAD]- ACCOUNT: \"" + username + "\"", 1);
                 var urlLogin = ApplicationLibary.encodeURL("https://partner.spreadshirt.com/api/v1/sessions", "", "POST", "us_US", "json", "");
                 //string urlLogin = "https://www.spreadshirt.com/api/v1/sessions?mediaType=json";
-                string data2Send = "{\"rememberMe\":false,\"username\":\"" + username + "\",\"password\":\"" + password + "\"}";
+                string data2Send = "{\"rememberMe\":false,\"username\":\"" + username + "\",\"password\":\"" + @password + "\"}";
 
                 HttpWebRequest wRequestLogin = (HttpWebRequest)WebRequest.Create(urlLogin);
                 wRequestLogin.Headers.Add("Accept-Language", "vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3");
@@ -78,7 +78,7 @@ namespace MainUploadV2.SpreadShirts
                 wRequestLogin.Referer = "https://partner.spreadshirt.com/login";
                 wRequestLogin.CookieContainer = new CookieContainer();
 
-                Dictionary<string, object> step2Login = PostDataAPI(wRequestLogin, data2Send);
+                Dictionary<string, object> step2Login = PostDataAPI(wRequestLogin, @data2Send);
                 cookieApplication = (CookieContainer)step2Login["cookies"];
                 var rs = step2Login["data"].ToString();
                 if (int.Parse(step2Login["status"].ToString()) == -1)
@@ -291,8 +291,8 @@ namespace MainUploadV2.SpreadShirts
             {
                 try
                 {
-                    string fileImage = lsImageFileNames[0].ToString();
-                    if (CurrentImageUpload == 50)
+                    string fileImage = lsImageFileNames[i].ToString();
+                    if (CurrentImageUpload > 50)
                     {
                         CurrentImageUpload = 0;
                         ApplicationLibary.writeLogThread(lsBoxLog, "Change Account. Continiue upload...", 1);
@@ -315,7 +315,7 @@ namespace MainUploadV2.SpreadShirts
                         continue;
                     }
                     #region -----------Step 1: Upload Image-----------
-                    ApplicationLibary.writeLogThread(lsBoxLog, "Uploadding " + Path.GetFileName(image), 3);
+                    ApplicationLibary.writeLogThread(lsBoxLog, "["+ CurrentImageUpload + "]Uploadding " + Path.GetFileName(image), 3);
                     string img_UrlUpload = User.USER_HREF + "/design-uploads";
                     var urlUploadImage = ApplicationLibary.encodeURL(url: img_UrlUpload, defaultParam: "createProductIdea=true", time: ApplicationLibary.getTimeStamp());
                     NameValueCollection nvc = new NameValueCollection();
@@ -703,7 +703,7 @@ namespace MainUploadV2.SpreadShirts
             foreach (string str in tags)
             {
                 if (!string.IsNullOrEmpty(str))
-                    itemTag.Add(str);
+                    itemTag.Add(str.Trim());
             }
             //set dateCreated
             obj["dateCreated"] = string.Format("{0:yyyy-MM-dd'T'hh:mm:ss.fff'Z'}", DateTime.UtcNow);
@@ -1009,15 +1009,24 @@ namespace MainUploadV2.SpreadShirts
                 {
                     foreach (OAccount item in listAccountUpload)
                     {
+                        if(lsImageFileNames.Count == 0)
+                        {
+                            ApplicationLibary.writeLogThread(lsBoxLog, "[DONE] Upload Finish", 1);
+                            return;
+                        }
                         cbbShowAccount.Invoke((MethodInvoker)delegate { cbbShowAccount.SelectedValue = item.Password; });
-                        int rsLogin = executeLogin(item.Username, item.Password);
+                        int rsLogin = executeLogin(item.Username, @item.Password);
                         if (rsLogin == 1)
                         {
                             UploadProgress();
                             enableBThread(true);
+                        }else
+                        {
+                            ApplicationLibary.writeLogThread(lsBoxLog, "[LOGIN] Result: " +rsLogin + ", Login Faild. Next Account", 1);
                         }
                         ApplicationLibary.writeLogThread(lsBoxLog, "Upload Finish For Account: " + item.Username, 1);
                     }
+                    ApplicationLibary.writeLogThread(lsBoxLog, "[DONE] Upload Finish - Stop Progress", 1);
                 }));
                 tStart.Start();
             }

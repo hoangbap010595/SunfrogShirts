@@ -591,18 +591,19 @@ namespace TCProShirts
                     string text_all = Path.GetFileName(fileImage).Split('.')[0];
 
                     var cate = memoCategory.Text.Split(',');
-                    string cate1 = "";
-                    string cate2 = "";
-                    if (cate.Length == 1)
-                        cate1 = cate[0];
-                    else
+                    string strCate = "";
+                    if (cate.Length > 6)
                     {
-                        cate1 = cate[0];
-                        cate2 = cate[1];
+                        for (int i = 0; i < 6; i++)
+                        {
+                            strCate += cate[i];
+                        }
                     }
+                    else
+                        strCate = memoCategory.Text;
                     var uTitle = txtTitle.Text.Trim();
                     var uDescription = @"<div>" + memoDescription.Text.ToString() + "</div>";
-                    var uCategory = ApplicationLibary.convertStringToJson(getStringCategory(cate1, cate2));
+                    var uCategory = ApplicationLibary.convertStringToJson(strCate);
                     var uUrl = txtUrl.Text.ToLower();
                     var uStore = txtStore.Text;
 
