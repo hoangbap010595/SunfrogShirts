@@ -50,6 +50,23 @@ namespace TCProShirts
         private string GENRAL = "{\"designId\":\"{0}\",\"entityId\":\"{1}\",\"printSize\":\"general-standard\",\"id\":\"{2}-75642\",\"sides\":{\"front\":{\"artworkId\":\"{3}\",\"position\":{\"vertical\":{\"origin\":\"T\",\"offset\":2},\"horizontal\":{\"origin\":\"C\",\"offset\":0}},\"size\":{\"width\":14,\"unit\":\"inch\"}}},\"handling\":\"default\"}";
         private string HAT = "{\"designId\":\"{0}\",\"entityId\":\"{1}\",\"printSize\":\"hat-standard\",\"id\":\"{2}-21944\",\"sides\":{\"front\":{\"artworkId\":\"{3}\",\"position\":{\"vertical\":{\"origin\":\"T\",\"offset\":0},\"horizontal\":{\"origin\":\"C\",\"offset\":0}},\"size\":{\"width\":2.8083610329838917,\"unit\":\"inch\"}}},\"handling\":\"default\"}";
         private string GENERAL_REDUCED = "{\"designId\":\"{0}\",\"entityId\":\"{1}}\",\"id\":\"{2}-94026\",\"printSize\":\"general-reduced\",\"sides\":{\"front\":{\"artworkId\":\"{3}\",\"position\":{\"vertical\":{\"origin\":\"T\",\"offset\":0},\"horizontal\":{\"origin\":\"C\",\"offset\":0}},\"size\":{\"width\":4,\"unit\":\"inch\"}}},\"handling\":\"default\"}";
+        //Update 22.04.2018
+        private string SubShirt = "{\"designId\":\"{0}\",\"entityId\":\"{1}\",\"printSize\":\"sublimation-shirt\",\"id\":\"{2}-62074\",\"sides\":{\"front\":{\"artworkId\":\"{3}\",\"position\":{\"vertical\":{\"origin\":\"C\",\"offset\":0.03497444175410258},\"horizontal\":{\"origin\":\"C\",\"offset\":-0.002222222222221848}},\"size\":{\"width\":0.4751099148262992,\"unit\":\"percentage\"},\"details\":{\"dpi\":198.18694791084513,\"widthInch\":19.5270174993609,\"heightInch\":11.418511783218014}}},\"handling\":\"default\",\"productCategory\":\"garment\",\"bleedDimensions\":{\"width\":41.1,\"height\":33.9}}";
+        private string SubDress = "{\"designId\":\"{0}\",\"entityId\":\"{1}\",\"printSize\":\"sublimation-dress\",\"id\":\"{2}-91123\",\"sides\":{\"front\":{\"artworkId\":\"{3}\",\"position\":{\"vertical\":{\"origin\":\"C\",\"offset\":0},\"horizontal\":{\"origin\":\"C\",\"offset\":0}},\"size\":{\"width\":0.4703201742063542,\"unit\":\"percentage\"},\"details\":{\"dpi\":243.55297212106382,\"widthInch\":15.889767085561674,\"heightInch\":9.291613156234126}}},\"handling\":\"default\",\"productCategory\":\"garment\",\"bleedDimensions\":{\"width\":33.785,\"height\":39.425}}";
+        private string SubTank = "{\"designId\":\"{0}\",\"entityId\":\"{1}\",\"printSize\":\"sublimation-tank\",\"id\":\"{2}-70481\",\"sides\":{\"front\":{\"artworkId\":\"{3}\",\"position\":{\"vertical\":{\"origin\":\"C\",\"offset\":0},\"horizontal\":{\"origin\":\"C\",\"offset\":0}},\"size\":{\"width\":0.6632749493706753,\"unit\":\"percentage\"},\"details\":{\"dpi\":216.90276579903966,\"widthInch\":17.842096138071167,\"heightInch\":10.4332463980504}}},\"handling\":\"default\",\"productCategory\":\"garment\",\"bleedDimensions\":{\"width\":26.9,\"height\":39}}";
+        private string SubMousePad = "{\"designId\":\"{0}\",\"entityId\":\"{1}\",\"printSize\":\"sublimation-mousepad\",\"id\":\"{2}-93978\",\"sides\":{\"front\":{\"artworkId\":\"{3}\",\"position\":{\"vertical\":{\"origin\":\"C\",\"offset\":0},\"horizontal\":{\"origin\":\"C\",\"offset\":0}},\"size\":{\"width\":0.7461981945097762,\"unit\":\"percentage\"},\"details\":{\"dpi\":560.6799660688499,\"widthInch\":6.90233329921543,\"heightInch\":4.036170608817705}}},\"handling\":\"default\",\"productCategory\":\"accessories\",\"bleedDimensions\":{\"width\":9.25,\"height\":7.75}}";
+        private string SubTowelHand = "{\"designId\":\"{0}\",\"entityId\":\"{1}\",\"printSize\":\"sublimation-towel-hand\",\"id\":\"{2}-67192\",\"sides\":{\"front\":{\"artworkId\":\"{3}\",\"position\":{\"vertical\":{\"origin\":\"C\",\"offset\":0},\"horizontal\":{\"origin\":\"C\",\"offset\":0}},\"size\":{\"width\":0.6,\"unit\":\"percentage\"},\"details\":{\"dpi\":359.8198198198198,\"widthInch\":11.1,\"heightInch\":10.869328993490235}}},\"handling\":\"default\",\"productCategory\":\"housewares\",\"bleedDimensions\":{\"width\":18.5,\"height\":12}}";
+        private string SubPillRect = "{\"designId\":\"{0}\",\"entityId\":\"{1}\",\"printSize\":\"sublimation-pillowcase-rect\",\"id\":\"{2}-34284\",\"sides\":{\"front\":{\"artworkId\":\"{3}\",\"position\":{\"vertical\":{\"origin\":\"C\",\"offset\":0},\"horizontal\":{\"origin\":\"C\",\"offset\":0}},\"size\":{\"width\":0.6,\"unit\":\"percentage\"},\"details\":{\"dpi\":231.53623188405797,\"widthInch\":17.25,\"heightInch\":16.89152478718077}}},\"handling\":\"default\",\"productCategory\":\"housewares\",\"bleedDimensions\":{\"width\":28.75,\"height\":20.25}}";
+        private string SubTowelBeach = "{\"designId\":\"{0}\",\"entityId\":\"{1}\",\"printSize\":\"sublimation-towel-beach\",\"id\":\"{2}-67021\",\"sides\":{\"front\":{\"artworkId\":\"{3}\",\"position\":{\"vertical\":{\"origin\":\"C\",\"offset\":0},\"horizontal\":{\"origin\":\"C\",\"offset\":0}},\"size\":{\"width\":0.6,\"unit\":\"percentage\"},\"details\":{\"dpi\":214.73118279569894,\"widthInch\":18.599999999999998,\"heightInch\":18.21347020530796}}},\"handling\":\"default\",\"productCategory\":\"housewares\",\"bleedDimensions\":{\"width\":31,\"height\":60}}";
+        private string SubPillSquare = "{\"designId\":\"{0}\",\"entityId\":\"{1}\",\"printSize\":\"sublimation-pillowcase-square\",\"id\":\"{2}-46241\",\"sides\":{\"front\":{\"artworkId\":\"{3}\",\"position\":{\"vertical\":{\"origin\":\"C\",\"offset\":0},\"horizontal\":{\"origin\":\"C\",\"offset\":0}},\"size\":{\"width\":0.6,\"unit\":\"percentage\"},\"details\":{\"dpi\":422.6455026455027,\"widthInch\":9.45,\"heightInch\":9.253617926890334}}},\"handling\":\"default\",\"productCategory\":\"housewares\",\"bleedDimensions\":{\"width\":15.75,\"height\":15.75}}";
+        private string SubCoasterSquare = "{\"designId\":\"{0}\",\"entityId\":\"{1}\",\"printSize\":\"sublimation-coaster-square\",\"id\":\"{2}-12396\",\"sides\":{\"front\":{\"artworkId\":\"{3}\",\"position\":{\"vertical\":{\"origin\":\"C\",\"offset\":0},\"horizontal\":{\"origin\":\"C\",\"offset\":0}},\"size\":{\"width\":0.6,\"unit\":\"percentage\"},\"details\":{\"dpi\":1386.8055555555557,\"widthInch\":2.88,\"heightInch\":2.820150225338007}}},\"handling\":\"default\",\"productCategory\":\"housewares\",\"bleedDimensions\":{\"width\":4.8,\"height\":4.8}}";
+        private string SubCoasterCircle = "{\"designId\":\"{0}\",\"entityId\":\"{1}\",\"printSize\":\"sublimation-coaster-circle\",\"id\":\"{2}-80894\",\"sides\":{\"front\":{\"artworkId\":\"{3}\",\"position\":{\"vertical\":{\"origin\":\"C\",\"offset\":0},\"horizontal\":{\"origin\":\"C\",\"offset\":0}},\"size\":{\"width\":0.6,\"unit\":\"percentage\"},\"details\":{\"dpi\":1386.8055555555557,\"widthInch\":2.88,\"heightInch\":2.820150225338007}}},\"handling\":\"default\",\"productCategory\":\"housewares\",\"bleedDimensions\":{\"width\":4.8,\"height\":4.8}}";
+        private string SubMagnetCircle = "{\"designId\":\"{0}\",\"entityId\":\"{1}\",\"printSize\":\"sublimation-magnet-circle\",\"id\":\"{2}-97518\",\"sides\":{\"front\":{\"artworkId\":\"{3}\",\"position\":{\"vertical\":{\"origin\":\"C\",\"offset\":0},\"horizontal\":{\"origin\":\"C\",\"offset\":0}},\"size\":{\"width\":0.6,\"unit\":\"percentage\"},\"details\":{\"dpi\":2377.3809523809523,\"widthInch\":1.68,\"heightInch\":1.6450876314471705}}},\"handling\":\"default\",\"productCategory\":\"housewares\",\"bleedDimensions\":{\"width\":2.8,\"height\":2.8}}";
+        private string SubMagnetSquare = "{\"designId\":\"{0}\",\"entityId\":\"{1}\",\"printSize\":\"sublimation-magnet-square\",\"id\":\"{2}-98910\",\"sides\":{\"front\":{\"artworkId\":\"{3}\",\"position\":{\"vertical\":{\"origin\":\"C\",\"offset\":0},\"horizontal\":{\"origin\":\"C\",\"offset\":0}},\"size\":{\"width\":0.6,\"unit\":\"percentage\"},\"details\":{\"dpi\":2802.8070175438597,\"widthInch\":1.425,\"heightInch\":1.395386830245368}}},\"handling\":\"default\",\"productCategory\":\"housewares\",\"bleedDimensions\":{\"width\":2.375,\"height\":2.375}}";
+        //Update 23.04.2018
+        private string SETeardrop = "{\"designId\":\"{0}\",\"entityId\":\"{1}\",\"printSize\":\"sublimation-earring-teardrop\",\"id\":\"{2}-53015\",\"sides\":{\"front\":{\"artworkId\":\"{3}\",\"position\":{\"vertical\":{\"origin\":\"C\",\"offset\":0},\"horizontal\":{\"origin\":\"C\",\"offset\":0}},\"size\":{\"width\":0.6,\"unit\":\"percentage\"},\"details\":{\"dpi\":5917.037037037037,\"widthInch\":0.6749999999999999,\"heightInch\":0.6609727090635953}}},\"handling\":\"default\",\"productCategory\":\"jewelry\",\"bleedDimensions\":{\"width\":1.125,\"height\":1.4931}}";
+        private string SBCircle = "{\"designId\":\"{0}\",\"entityId\":\"{1}\",\"printSize\":\"sublimation-bracelet-circle\",\"id\":\"{2}-10088\",\"sides\":{\"front\":{\"artworkId\":\"{3}\",\"position\":{\"vertical\":{\"origin\":\"C\",\"offset\":0},\"horizontal\":{\"origin\":\"C\",\"offset\":0}},\"size\":{\"width\":0.6,\"unit\":\"percentage\"},\"details\":{\"dpi\":5733.333333333334,\"widthInch\":0.6749999999999999,\"heightInch\":0.3947093023255813}}},\"handling\":\"default\",\"productCategory\":\"jewelry\",\"bleedDimensions\":{\"width\":1.125,\"height\":1.125}}";
+        private string SECircle = "{\"designId\":\"{0}\",\"entityId\":\"{1}\",\"printSize\":\"sublimation-earring-circle\",\"id\":\"{2}-39590\",\"sides\":{\"front\":{\"artworkId\":\"{3}\",\"position\":{\"vertical\":{\"origin\":\"C\",\"offset\":0},\"horizontal\":{\"origin\":\"C\",\"offset\":0}},\"size\":{\"width\":0.6,\"unit\":\"percentage\"},\"details\":{\"dpi\":5917.037037037037,\"widthInch\":0.6749999999999999,\"heightInch\":0.6609727090635953}}},\"handling\":\"default\",\"productCategory\":\"jewelry\",\"bleedDimensions\":{\"width\":1.125,\"height\":1.125}}";
         public frmMain()
         {
             InitializeComponent();
@@ -677,30 +694,78 @@ namespace TCProShirts
                     var _IDDesign = objUpload["_id"].ToString();
                     #endregion
                     Int32 unixTimestamp = (Int32)(DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
-                    var data2SendLineIDPOSTER = @POSTER.Replace("{0}", _IDDesign).Replace("{1}", User.EntityID).Replace("{2}", unixTimestamp.ToString()).Replace("{3}", atworkID);
-                    var data2SendLineIDCASE = @CASE.Replace("{0}", _IDDesign).Replace("{1}", User.EntityID).Replace("{2}", unixTimestamp.ToString()).Replace("{3}", atworkID);
-                    var data2SendLineIDGENERAL_SLIM = @GENERAL_SLIM.Replace("{0}", _IDDesign).Replace("{1}", User.EntityID).Replace("{2}", unixTimestamp.ToString()).Replace("{3}", atworkID);
-                    var data2SendLineIDHAT = @HAT.Replace("{0}", _IDDesign).Replace("{1}", User.EntityID).Replace("{2}", unixTimestamp.ToString()).Replace("{3}", atworkID);
-                    var data2SendLineIDGENRAL = @GENRAL.Replace("{0}", _IDDesign).Replace("{1}", User.EntityID).Replace("{2}", unixTimestamp.ToString()).Replace("{3}", atworkID);
-                    var data2SendLineIDMUG = @MUG.Replace("{0}", _IDDesign).Replace("{1}", User.EntityID).Replace("{2}", unixTimestamp.ToString()).Replace("{3}", atworkID);
-                    var data2SendLineIDREDUCED = GENERAL_REDUCED.Replace("{0}", _IDDesign).Replace("{1}", User.EntityID).Replace("{2}", unixTimestamp.ToString()).Replace("{3}", atworkID);
-
+                    var data2SendLineID_POSTER = @POSTER.Replace("{0}", _IDDesign).Replace("{1}", User.EntityID).Replace("{2}", unixTimestamp.ToString()).Replace("{3}", atworkID);
+                    var data2SendLineID_CASE = @CASE.Replace("{0}", _IDDesign).Replace("{1}", User.EntityID).Replace("{2}", unixTimestamp.ToString()).Replace("{3}", atworkID);
+                    var data2SendLineID_GENERAL_SLIM = @GENERAL_SLIM.Replace("{0}", _IDDesign).Replace("{1}", User.EntityID).Replace("{2}", unixTimestamp.ToString()).Replace("{3}", atworkID);
+                    var data2SendLineID_HAT = @HAT.Replace("{0}", _IDDesign).Replace("{1}", User.EntityID).Replace("{2}", unixTimestamp.ToString()).Replace("{3}", atworkID);
+                    var data2SendLineID_GENRAL = @GENRAL.Replace("{0}", _IDDesign).Replace("{1}", User.EntityID).Replace("{2}", unixTimestamp.ToString()).Replace("{3}", atworkID);
+                    var data2SendLineID_MUG = @MUG.Replace("{0}", _IDDesign).Replace("{1}", User.EntityID).Replace("{2}", unixTimestamp.ToString()).Replace("{3}", atworkID);
+                    var data2SendLineID_REDUCED = @GENERAL_REDUCED.Replace("{0}", _IDDesign).Replace("{1}", User.EntityID).Replace("{2}", unixTimestamp.ToString()).Replace("{3}", atworkID);
+                    //Update 22.04.2018
+                    var data2SendLineID_SubShirt = @SubShirt.Replace("{0}", _IDDesign).Replace("{1}", User.EntityID).Replace("{2}", unixTimestamp.ToString()).Replace("{3}", atworkID);
+                    var data2SendLineID_SubDress = @SubDress.Replace("{0}", _IDDesign).Replace("{1}", User.EntityID).Replace("{2}", unixTimestamp.ToString()).Replace("{3}", atworkID);
+                    var data2SendLineID_SubTank = @SubTank.Replace("{0}", _IDDesign).Replace("{1}", User.EntityID).Replace("{2}", unixTimestamp.ToString()).Replace("{3}", atworkID);
+                    var data2SendLineID_SubMousePad = @SubMousePad.Replace("{0}", _IDDesign).Replace("{1}", User.EntityID).Replace("{2}", unixTimestamp.ToString()).Replace("{3}", atworkID);
+                    var data2SendLineID_SubTowelHand = @SubTowelHand.Replace("{0}", _IDDesign).Replace("{1}", User.EntityID).Replace("{2}", unixTimestamp.ToString()).Replace("{3}", atworkID);
+                    var data2SendLineID_SubTowelBeach = @SubTowelBeach.Replace("{0}", _IDDesign).Replace("{1}", User.EntityID).Replace("{2}", unixTimestamp.ToString()).Replace("{3}", atworkID);
+                    var data2SendLineID_SubPillRect = @SubPillRect.Replace("{0}", _IDDesign).Replace("{1}", User.EntityID).Replace("{2}", unixTimestamp.ToString()).Replace("{3}", atworkID);
+                    var data2SendLineID_SubPillSquare = @SubPillSquare.Replace("{0}", _IDDesign).Replace("{1}", User.EntityID).Replace("{2}", unixTimestamp.ToString()).Replace("{3}", atworkID);
+                    var data2SendLineID_SubCoasterSquare = @SubCoasterSquare.Replace("{0}", _IDDesign).Replace("{1}", User.EntityID).Replace("{2}", unixTimestamp.ToString()).Replace("{3}", atworkID);
+                    var data2SendLineID_SubCoasterCircle = @SubCoasterCircle.Replace("{0}", _IDDesign).Replace("{1}", User.EntityID).Replace("{2}", unixTimestamp.ToString()).Replace("{3}", atworkID);
+                    var data2SendLineID_SubMagnetSquare = @SubMagnetSquare.Replace("{0}", _IDDesign).Replace("{1}", User.EntityID).Replace("{2}", unixTimestamp.ToString()).Replace("{3}", atworkID);
+                    var data2SendLineID_SubMagnetCircle = @SubMagnetCircle.Replace("{0}", _IDDesign).Replace("{1}", User.EntityID).Replace("{2}", unixTimestamp.ToString()).Replace("{3}", atworkID);
+                    //Update 23.04.2018
+                    var data2SendLineID_SETeardrop = @SETeardrop.Replace("{0}", _IDDesign).Replace("{1}", User.EntityID).Replace("{2}", unixTimestamp.ToString()).Replace("{3}", atworkID);
+                    var data2SendLineID_SBCircle = @SBCircle.Replace("{0}", _IDDesign).Replace("{1}", User.EntityID).Replace("{2}", unixTimestamp.ToString()).Replace("{3}", atworkID);
+                    var data2SendLineID_SECircle = @SECircle.Replace("{0}", _IDDesign).Replace("{1}", User.EntityID).Replace("{2}", unixTimestamp.ToString()).Replace("{3}", atworkID);
                     #region ===============Step 2: Create Design Line & Get DesignLine ID===============
                     Dictionary<string, object> lineID = new Dictionary<string, object>();
                     if (lsUserControlTheme.Find(x => ((UCItemProduct)x).Product.PrintSize == "general-standard") != null)
-                        lineID.Add("LineIDGENRAL", getDesignLineID(data2SendLineIDGENRAL));
+                        lineID.Add("LineID_GENRAL", getDesignLineID(data2SendLineID_GENRAL));
                     if (lsUserControlTheme.Find(x => ((UCItemProduct)x).Product.PrintSize == "mug-standard") != null)
-                        lineID.Add("LineIDMUG", getDesignLineID(data2SendLineIDMUG));
+                        lineID.Add("LineID_MUG", getDesignLineID(data2SendLineID_MUG));
                     if (lsUserControlTheme.Find(x => ((UCItemProduct)x).Product.PrintSize == "poster-standard") != null)
-                        lineID.Add("LineIDPOSTER", getDesignLineID(data2SendLineIDPOSTER));
+                        lineID.Add("LineID_POSTER", getDesignLineID(data2SendLineID_POSTER));
                     if (lsUserControlTheme.Find(x => ((UCItemProduct)x).Product.PrintSize == "case-standard") != null)
-                        lineID.Add("LineIDCASE", getDesignLineID(data2SendLineIDCASE));
+                        lineID.Add("LineID_CASE", getDesignLineID(data2SendLineID_CASE));
                     if (lsUserControlTheme.Find(x => ((UCItemProduct)x).Product.PrintSize == "general-slim") != null)
-                        lineID.Add("LineIDGENERAL_SLIM", getDesignLineID(data2SendLineIDGENERAL_SLIM));
+                        lineID.Add("LineID_GENERAL_SLIM", getDesignLineID(data2SendLineID_GENERAL_SLIM));
                     if (lsUserControlTheme.Find(x => ((UCItemProduct)x).Product.PrintSize == "hat-standard") != null)
-                        lineID.Add("LineIDHAT", getDesignLineID(data2SendLineIDHAT));
+                        lineID.Add("LineID_HAT", getDesignLineID(data2SendLineID_HAT));
                     if (lsUserControlTheme.Find(x => ((UCItemProduct)x).Product.PrintSize == "general-reduced") != null)
-                        lineID.Add("LineIDREDUCED", getDesignLineID(data2SendLineIDREDUCED));
+                        lineID.Add("LineID_REDUCED", getDesignLineID(data2SendLineID_REDUCED));
+                    //Update 22.04.2018
+                    if (lsUserControlTheme.Find(x => ((UCItemProduct)x).Product.PrintSize == "sublimation-shirt") != null)
+                        lineID.Add("LineID_SubShirt", getDesignLineID(data2SendLineID_SubShirt));
+                    if (lsUserControlTheme.Find(x => ((UCItemProduct)x).Product.PrintSize == "sublimation-dress") != null)
+                        lineID.Add("LineID_SubDress", getDesignLineID(data2SendLineID_SubDress));
+                    if (lsUserControlTheme.Find(x => ((UCItemProduct)x).Product.PrintSize == "sublimation-tank") != null)
+                        lineID.Add("LineID_SubTank", getDesignLineID(data2SendLineID_SubTank));
+                    if (lsUserControlTheme.Find(x => ((UCItemProduct)x).Product.PrintSize == "sublimation-mousepad") != null)
+                        lineID.Add("LineID_SubMousePad", getDesignLineID(data2SendLineID_SubMousePad));
+                    if (lsUserControlTheme.Find(x => ((UCItemProduct)x).Product.PrintSize == "sublimation-towel-hand") != null)
+                        lineID.Add("LineID_SubTowelHand", getDesignLineID(data2SendLineID_SubTowelHand));
+                    if (lsUserControlTheme.Find(x => ((UCItemProduct)x).Product.PrintSize == "sublimation-pillowcase-rect") != null)
+                        lineID.Add("LineID_SubPillRect", getDesignLineID(data2SendLineID_SubPillRect));
+                    if (lsUserControlTheme.Find(x => ((UCItemProduct)x).Product.PrintSize == "sublimation-towel-beach") != null)
+                        lineID.Add("LineID_SubTowelBeach", getDesignLineID(data2SendLineID_SubTowelBeach));
+                    if (lsUserControlTheme.Find(x => ((UCItemProduct)x).Product.PrintSize == "sublimation-pillowcase-square") != null)
+                        lineID.Add("LineID_SubPillSquare", getDesignLineID(data2SendLineID_SubPillSquare));
+                    if (lsUserControlTheme.Find(x => ((UCItemProduct)x).Product.PrintSize == "sublimation-coaster-square") != null)
+                        lineID.Add("LineID_SubCoasterSquare", getDesignLineID(data2SendLineID_SubCoasterSquare));
+                    if (lsUserControlTheme.Find(x => ((UCItemProduct)x).Product.PrintSize == "sublimation-coaster-circle") != null)
+                        lineID.Add("LineID_SubCoasterCircle", getDesignLineID(data2SendLineID_SubCoasterCircle));
+                    if (lsUserControlTheme.Find(x => ((UCItemProduct)x).Product.PrintSize == "sublimation-magnet-circle") != null)
+                        lineID.Add("LineID_SubMagnetCircle", getDesignLineID(data2SendLineID_SubMagnetCircle));
+                    if (lsUserControlTheme.Find(x => ((UCItemProduct)x).Product.PrintSize == "sublimation-magnet-square") != null)
+                        lineID.Add("LineID_SubMagnetSquare", getDesignLineID(data2SendLineID_SubMagnetSquare));
+                    //Update 23.04.2018
+                    if (lsUserControlTheme.Find(x => ((UCItemProduct)x).Product.PrintSize == "sublimation-earring-teardrop") != null)
+                        lineID.Add("LineID_SETeardrop", getDesignLineID(data2SendLineID_SETeardrop));
+                    if (lsUserControlTheme.Find(x => ((UCItemProduct)x).Product.PrintSize == "sublimation-bracelet-circle") != null)
+                        lineID.Add("LineID_SBCircle", getDesignLineID(data2SendLineID_SBCircle));
+                    if (lsUserControlTheme.Find(x => ((UCItemProduct)x).Product.PrintSize == "sublimation-earring-circle") != null)
+                        lineID.Add("LineID_SECircle", getDesignLineID(data2SendLineID_SECircle));
                     #endregion
 
                     //Step 3 -- Tham số cần truyền: 
@@ -759,25 +824,72 @@ namespace TCProShirts
                 switch (item["printSize"].ToString())
                 {
                     case "mug-standard":
-                        designID = dataDesignID["LineIDMUG"].ToString();
+                        designID = dataDesignID["LineID_MUG"].ToString();
                         break;
                     case "poster-standard":
-                        designID = dataDesignID["LineIDPOSTER"].ToString();
+                        designID = dataDesignID["LineID_POSTER"].ToString();
                         break;
                     case "case-standard":
-                        designID = dataDesignID["LineIDCASE"].ToString();
+                        designID = dataDesignID["LineID_CASE"].ToString();
                         break;
                     case "general-slim":
-                        designID = dataDesignID["LineIDGENERAL_SLIM"].ToString();
+                        designID = dataDesignID["LineID_GENERAL_SLIM"].ToString();
                         break;
                     case "hat-standard":
-                        designID = dataDesignID["LineIDHAT"].ToString();
+                        designID = dataDesignID["LineID_HAT"].ToString();
                         break;
                     case "general-reduced":
-                        designID = dataDesignID["LineIDREDUCED"].ToString();
+                        designID = dataDesignID["LineID_REDUCED"].ToString();
                         break;
-                    default:
-                        designID = dataDesignID["LineIDGENRAL"].ToString();
+                    //Update 22.04.2018
+                    case "sublimation-shirt":
+                        designID = dataDesignID["LineID_SubShirt"].ToString();
+                        break;
+                    case "sublimation-dress":
+                        designID = dataDesignID["LineID_SubDress"].ToString();
+                        break;
+                    case "sublimation-tank":
+                        designID = dataDesignID["LineID_SubTank"].ToString();
+                        break;
+                    case "sublimation-mousepad":
+                        designID = dataDesignID["LineID_SubMousePad"].ToString();
+                        break;
+                    case "sublimation-towel-hand":
+                        designID = dataDesignID["LineID_SubTowelHand"].ToString();
+                        break;
+                    case "sublimation-pillowcase-rect":
+                        designID = dataDesignID["LineID_SubPillRect"].ToString();
+                        break;
+                    case "sublimation-towel-beach":
+                        designID = dataDesignID["LineID_SubTowelBeach"].ToString();
+                        break;
+                    case "sublimation-pillowcase-square":
+                        designID = dataDesignID["LineID_SubPillSquare"].ToString();
+                        break;
+                    case "sublimation-coaster-square":
+                        designID = dataDesignID["LineID_SubCoasterSquare"].ToString();
+                        break;
+                    case "sublimation-coaster-circle":
+                        designID = dataDesignID["LineID_SubCoasterCircle"].ToString();
+                        break;
+                    case "sublimation-magnet-circle":
+                        designID = dataDesignID["LineID_SubMagnetCircle"].ToString();
+                        break;
+                    case "sublimation-magnet-square":
+                        designID = dataDesignID["LineID_SubMagnetSquare"].ToString();
+                        break;
+                    //Update 23.04.2018
+                    case "sublimation-earring-teardrop":
+                        designID = dataDesignID["LineID_SETeardrop"].ToString();
+                        break;
+                    case "sublimation-bracelet-circle":
+                        designID = dataDesignID["LineID_SBCircle"].ToString();
+                        break;
+                    case "sublimation-earring-circle":
+                        designID = dataDesignID["LineID_SECircle"].ToString();
+                        break;
+                    case "general-standard":
+                        designID = dataDesignID["LineID_GENRAL"].ToString();
                         break;
                 }
                 var colors = (List<string>)item["colors"];

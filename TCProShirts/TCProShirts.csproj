@@ -192,6 +192,13 @@
   <ItemGroup>
     <EmbeddedResource Include="FileData\dataThemes.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="FileData\category - Copy.txt" />
+    <None Include="FileData\catalog2.json" />
+    <EmbeddedResource Include="FileData\bulkCode - Copy.txt" />
+    <Content Include="FileData\catalog - Copy.txt" />
+    <Content Include="FileData\catalog.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

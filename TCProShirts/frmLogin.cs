@@ -257,21 +257,21 @@ namespace TCProShirts
 
         private void frmLogin_Load(object sender, EventArgs e)
         {
-            Int64 currTime = (int)(DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
-            Int64 dueTime = 1524310271000;
-            currTime = currTime * 1000;
-            if (currTime > dueTime)
-            {
-                btnLogin.Enabled = false;
-                btnLogin.Visible = false;
-                txtUserName.Enabled = false;
-                txtPassword.Enabled = false;
-                XtraMessageBox.Show("Thời gian dùng thử đã kết thúc", "Thông báo");
-            }
-            else
-            {
-                XtraMessageBox.Show("Thời gian dùng thử kết thúc 4/21/2018, 6:31:11 PM", "Thông báo");
-            }
+            //Int64 currTime = (int)(DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
+            //Int64 dueTime = 1524310271000;
+            //currTime = currTime * 1000;
+            //if (currTime > dueTime)
+            //{
+            //    btnLogin.Enabled = false;
+            //    btnLogin.Visible = false;
+            //    txtUserName.Enabled = false;
+            //    txtPassword.Enabled = false;
+            //    XtraMessageBox.Show("Thời gian dùng thử đã kết thúc", "Thông báo");
+            //}
+            //else
+            //{
+            //    XtraMessageBox.Show("Thời gian dùng thử kết thúc 4/21/2018, 6:31:11 PM", "Thông báo");
+            //}
         }
     }
 }
