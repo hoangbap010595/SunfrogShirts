@@ -55,6 +55,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Linq" />
     <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -99,6 +100,49 @@
     <Compile Include="SpreadShirts\UCItemShopSpread.Designer.cs">
       <DependentUpon>UCItemShopSpread.cs</DependentUpon>
     </Compile>
+    <Compile Include="TCProShirts\ApplicationLibary.cs" />
+    <Compile Include="TCProShirts\ApplicationUser.cs" />
+    <Compile Include="TCProShirts\CsvReader.cs" />
+    <Compile Include="TCProShirts\frmActive.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TCProShirts\frmActive.Designer.cs">
+      <DependentUpon>frmActive.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TCProShirts\frmDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TCProShirts\frmDialog.Designer.cs">
+      <DependentUpon>frmDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TCProShirts\frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TCProShirts\frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TCProShirts\frmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TCProShirts\frmMain.Designer.cs">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TCProShirts\frmWait.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TCProShirts\frmWait.Designer.cs">
+      <DependentUpon>frmWait.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TCProShirts\Models\Category.cs" />
+    <Compile Include="TCProShirts\Models\OColor.cs" />
+    <Compile Include="TCProShirts\Models\OTheme.cs" />
+    <Compile Include="TCProShirts\Models\Product.cs" />
+    <Compile Include="TCProShirts\UControls\UCItemProduct.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TCProShirts\UControls\UCItemProduct.Designer.cs">
+      <DependentUpon>UCItemProduct.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -122,6 +166,24 @@
     <EmbeddedResource Include="SpreadShirts\UCItemShopSpread.resx">
       <DependentUpon>UCItemShopSpread.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="TCProShirts\frmActive.resx">
+      <DependentUpon>frmActive.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TCProShirts\frmDialog.resx">
+      <DependentUpon>frmDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TCProShirts\frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TCProShirts\frmMain.resx">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TCProShirts\frmWait.resx">
+      <DependentUpon>frmWait.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TCProShirts\UControls\UCItemProduct.resx">
+      <DependentUpon>UCItemProduct.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -134,17 +196,32 @@
     </Compile>
     <None Include="SpreadShirts\upload\createDesign.json" />
     <None Include="SpreadShirts\upload\tsconfig1.json" />
+    <None Include="TCProShirts\FileData\4.FINISH-END" />
+    <None Include="TCProShirts\FileData\bulkCode2.json" />
+    <None Include="TCProShirts\FileData\catalog2.json" />
+    <None Include="TCProShirts\FileData\category2.json" />
+    <None Include="TCProShirts\FileData\template2.json" />
+    <None Include="TCProShirts\FileData\themes1.json" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="TCProShirts\FileData\be8a6f03.png" />
+    <Content Include="TCProShirts\FileData\bulkCode - Copy.txt" />
+    <EmbeddedResource Include="TCProShirts\FileData\bulkCode.txt" />
+    <Content Include="TCProShirts\FileData\catalog - Copy.txt" />
+    <Content Include="TCProShirts\FileData\catalog.txt" />
+    <Content Include="TCProShirts\FileData\category - Copy.txt" />
+    <EmbeddedResource Include="TCProShirts\FileData\category.txt" />
+    <Content Include="TCProShirts\FileData\dataThemes.txt" />
+    <Content Include="TCProShirts\FileData\teechip_logo.png" />
+    <Content Include="TCProShirts\FileData\teechip_logo_QtC_icon.ico" />
+    <Content Include="TCProShirts\FileData\template.txt" />
     <EmbeddedResource Include="SpreadShirts\data2send.txt" />
     <Content Include="SpreadShirts\upload\data2.js" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="TCProShirts\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

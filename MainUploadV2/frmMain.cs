@@ -9,11 +9,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MainUploadV2.Services;
 
 namespace MainUploadV2
 {
     public partial class frmMain : XtraForm
     {
+        private AccountServices accService = new AccountServices();
         private int _CurrentTime = 0;
         public frmMain()
         {
@@ -37,7 +39,16 @@ namespace MainUploadV2
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
+            string user = txtUserName.Text.Trim();
+            string pass = txtPassword.Text.Trim();
+            var rs = accService.CheckLogin(user, pass);
+            if(rs == 1)
+            {
 
+            }else
+            {
+                XtraMessageBox.Show("Sai tài khoản hoặc mật khẩu.");
+            }
         }
 
         private void frmMain_Load(object sender, EventArgs e)

@@ -61,11 +61,56 @@ namespace MainUploadV2.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to [{&quot;_id&quot;:&quot;587d0d8ff43ea40e13382dad&quot;,&quot;printSize&quot;:&quot;general-standard&quot;,&quot;type&quot;:&quot;shirt&quot;,&quot;category&quot;:&quot;garment&quot;,&quot;code&quot;:&quot;TC0&quot;,&quot;name&quot;:&quot;Classic T-Shirt&quot;,&quot;templates&quot;:[{&quot;name&quot;:&quot;front&quot;,&quot;id&quot;:&quot;unisex-crewneck-tshirt-v2-front&quot;,&quot;required&quot;:true,&quot;sizes&quot;:[{&quot;size&quot;:&quot;all&quot;,&quot;bleedDimensions&quot;:{&quot;width&quot;:14,&quot;height&quot;:16}}],&quot;sides&quot;:[{&quot;side&quot;:&quot;front&quot;}]},{&quot;name&quot;:&quot;back&quot;,&quot;id&quot;:&quot;unisex-crewneck-tshirt-v2-back&quot;,&quot;required&quot;:true,&quot;sizes&quot;:[{&quot;size&quot;:&quot;all&quot;,&quot;bleedDimensions&quot;:{&quot;width&quot;:14,&quot;height&quot;:16}}],&quot;sides&quot;:[{&quot;side&quot;:&quot;back&quot;}]},{&quot;name&quot;:&quot;lifestyle-mens-crew [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string bulkCode {
+            get {
+                return ResourceManager.GetString("bulkCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [{&quot;_id&quot;:&quot;587d0d8ff43ea40e13382dad&quot;,&quot;printSize&quot;:&quot;general-standard&quot;,&quot;type&quot;:&quot;shirt&quot;,&quot;category&quot;:&quot;garment&quot;,&quot;code&quot;:&quot;TC0&quot;,&quot;name&quot;:&quot;Classic T-Shirt&quot;,&quot;templates&quot;:[{&quot;name&quot;:&quot;front&quot;,&quot;id&quot;:&quot;unisex-crewneck-tshirt-v2-front&quot;,&quot;required&quot;:true,&quot;sizes&quot;:[{&quot;size&quot;:&quot;all&quot;,&quot;bleedDimensions&quot;:{&quot;width&quot;:14,&quot;height&quot;:16}}],&quot;sides&quot;:[{&quot;side&quot;:&quot;front&quot;}]},{&quot;name&quot;:&quot;back&quot;,&quot;id&quot;:&quot;unisex-crewneck-tshirt-v2-back&quot;,&quot;required&quot;:true,&quot;sizes&quot;:[{&quot;size&quot;:&quot;all&quot;,&quot;bleedDimensions&quot;:{&quot;width&quot;:14,&quot;height&quot;:16}}],&quot;sides&quot;:[{&quot;side&quot;:&quot;back&quot;}]},{&quot;name&quot;:&quot;lifestyle-mens-crew [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string catalog {
+            get {
+                return ResourceManager.GetString("catalog", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [{&quot;_id&quot;:&quot;59543ce3a7e9a6eff28fc3ff&quot;,&quot;name&quot;:&quot;1&quot;,&quot;fullName&quot;:&quot;1 (1-19) (Age)&quot;,&quot;slug&quot;:&quot;1&quot;,&quot;children&quot;:[]},{&quot;_id&quot;:&quot;59543ce3a7e9a6eff28fc3fa&quot;,&quot;name&quot;:&quot;1 Month&quot;,&quot;fullName&quot;:&quot;1 Month (1-12 Months) (Age)&quot;,&quot;slug&quot;:&quot;1 Month&quot;,&quot;children&quot;:[]},{&quot;_id&quot;:&quot;59543ce3a7e9a6eff28fc4b4&quot;,&quot;name&quot;:&quot;1-12 Months&quot;,&quot;fullName&quot;:&quot;1-12 Months (Age)&quot;,&quot;slug&quot;:&quot;1-12 Months&quot;,&quot;children&quot;:[{&quot;tagId&quot;:&quot;59543ce3a7e9a6eff28fc3fa&quot;,&quot;slug&quot;:&quot;1 Month&quot;},{&quot;tagId&quot;:&quot;59543ce3a7e9a6eff28fc3fb&quot;,&quot;slug&quot;:&quot;2 Month&quot;},{&quot;tagId&quot;:&quot;59543ce3a7e9a6eff28fc3fc&quot;,&quot;slug&quot;:&quot;3 Month&quot;},{&quot;tagId [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string category {
+            get {
+                return ResourceManager.GetString("category", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {&quot;commission&quot;:{&quot;currencyId&quot;:&quot;3&quot;,&quot;amount&quot;:0},&quot;publishingDetails&quot;:[],&quot;properties&quot;:{&quot;configuration&quot;:&quot;1525673808&quot;,&quot;manualAssortmentSelection&quot;:&quot;true&quot;},&quot;id&quot;:&quot;&quot;,&quot;userId&quot;:&quot;&quot;,&quot;state&quot;:&quot;ACTIVE&quot;,&quot;mainDesignId&quot;:&quot;&quot;,&quot;translations&quot;:[{&quot;name&quot;:&quot;&quot;,&quot;description&quot;:&quot;&quot;,&quot;tags&quot;:[],&quot;locale&quot;:&quot;en_US&quot;,&quot;autotranslated&quot;:false}],&quot;dateCreated&quot;:&quot;&quot;,&quot;dateModified&quot;:1513329912151,&quot;legalStates&quot;:[{&quot;pointOfSaleType&quot;:&quot;CYO&quot;,&quot;publishingAllowed&quot;:true},{&quot;pointOfSaleType&quot;:&quot;SHOP&quot;,&quot;publishingAllowed&quot;:true},{&quot;pointOfSaleType&quot;:&quot;MARKETPLACE&quot;,&quot;publishingAllowed [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string data2send {
             get {
                 return ResourceManager.GetString("data2send", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        internal static string dataThemes {
+            get {
+                return ResourceManager.GetString("dataThemes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {&quot;poster&quot;:{&quot;designId&quot;:&quot;@DesignID&quot;,&quot;entityId&quot;:&quot;@EntityID&quot;,&quot;printSize&quot;:&quot;poster-standard&quot;,&quot;id&quot;:&quot;@TimeSpanID-36710&quot;,&quot;sides&quot;:{&quot;front&quot;:{&quot;artworkId&quot;:&quot;@ArtworkID&quot;,&quot;position&quot;:{&quot;vertical&quot;:{&quot;origin&quot;:&quot;C&quot;,&quot;offset&quot;:0},&quot;horizontal&quot;:{&quot;origin&quot;:&quot;C&quot;,&quot;offset&quot;:0}},&quot;size&quot;:{&quot;width&quot;:0.85,&quot;unit&quot;:&quot;percentage&quot;}}},&quot;handling&quot;:&quot;default&quot;},&quot;case&quot;:{&quot;designId&quot;:&quot;@DesignID&quot;,&quot;entityId&quot;:&quot;@EntityID&quot;,&quot;printSize&quot;:&quot;case-standard&quot;,&quot;id&quot;:&quot;@TimeSpanID-38916&quot;,&quot;sides&quot;:{&quot;front&quot;:{&quot;artworkId&quot;:&quot;@ArtworkID&quot;,&quot;position&quot;:{&quot;vertical&quot;:{&quot;origin&quot;:&quot;C&quot;,&quot;offset&quot;:-0.002 [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string template {
+            get {
+                return ResourceManager.GetString("template", resourceCulture);
             }
         }
     }
