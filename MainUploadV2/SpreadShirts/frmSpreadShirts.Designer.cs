@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSpreadShirts));
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
@@ -55,7 +56,7 @@
             this.lsBoxImage = new DevExpress.XtraEditors.ListBoxControl();
             this.btnChooesImage = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
-            this.defaultLookAndFeel = new DevExpress.LookAndFeel.DefaultLookAndFeel();
+            this.defaultLookAndFeel = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
             this.cbbShowAccount = new System.Windows.Forms.ComboBox();
             this.btnAccountFaild = new DevExpress.XtraEditors.SimpleButton();
@@ -147,10 +148,10 @@
             this.lsBoxLog.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lsBoxLog.HorizontalScrollbar = true;
             this.lsBoxLog.ItemHeight = 22;
-            this.lsBoxLog.Location = new System.Drawing.Point(2, 22);
+            this.lsBoxLog.Location = new System.Drawing.Point(2, 20);
             this.lsBoxLog.Name = "lsBoxLog";
             this.lsBoxLog.ShowFocusRect = false;
-            this.lsBoxLog.Size = new System.Drawing.Size(753, 166);
+            this.lsBoxLog.Size = new System.Drawing.Size(753, 168);
             this.lsBoxLog.TabIndex = 0;
             // 
             // groupControlFile
@@ -538,7 +539,7 @@
             this.MinimumSize = new System.Drawing.Size(1100, 705);
             this.Name = "frmSpreadShirts";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "d";
+            this.Text = "WINDOW UPLOAD SPREADSHIRTS";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMain_FormClosing);
             this.Load += new System.EventHandler(this.frmMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();

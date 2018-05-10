@@ -17,7 +17,9 @@ namespace MainUploadV2
     public partial class frmMain : XtraForm
     {
         private AccountServices accService = new AccountServices();
+        private Timer timer_Expires = null;
         private int _CurrentTime = 0;
+        private string curr_UserID = "";
         public frmMain()
         {
             InitializeComponent();
@@ -42,10 +44,10 @@ namespace MainUploadV2
         {
             string user = txtUserName.Text.Trim();
             string pass = txtPassword.Text.Trim();
-            var rs = accService.CheckLogin(user, pass);
-            if(rs != "-1")
+            curr_UserID = accService.CheckLogin(user, pass);
+            if (curr_UserID != "-1")
             {
-                Dictionary<string, object> data = accService.GetInfoMember(rs);
+                Dictionary<string, object> data = accService.GetInfoMember(curr_UserID);
                 var dateExpires = DateTime.Parse(data["DateExpires"].ToString());
                 var currDate = DateTime.UtcNow;
                 if (currDate > dateExpires)
@@ -58,10 +60,10 @@ namespace MainUploadV2
                 lblExpires.Text = data["DateExpires"].ToString();
                 lblDateCreate.Text = data["DateCreate"].ToString();
                 lblDayExpires.Text = data["DayExpires"].ToString() + " day(s)";
-                List<Dictionary<string, object>> tools = accService.GetToolForUser(rs);
+                List<Dictionary<string, object>> tools = accService.GetToolForUser(curr_UserID);
                 if (tools.Count > 0)
                 {
-                    foreach (Dictionary<string,object> item in tools)
+                    foreach (Dictionary<string, object> item in tools)
                     {
                         int toolID = int.Parse(item["ToolID"].ToString());
                         switch (toolID)
@@ -80,7 +82,8 @@ namespace MainUploadV2
                                 break;
                         }
                     }
-                }else
+                }
+                else
                 {
                     XtraMessageBox.Show("Không tìm thấy tool được kích hoạt cho tài khoản của bạn.\nVui lòng liên hệ quản trị hệ thống.");
                 }
@@ -96,6 +99,29 @@ namespace MainUploadV2
             timerOnline.Tick += TimerOnline_Tick;
             timerOnline.Start();
             lblToDay.Text = DateTime.Now.ToString("MMM, dd-yyyy");
+
+            timer_Expires = new Timer();
+            timer_Expires.Interval = 1800000;
+            timer_Expires.Tick += timer_Expires_Tick;
+            timer_Expires.Enabled = true;
+            timer_Expires.Start();
+        }
+
+        void timer_Expires_Tick(object sender, EventArgs e)
+        {
+            Dictionary<string, object> data = accService.GetInfoMember(curr_UserID);
+            var dateExpires = DateTime.Parse(data["DateExpires"].ToString());
+            var currDate = DateTime.UtcNow;
+            if (currDate > dateExpires)
+            {
+                XtraMessageBox.Show("Tài khoản của bạn đã hết hạn sử dụng.\nVui lòng liên hệ với quản trị hệ thống.");
+                btnAcctiveMerchAmazon.Enabled = btnAcctiveTeeChipPro.Enabled = btnAcctiveTeePublic.Enabled = btnActiveToolSpread.Enabled = false;
+                Form frm = Application.OpenForms["frmSpreadShirts"];
+                if (frm != null)
+                {
+                    frm.Close();
+                }
+            }
         }
 
         private void TimerOnline_Tick(object sender, EventArgs e)

@@ -25,32 +25,26 @@ namespace TeePublic
         private void button1_Click(object sender, EventArgs e)
         {
             FirefoxDriverService service = FirefoxDriverService.CreateDefaultService();
-            service.FirefoxBinaryPath = @"C:\Program Files\Mozilla Firefox\firefox.exe";
+            service.FirefoxBinaryPath = @"E:\Firefox\firefox.exe";
             //service.FirefoxBinaryPath = @"D:\FireFox49\firefox.exe";
-            IWebDriver driver = new FirefoxDriver(service,new FirefoxOptions(),TimeSpan.FromSeconds(180));
+            IWebDriver driver = new FirefoxDriver(service, new FirefoxOptions(), TimeSpan.FromSeconds(180));
             //driver.Url = "https://www.teepublic.com/";
             driver.Url = "https://www.teepublic.com/";
-            //driver.Navigate().Refresh();
 
-            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(60));
-            wait.Until(ExpectedConditions.ElementToBeClickable(By.Id("login-link"))).Click();
+            Thread.Sleep(10000);
+            IWebElement btnLogin = driver.FindElement(By.Id("login-link"));
+            IWebElement btnExecLogin = driver.FindElement(By.Id("login"));
+            IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
 
-            // Test the autocomplete response - Explicit Wait
-            //IWebElement autocomplete = wait.Until(x => x.FindElement(By.ClassName("login-link")));
-
-            //string autoCompleteResults = autocomplete.Text;
-            //autocomplete.Click();
-
-            //By addItem = By.Id("login-link");
-
-            //driver.FindElement(By.Id("")).Click();
-            //wait.Until(ExpectedConditions.ElementToBeClickable(addItem)).Click();
+            js.ExecuteScript("arguments[0].click();", btnLogin);
 
             //Enter pass
-            //driver.FindElement(By.Id("session_email")).SendKeys("lchoang1995@gmail.com");
-            //driver.FindElement(By.Id("session_password")).SendKeys("Thienan@111");
+            Thread.Sleep(3000);
+            driver.FindElement(By.Id("session_email")).SendKeys("lchoang1995@gmail.com");
+            driver.FindElement(By.Id("session_password")).SendKeys("Thienan@111");
 
-            //driver.FindElement(By.Id("login")).Click();
+            Thread.Sleep(3000);
+            js.ExecuteScript("arguments[0].click();", btnExecLogin);
         }
 
         private void button2_Click(object sender, EventArgs e)

@@ -65,6 +65,18 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="ThoughtWorks.Selenium.Core, Version=3.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Selenium.RC.3.1.0\lib\net40\ThoughtWorks.Selenium.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="WebDriver, Version=3.12.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Selenium.WebDriver.3.12.0\lib\net45\WebDriver.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="WebDriver.Support, Version=3.12.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Selenium.Support.3.12.0\lib\net45\WebDriver.Support.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationLibary.cs" />
@@ -81,11 +93,11 @@
     <Compile Include="frmMainAmazon.Designer.cs">
       <DependentUpon>frmMainAmazon.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmMainBrowserUpload.cs">
+    <Compile Include="frmTestUpload.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmMainBrowserUpload.Designer.cs">
-      <DependentUpon>frmMainBrowserUpload.cs</DependentUpon>
+    <Compile Include="frmTestUpload.Designer.cs">
+      <DependentUpon>frmTestUpload.cs</DependentUpon>
     </Compile>
     <Compile Include="frmWait.cs">
       <SubType>Form</SubType>
@@ -101,8 +113,8 @@
     <EmbeddedResource Include="frmMainAmazon.resx">
       <DependentUpon>frmMainAmazon.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmMainBrowserUpload.resx">
-      <DependentUpon>frmMainBrowserUpload.cs</DependentUpon>
+    <EmbeddedResource Include="frmTestUpload.resx">
+      <DependentUpon>frmTestUpload.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmWait.resx">
       <DependentUpon>frmWait.cs</DependentUpon>

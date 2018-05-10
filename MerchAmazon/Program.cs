@@ -23,7 +23,7 @@ namespace MerchAmazon
             BonusSkins.Register();
             SkinManager.EnableFormSkins();
             UserLookAndFeel.Default.SetSkinStyle("McSkin");
-            Application.Run(new frmMainBrowserUpload());
+            Application.Run(new frmTestUpload());
         }
     }
 }
