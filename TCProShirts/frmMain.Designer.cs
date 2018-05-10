@@ -172,7 +172,7 @@
             this.ckCheckAll.Location = new System.Drawing.Point(7, 399);
             this.ckCheckAll.Name = "ckCheckAll";
             this.ckCheckAll.Properties.Caption = "Check all/ Uncheck all";
-            this.ckCheckAll.Size = new System.Drawing.Size(128, 19);
+            this.ckCheckAll.Size = new System.Drawing.Size(128, 20);
             this.ckCheckAll.TabIndex = 0;
             this.ckCheckAll.CheckedChanged += new System.EventHandler(this.ckCheckAll_CheckedChanged);
             // 
@@ -315,9 +315,9 @@
             // 
             this.groupControl5.Controls.Add(this.lsBoxLog);
             this.groupControl5.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.groupControl5.Location = new System.Drawing.Point(0, 405);
+            this.groupControl5.Location = new System.Drawing.Point(0, 403);
             this.groupControl5.Name = "groupControl5";
-            this.groupControl5.Size = new System.Drawing.Size(689, 178);
+            this.groupControl5.Size = new System.Drawing.Size(687, 178);
             this.groupControl5.TabIndex = 0;
             this.groupControl5.Text = "Progress";
             // 
@@ -327,10 +327,10 @@
             this.lsBoxLog.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lsBoxLog.HorizontalScrollbar = true;
             this.lsBoxLog.ItemHeight = 22;
-            this.lsBoxLog.Location = new System.Drawing.Point(2, 20);
+            this.lsBoxLog.Location = new System.Drawing.Point(2, 22);
             this.lsBoxLog.Name = "lsBoxLog";
             this.lsBoxLog.ShowFocusRect = false;
-            this.lsBoxLog.Size = new System.Drawing.Size(685, 156);
+            this.lsBoxLog.Size = new System.Drawing.Size(683, 154);
             this.lsBoxLog.TabIndex = 0;
             // 
             // xtraTabControlMain
@@ -366,7 +366,7 @@
             this.xtraTabPageUpload.Controls.Add(this.panelControlAction);
             this.xtraTabPageUpload.Controls.Add(this.groupControlFile);
             this.xtraTabPageUpload.Name = "xtraTabPageUpload";
-            this.xtraTabPageUpload.Size = new System.Drawing.Size(689, 583);
+            this.xtraTabPageUpload.Size = new System.Drawing.Size(687, 581);
             this.xtraTabPageUpload.Text = "Upload";
             // 
             // lsBoxImage
@@ -666,7 +666,7 @@
             this.xtraTabPageDesign.Controls.Add(this.lueThemes);
             this.xtraTabPageDesign.Controls.Add(this.xtraScrollableTheme);
             this.xtraTabPageDesign.Name = "xtraTabPageDesign";
-            this.xtraTabPageDesign.Size = new System.Drawing.Size(689, 583);
+            this.xtraTabPageDesign.Size = new System.Drawing.Size(687, 581);
             this.xtraTabPageDesign.Text = "Themes";
             // 
             // btnSaveThemes

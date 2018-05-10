@@ -1023,15 +1023,15 @@ namespace MainUploadV2.SpreadShirts
                         int rsLogin = executeLogin(item.Username, @item.Password);
                         if (rsLogin == 1)
                         {
-                            btnAccountDone.Invoke((MethodInvoker)delegate { btnAccountDone.Text = "Done (" + listAccountUploadDone.Count + ")"; });
                             listAccountUploadDone.Add(account);
+                            btnAccountDone.Invoke((MethodInvoker)delegate { btnAccountDone.Text = "Done (" + listAccountUploadDone.Count + ")"; });
                             UploadProgress();
                             enableBThread(true);
                         }
                         else
                         {
-                            btnAccountFaild.Invoke((MethodInvoker)delegate { btnAccountFaild.Text = "Done (" + listAccountUploadFaild.Count + ")"; });
                             listAccountUploadFaild.Add(account);
+                            btnAccountFaild.Invoke((MethodInvoker)delegate { btnAccountFaild.Text = "Done (" + listAccountUploadFaild.Count + ")"; });
                             ApplicationLibary.writeLogThread(lsBoxLog, "[LOGIN] Result: " + rsLogin + ", Login Faild. Next Account", 1);
                         }
                         ApplicationLibary.writeLogThread(lsBoxLog, "Upload Finish For Account: " + item.Username, 1);

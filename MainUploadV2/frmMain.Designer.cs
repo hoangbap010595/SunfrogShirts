@@ -34,19 +34,26 @@
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.txtPassword = new DevExpress.XtraEditors.TextEdit();
+            this.lblDayExpires = new DevExpress.XtraEditors.LabelControl();
             this.txtUserName = new DevExpress.XtraEditors.TextEdit();
             this.btnLogin = new DevExpress.XtraEditors.SimpleButton();
+            this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
             this.xtraScrollableControlMain = new DevExpress.XtraEditors.XtraScrollableControl();
+            this.btnAcctiveTeeChipPro = new DevExpress.XtraEditors.SimpleButton();
             this.btnActiveToolSpread = new DevExpress.XtraEditors.SimpleButton();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
-            this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
+            this.lblDateCreate = new DevExpress.XtraEditors.LabelControl();
+            this.lblExpires = new DevExpress.XtraEditors.LabelControl();
             this.lblToDay = new DevExpress.XtraEditors.LabelControl();
             this.lblTimeLive = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.timerOnline = new System.Windows.Forms.Timer(this.components);
+            this.btnAcctiveMerchAmazon = new DevExpress.XtraEditors.SimpleButton();
+            this.btnAcctiveTeePublic = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtPassword.Properties)).BeginInit();
@@ -63,8 +70,10 @@
             this.groupControl1.Controls.Add(this.labelControl2);
             this.groupControl1.Controls.Add(this.labelControl1);
             this.groupControl1.Controls.Add(this.txtPassword);
+            this.groupControl1.Controls.Add(this.lblDayExpires);
             this.groupControl1.Controls.Add(this.txtUserName);
             this.groupControl1.Controls.Add(this.btnLogin);
+            this.groupControl1.Controls.Add(this.labelControl7);
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Left;
             this.groupControl1.Location = new System.Drawing.Point(0, 0);
             this.groupControl1.Name = "groupControl1";
@@ -95,8 +104,24 @@
             this.txtPassword.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
             this.txtPassword.Properties.Appearance.Options.UseFont = true;
             this.txtPassword.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
+            this.txtPassword.Properties.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(182, 28);
             this.txtPassword.TabIndex = 2;
+            // 
+            // lblDayExpires
+            // 
+            this.lblDayExpires.Appearance.Font = new System.Drawing.Font("Tahoma", 14F);
+            this.lblDayExpires.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.lblDayExpires.Appearance.Options.UseFont = true;
+            this.lblDayExpires.Appearance.Options.UseForeColor = true;
+            this.lblDayExpires.Appearance.Options.UseTextOptions = true;
+            this.lblDayExpires.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.lblDayExpires.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+            this.lblDayExpires.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
+            this.lblDayExpires.Location = new System.Drawing.Point(11, 231);
+            this.lblDayExpires.Name = "lblDayExpires";
+            this.lblDayExpires.Size = new System.Drawing.Size(182, 26);
+            this.lblDayExpires.TabIndex = 0;
             // 
             // txtUserName
             // 
@@ -112,7 +137,6 @@
             // 
             this.btnLogin.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
             this.btnLogin.Appearance.Options.UseFont = true;
-            this.btnLogin.Enabled = false;
             this.btnLogin.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnLogin.ImageOptions.Image")));
             this.btnLogin.Location = new System.Drawing.Point(33, 148);
             this.btnLogin.Name = "btnLogin";
@@ -120,6 +144,14 @@
             this.btnLogin.TabIndex = 3;
             this.btnLogin.Text = "Login";
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
+            // 
+            // labelControl7
+            // 
+            this.labelControl7.Location = new System.Drawing.Point(12, 212);
+            this.labelControl7.Name = "labelControl7";
+            this.labelControl7.Size = new System.Drawing.Size(35, 13);
+            this.labelControl7.TabIndex = 0;
+            this.labelControl7.Text = "Expires";
             // 
             // groupControl2
             // 
@@ -134,19 +166,36 @@
             // 
             // xtraScrollableControlMain
             // 
+            this.xtraScrollableControlMain.Controls.Add(this.btnAcctiveTeePublic);
+            this.xtraScrollableControlMain.Controls.Add(this.btnAcctiveMerchAmazon);
+            this.xtraScrollableControlMain.Controls.Add(this.btnAcctiveTeeChipPro);
             this.xtraScrollableControlMain.Controls.Add(this.btnActiveToolSpread);
             this.xtraScrollableControlMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.xtraScrollableControlMain.Location = new System.Drawing.Point(2, 20);
+            this.xtraScrollableControlMain.Location = new System.Drawing.Point(2, 22);
             this.xtraScrollableControlMain.Name = "xtraScrollableControlMain";
-            this.xtraScrollableControlMain.Size = new System.Drawing.Size(527, 195);
+            this.xtraScrollableControlMain.Size = new System.Drawing.Size(527, 193);
             this.xtraScrollableControlMain.TabIndex = 0;
+            // 
+            // btnAcctiveTeeChipPro
+            // 
+            this.btnAcctiveTeeChipPro.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.btnAcctiveTeeChipPro.Appearance.Options.UseFont = true;
+            this.btnAcctiveTeeChipPro.Enabled = false;
+            this.btnAcctiveTeeChipPro.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnAcctiveTeeChipPro.ImageOptions.Image")));
+            this.btnAcctiveTeeChipPro.Location = new System.Drawing.Point(274, 16);
+            this.btnAcctiveTeeChipPro.Name = "btnAcctiveTeeChipPro";
+            this.btnAcctiveTeeChipPro.Size = new System.Drawing.Size(189, 59);
+            this.btnAcctiveTeeChipPro.TabIndex = 3;
+            this.btnAcctiveTeeChipPro.Text = "Start TeeChip Pro";
+            this.btnAcctiveTeeChipPro.Click += new System.EventHandler(this.btnAcctiveTeeChipPro_Click);
             // 
             // btnActiveToolSpread
             // 
             this.btnActiveToolSpread.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
             this.btnActiveToolSpread.Appearance.Options.UseFont = true;
+            this.btnActiveToolSpread.Enabled = false;
             this.btnActiveToolSpread.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnActiveToolSpread.ImageOptions.Image")));
-            this.btnActiveToolSpread.Location = new System.Drawing.Point(31, 16);
+            this.btnActiveToolSpread.Location = new System.Drawing.Point(54, 16);
             this.btnActiveToolSpread.Name = "btnActiveToolSpread";
             this.btnActiveToolSpread.Size = new System.Drawing.Size(189, 59);
             this.btnActiveToolSpread.TabIndex = 3;
@@ -155,9 +204,11 @@
             // 
             // panelControl1
             // 
-            this.panelControl1.Controls.Add(this.labelControl6);
+            this.panelControl1.Controls.Add(this.lblDateCreate);
+            this.panelControl1.Controls.Add(this.lblExpires);
             this.panelControl1.Controls.Add(this.lblToDay);
             this.panelControl1.Controls.Add(this.lblTimeLive);
+            this.panelControl1.Controls.Add(this.labelControl6);
             this.panelControl1.Controls.Add(this.labelControl5);
             this.panelControl1.Controls.Add(this.labelControl4);
             this.panelControl1.Controls.Add(this.labelControl3);
@@ -167,17 +218,27 @@
             this.panelControl1.Size = new System.Drawing.Size(527, 47);
             this.panelControl1.TabIndex = 0;
             // 
-            // labelControl6
+            // lblDateCreate
             // 
-            this.labelControl6.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.labelControl6.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.labelControl6.Appearance.Options.UseFont = true;
-            this.labelControl6.Appearance.Options.UseForeColor = true;
-            this.labelControl6.Location = new System.Drawing.Point(280, 6);
-            this.labelControl6.Name = "labelControl6";
-            this.labelControl6.Size = new System.Drawing.Size(133, 16);
-            this.labelControl6.TabIndex = 0;
-            this.labelControl6.Text = "4/20/2018, 2:03:11 PM";
+            this.lblDateCreate.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.lblDateCreate.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.lblDateCreate.Appearance.Options.UseFont = true;
+            this.lblDateCreate.Appearance.Options.UseForeColor = true;
+            this.lblDateCreate.Location = new System.Drawing.Point(285, 26);
+            this.lblDateCreate.Name = "lblDateCreate";
+            this.lblDateCreate.Size = new System.Drawing.Size(0, 16);
+            this.lblDateCreate.TabIndex = 0;
+            // 
+            // lblExpires
+            // 
+            this.lblExpires.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.lblExpires.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.lblExpires.Appearance.Options.UseFont = true;
+            this.lblExpires.Appearance.Options.UseForeColor = true;
+            this.lblExpires.Location = new System.Drawing.Point(285, 6);
+            this.lblExpires.Name = "lblExpires";
+            this.lblExpires.Size = new System.Drawing.Size(0, 16);
+            this.lblExpires.TabIndex = 0;
             // 
             // lblToDay
             // 
@@ -203,13 +264,21 @@
             this.lblTimeLive.TabIndex = 0;
             this.lblTimeLive.Text = "00:00:00";
             // 
+            // labelControl6
+            // 
+            this.labelControl6.Location = new System.Drawing.Point(185, 27);
+            this.labelControl6.Name = "labelControl6";
+            this.labelControl6.Size = new System.Drawing.Size(60, 13);
+            this.labelControl6.TabIndex = 0;
+            this.labelControl6.Text = "Date Active:";
+            // 
             // labelControl5
             // 
             this.labelControl5.Location = new System.Drawing.Point(185, 7);
             this.labelControl5.Name = "labelControl5";
-            this.labelControl5.Size = new System.Drawing.Size(89, 13);
+            this.labelControl5.Size = new System.Drawing.Size(93, 13);
             this.labelControl5.TabIndex = 0;
-            this.labelControl5.Text = "Day of Expires on:";
+            this.labelControl5.Text = "Date of Expires on:";
             // 
             // labelControl4
             // 
@@ -231,6 +300,30 @@
             // 
             this.timerOnline.Interval = 1000;
             // 
+            // btnAcctiveMerchAmazon
+            // 
+            this.btnAcctiveMerchAmazon.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.btnAcctiveMerchAmazon.Appearance.Options.UseFont = true;
+            this.btnAcctiveMerchAmazon.Enabled = false;
+            this.btnAcctiveMerchAmazon.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.ImageOptions.Image")));
+            this.btnAcctiveMerchAmazon.Location = new System.Drawing.Point(54, 102);
+            this.btnAcctiveMerchAmazon.Name = "btnAcctiveMerchAmazon";
+            this.btnAcctiveMerchAmazon.Size = new System.Drawing.Size(189, 59);
+            this.btnAcctiveMerchAmazon.TabIndex = 3;
+            this.btnAcctiveMerchAmazon.Text = "Start Merch Amazon";
+            // 
+            // btnAcctiveTeePublic
+            // 
+            this.btnAcctiveTeePublic.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.btnAcctiveTeePublic.Appearance.Options.UseFont = true;
+            this.btnAcctiveTeePublic.Enabled = false;
+            this.btnAcctiveTeePublic.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton2.ImageOptions.Image")));
+            this.btnAcctiveTeePublic.Location = new System.Drawing.Point(274, 102);
+            this.btnAcctiveTeePublic.Name = "btnAcctiveTeePublic";
+            this.btnAcctiveTeePublic.Size = new System.Drawing.Size(189, 59);
+            this.btnAcctiveTeePublic.TabIndex = 3;
+            this.btnAcctiveTeePublic.Text = "Start TeePublic";
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -239,6 +332,8 @@
             this.Controls.Add(this.groupControl2);
             this.Controls.Add(this.groupControl1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximumSize = new System.Drawing.Size(747, 303);
+            this.MinimumSize = new System.Drawing.Size(747, 303);
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SOFTWARE UPLOAD SHIRTS 2.0";
@@ -275,8 +370,15 @@
         private DevExpress.XtraEditors.LabelControl lblTimeLive;
         private DevExpress.XtraEditors.LabelControl lblToDay;
         private DevExpress.XtraEditors.LabelControl labelControl4;
-        private DevExpress.XtraEditors.LabelControl labelControl6;
+        private DevExpress.XtraEditors.LabelControl lblExpires;
         private DevExpress.XtraEditors.LabelControl labelControl5;
+        private DevExpress.XtraEditors.LabelControl lblDateCreate;
+        private DevExpress.XtraEditors.LabelControl labelControl6;
+        private DevExpress.XtraEditors.SimpleButton btnAcctiveTeeChipPro;
+        private DevExpress.XtraEditors.LabelControl lblDayExpires;
+        private DevExpress.XtraEditors.LabelControl labelControl7;
+        private DevExpress.XtraEditors.SimpleButton btnAcctiveTeePublic;
+        private DevExpress.XtraEditors.SimpleButton btnAcctiveMerchAmazon;
     }
 }
 

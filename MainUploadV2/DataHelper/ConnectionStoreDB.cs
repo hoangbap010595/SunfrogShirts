@@ -10,33 +10,33 @@ namespace MainUploadV2.DataHelper
     public class ConnectionStoreDB
     {
         public ConnectionStoreDB() { }
-        //private string GetDBConnection
-        //{
-        //    get
-        //    {
-        //        string datasource = "103.53.231.198";
-        //        string database = "AutoUploadShirt";
-        //        string username = "autoupload";
-        //        string password = "Abc@123";
-        //        string connString = @"Data Source=" + datasource + ";Initial Catalog="
-        //                    + database + ";Persist Security Info=True;User ID=" + username + ";Password=" + password;// co the dung lenh nay
-        //        return connString;
-        //    }
-        //}
-
         private string GetDBConnection
         {
             get
             {
-                string datasource = @".\SQLEXPRESS";
-                string database = "TimViecNhanh";
-                string username = "sa";
-                string password = "Hoang911";
+                string datasource = "103.53.231.198";
+                string database = "AutoUploadShirt";
+                string username = "autoupload";
+                string password = "Abc@123";
                 string connString = @"Data Source=" + datasource + ";Initial Catalog="
                             + database + ";Persist Security Info=True;User ID=" + username + ";Password=" + password;// co the dung lenh nay
                 return connString;
             }
         }
+
+        //private string GetDBConnection
+        //{
+        //    get
+        //    {
+        //        string datasource = @".\SQLEXPRESS";
+        //        string database = "AutoUploadShirt";
+        //        string username = "sa";
+        //        string password = "Hoang911";
+        //        string connString = @"Data Source=" + datasource + ";Initial Catalog="
+        //                    + database + ";Persist Security Info=True;User ID=" + username + ";Password=" + password;// co the dung lenh nay
+        //        return connString;
+        //    }
+        //}
 
         private SqlConnection Connection { get; set; }
 
@@ -172,10 +172,11 @@ namespace MainUploadV2.DataHelper
                         {
                             command.CommandText = storeString;
                             command.CommandType = CommandType.StoredProcedure;
-                            foreach (var item in parameterStore)
-                            {
-                                command.Parameters.Add(new SqlParameter("@" + item.Text, item.Value));
-                            }
+                            if (parameterStore != null)
+                                foreach (var item in parameterStore)
+                                {
+                                    command.Parameters.Add(new SqlParameter("@" + item.Text, item.Value));
+                                }
                             sqlData = command.ExecuteReader();
                             table.Load(sqlData);
                         }

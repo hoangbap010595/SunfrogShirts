@@ -44,7 +44,7 @@
             this.separatorControl1.Location = new System.Drawing.Point(4, 32);
             this.separatorControl1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.separatorControl1.Name = "separatorControl1";
-            this.separatorControl1.Padding = new System.Windows.Forms.Padding(14, 14, 14, 14);
+            this.separatorControl1.Padding = new System.Windows.Forms.Padding(14);
             this.separatorControl1.Size = new System.Drawing.Size(450, 30);
             this.separatorControl1.TabIndex = 0;
             // 
@@ -77,6 +77,7 @@
             // toggShopSelected
             // 
             this.toggShopSelected.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.toggShopSelected.EditValue = true;
             this.toggShopSelected.Location = new System.Drawing.Point(382, 6);
             this.toggShopSelected.Name = "toggShopSelected";
             this.toggShopSelected.Properties.AutoWidth = true;

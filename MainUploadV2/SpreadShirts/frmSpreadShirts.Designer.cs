@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSpreadShirts));
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
@@ -56,14 +55,14 @@
             this.lsBoxImage = new DevExpress.XtraEditors.ListBoxControl();
             this.btnChooesImage = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
-            this.defaultLookAndFeel = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
+            this.defaultLookAndFeel = new DevExpress.LookAndFeel.DefaultLookAndFeel();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
             this.cbbShowAccount = new System.Windows.Forms.ComboBox();
+            this.btnAccountFaild = new DevExpress.XtraEditors.SimpleButton();
             this.btnAccountDone = new DevExpress.XtraEditors.SimpleButton();
             this.btnClearAccount = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.btnImportAccount = new DevExpress.XtraEditors.SimpleButton();
-            this.btnAccountFaild = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl5)).BeginInit();
@@ -438,12 +437,27 @@
             this.cbbShowAccount.Size = new System.Drawing.Size(278, 27);
             this.cbbShowAccount.TabIndex = 0;
             // 
+            // btnAccountFaild
+            // 
+            this.btnAccountFaild.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btnAccountFaild.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
+            this.btnAccountFaild.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAccountFaild.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnAccountFaild.ImageOptions.Image")));
+            this.btnAccountFaild.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleLeft;
+            this.btnAccountFaild.Location = new System.Drawing.Point(391, 29);
+            this.btnAccountFaild.Name = "btnAccountFaild";
+            this.btnAccountFaild.Size = new System.Drawing.Size(84, 23);
+            this.btnAccountFaild.TabIndex = 10;
+            this.btnAccountFaild.Text = "Acc Faild";
+            this.btnAccountFaild.ToolTip = "Acc Faild";
+            this.btnAccountFaild.Click += new System.EventHandler(this.btnAccountFaild_Click);
+            // 
             // btnAccountDone
             // 
             this.btnAccountDone.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.btnAccountDone.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
             this.btnAccountDone.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAccountDone.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnSettingUpload.ImageOptions.Image")));
+            this.btnAccountDone.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnAccountDone.ImageOptions.Image")));
             this.btnAccountDone.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleLeft;
             this.btnAccountDone.Location = new System.Drawing.Point(295, 29);
             this.btnAccountDone.Name = "btnAccountDone";
@@ -494,21 +508,6 @@
             this.btnImportAccount.Text = "Open";
             this.btnImportAccount.ToolTip = "Open File Data";
             this.btnImportAccount.Click += new System.EventHandler(this.btnImportAccount_Click);
-            // 
-            // btnAccountFaild
-            // 
-            this.btnAccountFaild.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.btnAccountFaild.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
-            this.btnAccountFaild.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAccountFaild.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton3.ImageOptions.Image")));
-            this.btnAccountFaild.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleLeft;
-            this.btnAccountFaild.Location = new System.Drawing.Point(391, 29);
-            this.btnAccountFaild.Name = "btnAccountFaild";
-            this.btnAccountFaild.Size = new System.Drawing.Size(84, 23);
-            this.btnAccountFaild.TabIndex = 10;
-            this.btnAccountFaild.Text = "Acc Faild";
-            this.btnAccountFaild.ToolTip = "Acc Faild";
-            this.btnAccountFaild.Click += new System.EventHandler(this.btnAccountFaild_Click);
             // 
             // frmSpreadShirts
             // 

@@ -22,6 +22,7 @@ namespace MainUploadV2.SpreadShirts
         {
             lblShopID.Text = Shop.TargetID;
             lblShopName.Text = Shop.Name;
+            Shop.isSelected = true;
         }
 
         private void toggShopSelected_Toggled(object sender, EventArgs e)
