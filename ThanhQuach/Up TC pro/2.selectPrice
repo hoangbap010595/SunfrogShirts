@@ -1,0 +1,47 @@
+https://api.scalablelicensing.com/rest/campaigns/cost
+
+OPTIONS /rest/campaigns/cost HTTP/1.1
+Host: api.scalablelicensing.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:49.0) Gecko/20100101 Firefox/49.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+Access-Control-Request-Method: POST
+Access-Control-Request-Headers: content-type,x-xsrf-token
+Origin: https://pro.teechip.com
+Connection: keep-alive
+
+HTTP/1.1 204 No Content
+access-control-allow-headers: content-type,x-xsrf-token
+Access-Control-Allow-Methods: GET,HEAD,PUT,PATCH,POST,DELETE
+Access-Control-Allow-Origin: *
+Content-Length: 0
+Date: Sun, 03 Dec 2017 16:56:17 GMT
+Server: nginx/1.4.6 (Ubuntu)
+Vary: Access-Control-Request-Headers
+Connection: keep-alive
+----------------------------------------------------------
+https://api.scalablelicensing.com/rest/campaigns/cost
+
+POST /rest/campaigns/cost HTTP/1.1
+Host: api.scalablelicensing.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:49.0) Gecko/20100101 Firefox/49.0
+Accept: application/json, text/plain, */*
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+x-xsrf-token: Z9IqXavy-FklShSm3cEO-rx97lcKCRksDjSs
+Content-Type: application/json
+Origin: https://pro.teechip.com
+Referer: https://pro.teechip.com/manager/campaigns/create/goal
+Content-Length: 429
+Connection: keep-alive
+{"items":[{"productId":"587d0d8ff43ea40e13382db3","designInfo":{"sides":{"front":1}}},{"productId":"587d0d90f43ea40e13382dc3","designInfo":{"sides":{"front":1}}},{"productId":"587d0d90f43ea40e13382dbc","designInfo":{"sides":{"front":1}}},{"productId":"587d0d90f43ea40e13382dc2","designInfo":{"sides":{"front":1}}},{"productId":"587d0d90f43ea40e13382dc5","designInfo":{"sides":{"front":1}}}],"entityId":"5a20b5737d321f6a62a50229"}
+HTTP/1.1 200 OK
+Access-Control-Allow-Origin: *
+Content-Type: application/json; charset=utf-8
+Date: Sun, 03 Dec 2017 16:56:17 GMT
+Etag: W/"6f-uo/rPvlAiIn1JW+Cc8KSEC8OtWs"
+Server: nginx/1.4.6 (Ubuntu)
+Content-Length: 111
+Connection: keep-alive
+----------------------------------------------------------

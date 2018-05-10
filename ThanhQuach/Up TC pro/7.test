@@ -1,0 +1,1864 @@
+https://api.scalablelicensing.com/rest/entities/bulk
+
+OPTIONS /rest/entities/bulk HTTP/1.1
+Host: api.scalablelicensing.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:49.0) Gecko/20100101 Firefox/49.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+Access-Control-Request-Method: POST
+Access-Control-Request-Headers: content-type,x-xsrf-token
+Origin: https://pro.teechip.com
+Connection: keep-alive
+
+HTTP/1.1 204 No Content
+access-control-allow-headers: content-type,x-xsrf-token
+Access-Control-Allow-Methods: GET,HEAD,PUT,PATCH,POST,DELETE
+Access-Control-Allow-Origin: *
+Content-Length: 0
+Date: Thu, 07 Dec 2017 16:35:53 GMT
+Server: nginx/1.4.6 (Ubuntu)
+Vary: Access-Control-Request-Headers
+Connection: keep-alive
+----------------------------------------------------------
+https://api.scalablelicensing.com/rest/entities/bulk
+
+POST /rest/entities/bulk HTTP/1.1
+Host: api.scalablelicensing.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:49.0) Gecko/20100101 Firefox/49.0
+Accept: application/json, text/plain, */*
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+x-xsrf-token: i8PbjLYV-HDqV9BjRKcFKFjl0Yx_JYFSMiqU
+Content-Type: application/json
+Origin: https://pro.teechip.com
+Referer: https://pro.teechip.com/manager/campaigns/create
+Content-Length: 28
+Connection: keep-alive
+["5a20b5737d321f6a62a50229"]
+HTTP/1.1 200 OK
+Access-Control-Allow-Origin: *
+Content-Type: application/json; charset=utf-8
+Date: Thu, 07 Dec 2017 16:35:53 GMT
+Etag: W/"f0-HoGyAULNpP04MHnyLWNvJrhNJmo"
+Server: nginx/1.4.6 (Ubuntu)
+Content-Length: 240
+Connection: keep-alive
+----------------------------------------------------------
+https://api.scalablelicensing.com/rest/designs
+
+OPTIONS /rest/designs HTTP/1.1
+Host: api.scalablelicensing.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:49.0) Gecko/20100101 Firefox/49.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+Access-Control-Request-Method: POST
+Access-Control-Request-Headers: authorization,content-type,x-xsrf-token
+Origin: https://pro.teechip.com
+Connection: keep-alive
+
+HTTP/1.1 204 No Content
+access-control-allow-headers: authorization,content-type,x-xsrf-token
+Access-Control-Allow-Methods: GET,HEAD,PUT,PATCH,POST,DELETE
+Access-Control-Allow-Origin: *
+Content-Length: 0
+Date: Thu, 07 Dec 2017 16:35:53 GMT
+Server: nginx/1.4.6 (Ubuntu)
+Vary: Access-Control-Request-Headers
+Connection: keep-alive
+----------------------------------------------------------
+https://api.scalablelicensing.com/rest/designs
+
+POST /rest/designs HTTP/1.1
+Host: api.scalablelicensing.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:49.0) Gecko/20100101 Firefox/49.0
+Accept: application/json, text/plain, */*
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+x-xsrf-token: i8PbjLYV-HDqV9BjRKcFKFjl0Yx_JYFSMiqU
+Content-Type: application/json
+Authorization: Basic OmxpdmVfLXZhN2hKNUJpZ2NvT2RtNDdOaWx5Zw==
+Origin: https://pro.teechip.com
+Referer: https://pro.teechip.com/manager/campaigns/create
+Content-Length: 64
+Connection: keep-alive
+{"name":"lehoang123Title","entityId":"5a20b5737d321f6a62a50229"}
+HTTP/1.1 200 OK
+Access-Control-Allow-Origin: *
+Content-Type: application/json; charset=utf-8
+Date: Thu, 07 Dec 2017 16:35:53 GMT
+Etag: W/"e5-7CNHvK6y9suewJrHGK9jw8PL800"
+Server: nginx/1.4.6 (Ubuntu)
+Content-Length: 229
+Connection: keep-alive
+----------------------------------------------------------
+https://api.scalablelicensing.com/rest/design-lines
+
+OPTIONS /rest/design-lines HTTP/1.1
+Host: api.scalablelicensing.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:49.0) Gecko/20100101 Firefox/49.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+Access-Control-Request-Method: POST
+Access-Control-Request-Headers: authorization,content-type,x-xsrf-token
+Origin: https://pro.teechip.com
+Connection: keep-alive
+
+HTTP/1.1 204 No Content
+access-control-allow-headers: authorization,content-type,x-xsrf-token
+Access-Control-Allow-Methods: GET,HEAD,PUT,PATCH,POST,DELETE
+Access-Control-Allow-Origin: *
+Content-Length: 0
+Date: Thu, 07 Dec 2017 16:35:54 GMT
+Server: nginx/1.4.6 (Ubuntu)
+Vary: Access-Control-Request-Headers
+Connection: keep-alive
+----------------------------------------------------------
+https://api.scalablelicensing.com/rest/design-lines
+
+POST /rest/design-lines HTTP/1.1
+Host: api.scalablelicensing.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:49.0) Gecko/20100101 Firefox/49.0
+Accept: application/json, text/plain, */*
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+x-xsrf-token: i8PbjLYV-HDqV9BjRKcFKFjl0Yx_JYFSMiqU
+Content-Type: application/json
+Authorization: Basic OmxpdmVfLXZhN2hKNUJpZ2NvT2RtNDdOaWx5Zw==
+Origin: https://pro.teechip.com
+Referer: https://pro.teechip.com/manager/campaigns/create
+Content-Length: 338
+Connection: keep-alive
+{"designId":"5a296de93ca9a55cb3096f99","entityId":"5a20b5737d321f6a62a50229","printSize":"general-standard","id":"1512664464011-82342","sides":{"front":{"artworkId":"5a22674857cf410cb93a1e0d","position":{"vertical":{"origin":"T","offset":2},"horizontal":{"origin":"C","offset":0}},"size":{"width":14,"unit":"inch"}}},"handling":"default"}
+HTTP/1.1 200 OK
+Access-Control-Allow-Origin: *
+Content-Type: application/json; charset=utf-8
+Date: Thu, 07 Dec 2017 16:35:54 GMT
+Etag: W/"1b7-q5CC6gad10ct9CUZeDysSv5VNEc"
+Server: nginx/1.4.6 (Ubuntu)
+Content-Length: 439
+Connection: keep-alive
+----------------------------------------------------------
+https://api.scalablelicensing.com/rest/retail-products
+
+OPTIONS /rest/retail-products HTTP/1.1
+Host: api.scalablelicensing.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:49.0) Gecko/20100101 Firefox/49.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+Access-Control-Request-Method: POST
+Access-Control-Request-Headers: authorization,content-type,x-xsrf-token
+Origin: https://pro.teechip.com
+Connection: keep-alive
+
+HTTP/1.1 204 No Content
+access-control-allow-headers: authorization,content-type,x-xsrf-token
+Access-Control-Allow-Methods: GET,HEAD,PUT,PATCH,POST,DELETE
+Access-Control-Allow-Origin: *
+Content-Length: 0
+Date: Thu, 07 Dec 2017 16:35:54 GMT
+Server: nginx/1.4.6 (Ubuntu)
+Vary: Access-Control-Request-Headers
+Connection: keep-alive
+----------------------------------------------------------
+https://api.scalablelicensing.com/rest/retail-products
+
+OPTIONS /rest/retail-products HTTP/1.1
+Host: api.scalablelicensing.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:49.0) Gecko/20100101 Firefox/49.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+Access-Control-Request-Method: POST
+Access-Control-Request-Headers: authorization,content-type,x-xsrf-token
+Origin: https://pro.teechip.com
+Connection: keep-alive
+
+HTTP/1.1 204 No Content
+access-control-allow-headers: authorization,content-type,x-xsrf-token
+Access-Control-Allow-Methods: GET,HEAD,PUT,PATCH,POST,DELETE
+Access-Control-Allow-Origin: *
+Content-Length: 0
+Date: Thu, 07 Dec 2017 16:35:54 GMT
+Server: nginx/1.4.6 (Ubuntu)
+Vary: Access-Control-Request-Headers
+Connection: keep-alive
+----------------------------------------------------------
+https://api.scalablelicensing.com/rest/retail-products
+
+OPTIONS /rest/retail-products HTTP/1.1
+Host: api.scalablelicensing.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:49.0) Gecko/20100101 Firefox/49.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+Access-Control-Request-Method: POST
+Access-Control-Request-Headers: authorization,content-type,x-xsrf-token
+Origin: https://pro.teechip.com
+Connection: keep-alive
+
+HTTP/1.1 204 No Content
+access-control-allow-headers: authorization,content-type,x-xsrf-token
+Access-Control-Allow-Methods: GET,HEAD,PUT,PATCH,POST,DELETE
+Access-Control-Allow-Origin: *
+Content-Length: 0
+Date: Thu, 07 Dec 2017 16:35:54 GMT
+Server: nginx/1.4.6 (Ubuntu)
+Vary: Access-Control-Request-Headers
+Connection: keep-alive
+----------------------------------------------------------
+https://api.scalablelicensing.com/rest/retail-products
+
+OPTIONS /rest/retail-products HTTP/1.1
+Host: api.scalablelicensing.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:49.0) Gecko/20100101 Firefox/49.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+Access-Control-Request-Method: POST
+Access-Control-Request-Headers: authorization,content-type,x-xsrf-token
+Origin: https://pro.teechip.com
+Connection: keep-alive
+
+HTTP/1.1 204 No Content
+access-control-allow-headers: authorization,content-type,x-xsrf-token
+Access-Control-Allow-Methods: GET,HEAD,PUT,PATCH,POST,DELETE
+Access-Control-Allow-Origin: *
+Content-Length: 0
+Date: Thu, 07 Dec 2017 16:35:54 GMT
+Server: nginx/1.4.6 (Ubuntu)
+Vary: Access-Control-Request-Headers
+Connection: keep-alive
+----------------------------------------------------------
+https://api.scalablelicensing.com/rest/retail-products
+
+OPTIONS /rest/retail-products HTTP/1.1
+Host: api.scalablelicensing.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:49.0) Gecko/20100101 Firefox/49.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+Access-Control-Request-Method: POST
+Access-Control-Request-Headers: authorization,content-type,x-xsrf-token
+Origin: https://pro.teechip.com
+Connection: keep-alive
+
+HTTP/1.1 204 No Content
+access-control-allow-headers: authorization,content-type,x-xsrf-token
+Access-Control-Allow-Methods: GET,HEAD,PUT,PATCH,POST,DELETE
+Access-Control-Allow-Origin: *
+Content-Length: 0
+Date: Thu, 07 Dec 2017 16:35:54 GMT
+Server: nginx/1.4.6 (Ubuntu)
+Vary: Access-Control-Request-Headers
+Connection: keep-alive
+----------------------------------------------------------
+https://api.scalablelicensing.com/rest/retail-products
+
+OPTIONS /rest/retail-products HTTP/1.1
+Host: api.scalablelicensing.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:49.0) Gecko/20100101 Firefox/49.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+Access-Control-Request-Method: POST
+Access-Control-Request-Headers: authorization,content-type,x-xsrf-token
+Origin: https://pro.teechip.com
+Connection: keep-alive
+
+HTTP/1.1 204 No Content
+access-control-allow-headers: authorization,content-type,x-xsrf-token
+Access-Control-Allow-Methods: GET,HEAD,PUT,PATCH,POST,DELETE
+Access-Control-Allow-Origin: *
+Content-Length: 0
+Date: Thu, 07 Dec 2017 16:35:54 GMT
+Server: nginx/1.4.6 (Ubuntu)
+Vary: Access-Control-Request-Headers
+Connection: keep-alive
+----------------------------------------------------------
+https://api.scalablelicensing.com/rest/retail-products
+
+OPTIONS /rest/retail-products HTTP/1.1
+Host: api.scalablelicensing.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:49.0) Gecko/20100101 Firefox/49.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+Access-Control-Request-Method: POST
+Access-Control-Request-Headers: authorization,content-type,x-xsrf-token
+Origin: https://pro.teechip.com
+Connection: keep-alive
+
+HTTP/1.1 204 No Content
+access-control-allow-headers: authorization,content-type,x-xsrf-token
+Access-Control-Allow-Methods: GET,HEAD,PUT,PATCH,POST,DELETE
+Access-Control-Allow-Origin: *
+Content-Length: 0
+Date: Thu, 07 Dec 2017 16:35:55 GMT
+Server: nginx/1.4.6 (Ubuntu)
+Vary: Access-Control-Request-Headers
+Connection: keep-alive
+----------------------------------------------------------
+https://api.scalablelicensing.com/rest/retail-products
+
+OPTIONS /rest/retail-products HTTP/1.1
+Host: api.scalablelicensing.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:49.0) Gecko/20100101 Firefox/49.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+Access-Control-Request-Method: POST
+Access-Control-Request-Headers: authorization,content-type,x-xsrf-token
+Origin: https://pro.teechip.com
+Connection: keep-alive
+
+HTTP/1.1 204 No Content
+access-control-allow-headers: authorization,content-type,x-xsrf-token
+Access-Control-Allow-Methods: GET,HEAD,PUT,PATCH,POST,DELETE
+Access-Control-Allow-Origin: *
+Content-Length: 0
+Date: Thu, 07 Dec 2017 16:35:55 GMT
+Server: nginx/1.4.6 (Ubuntu)
+Vary: Access-Control-Request-Headers
+Connection: keep-alive
+----------------------------------------------------------
+https://api.scalablelicensing.com/rest/retail-products
+
+OPTIONS /rest/retail-products HTTP/1.1
+Host: api.scalablelicensing.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:49.0) Gecko/20100101 Firefox/49.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+Access-Control-Request-Method: POST
+Access-Control-Request-Headers: authorization,content-type,x-xsrf-token
+Origin: https://pro.teechip.com
+Connection: keep-alive
+
+HTTP/1.1 204 No Content
+access-control-allow-headers: authorization,content-type,x-xsrf-token
+Access-Control-Allow-Methods: GET,HEAD,PUT,PATCH,POST,DELETE
+Access-Control-Allow-Origin: *
+Content-Length: 0
+Date: Thu, 07 Dec 2017 16:35:55 GMT
+Server: nginx/1.4.6 (Ubuntu)
+Vary: Access-Control-Request-Headers
+Connection: keep-alive
+----------------------------------------------------------
+https://api.scalablelicensing.com/rest/retail-products
+
+OPTIONS /rest/retail-products HTTP/1.1
+Host: api.scalablelicensing.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:49.0) Gecko/20100101 Firefox/49.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+Access-Control-Request-Method: POST
+Access-Control-Request-Headers: authorization,content-type,x-xsrf-token
+Origin: https://pro.teechip.com
+Connection: keep-alive
+
+HTTP/1.1 204 No Content
+access-control-allow-headers: authorization,content-type,x-xsrf-token
+Access-Control-Allow-Methods: GET,HEAD,PUT,PATCH,POST,DELETE
+Access-Control-Allow-Origin: *
+Content-Length: 0
+Date: Thu, 07 Dec 2017 16:35:55 GMT
+Server: nginx/1.4.6 (Ubuntu)
+Vary: Access-Control-Request-Headers
+Connection: keep-alive
+----------------------------------------------------------
+https://api.scalablelicensing.com/rest/retail-products
+
+POST /rest/retail-products HTTP/1.1
+Host: api.scalablelicensing.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:49.0) Gecko/20100101 Firefox/49.0
+Accept: application/json, text/plain, */*
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+x-xsrf-token: i8PbjLYV-HDqV9BjRKcFKFjl0Yx_JYFSMiqU
+Content-Type: application/json
+Authorization: Basic OmxpdmVfLXZhN2hKNUJpZ2NvT2RtNDdOaWx5Zw==
+Origin: https://pro.teechip.com
+Referer: https://pro.teechip.com/manager/campaigns/create
+Content-Length: 122
+Connection: keep-alive
+{"designLineId":"5a296dea16c8465a2f607af9","productId":"587d0d8ff43ea40e13382dad","color":"Kiwi","price":2295,"images":[]}
+HTTP/1.1 200 OK
+Access-Control-Allow-Origin: *
+Content-Type: application/json; charset=utf-8
+Date: Thu, 07 Dec 2017 16:35:55 GMT
+Etag: W/"46e-xx15ODfTVVxaPj+gt8e3JbIYBCs"
+Server: nginx/1.4.6 (Ubuntu)
+Content-Length: 1134
+Connection: keep-alive
+----------------------------------------------------------
+https://api.scalablelicensing.com/rest/retail-products
+
+POST /rest/retail-products HTTP/1.1
+Host: api.scalablelicensing.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:49.0) Gecko/20100101 Firefox/49.0
+Accept: application/json, text/plain, */*
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+x-xsrf-token: i8PbjLYV-HDqV9BjRKcFKFjl0Yx_JYFSMiqU
+Content-Type: application/json
+Authorization: Basic OmxpdmVfLXZhN2hKNUJpZ2NvT2RtNDdOaWx5Zw==
+Origin: https://pro.teechip.com
+Referer: https://pro.teechip.com/manager/campaigns/create
+Content-Length: 126
+Connection: keep-alive
+{"designLineId":"5a296dea16c8465a2f607af9","productId":"587d0d8ff43ea40e13382dad","color":"True Red","price":2295,"images":[]}
+HTTP/1.1 200 OK
+Access-Control-Allow-Origin: *
+Content-Type: application/json; charset=utf-8
+Date: Thu, 07 Dec 2017 16:35:55 GMT
+Etag: W/"470-iKejsUUilYWulkFcxgDMPPB9npw"
+Server: nginx/1.4.6 (Ubuntu)
+Content-Length: 1136
+Connection: keep-alive
+----------------------------------------------------------
+https://api.scalablelicensing.com/rest/retail-products
+
+POST /rest/retail-products HTTP/1.1
+Host: api.scalablelicensing.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:49.0) Gecko/20100101 Firefox/49.0
+Accept: application/json, text/plain, */*
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+x-xsrf-token: i8PbjLYV-HDqV9BjRKcFKFjl0Yx_JYFSMiqU
+Content-Type: application/json
+Authorization: Basic OmxpdmVfLXZhN2hKNUJpZ2NvT2RtNDdOaWx5Zw==
+Origin: https://pro.teechip.com
+Referer: https://pro.teechip.com/manager/campaigns/create
+Content-Length: 128
+Connection: keep-alive
+{"designLineId":"5a296dea16c8465a2f607af9","productId":"587d0d8ff43ea40e13382dad","color":"Cyber Pink","price":2295,"images":[]}
+HTTP/1.1 200 OK
+Access-Control-Allow-Origin: *
+Content-Type: application/json; charset=utf-8
+Date: Thu, 07 Dec 2017 16:35:55 GMT
+Etag: W/"473-6cUIq08twjGt3eijTfhFW+BCBpE"
+Server: nginx/1.4.6 (Ubuntu)
+Content-Length: 1139
+Connection: keep-alive
+----------------------------------------------------------
+https://api.scalablelicensing.com/rest/retail-products
+
+POST /rest/retail-products HTTP/1.1
+Host: api.scalablelicensing.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:49.0) Gecko/20100101 Firefox/49.0
+Accept: application/json, text/plain, */*
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+x-xsrf-token: i8PbjLYV-HDqV9BjRKcFKFjl0Yx_JYFSMiqU
+Content-Type: application/json
+Authorization: Basic OmxpdmVfLXZhN2hKNUJpZ2NvT2RtNDdOaWx5Zw==
+Origin: https://pro.teechip.com
+Referer: https://pro.teechip.com/manager/campaigns/create
+Content-Length: 123
+Connection: keep-alive
+{"designLineId":"5a296dea16c8465a2f607af9","productId":"587d0d8ff43ea40e13382dad","color":"Kelly","price":2295,"images":[]}
+HTTP/1.1 200 OK
+Access-Control-Allow-Origin: *
+Content-Type: application/json; charset=utf-8
+Date: Thu, 07 Dec 2017 16:35:55 GMT
+Etag: W/"46f-VspOMKTD5qIZixlZbwm1QoT2UZM"
+Server: nginx/1.4.6 (Ubuntu)
+Content-Length: 1135
+Connection: keep-alive
+----------------------------------------------------------
+https://api.scalablelicensing.com/rest/retail-products
+
+POST /rest/retail-products HTTP/1.1
+Host: api.scalablelicensing.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:49.0) Gecko/20100101 Firefox/49.0
+Accept: application/json, text/plain, */*
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+x-xsrf-token: i8PbjLYV-HDqV9BjRKcFKFjl0Yx_JYFSMiqU
+Content-Type: application/json
+Authorization: Basic OmxpdmVfLXZhN2hKNUJpZ2NvT2RtNDdOaWx5Zw==
+Origin: https://pro.teechip.com
+Referer: https://pro.teechip.com/manager/campaigns/create
+Content-Length: 128
+Connection: keep-alive
+{"designLineId":"5a296dea16c8465a2f607af9","productId":"587d0d8ff43ea40e13382dae","color":"Light Pink","price":2895,"images":[]}
+HTTP/1.1 200 OK
+Access-Control-Allow-Origin: *
+Content-Type: application/json; charset=utf-8
+Date: Thu, 07 Dec 2017 16:35:55 GMT
+Etag: W/"478-rzh4kPqpXwlDfQ8Sm8P50nvIN4U"
+Server: nginx/1.4.6 (Ubuntu)
+Content-Length: 1144
+Connection: keep-alive
+----------------------------------------------------------
+https://api.scalablelicensing.com/rest/retail-products
+
+POST /rest/retail-products HTTP/1.1
+Host: api.scalablelicensing.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:49.0) Gecko/20100101 Firefox/49.0
+Accept: application/json, text/plain, */*
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+x-xsrf-token: i8PbjLYV-HDqV9BjRKcFKFjl0Yx_JYFSMiqU
+Content-Type: application/json
+Authorization: Basic OmxpdmVfLXZhN2hKNUJpZ2NvT2RtNDdOaWx5Zw==
+Origin: https://pro.teechip.com
+Referer: https://pro.teechip.com/manager/campaigns/create
+Content-Length: 123
+Connection: keep-alive
+{"designLineId":"5a296dea16c8465a2f607af9","productId":"587d0d8ff43ea40e13382dae","color":"Kelly","price":2895,"images":[]}
+HTTP/1.1 200 OK
+Access-Control-Allow-Origin: *
+Content-Type: application/json; charset=utf-8
+Date: Thu, 07 Dec 2017 16:35:55 GMT
+Etag: W/"474-IR4OBi42rMmgdDRGNFsxvwui08g"
+Server: nginx/1.4.6 (Ubuntu)
+Content-Length: 1140
+Connection: keep-alive
+----------------------------------------------------------
+https://api.scalablelicensing.com/rest/retail-products
+
+POST /rest/retail-products HTTP/1.1
+Host: api.scalablelicensing.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:49.0) Gecko/20100101 Firefox/49.0
+Accept: application/json, text/plain, */*
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+x-xsrf-token: i8PbjLYV-HDqV9BjRKcFKFjl0Yx_JYFSMiqU
+Content-Type: application/json
+Authorization: Basic OmxpdmVfLXZhN2hKNUJpZ2NvT2RtNDdOaWx5Zw==
+Origin: https://pro.teechip.com
+Referer: https://pro.teechip.com/manager/campaigns/create
+Content-Length: 125
+Connection: keep-alive
+{"designLineId":"5a296dea16c8465a2f607af9","productId":"587d0d8ff43ea40e13382dae","color":"Fuchsia","price":2895,"images":[]}
+HTTP/1.1 200 OK
+Access-Control-Allow-Origin: *
+Content-Type: application/json; charset=utf-8
+Date: Thu, 07 Dec 2017 16:35:55 GMT
+Etag: W/"475-V1seadKcUZOzFrgOq6oHgJPV0DI"
+Server: nginx/1.4.6 (Ubuntu)
+Content-Length: 1141
+Connection: keep-alive
+----------------------------------------------------------
+https://api.scalablelicensing.com/rest/retail-products
+
+POST /rest/retail-products HTTP/1.1
+Host: api.scalablelicensing.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:49.0) Gecko/20100101 Firefox/49.0
+Accept: application/json, text/plain, */*
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+x-xsrf-token: i8PbjLYV-HDqV9BjRKcFKFjl0Yx_JYFSMiqU
+Content-Type: application/json
+Authorization: Basic OmxpdmVfLXZhN2hKNUJpZ2NvT2RtNDdOaWx5Zw==
+Origin: https://pro.teechip.com
+Referer: https://pro.teechip.com/manager/campaigns/create
+Content-Length: 130
+Connection: keep-alive
+{"designLineId":"5a296dea16c8465a2f607af9","productId":"587d0d8ff43ea40e13382dad","color":"Forest Green","price":2295,"images":[]}
+HTTP/1.1 200 OK
+Access-Control-Allow-Origin: *
+Content-Type: application/json; charset=utf-8
+Date: Thu, 07 Dec 2017 16:35:55 GMT
+Etag: W/"47b-11M5FgIicCYNIyeMoGWGa1DS3wQ"
+Server: nginx/1.4.6 (Ubuntu)
+Content-Length: 1147
+Connection: keep-alive
+----------------------------------------------------------
+https://api.scalablelicensing.com/rest/retail-products
+
+POST /rest/retail-products HTTP/1.1
+Host: api.scalablelicensing.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:49.0) Gecko/20100101 Firefox/49.0
+Accept: application/json, text/plain, */*
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+x-xsrf-token: i8PbjLYV-HDqV9BjRKcFKFjl0Yx_JYFSMiqU
+Content-Type: application/json
+Authorization: Basic OmxpdmVfLXZhN2hKNUJpZ2NvT2RtNDdOaWx5Zw==
+Origin: https://pro.teechip.com
+Referer: https://pro.teechip.com/manager/campaigns/create
+Content-Length: 121
+Connection: keep-alive
+{"designLineId":"5a296dea16c8465a2f607af9","productId":"587d0d8ff43ea40e13382dae","color":"Red","price":2895,"images":[]}
+HTTP/1.1 200 OK
+Access-Control-Allow-Origin: *
+Content-Type: application/json; charset=utf-8
+Date: Thu, 07 Dec 2017 16:35:55 GMT
+Etag: W/"470-p+hi96i6SLbX5jx5UXdIr3Gls7U"
+Server: nginx/1.4.6 (Ubuntu)
+Content-Length: 1136
+Connection: keep-alive
+----------------------------------------------------------
+https://api.scalablelicensing.com/rest/retail-products
+
+POST /rest/retail-products HTTP/1.1
+Host: api.scalablelicensing.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:49.0) Gecko/20100101 Firefox/49.0
+Accept: application/json, text/plain, */*
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+x-xsrf-token: i8PbjLYV-HDqV9BjRKcFKFjl0Yx_JYFSMiqU
+Content-Type: application/json
+Authorization: Basic OmxpdmVfLXZhN2hKNUJpZ2NvT2RtNDdOaWx5Zw==
+Origin: https://pro.teechip.com
+Referer: https://pro.teechip.com/manager/campaigns/create
+Content-Length: 129
+Connection: keep-alive
+{"designLineId":"5a296dea16c8465a2f607af9","productId":"587d0d8ff43ea40e13382dae","color":"Grass Green","price":2895,"images":[]}
+HTTP/1.1 200 OK
+Access-Control-Allow-Origin: *
+Content-Type: application/json; charset=utf-8
+Date: Thu, 07 Dec 2017 16:35:55 GMT
+Etag: W/"47a-MjmO8MXJgmLCym6ezhXuZD9/XY4"
+Server: nginx/1.4.6 (Ubuntu)
+Content-Length: 1146
+Connection: keep-alive
+----------------------------------------------------------
+https://api.scalablelicensing.com/rest/retail-products
+
+OPTIONS /rest/retail-products HTTP/1.1
+Host: api.scalablelicensing.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:49.0) Gecko/20100101 Firefox/49.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+Access-Control-Request-Method: POST
+Access-Control-Request-Headers: authorization,content-type,x-xsrf-token
+Origin: https://pro.teechip.com
+Connection: keep-alive
+
+HTTP/1.1 204 No Content
+access-control-allow-headers: authorization,content-type,x-xsrf-token
+Access-Control-Allow-Methods: GET,HEAD,PUT,PATCH,POST,DELETE
+Access-Control-Allow-Origin: *
+Content-Length: 0
+Date: Thu, 07 Dec 2017 16:35:55 GMT
+Server: nginx/1.4.6 (Ubuntu)
+Vary: Access-Control-Request-Headers
+Connection: keep-alive
+----------------------------------------------------------
+https://api.scalablelicensing.com/rest/retail-products
+
+OPTIONS /rest/retail-products HTTP/1.1
+Host: api.scalablelicensing.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:49.0) Gecko/20100101 Firefox/49.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+Access-Control-Request-Method: POST
+Access-Control-Request-Headers: authorization,content-type,x-xsrf-token
+Origin: https://pro.teechip.com
+Connection: keep-alive
+
+HTTP/1.1 204 No Content
+access-control-allow-headers: authorization,content-type,x-xsrf-token
+Access-Control-Allow-Methods: GET,HEAD,PUT,PATCH,POST,DELETE
+Access-Control-Allow-Origin: *
+Content-Length: 0
+Date: Thu, 07 Dec 2017 16:35:55 GMT
+Server: nginx/1.4.6 (Ubuntu)
+Vary: Access-Control-Request-Headers
+Connection: keep-alive
+----------------------------------------------------------
+https://api.scalablelicensing.com/rest/retail-products
+
+OPTIONS /rest/retail-products HTTP/1.1
+Host: api.scalablelicensing.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:49.0) Gecko/20100101 Firefox/49.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+Access-Control-Request-Method: POST
+Access-Control-Request-Headers: authorization,content-type,x-xsrf-token
+Origin: https://pro.teechip.com
+Connection: keep-alive
+
+HTTP/1.1 204 No Content
+access-control-allow-headers: authorization,content-type,x-xsrf-token
+Access-Control-Allow-Methods: GET,HEAD,PUT,PATCH,POST,DELETE
+Access-Control-Allow-Origin: *
+Content-Length: 0
+Date: Thu, 07 Dec 2017 16:35:55 GMT
+Server: nginx/1.4.6 (Ubuntu)
+Vary: Access-Control-Request-Headers
+Connection: keep-alive
+----------------------------------------------------------
+https://api.scalablelicensing.com/rest/retail-products
+
+OPTIONS /rest/retail-products HTTP/1.1
+Host: api.scalablelicensing.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:49.0) Gecko/20100101 Firefox/49.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+Access-Control-Request-Method: POST
+Access-Control-Request-Headers: authorization,content-type,x-xsrf-token
+Origin: https://pro.teechip.com
+Connection: keep-alive
+
+HTTP/1.1 204 No Content
+access-control-allow-headers: authorization,content-type,x-xsrf-token
+Access-Control-Allow-Methods: GET,HEAD,PUT,PATCH,POST,DELETE
+Access-Control-Allow-Origin: *
+Content-Length: 0
+Date: Thu, 07 Dec 2017 16:35:55 GMT
+Server: nginx/1.4.6 (Ubuntu)
+Vary: Access-Control-Request-Headers
+Connection: keep-alive
+----------------------------------------------------------
+https://api.scalablelicensing.com/rest/retail-products
+
+POST /rest/retail-products HTTP/1.1
+Host: api.scalablelicensing.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:49.0) Gecko/20100101 Firefox/49.0
+Accept: application/json, text/plain, */*
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+x-xsrf-token: i8PbjLYV-HDqV9BjRKcFKFjl0Yx_JYFSMiqU
+Content-Type: application/json
+Authorization: Basic OmxpdmVfLXZhN2hKNUJpZ2NvT2RtNDdOaWx5Zw==
+Origin: https://pro.teechip.com
+Referer: https://pro.teechip.com/manager/campaigns/create
+Content-Length: 122
+Connection: keep-alive
+{"designLineId":"5a296dea16c8465a2f607af9","productId":"587d0d8ff43ea40e13382dad","color":"Gold","price":2295,"images":[]}
+HTTP/1.1 200 OK
+Access-Control-Allow-Origin: *
+Content-Type: application/json; charset=utf-8
+Date: Thu, 07 Dec 2017 16:35:55 GMT
+Etag: W/"46d-IQ1N5Bfa9aW3MSm3VfV5oTAgigA"
+Server: nginx/1.4.6 (Ubuntu)
+Content-Length: 1133
+Connection: keep-alive
+----------------------------------------------------------
+https://api.scalablelicensing.com/rest/retail-products
+
+POST /rest/retail-products HTTP/1.1
+Host: api.scalablelicensing.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:49.0) Gecko/20100101 Firefox/49.0
+Accept: application/json, text/plain, */*
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+x-xsrf-token: i8PbjLYV-HDqV9BjRKcFKFjl0Yx_JYFSMiqU
+Content-Type: application/json
+Authorization: Basic OmxpdmVfLXZhN2hKNUJpZ2NvT2RtNDdOaWx5Zw==
+Origin: https://pro.teechip.com
+Referer: https://pro.teechip.com/manager/campaigns/create
+Content-Length: 130
+Connection: keep-alive
+{"designLineId":"5a296dea16c8465a2f607af9","productId":"587d0d8ff43ea40e13382dad","color":"Burnt Orange","price":2295,"images":[]}
+HTTP/1.1 200 OK
+Access-Control-Allow-Origin: *
+Content-Type: application/json; charset=utf-8
+Date: Thu, 07 Dec 2017 16:35:55 GMT
+Etag: W/"477-ocF2YnVog7nxPZYiiEYacaSX2G4"
+Server: nginx/1.4.6 (Ubuntu)
+Content-Length: 1143
+Connection: keep-alive
+----------------------------------------------------------
+https://api.scalablelicensing.com/rest/retail-products
+
+POST /rest/retail-products HTTP/1.1
+Host: api.scalablelicensing.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:49.0) Gecko/20100101 Firefox/49.0
+Accept: application/json, text/plain, */*
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+x-xsrf-token: i8PbjLYV-HDqV9BjRKcFKFjl0Yx_JYFSMiqU
+Content-Type: application/json
+Authorization: Basic OmxpdmVfLXZhN2hKNUJpZ2NvT2RtNDdOaWx5Zw==
+Origin: https://pro.teechip.com
+Referer: https://pro.teechip.com/manager/campaigns/create
+Content-Length: 126
+Connection: keep-alive
+{"designLineId":"5a296dea16c8465a2f607af9","productId":"587d0d8ff43ea40e13382dae","color":"Sunshine","price":2895,"images":[]}
+HTTP/1.1 200 OK
+Access-Control-Allow-Origin: *
+Content-Type: application/json; charset=utf-8
+Date: Thu, 07 Dec 2017 16:35:55 GMT
+Etag: W/"478-zSE2f08hEDoLNF5vv1QxNfXZd3c"
+Server: nginx/1.4.6 (Ubuntu)
+Content-Length: 1144
+Connection: keep-alive
+----------------------------------------------------------
+https://api.scalablelicensing.com/rest/retail-products
+
+POST /rest/retail-products HTTP/1.1
+Host: api.scalablelicensing.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:49.0) Gecko/20100101 Firefox/49.0
+Accept: application/json, text/plain, */*
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+x-xsrf-token: i8PbjLYV-HDqV9BjRKcFKFjl0Yx_JYFSMiqU
+Content-Type: application/json
+Authorization: Basic OmxpdmVfLXZhN2hKNUJpZ2NvT2RtNDdOaWx5Zw==
+Origin: https://pro.teechip.com
+Referer: https://pro.teechip.com/manager/campaigns/create
+Content-Length: 124
+Connection: keep-alive
+{"designLineId":"5a296dea16c8465a2f607af9","productId":"587d0d8ff43ea40e13382dae","color":"Forest","price":2895,"images":[]}
+HTTP/1.1 200 OK
+Access-Control-Allow-Origin: *
+Content-Type: application/json; charset=utf-8
+Date: Thu, 07 Dec 2017 16:35:55 GMT
+Etag: W/"47a-H38hldsZODstIlPR8aXBsoIKqzQ"
+Server: nginx/1.4.6 (Ubuntu)
+Content-Length: 1146
+Connection: keep-alive
+----------------------------------------------------------
+https://api.scalablelicensing.com/rest/campaigns
+
+OPTIONS /rest/campaigns HTTP/1.1
+Host: api.scalablelicensing.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:49.0) Gecko/20100101 Firefox/49.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+Access-Control-Request-Method: POST
+Access-Control-Request-Headers: authorization,content-type,x-xsrf-token
+Origin: https://pro.teechip.com
+Connection: keep-alive
+
+HTTP/1.1 204 No Content
+access-control-allow-headers: authorization,content-type,x-xsrf-token
+Access-Control-Allow-Methods: GET,HEAD,PUT,PATCH,POST,DELETE
+Access-Control-Allow-Origin: *
+Content-Length: 0
+Date: Thu, 07 Dec 2017 16:35:56 GMT
+Server: nginx/1.4.6 (Ubuntu)
+Vary: Access-Control-Request-Headers
+Connection: keep-alive
+----------------------------------------------------------
+https://api.scalablelicensing.com/rest/campaigns
+
+POST /rest/campaigns HTTP/1.1
+Host: api.scalablelicensing.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:49.0) Gecko/20100101 Firefox/49.0
+Accept: application/json, text/plain, */*
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+x-xsrf-token: i8PbjLYV-HDqV9BjRKcFKFjl0Yx_JYFSMiqU
+Content-Type: application/json
+Authorization: Basic OmxpdmVfLXZhN2hKNUJpZ2NvT2RtNDdOaWx5Zw==
+Origin: https://pro.teechip.com
+Referer: https://pro.teechip.com/manager/campaigns/create
+Content-Length: 965
+Connection: keep-alive
+{"url":"lehoang123url13","title":"lehoang123Title","description":"<div>ahihiDessciriton</div>","duration":24,"policies":{"forever":true,"fulfillment":24,"private":false,"checkout":"direct"},"social":{"trackingTags":{}},"entityId":"5a20b5737d321f6a62a50229","upsells":[],"tags":{},"related":[{"id":"5a296deb81cc506092a41f68","price":2295},{"id":"5a296debcebbb25c0fac4626","price":2295},{"id":"5a296deb96159a25e064fb92","price":2295},{"id":"5a296deb5d8a275cc36ff783","price":2295},{"id":"5a296debcebbb25c0fac4627","price":2295},{"id":"5a296debf5a63e5cdb9396a5","price":2295},{"id":"5a296deb76f2815c0999ce6b","price":2295},{"id":"5a296debe82b655cbf602b07","price":2895},{"id":"5a296deb7e06445cb9ab5726","price":2895},{"id":"5a296deb5d8a275cc36ff784","price":2895},{"id":"5a296deb24e3a05ccf6670d4","price":2895},{"id":"5a296deb95a5d85654f28d09","price":2895},{"id":"5a296deb16c8465a2f607b05","price":2895},{"id":"5a296deb8f95305d0fcc3c63","price":2895,"default":true}]}
+HTTP/1.1 200 OK
+Access-Control-Allow-Origin: *
+Content-Type: application/json; charset=utf-8
+Date: Thu, 07 Dec 2017 16:35:56 GMT
+Etag: W/"19e9-8Ds9aMGzQhJ9oWWVb5qNWvAvHyE"
+Server: nginx/1.4.6 (Ubuntu)
+Content-Length: 6633
+Connection: keep-alive
+----------------------------------------------------------
+https://api.scalablelicensing.com/rest/group/587d0d41cee36fd012c64a69
+
+OPTIONS /rest/group/587d0d41cee36fd012c64a69 HTTP/1.1
+Host: api.scalablelicensing.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:49.0) Gecko/20100101 Firefox/49.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+Access-Control-Request-Method: GET
+Access-Control-Request-Headers: content-type,x-xsrf-token
+Origin: https://pro.teechip.com
+Connection: keep-alive
+
+HTTP/1.1 204 No Content
+access-control-allow-headers: content-type,x-xsrf-token
+Access-Control-Allow-Methods: GET,HEAD,PUT,PATCH,POST,DELETE
+Access-Control-Allow-Origin: *
+Content-Length: 0
+Date: Thu, 07 Dec 2017 16:35:57 GMT
+Server: nginx/1.4.6 (Ubuntu)
+Vary: Access-Control-Request-Headers
+Connection: keep-alive
+----------------------------------------------------------
+https://api.scalablelicensing.com/rest/group/587d0d41cee36fd012c64a69
+
+GET /rest/group/587d0d41cee36fd012c64a69 HTTP/1.1
+Host: api.scalablelicensing.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:49.0) Gecko/20100101 Firefox/49.0
+Accept: application/json, text/plain, */*
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+x-xsrf-token: i8PbjLYV-HDqV9BjRKcFKFjl0Yx_JYFSMiqU
+Content-Type: application/json
+Origin: https://pro.teechip.com
+Referer: https://pro.teechip.com/manager/campaigns/create
+Connection: keep-alive
+If-None-Match: W/"1c1e-e0lerPtHU0TkS7Cpwq++PJnELZ0"
+
+HTTP/1.1 304 Not Modified
+Access-Control-Allow-Origin: *
+Date: Thu, 07 Dec 2017 16:35:57 GMT
+Etag: W/"1c1e-e0lerPtHU0TkS7Cpwq++PJnELZ0"
+Server: nginx/1.4.6 (Ubuntu)
+Connection: keep-alive
+----------------------------------------------------------
+https://api.scalablelicensing.com/rest/campaigns?limit=2
+
+OPTIONS /rest/campaigns?limit=2 HTTP/1.1
+Host: api.scalablelicensing.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:49.0) Gecko/20100101 Firefox/49.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+Access-Control-Request-Method: GET
+Access-Control-Request-Headers: authorization,content-type,x-xsrf-token
+Origin: https://pro.teechip.com
+Connection: keep-alive
+
+HTTP/1.1 204 No Content
+access-control-allow-headers: authorization,content-type,x-xsrf-token
+Access-Control-Allow-Methods: GET,HEAD,PUT,PATCH,POST,DELETE
+Access-Control-Allow-Origin: *
+Content-Length: 0
+Date: Thu, 07 Dec 2017 16:35:57 GMT
+Server: nginx/1.4.6 (Ubuntu)
+Vary: Access-Control-Request-Headers
+Connection: keep-alive
+----------------------------------------------------------
+https://api.scalablelicensing.com/rest/campaigns?limit=2
+
+GET /rest/campaigns?limit=2 HTTP/1.1
+Host: api.scalablelicensing.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:49.0) Gecko/20100101 Firefox/49.0
+Accept: application/json, text/plain, */*
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+x-xsrf-token: i8PbjLYV-HDqV9BjRKcFKFjl0Yx_JYFSMiqU
+Content-Type: application/json
+Authorization: Basic OmxpdmVfLXZhN2hKNUJpZ2NvT2RtNDdOaWx5Zw==
+Origin: https://pro.teechip.com
+Referer: https://pro.teechip.com/manager/campaigns/create
+Connection: keep-alive
+If-None-Match: W/"3831-/nNum6axJ1aGcHZA6wrT/hP6Qrk"
+
+HTTP/1.1 200 OK
+Access-Control-Allow-Origin: *
+Access-Control-Expose-Headers: X-SL-Pages, X-SL-Count, Link
+Content-Type: application/json; charset=utf-8
+Date: Thu, 07 Dec 2017 16:35:57 GMT
+Etag: W/"3234-mB5aNOiKbmMVcX5bi573SrQ7VrI"
+Link: <https://api.scalablelicensing.com/rest/campaigns?limit=2&page=2>; rel="next", <https://api.scalablelicensing.com/rest/campaigns?limit=2&page=26>; rel="last"
+Server: nginx/1.4.6 (Ubuntu)
+X-SL-Count: 51
+X-SL-Pages: 26
+Content-Length: 12852
+Connection: keep-alive
+----------------------------------------------------------
+https://pro.teechip.com/lehoang123url13
+
+GET /lehoang123url13 HTTP/1.1
+Host: pro.teechip.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:49.0) Gecko/20100101 Firefox/49.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+Referer: https://pro.teechip.com/manager/campaigns/create
+Cookie: production.connect.sid=s%3A5glekIOzlwwOS6SmH3v-AYr7LOwntApt.zPfTbdWC4gXE8twWCg%2FZFMGwZ%2Bgkz1HNKP5TasONXNs; _ga=GA1.2.1740203298.1512660809; _gid=GA1.2.78745527.1512660809; __stripe_mid=e2d0b63f-1d07-491a-87a3-1fe98069559c; XSRF-TOKEN=i8PbjLYV-HDqV9BjRKcFKFjl0Yx_JYFSMiqU; locale=vi-VN; currency=USD; geo=j%3A%7B%22range%22%3A%5B2884130816%2C2884153343%5D%2C%22country%22%3A%22VN%22%2C%22region%22%3A%2220%22%2C%22city%22%3A%22Ho%20Chi%20Minh%20City%22%2C%22ll%22%3A%5B10.8142%2C106.6438%5D%2C%22metro%22%3A0%2C%22zip%22%3A0%7D; pvId=5a295f4be6bb9636c0f4cf97
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+
+HTTP/1.1 200 OK
+Server: nginx/1.10.3
+Date: Thu, 07 Dec 2017 16:35:58 GMT
+Content-Type: text/html; charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Vary: Accept-Encoding
+Set-Cookie: XSRF-TOKEN=fzyujAtf-zhkbY3Vy7K7mZOqWHMWzxtJ_yCk; Path=/
+Set-Cookie: locale=vi-VN; Path=/
+Set-Cookie: currency=USD; Path=/
+Set-Cookie: geo=j%3A%7B%22range%22%3A%5B2884130816%2C2884153343%5D%2C%22country%22%3A%22VN%22%2C%22region%22%3A%2220%22%2C%22city%22%3A%22Ho%20Chi%20Minh%20City%22%2C%22ll%22%3A%5B10.8142%2C106.6438%5D%2C%22metro%22%3A0%2C%22zip%22%3A0%7D; Path=/
+Etag: W/"309fa-PZNX2zb70O4Zrqg5eUIEhc6rIeA"
+Content-Encoding: gzip
+----------------------------------------------------------
+https://www.google.com/recaptcha/api.js?render=explicit
+
+GET /recaptcha/api.js?render=explicit HTTP/1.1
+Host: www.google.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:49.0) Gecko/20100101 Firefox/49.0
+Accept: */*
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+Referer: https://pro.teechip.com/lehoang123url13
+Connection: keep-alive
+
+HTTP/2.0 200 OK
+Expires: Thu, 07 Dec 2017 16:35:59 GMT
+Date: Thu, 07 Dec 2017 16:35:59 GMT
+Cache-Control: private, max-age=300
+Content-Type: text/javascript; charset=UTF-8
+Content-Encoding: gzip
+X-Content-Type-Options: nosniff
+x-frame-options: SAMEORIGIN
+X-XSS-Protection: 1; mode=block
+Content-Length: 405
+Server: GSE
+Alt-Svc: hq=":443"; ma=2592000; quic=51303431; quic=51303339; quic=51303338; quic=51303337; quic=51303335,quic=":443"; ma=2592000; v="41,39,38,37,35"
+X-Firefox-Spdy: h2
+----------------------------------------------------------
+https://js.stripe.com/v2/
+
+GET /v2/ HTTP/1.1
+Host: js.stripe.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:49.0) Gecko/20100101 Firefox/49.0
+Accept: */*
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+Referer: https://pro.teechip.com/lehoang123url13
+Connection: keep-alive
+If-Modified-Since: Wed, 06 Sep 2017 17:40:34 GMT
+If-None-Match: "0a45aba7eb8f3ef52026ad1ae14bb133"
+
+HTTP/2.0 304 Not Modified
+Date: Thu, 07 Dec 2017 16:35:59 GMT
+Via: 1.1 varnish
+Cache-Control: public, max-age=300
+Etag: "0a45aba7eb8f3ef52026ad1ae14bb133"
+Age: 37
+x-served-by: cache-sin18023-SIN
+X-Cache: HIT
+x-cache-hits: 70
+x-timer: S1512664559.331426,VS0,VE0
+Vary: Accept-Encoding
+Strict-Transport-Security: max-age=31556926; includeSubDomains; preload
+Timing-Allow-Origin: *
+X-Firefox-Spdy: h2
+----------------------------------------------------------
+http://ocsp.pki.goog/GTSGIAG3
+
+POST /GTSGIAG3 HTTP/1.1
+Host: ocsp.pki.goog
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:49.0) Gecko/20100101 Firefox/49.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate
+Content-Length: 75
+Content-Type: application/ocsp-request
+Connection: keep-alive
+0I0G0E0C0A0	+
+HTTP/1.1 200 OK
+Content-Type: application/ocsp-response
+Date: Thu, 07 Dec 2017 16:35:59 GMT
+Cache-Control: public, max-age=345600
+Server: ocsp_responder
+Content-Length: 463
+X-XSS-Protection: 1; mode=block
+x-frame-options: SAMEORIGIN
+----------------------------------------------------------
+https://www.googletagmanager.com/gtm.js?id=GTM-TKKBL27
+
+GET /gtm.js?id=GTM-TKKBL27 HTTP/1.1
+Host: www.googletagmanager.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:49.0) Gecko/20100101 Firefox/49.0
+Accept: */*
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+Referer: https://pro.teechip.com/lehoang123url13
+Connection: keep-alive
+
+HTTP/2.0 200 OK
+Content-Type: application/javascript; charset=UTF-8
+Access-Control-Allow-Origin: http://www.googletagmanager.com
+access-control-allow-headers: Cache-Control
+access-control-allow-credentials: true
+Content-Encoding: gzip
+Vary: Accept-Encoding
+Date: Thu, 07 Dec 2017 16:35:59 GMT
+Expires: Thu, 07 Dec 2017 16:35:59 GMT
+Cache-Control: private, max-age=900
+Server: Google Tag Manager (scaffolding)
+Content-Length: 21632
+X-XSS-Protection: 1; mode=block
+Alt-Svc: hq=":443"; ma=2592000; quic=51303431; quic=51303339; quic=51303338; quic=51303337; quic=51303335,quic=":443"; ma=2592000; v="41,39,38,37,35"
+X-Firefox-Spdy: h2
+----------------------------------------------------------
+http://ocsp.pki.goog/GTSGIAG3
+
+POST /GTSGIAG3 HTTP/1.1
+Host: ocsp.pki.goog
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:49.0) Gecko/20100101 Firefox/49.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate
+Content-Length: 75
+Content-Type: application/ocsp-request
+Connection: keep-alive
+0I0G0E0C0A0	+
+HTTP/1.1 200 OK
+Content-Type: application/ocsp-response
+Date: Thu, 07 Dec 2017 16:35:59 GMT
+Cache-Control: public, max-age=345600
+Server: ocsp_responder
+Content-Length: 463
+X-XSS-Protection: 1; mode=block
+x-frame-options: SAMEORIGIN
+----------------------------------------------------------
+https://js.stripe.com/v2/channel.html?stripe_xdm_e=https%3A%2F%2Fpro.teechip.com&stripe_xdm_c=default712066&stripe_xdm_p=1#__stripe_transport__
+
+GET /v2/channel.html?stripe_xdm_e=https%3A%2F%2Fpro.teechip.com&stripe_xdm_c=default712066&stripe_xdm_p=1 HTTP/1.1
+Host: js.stripe.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:49.0) Gecko/20100101 Firefox/49.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+Referer: https://pro.teechip.com/lehoang123url13
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+
+HTTP/2.0 200 OK
+Date: Thu, 07 Dec 2017 16:35:59 GMT
+x-amz-id-2: HLPx4Tf46b6XDyq4933QzitzrIRyJiQbCPauohCMlPWokR59zYPBnYxbYx7ThkbFFuBRyacEP0k=
+x-amz-request-id: B3DDE1675C3A91ED
+Last-Modified: Wed, 06 Sep 2017 17:40:34 GMT
+Etag: "19af0c6cc7a0bca20a355b3362dc64a0"
+Cache-Control: public, max-age=300
+Content-Type: text/html; charset=utf-8
+Server: AmazonS3
+Content-Encoding: gzip
+Accept-Ranges: bytes
+Via: 1.1 varnish
+Age: 63
+x-served-by: cache-sin18028-SIN
+X-Cache: HIT
+x-cache-hits: 122
+x-timer: S1512664560.795103,VS0,VE0
+Vary: Accept-Encoding
+Strict-Transport-Security: max-age=31556926; includeSubDomains; preload
+Timing-Allow-Origin: *
+Content-Length: 560
+X-Firefox-Spdy: h2
+----------------------------------------------------------
+https://www.google-analytics.com/gtm/js?id=GTM-5X2C5RV&t=root&cid=1740203298.1512660809
+
+GET /gtm/js?id=GTM-5X2C5RV&t=root&cid=1740203298.1512660809 HTTP/1.1
+Host: www.google-analytics.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:49.0) Gecko/20100101 Firefox/49.0
+Accept: */*
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+Referer: https://pro.teechip.com/lehoang123url13
+Connection: keep-alive
+
+HTTP/2.0 200 OK
+Content-Type: application/javascript; charset=UTF-8
+Access-Control-Allow-Origin: http://www.googletagmanager.com
+access-control-allow-headers: Cache-Control
+access-control-allow-credentials: true
+Content-Encoding: gzip
+Vary: Accept-Encoding
+Date: Thu, 07 Dec 2017 16:35:59 GMT
+Expires: Thu, 07 Dec 2017 16:35:59 GMT
+Cache-Control: private, max-age=900
+Server: Google Tag Manager (scaffolding)
+Content-Length: 17837
+X-XSS-Protection: 1; mode=block
+Alt-Svc: hq=":443"; ma=2592000; quic=51303431; quic=51303339; quic=51303338; quic=51303337; quic=51303335,quic=":443"; ma=2592000; v="41,39,38,37,35"
+X-Firefox-Spdy: h2
+----------------------------------------------------------
+http://ocsp.digicert.com/
+
+POST / HTTP/1.1
+Host: ocsp.digicert.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:49.0) Gecko/20100101 Firefox/49.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate
+Content-Length: 83
+Content-Type: application/ocsp-request
+Connection: keep-alive
+0Q0O0M0K0I0	+
+HTTP/1.1 200 OK
+Accept-Ranges: bytes
+Cache-Control: max-age=172800
+Content-Type: application/ocsp-response
+Date: Thu, 07 Dec 2017 16:36:00 GMT
+Etag: "5a295c4b-1d7"
+Expires: Sat, 09 Dec 2017 16:36:00 GMT
+Last-Modified: Thu, 07 Dec 2017 15:20:43 GMT
+Server: ECS (sin/BFAF)
+X-Cache: HIT
+Content-Length: 471
+----------------------------------------------------------
+https://sslwidget.criteo.com/event?a=36027&v=4.5.1&p0=e%3Dexd%26site_type%3Dd&p1=e%3Dce%26m%3D%255B%255D&p2=e%3Dvp%26p%3D5a296deb8f95305d0fcc3c63&p3=e%3Ddis&adce=1
+
+GET /event?a=36027&v=4.5.1&p0=e%3Dexd%26site_type%3Dd&p1=e%3Dce%26m%3D%255B%255D&p2=e%3Dvp%26p%3D5a296deb8f95305d0fcc3c63&p3=e%3Ddis&adce=1 HTTP/1.1
+Host: sslwidget.criteo.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:49.0) Gecko/20100101 Firefox/49.0
+Accept: */*
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+Referer: https://pro.teechip.com/lehoang123url13
+Cookie: uid=ce8f8db4-b062-4092-b17d-7a24f890551c; eid=*13P9J%2bveNINPcbZN%2bSm05RPXgRMZleEE%2bV%2bwbHkOYPesp7KfMSw1qgW9vheOf%2b8Et
+Connection: keep-alive
+
+HTTP/1.1 302 Found
+Cache-Control: no-cache
+Pragma: no-cache
+Expires: -1
+Location: https://widget.us.criteo.com/event?a=36027&v=4.5.1&p0=e%3Dexd%26site_type%3Dd&p1=e%3Dce%26m%3D%255B%255D&p2=e%3Dvp%26p%3D5a296deb8f95305d0fcc3c63&p3=e%3Ddis&adce=1
+Server: Microsoft-IIS/8.5
+X-Powered-By: ASP.NET
+Date: Thu, 07 Dec 2017 16:36:00 GMT
+Content-Length: 0
+----------------------------------------------------------
+https://pro.teechip.com/pageView/campaign/5a296dec7e06445cb9ab5730?pageType=buy
+
+POST /pageView/campaign/5a296dec7e06445cb9ab5730?pageType=buy HTTP/1.1
+Host: pro.teechip.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:49.0) Gecko/20100101 Firefox/49.0
+Accept: application/json, text/plain, */*
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+x-xsrf-token: fzyujAtf-zhkbY3Vy7K7mZOqWHMWzxtJ_yCk
+Content-Type: application/json
+Origin: https://pro.teechip.com
+Referer: https://pro.teechip.com/lehoang123url13
+Content-Length: 13
+Cookie: production.connect.sid=s%3A5glekIOzlwwOS6SmH3v-AYr7LOwntApt.zPfTbdWC4gXE8twWCg%2FZFMGwZ%2Bgkz1HNKP5TasONXNs; _ga=GA1.2.1740203298.1512660809; _gid=GA1.2.78745527.1512660809; __stripe_mid=e2d0b63f-1d07-491a-87a3-1fe98069559c; XSRF-TOKEN=fzyujAtf-zhkbY3Vy7K7mZOqWHMWzxtJ_yCk; locale=vi-VN; currency=USD; geo=j%3A%7B%22range%22%3A%5B2884130816%2C2884153343%5D%2C%22country%22%3A%22VN%22%2C%22region%22%3A%2220%22%2C%22city%22%3A%22Ho%20Chi%20Minh%20City%22%2C%22ll%22%3A%5B10.8142%2C106.6438%5D%2C%22metro%22%3A0%2C%22zip%22%3A0%7D; pvId=5a295f4be6bb9636c0f4cf97
+Connection: keep-alive
+{"params":{}}
+HTTP/1.1 200 OK
+Server: nginx/1.10.3
+Date: Thu, 07 Dec 2017 16:36:00 GMT
+Content-Type: application/json; charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Vary: Accept-Encoding
+Set-Cookie: XSRF-TOKEN=SplzzH3R-oz9lfcG83LjKyLi6PzlpSssaGxc; Path=/
+Set-Cookie: pvId=5a296df0e6bb9636c0633f04; Path=/
+Etag: W/"22-mdXqoc8tp4c1T4981/XaFduLos4"
+Content-Encoding: gzip
+----------------------------------------------------------
+https://api.scalablelicensing.com/rest/search/groups/587d0d41cee36fd012c64a69/suggestions
+
+OPTIONS /rest/search/groups/587d0d41cee36fd012c64a69/suggestions HTTP/1.1
+Host: api.scalablelicensing.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:49.0) Gecko/20100101 Firefox/49.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+Access-Control-Request-Method: GET
+Access-Control-Request-Headers: content-type,x-xsrf-token
+Origin: https://pro.teechip.com
+Connection: keep-alive
+
+HTTP/1.1 204 No Content
+access-control-allow-headers: content-type,x-xsrf-token
+Access-Control-Allow-Methods: GET,HEAD,PUT,PATCH,POST,DELETE
+Access-Control-Allow-Origin: *
+Content-Length: 0
+Date: Thu, 07 Dec 2017 16:36:00 GMT
+Server: nginx/1.4.6 (Ubuntu)
+Vary: Access-Control-Request-Headers
+Connection: keep-alive
+----------------------------------------------------------
+https://api.scalablelicensing.com/rest/search/groups/587d0d41cee36fd012c64a69/suggestions
+
+GET /rest/search/groups/587d0d41cee36fd012c64a69/suggestions HTTP/1.1
+Host: api.scalablelicensing.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:49.0) Gecko/20100101 Firefox/49.0
+Accept: application/json, text/plain, */*
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+x-xsrf-token: fzyujAtf-zhkbY3Vy7K7mZOqWHMWzxtJ_yCk
+Content-Type: application/json
+Origin: https://pro.teechip.com
+Referer: https://pro.teechip.com/lehoang123url13
+Connection: keep-alive
+If-None-Match: W/"361-TNRy6kgu5pJ7Xi6EEJ9Jydpzxg4"
+
+HTTP/1.1 200 OK
+Access-Control-Allow-Origin: *
+Content-Type: application/json; charset=utf-8
+Date: Thu, 07 Dec 2017 16:36:00 GMT
+Etag: W/"367-vM63f0dwFoXsAiTgzaaJ31I0vh4"
+Server: nginx/1.4.6 (Ubuntu)
+Content-Length: 871
+Connection: keep-alive
+----------------------------------------------------------
+https://dbcpu9gznkryx.cloudfront.net/public/sl-prod-od-0/images/retail-products/C06EDDF516A0B2/C06EDDF516A0B2-CE114EC1D8A8-GS0-TC1-YEL/back/regular.jpg
+
+GET /public/sl-prod-od-0/images/retail-products/C06EDDF516A0B2/C06EDDF516A0B2-CE114EC1D8A8-GS0-TC1-YEL/back/regular.jpg HTTP/1.1
+Host: dbcpu9gznkryx.cloudfront.net
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:49.0) Gecko/20100101 Firefox/49.0
+Accept: */*
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+Referer: https://pro.teechip.com/lehoang123url13
+Connection: keep-alive
+
+HTTP/2.0 200 OK
+Content-Type: image/jpeg
+Content-Length: 107623
+Date: Thu, 07 Dec 2017 16:36:00 GMT
+Server: nginx/1.10.3
+Last-Modified: Thu, 07 Dec 2017 16:36:01 GMT
+Etag: "3f6c496934b6654b583657d7aaefb7ee"
+Cache-Control: max-age=2592000
+Accept-Ranges: bytes
+X-Cache: Miss from cloudfront
+Via: 1.1 b9b04756b9ebc22600bad4d67809e879.cloudfront.net (CloudFront)
+X-Amz-Cf-Id: snFaaH32wIV6_k2JYI6ABj2PFF6JBQEaFWoRJe6DRWtBGccelV6Fbg==
+X-Firefox-Spdy: h2
+----------------------------------------------------------
+https://dbcpu9gznkryx.cloudfront.net/public/sl-prod-od-0/images/retail-products/C06EDDF516A0B2/C06EDDF516A0B2-CE114EC1D8A8-GS0-TC1-YEL/back/thumb.jpg
+
+GET /public/sl-prod-od-0/images/retail-products/C06EDDF516A0B2/C06EDDF516A0B2-CE114EC1D8A8-GS0-TC1-YEL/back/thumb.jpg HTTP/1.1
+Host: dbcpu9gznkryx.cloudfront.net
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:49.0) Gecko/20100101 Firefox/49.0
+Accept: */*
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+Referer: https://pro.teechip.com/lehoang123url13
+Connection: keep-alive
+
+HTTP/2.0 200 OK
+Content-Type: image/jpeg
+Content-Length: 8317
+Date: Thu, 07 Dec 2017 16:36:00 GMT
+Server: nginx/1.10.3
+Last-Modified: Thu, 07 Dec 2017 16:36:01 GMT
+Etag: "b7fc6a3c9c9aac7f72061a784409d28f"
+Cache-Control: max-age=2592000
+Accept-Ranges: bytes
+X-Cache: Miss from cloudfront
+Via: 1.1 b9b04756b9ebc22600bad4d67809e879.cloudfront.net (CloudFront)
+X-Amz-Cf-Id: LEpEREYUCvXHGcISY1sBdSSb5hl6Ss9UfYwvigqTpAy6EzBYxNU83A==
+X-Firefox-Spdy: h2
+----------------------------------------------------------
+https://api.scalablelicensing.com/rest/search/groups/587d0d41cee36fd012c64a69/suggestions
+
+OPTIONS /rest/search/groups/587d0d41cee36fd012c64a69/suggestions HTTP/1.1
+Host: api.scalablelicensing.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:49.0) Gecko/20100101 Firefox/49.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+Access-Control-Request-Method: GET
+Access-Control-Request-Headers: content-type,x-xsrf-token
+Origin: https://pro.teechip.com
+Connection: keep-alive
+
+HTTP/1.1 204 No Content
+access-control-allow-headers: content-type,x-xsrf-token
+Access-Control-Allow-Methods: GET,HEAD,PUT,PATCH,POST,DELETE
+Access-Control-Allow-Origin: *
+Content-Length: 0
+Date: Thu, 07 Dec 2017 16:36:00 GMT
+Server: nginx/1.4.6 (Ubuntu)
+Vary: Access-Control-Request-Headers
+Connection: keep-alive
+----------------------------------------------------------
+http://ocsp.digicert.com/
+
+POST / HTTP/1.1
+Host: ocsp.digicert.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:49.0) Gecko/20100101 Firefox/49.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate
+Content-Length: 83
+Content-Type: application/ocsp-request
+Connection: keep-alive
+0Q0O0M0K0I0	+
+HTTP/1.1 200 OK
+Accept-Ranges: bytes
+Cache-Control: max-age=172800
+Content-Type: application/ocsp-response
+Date: Thu, 07 Dec 2017 16:36:01 GMT
+Etag: "5a29187f-1d7"
+Expires: Sat, 09 Dec 2017 16:36:01 GMT
+Last-Modified: Thu, 07 Dec 2017 10:31:27 GMT
+Server: ECS (sin/BF42)
+X-Cache: HIT
+Content-Length: 471
+----------------------------------------------------------
+https://api.scalablelicensing.com/rest/search/groups/587d0d41cee36fd012c64a69/suggestions
+
+GET /rest/search/groups/587d0d41cee36fd012c64a69/suggestions HTTP/1.1
+Host: api.scalablelicensing.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:49.0) Gecko/20100101 Firefox/49.0
+Accept: application/json, text/plain, */*
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+x-xsrf-token: fzyujAtf-zhkbY3Vy7K7mZOqWHMWzxtJ_yCk
+Content-Type: application/json
+Origin: https://pro.teechip.com
+Referer: https://pro.teechip.com/lehoang123url13
+Connection: keep-alive
+If-None-Match: W/"367-vM63f0dwFoXsAiTgzaaJ31I0vh4"
+
+HTTP/1.1 304 Not Modified
+Access-Control-Allow-Origin: *
+Date: Thu, 07 Dec 2017 16:36:01 GMT
+Etag: W/"367-vM63f0dwFoXsAiTgzaaJ31I0vh4"
+Server: nginx/1.4.6 (Ubuntu)
+Connection: keep-alive
+----------------------------------------------------------
+https://widget.us.criteo.com/event?a=36027&v=4.5.1&p0=e%3Dexd%26site_type%3Dd&p1=e%3Dce%26m%3D%255B%255D&p2=e%3Dvp%26p%3D5a296deb8f95305d0fcc3c63&p3=e%3Ddis&adce=1
+
+GET /event?a=36027&v=4.5.1&p0=e%3Dexd%26site_type%3Dd&p1=e%3Dce%26m%3D%255B%255D&p2=e%3Dvp%26p%3D5a296deb8f95305d0fcc3c63&p3=e%3Ddis&adce=1 HTTP/1.1
+Host: widget.us.criteo.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:49.0) Gecko/20100101 Firefox/49.0
+Accept: */*
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+Referer: https://pro.teechip.com/lehoang123url13
+Cookie: uid=ce8f8db4-b062-4092-b17d-7a24f890551c; eid=*13P9J%2bveNINPcbZN%2bSm05RPXgRMZleEE%2bV%2bwbHkOYPesp7KfMSw1qgW9vheOf%2b8Et
+Connection: keep-alive
+
+HTTP/1.1 200 OK
+Cache-Control: no-cache
+Pragma: no-cache
+Content-Type: application/x-javascript; charset=utf-8
+Content-Encoding: gzip
+Expires: -1
+Vary: Accept-Encoding
+Server: Microsoft-IIS/8.5
+P3P: NON DSP COR CURa PSA PSD OUR BUS NAV STA
+X-Powered-By: ASP.NET
+Date: Thu, 07 Dec 2017 16:36:00 GMT
+Content-Length: 686
+----------------------------------------------------------
+https://dbcpu9gznkryx.cloudfront.net/public/sl-prod-od-0/images/retail-products/C06EDDF516A0B2/C06EDDF516A0B2-CE114EC1D8A8-GS0-TC0-RED/front/thumb.jpg
+
+GET /public/sl-prod-od-0/images/retail-products/C06EDDF516A0B2/C06EDDF516A0B2-CE114EC1D8A8-GS0-TC0-RED/front/thumb.jpg HTTP/1.1
+Host: dbcpu9gznkryx.cloudfront.net
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:49.0) Gecko/20100101 Firefox/49.0
+Accept: */*
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+Referer: https://pro.teechip.com/lehoang123url13
+Connection: keep-alive
+
+HTTP/2.0 200 OK
+Content-Type: image/jpeg
+Content-Length: 13457
+Date: Thu, 07 Dec 2017 16:36:02 GMT
+Server: nginx/1.10.3
+Last-Modified: Thu, 07 Dec 2017 16:36:03 GMT
+Etag: "773992408291b23b4f78068bc45716cc"
+Cache-Control: max-age=2592000
+Accept-Ranges: bytes
+X-Cache: Miss from cloudfront
+Via: 1.1 b9b04756b9ebc22600bad4d67809e879.cloudfront.net (CloudFront)
+X-Amz-Cf-Id: rmeaIVhdnpX_VX8ttcBcjl6yVdCYHwMdM1UeuK9jcsTxrnhi2-brBQ==
+X-Firefox-Spdy: h2
+----------------------------------------------------------
+https://dbcpu9gznkryx.cloudfront.net/public/sl-prod-od-0/images/retail-products/C06EDDF516A0B2/C06EDDF516A0B2-CE114EC1D8A8-GS0-TC1-YEL/front/thumb.jpg
+
+GET /public/sl-prod-od-0/images/retail-products/C06EDDF516A0B2/C06EDDF516A0B2-CE114EC1D8A8-GS0-TC1-YEL/front/thumb.jpg HTTP/1.1
+Host: dbcpu9gznkryx.cloudfront.net
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:49.0) Gecko/20100101 Firefox/49.0
+Accept: */*
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+Referer: https://pro.teechip.com/lehoang123url13
+Connection: keep-alive
+
+HTTP/2.0 200 OK
+Content-Type: image/jpeg
+Content-Length: 12774
+Date: Thu, 07 Dec 2017 16:36:03 GMT
+Server: nginx/1.10.3
+Last-Modified: Thu, 07 Dec 2017 16:36:04 GMT
+Etag: "461258328cfc11adb88cea1dbb3253cd"
+Cache-Control: max-age=2592000
+Accept-Ranges: bytes
+X-Cache: Miss from cloudfront
+Via: 1.1 b9b04756b9ebc22600bad4d67809e879.cloudfront.net (CloudFront)
+X-Amz-Cf-Id: VHGbiGvd06x53LcMaueluIyTqgbeZGa3gwhwZew4lV9-2O_wRQkm3g==
+X-Firefox-Spdy: h2
+----------------------------------------------------------
+https://dbcpu9gznkryx.cloudfront.net/public/sl-prod-od-0/images/retail-products/C06EDDF516A0B2/C06EDDF516A0B2-CE114EC1D8A8-GS0-TC1-YEL/front/regular.jpg
+
+GET /public/sl-prod-od-0/images/retail-products/C06EDDF516A0B2/C06EDDF516A0B2-CE114EC1D8A8-GS0-TC1-YEL/front/regular.jpg HTTP/1.1
+Host: dbcpu9gznkryx.cloudfront.net
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:49.0) Gecko/20100101 Firefox/49.0
+Accept: */*
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+Referer: https://pro.teechip.com/lehoang123url13
+Connection: keep-alive
+
+HTTP/2.0 200 OK
+Content-Type: image/jpeg
+Content-Length: 162138
+Date: Thu, 07 Dec 2017 16:36:03 GMT
+Server: nginx/1.10.3
+Last-Modified: Thu, 07 Dec 2017 16:36:04 GMT
+Etag: "3f3aea2343de80e44533c8a849f6235b"
+Cache-Control: max-age=2592000
+Accept-Ranges: bytes
+X-Cache: Miss from cloudfront
+Via: 1.1 b9b04756b9ebc22600bad4d67809e879.cloudfront.net (CloudFront)
+X-Amz-Cf-Id: vPSDApvAHFOH_kOis13rsGD7cbM_w5UTW9RdicGYMhSyiiZCkwLw4A==
+X-Firefox-Spdy: h2
+----------------------------------------------------------
+https://dbcpu9gznkryx.cloudfront.net/public/sl-prod-od-0/images/retail-products/C06EDDF516A0B2/C06EDDF516A0B2-CE114EC1D8A8-GS0-TC1-LPK/front/thumb.jpg
+
+GET /public/sl-prod-od-0/images/retail-products/C06EDDF516A0B2/C06EDDF516A0B2-CE114EC1D8A8-GS0-TC1-LPK/front/thumb.jpg HTTP/1.1
+Host: dbcpu9gznkryx.cloudfront.net
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:49.0) Gecko/20100101 Firefox/49.0
+Accept: */*
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+Referer: https://pro.teechip.com/lehoang123url13
+Connection: keep-alive
+
+HTTP/2.0 200 OK
+Content-Type: image/jpeg
+Content-Length: 11552
+Date: Thu, 07 Dec 2017 16:36:03 GMT
+Server: nginx/1.10.3
+Last-Modified: Thu, 07 Dec 2017 16:36:04 GMT
+Etag: "01b808f996866031bc2984c1c63e1c25"
+Cache-Control: max-age=2592000
+Accept-Ranges: bytes
+X-Cache: Miss from cloudfront
+Via: 1.1 b9b04756b9ebc22600bad4d67809e879.cloudfront.net (CloudFront)
+X-Amz-Cf-Id: Nd0-nKYskcftZiFoFEN7UdEySGZh99_5YOkxiGZGYS90qigo-2bJ1Q==
+X-Firefox-Spdy: h2
+----------------------------------------------------------
+https://js.stripe.com/v2/m/outer.html#referrer=https%3A%2F%2Fpro.teechip.com%2Fmanager%2Fcampaigns%2Fcreate&title=lehoang123Title&url=https%3A%2F%2Fpro.teechip.com%2Flehoang123url13&muid=e2d0b63f-1d07-491a-87a3-1fe98069559c&sid=6178356c-76ba-4d02-8c43-83d09f216170&preview=false&
+
+GET /v2/m/outer.html HTTP/1.1
+Host: js.stripe.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:49.0) Gecko/20100101 Firefox/49.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+Referer: https://pro.teechip.com/lehoang123url13
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+If-Modified-Since: Wed, 06 Sep 2017 17:40:34 GMT
+If-None-Match: "51b76bd7931c50d2bf6d4c5a93d343f9"
+
+HTTP/2.0 304 Not Modified
+Date: Thu, 07 Dec 2017 16:36:04 GMT
+Via: 1.1 varnish
+Cache-Control: public, max-age=300
+Etag: "51b76bd7931c50d2bf6d4c5a93d343f9"
+Age: 288
+x-served-by: cache-sin18028-SIN
+X-Cache: HIT
+x-cache-hits: 390
+x-timer: S1512664564.270918,VS0,VE0
+Vary: Accept-Encoding
+Strict-Transport-Security: max-age=31556926; includeSubDomains; preload
+Timing-Allow-Origin: *
+X-Firefox-Spdy: h2
+----------------------------------------------------------
+https://www.google-analytics.com/r/collect?v=1&_v=j66&a=1055224622&t=pageview&_s=1&dl=https%3A%2F%2Fpro.teechip.com%2Flehoang123url13&dp=%2Flehoang123url13&ul=vi-vn&de=UTF-8&dt=lehoang123Title&sd=24-bit&sr=1600x900&vp=1600x767&je=0&_u=yCCAAEADQ~&jid=2079637021&gjid=613758762&cid=1740203298.1512660809&tid=UA-92184812-1&_gid=78745527.1512660809&_r=1&z=379596951
+
+GET /r/collect?v=1&_v=j66&a=1055224622&t=pageview&_s=1&dl=https%3A%2F%2Fpro.teechip.com%2Flehoang123url13&dp=%2Flehoang123url13&ul=vi-vn&de=UTF-8&dt=lehoang123Title&sd=24-bit&sr=1600x900&vp=1600x767&je=0&_u=yCCAAEADQ~&jid=2079637021&gjid=613758762&cid=1740203298.1512660809&tid=UA-92184812-1&_gid=78745527.1512660809&_r=1&z=379596951 HTTP/1.1
+Host: www.google-analytics.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:49.0) Gecko/20100101 Firefox/49.0
+Accept: */*
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+Referer: https://pro.teechip.com/lehoang123url13
+Connection: keep-alive
+
+HTTP/2.0 200 OK
+Access-Control-Allow-Origin: *
+Date: Thu, 07 Dec 2017 16:36:04 GMT
+Pragma: no-cache
+Expires: Fri, 01 Jan 1990 00:00:00 GMT
+Cache-Control: no-cache, no-store, must-revalidate
+Last-Modified: Sun, 17 May 1998 03:00:00 GMT
+X-Content-Type-Options: nosniff
+Content-Type: image/gif
+Server: Golfe2
+Content-Length: 35
+Alt-Svc: hq=":443"; ma=2592000; quic=51303431; quic=51303339; quic=51303338; quic=51303337; quic=51303335,quic=":443"; ma=2592000; v="41,39,38,37,35"
+X-Firefox-Spdy: h2
+----------------------------------------------------------
+https://m.stripe.network/inner.html#referrer=https%3A%2F%2Fpro.teechip.com%2Fmanager%2Fcampaigns%2Fcreate&title=lehoang123Title&url=https%3A%2F%2Fpro.teechip.com%2Flehoang123url13&muid=e2d0b63f-1d07-491a-87a3-1fe98069559c&sid=6178356c-76ba-4d02-8c43-83d09f216170&preview=false&
+
+GET /inner.html HTTP/1.1
+Host: m.stripe.network
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:49.0) Gecko/20100101 Firefox/49.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+Referer: https://js.stripe.com/v2/m/outer.html
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+If-Modified-Since: Mon, 17 Jul 2017 22:20:22 GMT
+If-None-Match: W/"596d3826-712d"
+
+HTTP/2.0 304 Not Modified
+Date: Thu, 07 Dec 2017 16:36:04 GMT
+Via: 1.1 varnish
+Cache-Control: public, max-age=300
+Etag: W/"596d3826-712d"
+Age: 58
+x-served-by: cache-sin18028-SIN
+X-Cache: HIT
+x-cache-hits: 84
+x-timer: S1512664564.425382,VS0,VE0
+Vary: Accept-Encoding
+X-Firefox-Spdy: h2
+----------------------------------------------------------
+https://dis.us.criteo.com/dis/dis.aspx?p=36027&cb=67223302968&ref=https%3A%2F%2Fpro.teechip.com%2Fmanager%2Fcampaigns%2Fcreate&sc_r=1600x900&sc_d=24
+
+GET /dis/dis.aspx?p=36027&cb=67223302968&ref=https%3A%2F%2Fpro.teechip.com%2Fmanager%2Fcampaigns%2Fcreate&sc_r=1600x900&sc_d=24 HTTP/1.1
+Host: dis.us.criteo.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:49.0) Gecko/20100101 Firefox/49.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+Referer: https://pro.teechip.com/lehoang123url13
+Cookie: uid=ce8f8db4-b062-4092-b17d-7a24f890551c; eid=*13P9J%2bveNINPcbZN%2bSm05RPXgRMZleEE%2bV%2bwbHkOYPesp7KfMSw1qgW9vheOf%2b8Et
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+
+HTTP/1.1 200 OK
+Cache-Control: no-cache,no-cache
+Pragma: no-cache,no-cache
+Content-Type: text/html; charset=utf-8
+Content-Encoding: gzip
+Expires: Mon, 26 Jul 1997 05:00:00 GMT,Mon, 26 Jul 1997 05:00:00 GMT
+Vary: Accept-Encoding
+Server: Microsoft-IIS/8.5
+P3P: CP='CUR ADM OUR NOR STA NID', CP='CUR ADM OUR NOR STA NID'
+X-Powered-By: ASP.NET
+Date: Thu, 07 Dec 2017 16:36:04 GMT
+Content-Length: 938
+----------------------------------------------------------
+http://ocsp.digicert.com/
+
+POST / HTTP/1.1
+Host: ocsp.digicert.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:49.0) Gecko/20100101 Firefox/49.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate
+Content-Length: 83
+Content-Type: application/ocsp-request
+Connection: keep-alive
+0Q0O0M0K0I0	+
+HTTP/1.1 200 OK
+Accept-Ranges: bytes
+Cache-Control: max-age=172800
+Content-Type: application/ocsp-response
+Date: Thu, 07 Dec 2017 16:36:05 GMT
+Etag: "5a294e6d-1d7"
+Expires: Sat, 09 Dec 2017 16:36:05 GMT
+Last-Modified: Thu, 07 Dec 2017 14:21:33 GMT
+Server: ECS (sin/BF10)
+X-Cache: HIT
+Content-Length: 471
+----------------------------------------------------------
+https://stripensrq.global.ssl.fastly.net/s/e
+
+GET /s/e HTTP/1.1
+Host: stripensrq.global.ssl.fastly.net
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:49.0) Gecko/20100101 Firefox/49.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+Referer: https://m.stripe.network/inner.html
+Origin: https://m.stripe.network
+Connection: keep-alive
+
+HTTP/1.1 200 OK
+Server: Varnish
+Content-Type: text/vnd.stripensr
+Cache-Control: private, no-cache, no-store
+Access-Control-Allow-Origin: https://m.stripe.network
+Access-Control-Allow-Methods: OPTIONS, GET
+access-control-allow-credentials: true
+Access-Control-Expose-Headers: Server,Range,Content-Type
+access-control-allow-headers: Authorization,Content-Type,Accept,Origin,User-Agent,DNT,Cache-Control,Keep-Alive,X-Requested-With,If-Modified-Since,Range,X-Stripe-Csrf-Token
+Access-Control-Max-Age: 86400
+Content-Length: 0
+Accept-Ranges: bytes
+Date: Thu, 07 Dec 2017 16:36:05 GMT
+Via: 1.1 varnish
+Connection: close
+----------------------------------------------------------
+https://m.stripe.com/4
+
+POST /4 HTTP/1.1
+Host: m.stripe.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:49.0) Gecko/20100101 Firefox/49.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+Referer: https://m.stripe.network/inner.html
+Content-Length: 2440
+Content-Type: text/plain;charset=UTF-8
+Origin: https://m.stripe.network
+Cookie: m=e83357cd-08ed-4957-b7b4-c8907762b877
+Connection: keep-alive
+JTdCJTIydjIlMjIlM0ExJTJDJTIyaWQlMjIlM0ElMjI2Yjc3MDU0NTQwYmI2NTIxZjA4MjljNzBjYmIzNmVmNyUyMiUyQyUyMnQlMjIlM0E3NDQuNTclMkMlMjJ0YWclMjIlM0ElMjI0LjUuMTclMjIlMkMlMjJzcmMlMjIlM0ElMjJqcyUyMiUyQyUyMmElMjIlM0ElN0IlMjJhJTIyJTNBJTdCJTIydiUyMiUzQSUyMnRydWUlMjIlMkMlMjJ0JTIyJTNBMC4xNSU3RCUyQyUyMmIlMjIlM0ElN0IlMjJ2JTIyJTNBJTIyZmFsc2UlMjIlMkMlMjJ0JTIyJTNBMC4wNiU3RCUyQyUyMmMlMjIlM0ElN0IlMjJ2JTIyJTNBJTIydmktVk4lMkN2aSUyQ2VuLVVTJTJDZW4lMjIlMkMlMjJ0JTIyJTNBMC4wODUlN0QlMkMlMjJkJTIyJTNBJTdCJTIydiUyMiUzQSUyMldpbjY0JTIyJTJDJTIydCUyMiUzQTAuMDQlN0QlMkMlMjJlJTIyJTNBJTdCJTIydiUyMiUzQSUyMlNpbHZlcmxpZ2h0JTIwUGx1Zy1JbiUyQ25wY3RybC5kbGwlMkNhcHBsaWNhdGlvbiUyRngtc2lsdmVybGlnaHQlMkNzY3IlMkIlMkJhcHBsaWNhdGlvbiUyRngtc2lsdmVybGlnaHQtMiUyQyUyMiUyQyUyMnQlMjIlM0EwLjM2JTdEJTJDJTIyZiUyMiUzQSU3QiUyMnYlMjIlM0ElMjIxNjAwd184NjBoXzI0ZF8xciUyMiUyQyUyMnQlMjIlM0EwLjI1JTdEJTJDJTIyZyUyMiUzQSU3QiUyMnYlMjIlM0ElMjI3JTIyJTJDJTIydCUyMiUzQTAuMDk1JTdEJTJDJTIyaCUyMiUzQSU3QiUyMnYlMjIlM0ElMjJmYWxzZSUyMiUyQyUyMnQlMjIlM0EwLjA1NSU3RCUyQyUyMmklMjIlM0ElN0IlMjJ2JTIyJTNBJTIyc2Vzc2lvblN0b3JhZ2UtZW5hYmxlZCUyQyUyMGxvY2FsU3RvcmFnZS1lbmFibGVkJTIyJTJDJTIydCUyMiUzQTAuNDk1JTdEJTJDJTIyaiUyMiUzQSU3QiUyMnYlMjIlM0ElMjIwMDAwMDAwMTAxMTExMDExMTAxMDAxMTAxMTAwMTExMTAxMTExMDEwMTEwMTAxMTEwMTExMTEwJTIyJTJDJTIydCUyMiUzQTc0Mi4zNiUyQyUyMmF0JTIyJTNBNTIyLjYxJTdEJTJDJTIyayUyMiUzQSU3QiUyMnYlMjIlM0ElMjIlMjIlMkMlMjJ0JTIyJTNBMC4wOCU3RCUyQyUyMmwlMjIlM0ElN0IlMjJ2JTIyJTNBJTIyTW96aWxsYSUyRjUuMCUyMChXaW5kb3dzJTIwTlQlMjAxMC4wJTNCJTIwV2luNjQlM0IlMjB4NjQlM0IlMjBydiUzQTQ5LjApJTIwR2Vja28lMkYyMDEwMDEwMSUyMEZpcmVmb3glMkY0OS4wJTIyJTJDJTIydCUyMiUzQTAuMTQlN0QlMkMlMjJtJTIyJTNBJTdCJTIydiUyMiUzQSUyMiUyMiUyQyUyMnQlMjIlM0EwLjE3JTdEJTJDJTIybiUyMiUzQSU3QiUyMnYlMjIlM0ElMjJmYWxzZSUyMiUyQyUyMnQlMjIlM0ExMjUuNzklMkMlMjJhdCUyMiUzQTIuMjA1JTdEJTJDJTIybyUyMiUzQSU3QiUyMnYlMjIlM0ElMjI4OTJiYWE2YmQ5YjM0NGE1YzdlMmRlZjMxNjRkOTI3MCUyMiUyQyUyMnQlMjIlM0EyMS43MzUlN0QlN0QlMkMlMjJiJTIyJTNBJTdCJTIyYSUyMiUzQSUyMmh0dHBzJTNBJTJGJTJGcHJvLnRlZWNoaXAuY29tJTJGbWFuYWdlciUyRmNhbXBhaWducyUyRmNyZWF0ZSUyMiUyQyUyMmIlMjIlM0ElMjJodHRwcyUzQSUyRiUyRnByby50ZWVjaGlwLmNvbSUyRmxlaG9hbmcxMjN1cmwxMyUyMiUyQyUyMmMlMjIlM0ElMjJsZWhvYW5nMTIzVGl0bGUlMjIlMkMlMjJkJTIyJTNBJTIyZTJkMGI2M2YtMWQwNy00OTFhLTg3YTMtMWZlOTgwNjk1NTljJTIyJTJDJTIyZSUyMiUzQSUyMjYxNzgzNTZjLTc2YmEtNGQwMi04YzQzLTgzZDA5ZjIxNjE3MCUyMiUyQyUyMmYlMjIlM0FmYWxzZSUyQyUyMmclMjIlM0F0cnVlJTJDJTIyaCUyMiUzQXRydWUlMkMlMjJpJTIyJTNBJTVCJTIybG9jYXRpb24lMjIlNUQlMkMlMjJqJTIyJTNBJTVCJTVEJTJDJTIybiUyMiUzQTE1OC40MyU3RCU3RA==
+HTTP/2.0 200 OK
+Server: nginx
+Date: Thu, 07 Dec 2017 16:36:05 GMT
+Content-Type: text/plain
+Vary: Accept-Encoding
+Set-Cookie: m=e83357cd-08ed-4957-b7b4-c8907762b877; Expires=Sun, 05 Dec 2027 16:36:05 GMT; Domain=m.stripe.com; Secure; HTTPOnly
+Access-Control-Allow-Origin: https://m.stripe.network
+access-control-allow-credentials: true
+access-control-allow-headers: Content-Type
+Strict-Transport-Security: max-age=31556926; includeSubDomains; preload
+Content-Encoding: gzip
+X-Firefox-Spdy: h2
+----------------------------------------------------------
+http://gn.symcd.com/
+
+POST / HTTP/1.1
+Host: gn.symcd.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:49.0) Gecko/20100101 Firefox/49.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate
+Content-Length: 83
+Content-Type: application/ocsp-request
+Connection: keep-alive
+0Q0O0M0K0I0	+
+HTTP/1.1 200 OK
+Server: nginx/1.10.2
+Content-Type: application/ocsp-response
+Content-Length: 1419
+content-transfer-encoding: binary
+Cache-Control: max-age=319063, public, no-transform, must-revalidate
+Last-Modified: Mon, 4 Dec 2017 09:10:54 GMT
+Expires: Mon, 11 Dec 2017 09:10:54 GMT
+Date: Thu, 07 Dec 2017 16:36:05 GMT
+Connection: keep-alive
+----------------------------------------------------------
+https://stripensrq.global.ssl.fastly.net/s/o
+
+GET /s/o HTTP/1.1
+Host: stripensrq.global.ssl.fastly.net
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:49.0) Gecko/20100101 Firefox/49.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+Referer: https://m.stripe.network/inner.html
+Origin: https://m.stripe.network
+Connection: keep-alive
+
+HTTP/1.1 200 OK
+Server: Varnish
+Content-Type: text/vnd.stripensr
+Cache-Control: private, no-cache, no-store
+Access-Control-Allow-Origin: https://m.stripe.network
+Access-Control-Allow-Methods: OPTIONS, GET
+access-control-allow-credentials: true
+Access-Control-Expose-Headers: Server,Range,Content-Type
+access-control-allow-headers: Authorization,Content-Type,Accept,Origin,User-Agent,DNT,Cache-Control,Keep-Alive,X-Requested-With,If-Modified-Since,Range,X-Stripe-Csrf-Token
+Access-Control-Max-Age: 86400
+Content-Length: 352
+Accept-Ranges: bytes
+Date: Thu, 07 Dec 2017 16:36:06 GMT
+Via: 1.1 varnish
+Connection: close
+----------------------------------------------------------
+https://us-u.openx.net/w/1.0/cm?id=5c627885-3475-4ed8-a54e-8d0222f57cbe&d=MACRO&r=https%3a%2f%2fdis.criteo.com%2frex%2fmatch.aspx%3fc%3d31%26uid%3d
+
+GET /w/1.0/cm?id=5c627885-3475-4ed8-a54e-8d0222f57cbe&d=MACRO&r=https%3a%2f%2fdis.criteo.com%2frex%2fmatch.aspx%3fc%3d31%26uid%3d HTTP/1.1
+Host: us-u.openx.net
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:49.0) Gecko/20100101 Firefox/49.0
+Accept: */*
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+
+HTTP/1.1 302 Moved Temporarily
+Set-Cookie: i=3766d6ae-d316-4673-bcd1-afcae48bbe24|1512664566; Version=1; Expires=Fri, 07-Dec-2018 16:36:06 GMT; Max-Age=31536000; Domain=.openx.net; Path=/
+Server: OXGW/11.174.1
+P3P: CP="CUR ADM OUR NOR STA NID"
+Location: https://us-u.openx.net/w/1.0/cm?cc=1&id=5c627885-3475-4ed8-a54e-8d0222f57cbe&d=MACRO&r=https%3a%2f%2fdis.criteo.com%2frex%2fmatch.aspx%3fc%3d31%26uid%3d
+Date: Thu, 07 Dec 2017 16:36:06 GMT
+Content-Length: 0
+----------------------------------------------------------
+https://us-u.openx.net/w/1.0/cm?cc=1&id=5c627885-3475-4ed8-a54e-8d0222f57cbe&d=MACRO&r=https%3a%2f%2fdis.criteo.com%2frex%2fmatch.aspx%3fc%3d31%26uid%3d
+
+GET /w/1.0/cm?cc=1&id=5c627885-3475-4ed8-a54e-8d0222f57cbe&d=MACRO&r=https%3a%2f%2fdis.criteo.com%2frex%2fmatch.aspx%3fc%3d31%26uid%3d HTTP/1.1
+Host: us-u.openx.net
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:49.0) Gecko/20100101 Firefox/49.0
+Accept: */*
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+Cookie: i=3766d6ae-d316-4673-bcd1-afcae48bbe24|1512664566
+Connection: keep-alive
+
+HTTP/1.1 302 Moved Temporarily
+Vary: Accept
+Set-Cookie: i=3766d6ae-d316-4673-bcd1-afcae48bbe24|1512664566; Version=1; Expires=Fri, 07-Dec-2018 16:36:06 GMT; Max-Age=31536000; Domain=.openx.net; Path=/
+Server: OXGW/11.174.1
+P3P: CP="CUR ADM OUR NOR STA NID"
+Location: https://dis.criteo.com/rex/match.aspx?c=31&uid=08662711-5e6d-460e-8e94-61dcc0b03230
+Date: Thu, 07 Dec 2017 16:36:06 GMT
+Content-Type: text/html
+Content-Length: 0
+----------------------------------------------------------
+https://m.stripe.com/4
+
+POST /4 HTTP/1.1
+Host: m.stripe.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:49.0) Gecko/20100101 Firefox/49.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+Referer: https://m.stripe.network/inner.html
+Content-Length: 608
+Content-Type: text/plain;charset=UTF-8
+Origin: https://m.stripe.network
+Cookie: m=e83357cd-08ed-4957-b7b4-c8907762b877
+Connection: keep-alive
+JTdCJTIyc291cmNlJTIyJTNBJTIybnNyJTIyJTJDJTIyZGF0YSUyMiUzQSU3QiUyMmElMjIlM0ExNTglMkMlMjJiJTIyJTNBMTgzJTJDJTIyYyUyMiUzQSUyMkEyLkdUUDh3JTJCbVVYQkFHNEpSUWhGbUVXWWIzalgxQUtkNThYS3B4T3FKU3dHRSUzRC5QMjlCUFRFM01TNHlNekl1TVRBeUxqUXdKbTlDUFRFd0ptOURQVFV6TmladlJEMHhORFV5Sm05RlBUVTVPRFExSm05R1BUSXpNelE1Sm05SFBUQW1iMGc5TWpreU1EQW1iMGs5TUNadlNqMHdMakF3TUNadlN6MUJjMmxoSm05TVBWTkpUaVp2VFQwd0ptOU9QVEFtYjA4OVZFeFRkakV1TWladlVEMUZRMFJJUlMxU1UwRXRRVVZUTVRJNExVZERUUzFUU0VFeU5UWW1iMUU5TW1wdGFqZHNOWEpUZHpCNVZtSWxNa1oyYkZkQldXdExKVEpHV1VKM2F5VXpSQ1p2VWoxUVkzVkZKVEpHSlRKR1pGSnVjVVZ6YkVGdVlWQlljVmhvUnpCM1dVZFpKVE5FJTIyJTdEJTdE
+HTTP/2.0 200 OK
+Server: nginx
+Date: Thu, 07 Dec 2017 16:36:06 GMT
+Content-Type: text/plain
+Vary: Accept-Encoding
+Set-Cookie: m=e83357cd-08ed-4957-b7b4-c8907762b877; Expires=Sun, 05 Dec 2027 16:36:06 GMT; Domain=m.stripe.com; Secure; HTTPOnly
+Access-Control-Allow-Origin: https://m.stripe.network
+access-control-allow-credentials: true
+access-control-allow-headers: Content-Type
+Strict-Transport-Security: max-age=31556926; includeSubDomains; preload
+Content-Encoding: gzip
+X-Firefox-Spdy: h2
+----------------------------------------------------------
+https://dis.criteo.com/rex/match.aspx?c=31&uid=08662711-5e6d-460e-8e94-61dcc0b03230
+
+GET /rex/match.aspx?c=31&uid=08662711-5e6d-460e-8e94-61dcc0b03230 HTTP/1.1
+Host: dis.criteo.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:49.0) Gecko/20100101 Firefox/49.0
+Accept: */*
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+Cookie: uid=ce8f8db4-b062-4092-b17d-7a24f890551c; eid=*13P9J%2bveNINPcbZN%2bSm05RPXgRMZleEE%2bV%2bwbHkOYPesp7KfMSw1qgW9vheOf%2b8Et
+Connection: keep-alive
+
+HTTP/1.1 200 OK
+Cache-Control: private
+Pragma: no-cache
+Content-Type: image/gif
+Expires: Mon, 26 Jul 1997 05:00:00 GMT
+Server: Microsoft-IIS/8.5
+P3P: CP='CUR ADM OUR NOR STA NID'
+Set-Cookie: eid=*13P9J%2bveNINPcbZN%2bSm05RPXgRMZleEE%2bV%2bwbHkOYPes%2fPqQDm6sQDZNd9oQQULFOlMj1Jpm5VJpGQi4%2bYCGS84aG%2bAVQVPSM5qlxaAq7cZqU6GBH9gTrZ9ZRbvoXcRNQ; domain=.criteo.com; expires=Thu, 07-Jun-2018 16:36:06 GMT; path=/
+X-Powered-By: ASP.NET
+Date: Thu, 07 Dec 2017 16:36:05 GMT
+Content-Length: 43
+----------------------------------------------------------

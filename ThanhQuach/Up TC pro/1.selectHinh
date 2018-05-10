@@ -1,0 +1,499 @@
+https://scalable-licensing.s3.amazonaws.com/
+
+POST / HTTP/1.1
+Host: scalable-licensing.s3.amazonaws.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:49.0) Gecko/20100101 Firefox/49.0
+Accept: application/json
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+Referer: https://pro.teechip.com/manager/campaigns/create/product?displayProduct=4
+Content-Length: 746960
+Content-Type: multipart/form-data; boundary=---------------------------11595281256897
+Origin: https://pro.teechip.com
+Connection: keep-alive
+-----------------------------11595281256897
+Content-Disposition: form-data; name="key"
+
+uploads/2017/12/03/fd7a50989c85635a.png
+-----------------------------11595281256897
+Content-Disposition: form-data; name="bucket"
+
+scalable-licensing
+-----------------------------11595281256897
+Content-Disposition: form-data; name="AWSAccessKeyId"
+
+AKIAJE4QLGLTY4DH4WRA
+-----------------------------11595281256897
+Content-Disposition: form-data; name="Policy"
+
+eyJleHBpcmF0aW9uIjoiMzAwMC0wMS0wMVQwMDowMDowMFoiLCJjb25kaXRpb25zIjpbeyJidWNrZXQiOiJzY2FsYWJsZS1saWNlbnNpbmcifSxbInN0YXJ0cy13aXRoIiwiJGtleSIsInVwbG9hZHMvIl0seyJhY2wiOiJwdWJsaWMtcmVhZCJ9XX0=
+-----------------------------11595281256897
+Content-Disposition: form-data; name="Signature"
+
+4yVrFVzCgzWg2BH8RkrI6LVi11Y=
+-----------------------------11595281256897
+Content-Disposition: form-data; name="acl"
+
+public-read
+-----------------------------11595281256897
+Content-Disposition: form-data; name="file"; filename="4 CL031017.png"
+Content-Type: image/png
+
+‰PNG
+
+
+HTTP/1.1 204 No Content
+x-amz-id-2: 21l+AY3n4p6t3+2oo4wraBsqcghgAHFZfXO4Uj7INXhlKGFlb25ZlQRTbOqxfAk5DWnzUfvDozU=
+x-amz-request-id: 68FCE1E985021C34
+Date: Sun, 03 Dec 2017 16:54:51 GMT
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Methods: GET, PUT, POST, DELETE, HEAD
+Access-Control-Max-Age: 3000
+Vary: Origin, Access-Control-Request-Headers, Access-Control-Request-Method
+Etag: "5fc03f4ff709d7fff5ab95a79992a095"
+Location: https://scalable-licensing.s3.amazonaws.com/uploads%2F2017%2F12%2F03%2Ffd7a50989c85635a.png
+Server: AmazonS3
+----------------------------------------------------------
+https://api.scalablelicensing.com/rest/artworks
+
+OPTIONS /rest/artworks HTTP/1.1
+Host: api.scalablelicensing.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:49.0) Gecko/20100101 Firefox/49.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+Access-Control-Request-Method: POST
+Access-Control-Request-Headers: content-type,x-xsrf-token
+Origin: https://pro.teechip.com
+Connection: keep-alive
+
+HTTP/1.1 204 No Content
+access-control-allow-headers: content-type,x-xsrf-token
+Access-Control-Allow-Methods: GET,HEAD,PUT,PATCH,POST,DELETE
+Access-Control-Allow-Origin: *
+Content-Length: 0
+Date: Sun, 03 Dec 2017 16:54:52 GMT
+Server: nginx/1.4.6 (Ubuntu)
+Vary: Access-Control-Request-Headers
+Connection: keep-alive
+----------------------------------------------------------
+https://api.scalablelicensing.com/rest/artworks
+
+POST /rest/artworks HTTP/1.1
+Host: api.scalablelicensing.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:49.0) Gecko/20100101 Firefox/49.0
+Accept: application/json, text/plain, */*
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+x-xsrf-token: Z9IqXavy-FklShSm3cEO-rx97lcKCRksDjSs
+Content-Type: application/json
+Origin: https://pro.teechip.com
+Referer: https://pro.teechip.com/manager/campaigns/create/product?displayProduct=4
+Content-Length: 195
+Connection: keep-alive
+{"artwork":"https://scalable-licensing.s3.amazonaws.com/uploads/2017/12/03/fd7a50989c85635a.png","AB":{"ab-use-dpi":false,"marketplace":true,"single-add-buyer-cart":false,"cc-billing-zip":false}}
+HTTP/1.1 200 OK
+Access-Control-Allow-Origin: *
+Content-Type: application/json; charset=utf-8
+Date: Sun, 03 Dec 2017 16:54:52 GMT
+Etag: W/"55c-2cRSKRpKVvPb4LKjfWk5bSxvStc"
+Server: nginx/1.4.6 (Ubuntu)
+Content-Length: 1372
+Connection: keep-alive
+----------------------------------------------------------
+https://oo-prod.s3.amazonaws.com/public/artworks/2017/12/02/d6b06fb8a5ba59e1/artworkRaster/regular.png
+
+GET /public/artworks/2017/12/02/d6b06fb8a5ba59e1/artworkRaster/regular.png HTTP/1.1
+Host: oo-prod.s3.amazonaws.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:49.0) Gecko/20100101 Firefox/49.0
+Accept: */*
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+Referer: https://pro.teechip.com/manager/campaigns/create/product?displayProduct=4
+Connection: keep-alive
+If-Modified-Since: Sat, 02 Dec 2017 08:41:48 GMT
+If-None-Match: "5b3048ca18e75d77ea8b83bcd122a710"
+
+HTTP/1.1 304 Not Modified
+x-amz-id-2: LLLYqG17mdG/X1f/b14S4A8lzj+4oHMjgwkHunC1mjia41YN7uPNgV1aqDXhhO9LGKcgkcJMpV8=
+x-amz-request-id: 938BD77926AE1411
+Date: Sun, 03 Dec 2017 16:54:54 GMT
+Last-Modified: Sat, 02 Dec 2017 08:41:48 GMT
+Etag: "5b3048ca18e75d77ea8b83bcd122a710"
+Server: AmazonS3
+----------------------------------------------------------
+https://s3-us-west-2.amazonaws.com/scalable-licensing/public/blanks/i-phone-5-5s-case/feca3d.jpg
+
+GET /scalable-licensing/public/blanks/i-phone-5-5s-case/feca3d.jpg HTTP/1.1
+Host: s3-us-west-2.amazonaws.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:49.0) Gecko/20100101 Firefox/49.0
+Accept: */*
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+Referer: https://pro.teechip.com/manager/campaigns/create/product?displayProduct=3&displaySide=front
+Connection: keep-alive
+
+HTTP/1.1 200 OK
+x-amz-id-2: e8C8CbGq3T4hGNG8efExnuPnSlxTVXV0hRFb486A3I8eqcwxUJpDF6RPvBeuFF0syR6UeneE5aM=
+x-amz-request-id: 3BE8A378742AD39A
+Date: Sun, 03 Dec 2017 16:54:57 GMT
+Last-Modified: Thu, 09 Nov 2017 02:00:59 GMT
+Etag: "73c6dc206315bf5fc953d1dd055889bf"
+Accept-Ranges: bytes
+Content-Type: image/jpeg
+Content-Length: 11308
+Server: AmazonS3
+----------------------------------------------------------
+https://scalable-licensing.s3.amazonaws.com/
+
+POST / HTTP/1.1
+Host: scalable-licensing.s3.amazonaws.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:49.0) Gecko/20100101 Firefox/49.0
+Accept: application/json
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+Referer: https://pro.teechip.com/manager/campaigns/create/product?displayProduct=3&displaySide=front
+Content-Length: 746960
+Content-Type: multipart/form-data; boundary=---------------------------57682809221217
+Origin: https://pro.teechip.com
+Connection: keep-alive
+-----------------------------57682809221217
+Content-Disposition: form-data; name="key"
+
+uploads/2017/12/03/17e92681a65fcdb8.png
+-----------------------------57682809221217
+Content-Disposition: form-data; name="bucket"
+
+scalable-licensing
+-----------------------------57682809221217
+Content-Disposition: form-data; name="AWSAccessKeyId"
+
+AKIAJE4QLGLTY4DH4WRA
+-----------------------------57682809221217
+Content-Disposition: form-data; name="Policy"
+
+eyJleHBpcmF0aW9uIjoiMzAwMC0wMS0wMVQwMDowMDowMFoiLCJjb25kaXRpb25zIjpbeyJidWNrZXQiOiJzY2FsYWJsZS1saWNlbnNpbmcifSxbInN0YXJ0cy13aXRoIiwiJGtleSIsInVwbG9hZHMvIl0seyJhY2wiOiJwdWJsaWMtcmVhZCJ9XX0=
+-----------------------------57682809221217
+Content-Disposition: form-data; name="Signature"
+
+4yVrFVzCgzWg2BH8RkrI6LVi11Y=
+-----------------------------57682809221217
+Content-Disposition: form-data; name="acl"
+
+public-read
+-----------------------------57682809221217
+Content-Disposition: form-data; name="file"; filename="4 CL031017.png"
+Content-Type: image/png
+
+‰PNG
+
+
+HTTP/1.1 204 No Content
+x-amz-id-2: O7pAEzQ/BMUust13JykY/CJqZpY+hbsoNycrgyUWLUT5oFyjAacOEy21J+7Ls0MdvPNvSon5KAw=
+x-amz-request-id: 0CF82C5372812463
+Date: Sun, 03 Dec 2017 16:55:09 GMT
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Methods: GET, PUT, POST, DELETE, HEAD
+Access-Control-Max-Age: 3000
+Vary: Origin, Access-Control-Request-Headers, Access-Control-Request-Method
+Etag: "5fc03f4ff709d7fff5ab95a79992a095"
+Location: https://scalable-licensing.s3.amazonaws.com/uploads%2F2017%2F12%2F03%2F17e92681a65fcdb8.png
+Server: AmazonS3
+----------------------------------------------------------
+https://api.scalablelicensing.com/rest/artworks
+
+OPTIONS /rest/artworks HTTP/1.1
+Host: api.scalablelicensing.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:49.0) Gecko/20100101 Firefox/49.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+Access-Control-Request-Method: POST
+Access-Control-Request-Headers: content-type,x-xsrf-token
+Origin: https://pro.teechip.com
+Connection: keep-alive
+
+HTTP/1.1 204 No Content
+access-control-allow-headers: content-type,x-xsrf-token
+Access-Control-Allow-Methods: GET,HEAD,PUT,PATCH,POST,DELETE
+Access-Control-Allow-Origin: *
+Content-Length: 0
+Date: Sun, 03 Dec 2017 16:55:09 GMT
+Server: nginx/1.4.6 (Ubuntu)
+Vary: Access-Control-Request-Headers
+Connection: keep-alive
+----------------------------------------------------------
+https://api.scalablelicensing.com/rest/artworks
+
+POST /rest/artworks HTTP/1.1
+Host: api.scalablelicensing.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:49.0) Gecko/20100101 Firefox/49.0
+Accept: application/json, text/plain, */*
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+x-xsrf-token: Z9IqXavy-FklShSm3cEO-rx97lcKCRksDjSs
+Content-Type: application/json
+Origin: https://pro.teechip.com
+Referer: https://pro.teechip.com/manager/campaigns/create/product?displayProduct=3&displaySide=front
+Content-Length: 195
+Connection: keep-alive
+{"artwork":"https://scalable-licensing.s3.amazonaws.com/uploads/2017/12/03/17e92681a65fcdb8.png","AB":{"ab-use-dpi":false,"marketplace":true,"single-add-buyer-cart":false,"cc-billing-zip":false}}
+HTTP/1.1 200 OK
+Access-Control-Allow-Origin: *
+Content-Type: application/json; charset=utf-8
+Date: Sun, 03 Dec 2017 16:55:09 GMT
+Etag: W/"55c-2cRSKRpKVvPb4LKjfWk5bSxvStc"
+Server: nginx/1.4.6 (Ubuntu)
+Content-Length: 1372
+Connection: keep-alive
+----------------------------------------------------------
+https://s3-us-west-2.amazonaws.com/scalable-licensing/public/blanks/women-bellaflowy-tank-v2-front/ff8d94.jpg
+
+GET /scalable-licensing/public/blanks/women-bellaflowy-tank-v2-front/ff8d94.jpg HTTP/1.1
+Host: s3-us-west-2.amazonaws.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:49.0) Gecko/20100101 Firefox/49.0
+Accept: */*
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+Referer: https://pro.teechip.com/manager/campaigns/create/product?displayProduct=2&displaySide=front
+Connection: keep-alive
+
+HTTP/1.1 200 OK
+x-amz-id-2: dozkOPIo7ado8cPyZ6liYGSgEv/PdWqhs0YqCFjqLs1XMFxPWWnpeGnKTGmt8H8MPSzOMOTdCOE=
+x-amz-request-id: CA698405583822CD
+Date: Sun, 03 Dec 2017 16:55:18 GMT
+Last-Modified: Thu, 09 Nov 2017 01:53:57 GMT
+Etag: "0beab07dfff2e76759cfeecc6cdfa08b"
+Accept-Ranges: bytes
+Content-Type: image/jpeg
+Content-Length: 16667
+Server: AmazonS3
+----------------------------------------------------------
+https://s3-us-west-2.amazonaws.com/scalable-licensing/public/blanks/women-bellaflowy-tank-v2-back/ff8d94.jpg
+
+GET /scalable-licensing/public/blanks/women-bellaflowy-tank-v2-back/ff8d94.jpg HTTP/1.1
+Host: s3-us-west-2.amazonaws.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:49.0) Gecko/20100101 Firefox/49.0
+Accept: */*
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+Referer: https://pro.teechip.com/manager/campaigns/create/product?displayProduct=2&displaySide=front
+Connection: keep-alive
+
+HTTP/1.1 200 OK
+x-amz-id-2: yzakOzWwfjh5AUnuATCHCJsY6i1jZsH1NMFkk/ne+Ow/dZiqY96MIfhpiU+wo0ik9J6ff8UGT7g=
+x-amz-request-id: D5329490A581B4BD
+Date: Sun, 03 Dec 2017 16:55:18 GMT
+Last-Modified: Thu, 09 Nov 2017 01:53:56 GMT
+Etag: "9a766e0405ea9cbf39cd433e592580e2"
+Accept-Ranges: bytes
+Content-Type: image/jpeg
+Content-Length: 14661
+Server: AmazonS3
+----------------------------------------------------------
+https://scalable-licensing.s3.amazonaws.com/
+
+POST / HTTP/1.1
+Host: scalable-licensing.s3.amazonaws.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:49.0) Gecko/20100101 Firefox/49.0
+Accept: application/json
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+Referer: https://pro.teechip.com/manager/campaigns/create/product?displayProduct=2&displaySide=front
+Content-Length: 746944
+Content-Type: multipart/form-data; boundary=---------------------------187209074678
+Origin: https://pro.teechip.com
+Connection: keep-alive
+-----------------------------187209074678
+Content-Disposition: form-data; name="key"
+
+uploads/2017/12/03/66a6f60eb30e799e.png
+-----------------------------187209074678
+Content-Disposition: form-data; name="bucket"
+
+scalable-licensing
+-----------------------------187209074678
+Content-Disposition: form-data; name="AWSAccessKeyId"
+
+AKIAJE4QLGLTY4DH4WRA
+-----------------------------187209074678
+Content-Disposition: form-data; name="Policy"
+
+eyJleHBpcmF0aW9uIjoiMzAwMC0wMS0wMVQwMDowMDowMFoiLCJjb25kaXRpb25zIjpbeyJidWNrZXQiOiJzY2FsYWJsZS1saWNlbnNpbmcifSxbInN0YXJ0cy13aXRoIiwiJGtleSIsInVwbG9hZHMvIl0seyJhY2wiOiJwdWJsaWMtcmVhZCJ9XX0=
+-----------------------------187209074678
+Content-Disposition: form-data; name="Signature"
+
+4yVrFVzCgzWg2BH8RkrI6LVi11Y=
+-----------------------------187209074678
+Content-Disposition: form-data; name="acl"
+
+public-read
+-----------------------------187209074678
+Content-Disposition: form-data; name="file"; filename="4 CL031017.png"
+Content-Type: image/png
+
+‰PNG
+
+
+HTTP/1.1 204 No Content
+x-amz-id-2: RTDbb6Ply6bUIKy6A4ceaYoMup9JwD34YDpeEeXt1VAttd4hfgdW7GhfX30Ju4Dh0VcTManpzpM=
+x-amz-request-id: 059268F15D7586A1
+Date: Sun, 03 Dec 2017 16:55:21 GMT
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Methods: GET, PUT, POST, DELETE, HEAD
+Access-Control-Max-Age: 3000
+Vary: Origin, Access-Control-Request-Headers, Access-Control-Request-Method
+Etag: "5fc03f4ff709d7fff5ab95a79992a095"
+Location: https://scalable-licensing.s3.amazonaws.com/uploads%2F2017%2F12%2F03%2F66a6f60eb30e799e.png
+Server: AmazonS3
+----------------------------------------------------------
+https://api.scalablelicensing.com/rest/artworks
+
+OPTIONS /rest/artworks HTTP/1.1
+Host: api.scalablelicensing.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:49.0) Gecko/20100101 Firefox/49.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+Access-Control-Request-Method: POST
+Access-Control-Request-Headers: content-type,x-xsrf-token
+Origin: https://pro.teechip.com
+Connection: keep-alive
+
+HTTP/1.1 204 No Content
+access-control-allow-headers: content-type,x-xsrf-token
+Access-Control-Allow-Methods: GET,HEAD,PUT,PATCH,POST,DELETE
+Access-Control-Allow-Origin: *
+Content-Length: 0
+Date: Sun, 03 Dec 2017 16:55:21 GMT
+Server: nginx/1.4.6 (Ubuntu)
+Vary: Access-Control-Request-Headers
+Connection: keep-alive
+----------------------------------------------------------
+https://api.scalablelicensing.com/rest/artworks
+
+POST /rest/artworks HTTP/1.1
+Host: api.scalablelicensing.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:49.0) Gecko/20100101 Firefox/49.0
+Accept: application/json, text/plain, */*
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+x-xsrf-token: Z9IqXavy-FklShSm3cEO-rx97lcKCRksDjSs
+Content-Type: application/json
+Origin: https://pro.teechip.com
+Referer: https://pro.teechip.com/manager/campaigns/create/product?displayProduct=2&displaySide=front
+Content-Length: 195
+Connection: keep-alive
+{"artwork":"https://scalable-licensing.s3.amazonaws.com/uploads/2017/12/03/66a6f60eb30e799e.png","AB":{"ab-use-dpi":false,"marketplace":true,"single-add-buyer-cart":false,"cc-billing-zip":false}}
+HTTP/1.1 200 OK
+Access-Control-Allow-Origin: *
+Content-Type: application/json; charset=utf-8
+Date: Sun, 03 Dec 2017 16:55:22 GMT
+Etag: W/"55c-2cRSKRpKVvPb4LKjfWk5bSxvStc"
+Server: nginx/1.4.6 (Ubuntu)
+Content-Length: 1372
+Connection: keep-alive
+----------------------------------------------------------
+https://scalable-licensing.s3.amazonaws.com/
+
+POST / HTTP/1.1
+Host: scalable-licensing.s3.amazonaws.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:49.0) Gecko/20100101 Firefox/49.0
+Accept: application/json
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+Referer: https://pro.teechip.com/manager/campaigns/create/product?displayProduct=1&displaySide=front
+Content-Length: 746960
+Content-Type: multipart/form-data; boundary=---------------------------11217202065006
+Origin: https://pro.teechip.com
+Connection: keep-alive
+-----------------------------11217202065006
+Content-Disposition: form-data; name="key"
+
+uploads/2017/12/03/193350b79b35a3c9.png
+-----------------------------11217202065006
+Content-Disposition: form-data; name="bucket"
+
+scalable-licensing
+-----------------------------11217202065006
+Content-Disposition: form-data; name="AWSAccessKeyId"
+
+AKIAJE4QLGLTY4DH4WRA
+-----------------------------11217202065006
+Content-Disposition: form-data; name="Policy"
+
+eyJleHBpcmF0aW9uIjoiMzAwMC0wMS0wMVQwMDowMDowMFoiLCJjb25kaXRpb25zIjpbeyJidWNrZXQiOiJzY2FsYWJsZS1saWNlbnNpbmcifSxbInN0YXJ0cy13aXRoIiwiJGtleSIsInVwbG9hZHMvIl0seyJhY2wiOiJwdWJsaWMtcmVhZCJ9XX0=
+-----------------------------11217202065006
+Content-Disposition: form-data; name="Signature"
+
+4yVrFVzCgzWg2BH8RkrI6LVi11Y=
+-----------------------------11217202065006
+Content-Disposition: form-data; name="acl"
+
+public-read
+-----------------------------11217202065006
+Content-Disposition: form-data; name="file"; filename="4 CL031017.png"
+Content-Type: image/png
+
+‰PNG
+
+
+HTTP/1.1 204 No Content
+x-amz-id-2: Fd8SqYiw6mgBuxA1YDWT8paPUqqVQyVlgie8uE/f/B7B+dX0aR5KWR2BRN4oedXjaCmIsrpai7Y=
+x-amz-request-id: 487A02C70BCE5156
+Date: Sun, 03 Dec 2017 16:55:27 GMT
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Methods: GET, PUT, POST, DELETE, HEAD
+Access-Control-Max-Age: 3000
+Vary: Origin, Access-Control-Request-Headers, Access-Control-Request-Method
+Etag: "5fc03f4ff709d7fff5ab95a79992a095"
+Location: https://scalable-licensing.s3.amazonaws.com/uploads%2F2017%2F12%2F03%2F193350b79b35a3c9.png
+Server: AmazonS3
+----------------------------------------------------------
+https://api.scalablelicensing.com/rest/artworks
+
+OPTIONS /rest/artworks HTTP/1.1
+Host: api.scalablelicensing.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:49.0) Gecko/20100101 Firefox/49.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+Access-Control-Request-Method: POST
+Access-Control-Request-Headers: content-type,x-xsrf-token
+Origin: https://pro.teechip.com
+Connection: keep-alive
+
+HTTP/1.1 204 No Content
+access-control-allow-headers: content-type,x-xsrf-token
+Access-Control-Allow-Methods: GET,HEAD,PUT,PATCH,POST,DELETE
+Access-Control-Allow-Origin: *
+Content-Length: 0
+Date: Sun, 03 Dec 2017 16:55:27 GMT
+Server: nginx/1.4.6 (Ubuntu)
+Vary: Access-Control-Request-Headers
+Connection: keep-alive
+----------------------------------------------------------
+https://api.scalablelicensing.com/rest/artworks
+
+POST /rest/artworks HTTP/1.1
+Host: api.scalablelicensing.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:49.0) Gecko/20100101 Firefox/49.0
+Accept: application/json, text/plain, */*
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+x-xsrf-token: Z9IqXavy-FklShSm3cEO-rx97lcKCRksDjSs
+Content-Type: application/json
+Origin: https://pro.teechip.com
+Referer: https://pro.teechip.com/manager/campaigns/create/product?displayProduct=1&displaySide=front
+Content-Length: 195
+Connection: keep-alive
+{"artwork":"https://scalable-licensing.s3.amazonaws.com/uploads/2017/12/03/193350b79b35a3c9.png","AB":{"ab-use-dpi":false,"marketplace":true,"single-add-buyer-cart":false,"cc-billing-zip":false}}
+HTTP/1.1 200 OK
+Access-Control-Allow-Origin: *
+Content-Type: application/json; charset=utf-8
+Date: Sun, 03 Dec 2017 16:55:27 GMT
+Etag: W/"55c-2cRSKRpKVvPb4LKjfWk5bSxvStc"
+Server: nginx/1.4.6 (Ubuntu)
+Content-Length: 1372
+Connection: keep-alive
+----------------------------------------------------------

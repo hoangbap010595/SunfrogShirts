@@ -1,0 +1,624 @@
+https://manager.sunfrogshirts.com/Designer/imgs/145-VS-CoffeeMug-front.png
+
+GET /Designer/imgs/145-VS-CoffeeMug-front.png HTTP/1.1
+Host: manager.sunfrogshirts.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:56.0) Gecko/20100101 Firefox/56.0
+Accept: */*
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+Referer: https://manager.sunfrogshirts.com/Designer/
+Cookie: CFID=59562618; CFTOKEN=55d401ff0736f1e5-80DAB270-155D-1A11-126B61765FA64823; BNI_OatmealRaisin=0000000000000000000000005a00580a00000000; _ga=GA1.2.1225994226.1509897207; _gid=GA1.2.1699687416.1509897207; TawkConnectionTime=0; __tawkuuid=e::manager.sunfrogshirts.com::U7wD2tG4lQJ3Wf0gJNk/siuSWKyCaUwOQNdpMWOHapLzPq9a+RboVlpYsEGAUBOH::2; Tawk_570fb8a942666b050c7537f8=vs39.tawk.to::0
+Connection: keep-alive
+
+HTTP/1.1 200 OK
+Content-Type: image/png
+Last-Modified: Tue, 21 Mar 2017 14:54:27 GMT
+Accept-Ranges: bytes
+ETag: "805359953a2d21:0"
+Server: Microsoft-IIS/8.5
+X-Powered-By: ASP.NET
+Date: Sun, 05 Nov 2017 17:31:49 GMT
+Content-Length: 490624
+Set-Cookie: BNI_OatmealRaisin=0000000000000000000000005a00580a00000000; Path=/; HttpOnly
+----------------------------------------------------------
+https://manager.sunfrogshirts.com/Designer/imgs/145-VS-CoffeeMug-back.png
+
+GET /Designer/imgs/145-VS-CoffeeMug-back.png HTTP/1.1
+Host: manager.sunfrogshirts.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:56.0) Gecko/20100101 Firefox/56.0
+Accept: */*
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+Referer: https://manager.sunfrogshirts.com/Designer/
+Cookie: CFID=59562618; CFTOKEN=55d401ff0736f1e5-80DAB270-155D-1A11-126B61765FA64823; BNI_OatmealRaisin=0000000000000000000000005a00580a00000000; _ga=GA1.2.1225994226.1509897207; _gid=GA1.2.1699687416.1509897207; TawkConnectionTime=0; __tawkuuid=e::manager.sunfrogshirts.com::U7wD2tG4lQJ3Wf0gJNk/siuSWKyCaUwOQNdpMWOHapLzPq9a+RboVlpYsEGAUBOH::2; Tawk_570fb8a942666b050c7537f8=vs39.tawk.to::0
+Connection: keep-alive
+
+HTTP/1.1 200 OK
+Content-Type: image/png
+Last-Modified: Tue, 21 Mar 2017 14:54:27 GMT
+Accept-Ranges: bytes
+ETag: "805359953a2d21:0"
+Server: Microsoft-IIS/8.5
+X-Powered-By: ASP.NET
+Date: Sun, 05 Nov 2017 17:31:49 GMT
+Content-Length: 490725
+Set-Cookie: BNI_OatmealRaisin=0000000000000000000000005a00580a00000000; Path=/; HttpOnly
+----------------------------------------------------------
+https://manager.sunfrogshirts.com/Designer/imgs/135-Poster-Portrait-Front.png
+
+GET /Designer/imgs/135-Poster-Portrait-Front.png HTTP/1.1
+Host: manager.sunfrogshirts.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:56.0) Gecko/20100101 Firefox/56.0
+Accept: */*
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+Referer: https://manager.sunfrogshirts.com/Designer/
+Cookie: CFID=59562618; CFTOKEN=55d401ff0736f1e5-80DAB270-155D-1A11-126B61765FA64823; BNI_OatmealRaisin=0000000000000000000000005a00580a00000000; _ga=GA1.2.1225994226.1509897207; _gid=GA1.2.1699687416.1509897207; TawkConnectionTime=0; __tawkuuid=e::manager.sunfrogshirts.com::U7wD2tG4lQJ3Wf0gJNk/siuSWKyCaUwOQNdpMWOHapLzPq9a+RboVlpYsEGAUBOH::2; Tawk_570fb8a942666b050c7537f8=vs39.tawk.to::0
+Connection: keep-alive
+
+HTTP/1.1 200 OK
+Content-Type: image/png
+Last-Modified: Fri, 03 Mar 2017 16:27:57 GMT
+Accept-Ranges: bytes
+ETag: "80e4bb1d3b94d21:0"
+Server: Microsoft-IIS/8.5
+X-Powered-By: ASP.NET
+Content-Length: 85341
+Date: Sun, 05 Nov 2017 17:31:51 GMT
+Age: 3491
+----------------------------------------------------------
+https://manager.sunfrogshirts.com/Designer/imgs/136-Poster-Landscape-Front.png
+
+GET /Designer/imgs/136-Poster-Landscape-Front.png HTTP/1.1
+Host: manager.sunfrogshirts.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:56.0) Gecko/20100101 Firefox/56.0
+Accept: */*
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+Referer: https://manager.sunfrogshirts.com/Designer/
+Cookie: CFID=59562618; CFTOKEN=55d401ff0736f1e5-80DAB270-155D-1A11-126B61765FA64823; BNI_OatmealRaisin=0000000000000000000000005a00580a00000000; _ga=GA1.2.1225994226.1509897207; _gid=GA1.2.1699687416.1509897207; TawkConnectionTime=0; __tawkuuid=e::manager.sunfrogshirts.com::U7wD2tG4lQJ3Wf0gJNk/siuSWKyCaUwOQNdpMWOHapLzPq9a+RboVlpYsEGAUBOH::2; Tawk_570fb8a942666b050c7537f8=vs39.tawk.to::0
+Connection: keep-alive
+
+HTTP/1.1 200 OK
+Content-Type: image/png
+Last-Modified: Mon, 06 Mar 2017 17:44:30 GMT
+Accept-Ranges: bytes
+ETag: "0539d4ea196d21:0"
+Server: Microsoft-IIS/8.5
+X-Powered-By: ASP.NET
+Content-Length: 76016
+Date: Sun, 05 Nov 2017 17:31:52 GMT
+Age: 3492
+----------------------------------------------------------
+https://manager.sunfrogshirts.com/Designer/imgs/143-Canvas-Portrait.png
+
+GET /Designer/imgs/143-Canvas-Portrait.png HTTP/1.1
+Host: manager.sunfrogshirts.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:56.0) Gecko/20100101 Firefox/56.0
+Accept: */*
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+Referer: https://manager.sunfrogshirts.com/Designer/
+Cookie: CFID=59562618; CFTOKEN=55d401ff0736f1e5-80DAB270-155D-1A11-126B61765FA64823; BNI_OatmealRaisin=0000000000000000000000005a00580a00000000; _ga=GA1.2.1225994226.1509897207; _gid=GA1.2.1699687416.1509897207; TawkConnectionTime=0; __tawkuuid=e::manager.sunfrogshirts.com::U7wD2tG4lQJ3Wf0gJNk/siuSWKyCaUwOQNdpMWOHapLzPq9a+RboVlpYsEGAUBOH::2; Tawk_570fb8a942666b050c7537f8=vs39.tawk.to::0
+Connection: keep-alive
+
+HTTP/1.1 200 OK
+Content-Type: image/png
+Last-Modified: Tue, 21 Mar 2017 17:26:51 GMT
+Accept-Ranges: bytes
+ETag: "80ff985368a2d21:0"
+Server: Microsoft-IIS/8.5
+X-Powered-By: ASP.NET
+Date: Sun, 05 Nov 2017 17:31:52 GMT
+Content-Length: 981912
+Set-Cookie: BNI_OatmealRaisin=0000000000000000000000005a00580a00000000; Path=/; HttpOnly
+----------------------------------------------------------
+https://manager.sunfrogshirts.com/Designer/imgs/147-valuecap.png
+
+GET /Designer/imgs/147-valuecap.png HTTP/1.1
+Host: manager.sunfrogshirts.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:56.0) Gecko/20100101 Firefox/56.0
+Accept: */*
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+Referer: https://manager.sunfrogshirts.com/Designer/
+Cookie: CFID=59562618; CFTOKEN=55d401ff0736f1e5-80DAB270-155D-1A11-126B61765FA64823; BNI_OatmealRaisin=0000000000000000000000005a00580a00000000; _ga=GA1.2.1225994226.1509897207; _gid=GA1.2.1699687416.1509897207; TawkConnectionTime=0; __tawkuuid=e::manager.sunfrogshirts.com::U7wD2tG4lQJ3Wf0gJNk/siuSWKyCaUwOQNdpMWOHapLzPq9a+RboVlpYsEGAUBOH::2; Tawk_570fb8a942666b050c7537f8=vs39.tawk.to::0
+Connection: keep-alive
+
+HTTP/1.1 200 OK
+Content-Type: image/png
+Last-Modified: Fri, 21 Apr 2017 15:52:49 GMT
+Accept-Ranges: bytes
+ETag: "ff938953b7bad21:0"
+Server: Microsoft-IIS/8.5
+X-Powered-By: ASP.NET
+Date: Sun, 05 Nov 2017 17:31:52 GMT
+Content-Length: 1087737
+Set-Cookie: BNI_OatmealRaisin=0000000000000000000000005a00580a00000000; Path=/; HttpOnly
+----------------------------------------------------------
+https://manager.sunfrogshirts.com/Designer/imgs/148-Yupoong6006-TruckerCap.png
+
+GET /Designer/imgs/148-Yupoong6006-TruckerCap.png HTTP/1.1
+Host: manager.sunfrogshirts.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:56.0) Gecko/20100101 Firefox/56.0
+Accept: */*
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+Referer: https://manager.sunfrogshirts.com/Designer/
+Cookie: CFID=59562618; CFTOKEN=55d401ff0736f1e5-80DAB270-155D-1A11-126B61765FA64823; BNI_OatmealRaisin=0000000000000000000000005a00580a00000000; _ga=GA1.2.1225994226.1509897207; _gid=GA1.2.1699687416.1509897207; TawkConnectionTime=0; __tawkuuid=e::manager.sunfrogshirts.com::U7wD2tG4lQJ3Wf0gJNk/siuSWKyCaUwOQNdpMWOHapLzPq9a+RboVlpYsEGAUBOH::2; Tawk_570fb8a942666b050c7537f8=vs39.tawk.to::0
+Connection: keep-alive
+
+HTTP/1.1 200 OK
+Content-Type: image/png
+Last-Modified: Mon, 22 May 2017 16:54:26 GMT
+Accept-Ranges: bytes
+ETag: "0de6111cd3d21:0"
+Server: Microsoft-IIS/8.5
+X-Powered-By: ASP.NET
+Date: Sun, 05 Nov 2017 17:31:52 GMT
+Content-Length: 1112545
+Set-Cookie: BNI_OatmealRaisin=0000000000000000000000005a00580a00000000; Path=/; HttpOnly
+----------------------------------------------------------
+https://manager.sunfrogshirts.com/Designer/imgs/icon-move.png
+
+GET /Designer/imgs/icon-move.png HTTP/1.1
+Host: manager.sunfrogshirts.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:56.0) Gecko/20100101 Firefox/56.0
+Accept: */*
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+Referer: https://manager.sunfrogshirts.com/Designer/
+Cookie: CFID=59562618; CFTOKEN=55d401ff0736f1e5-80DAB270-155D-1A11-126B61765FA64823; BNI_OatmealRaisin=0000000000000000000000005a00580a00000000; _ga=GA1.2.1225994226.1509897207; _gid=GA1.2.1699687416.1509897207; TawkConnectionTime=0; __tawkuuid=e::manager.sunfrogshirts.com::U7wD2tG4lQJ3Wf0gJNk/siuSWKyCaUwOQNdpMWOHapLzPq9a+RboVlpYsEGAUBOH::2; Tawk_570fb8a942666b050c7537f8=vs39.tawk.to::0
+Connection: keep-alive
+
+HTTP/1.1 200 OK
+Content-Type: image/png
+Last-Modified: Thu, 16 Jun 2016 15:08:29 GMT
+Accept-Ranges: bytes
+ETag: "7aa8bdf0e0c7d11:0"
+Server: Microsoft-IIS/8.5
+X-Powered-By: ASP.NET
+Content-Length: 377
+Date: Sun, 05 Nov 2017 17:31:53 GMT
+Age: 3490
+----------------------------------------------------------
+https://manager.sunfrogshirts.com/Designer/imgs/icon-delete.png
+
+GET /Designer/imgs/icon-delete.png HTTP/1.1
+Host: manager.sunfrogshirts.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:56.0) Gecko/20100101 Firefox/56.0
+Accept: */*
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+Referer: https://manager.sunfrogshirts.com/Designer/
+Cookie: CFID=59562618; CFTOKEN=55d401ff0736f1e5-80DAB270-155D-1A11-126B61765FA64823; BNI_OatmealRaisin=0000000000000000000000005a00580a00000000; _ga=GA1.2.1225994226.1509897207; _gid=GA1.2.1699687416.1509897207; TawkConnectionTime=0; __tawkuuid=e::manager.sunfrogshirts.com::U7wD2tG4lQJ3Wf0gJNk/siuSWKyCaUwOQNdpMWOHapLzPq9a+RboVlpYsEGAUBOH::2; Tawk_570fb8a942666b050c7537f8=vs39.tawk.to::0
+Connection: keep-alive
+
+HTTP/1.1 200 OK
+Content-Type: image/png
+Last-Modified: Thu, 16 Jun 2016 15:08:29 GMT
+Accept-Ranges: bytes
+ETag: "9d89b5f0e0c7d11:0"
+Server: Microsoft-IIS/8.5
+X-Powered-By: ASP.NET
+Content-Length: 422
+Date: Sun, 05 Nov 2017 17:31:53 GMT
+Age: 3490
+----------------------------------------------------------
+https://manager.sunfrogshirts.com/Designer/imgs/icon-rotate.png
+
+GET /Designer/imgs/icon-rotate.png HTTP/1.1
+Host: manager.sunfrogshirts.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:56.0) Gecko/20100101 Firefox/56.0
+Accept: */*
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+Referer: https://manager.sunfrogshirts.com/Designer/
+Cookie: CFID=59562618; CFTOKEN=55d401ff0736f1e5-80DAB270-155D-1A11-126B61765FA64823; BNI_OatmealRaisin=0000000000000000000000005a00580a00000000; _ga=GA1.2.1225994226.1509897207; _gid=GA1.2.1699687416.1509897207; TawkConnectionTime=0; __tawkuuid=e::manager.sunfrogshirts.com::U7wD2tG4lQJ3Wf0gJNk/siuSWKyCaUwOQNdpMWOHapLzPq9a+RboVlpYsEGAUBOH::2; Tawk_570fb8a942666b050c7537f8=vs39.tawk.to::0
+Connection: keep-alive
+
+HTTP/1.1 200 OK
+Content-Type: image/png
+Last-Modified: Thu, 16 Jun 2016 15:08:29 GMT
+Accept-Ranges: bytes
+ETag: "51f2c7f0e0c7d11:0"
+Server: Microsoft-IIS/8.5
+X-Powered-By: ASP.NET
+Content-Length: 436
+Date: Sun, 05 Nov 2017 17:31:54 GMT
+Age: 3491
+----------------------------------------------------------
+https://manager.sunfrogshirts.com/Designer/imgs/icon-scale.png
+
+GET /Designer/imgs/icon-scale.png HTTP/1.1
+Host: manager.sunfrogshirts.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:56.0) Gecko/20100101 Firefox/56.0
+Accept: */*
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+Referer: https://manager.sunfrogshirts.com/Designer/
+Cookie: CFID=59562618; CFTOKEN=55d401ff0736f1e5-80DAB270-155D-1A11-126B61765FA64823; BNI_OatmealRaisin=0000000000000000000000005a00580a00000000; _ga=GA1.2.1225994226.1509897207; _gid=GA1.2.1699687416.1509897207; TawkConnectionTime=0; __tawkuuid=e::manager.sunfrogshirts.com::U7wD2tG4lQJ3Wf0gJNk/siuSWKyCaUwOQNdpMWOHapLzPq9a+RboVlpYsEGAUBOH::2; Tawk_570fb8a942666b050c7537f8=vs39.tawk.to::0
+Connection: keep-alive
+
+HTTP/1.1 200 OK
+Content-Type: image/png
+Last-Modified: Thu, 16 Jun 2016 15:08:29 GMT
+Accept-Ranges: bytes
+ETag: "862bd2f0e0c7d11:0"
+Server: Microsoft-IIS/8.5
+X-Powered-By: ASP.NET
+Content-Length: 498
+Date: Sun, 05 Nov 2017 17:31:54 GMT
+Age: 3491
+----------------------------------------------------------
+https://manager.sunfrogshirts.com/Designer/imgs/sports-gray.jpg
+
+GET /Designer/imgs/sports-gray.jpg HTTP/1.1
+Host: manager.sunfrogshirts.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:56.0) Gecko/20100101 Firefox/56.0
+Accept: */*
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+Referer: https://manager.sunfrogshirts.com/Designer/
+Cookie: CFID=59562618; CFTOKEN=55d401ff0736f1e5-80DAB270-155D-1A11-126B61765FA64823; BNI_OatmealRaisin=0000000000000000000000005a00580a00000000; _ga=GA1.2.1225994226.1509897207; _gid=GA1.2.1699687416.1509897207; TawkConnectionTime=0; __tawkuuid=e::manager.sunfrogshirts.com::U7wD2tG4lQJ3Wf0gJNk/siuSWKyCaUwOQNdpMWOHapLzPq9a+RboVlpYsEGAUBOH::2; Tawk_570fb8a942666b050c7537f8=vs39.tawk.to::0
+Connection: keep-alive
+
+HTTP/1.1 200 OK
+Content-Type: image/jpeg
+Last-Modified: Thu, 16 Jun 2016 15:08:30 GMT
+Accept-Ranges: bytes
+ETag: "848c2cf1e0c7d11:0"
+Server: Microsoft-IIS/8.5
+X-Powered-By: ASP.NET
+Content-Length: 20106
+Date: Sun, 05 Nov 2017 17:31:54 GMT
+Age: 682
+----------------------------------------------------------
+https://manager.sunfrogshirts.com/Designer/imgs/dark-gray.jpg
+
+GET /Designer/imgs/dark-gray.jpg HTTP/1.1
+Host: manager.sunfrogshirts.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:56.0) Gecko/20100101 Firefox/56.0
+Accept: */*
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+Referer: https://manager.sunfrogshirts.com/Designer/
+Cookie: CFID=59562618; CFTOKEN=55d401ff0736f1e5-80DAB270-155D-1A11-126B61765FA64823; BNI_OatmealRaisin=0000000000000000000000005a00580a00000000; _ga=GA1.2.1225994226.1509897207; _gid=GA1.2.1699687416.1509897207; TawkConnectionTime=0; __tawkuuid=e::manager.sunfrogshirts.com::U7wD2tG4lQJ3Wf0gJNk/siuSWKyCaUwOQNdpMWOHapLzPq9a+RboVlpYsEGAUBOH::2; Tawk_570fb8a942666b050c7537f8=vs39.tawk.to::0
+Connection: keep-alive
+
+HTTP/1.1 200 OK
+Content-Type: image/jpeg
+Last-Modified: Thu, 16 Jun 2016 15:08:29 GMT
+Accept-Ranges: bytes
+ETag: "662b8ef0e0c7d11:0"
+Server: Microsoft-IIS/8.5
+X-Powered-By: ASP.NET
+Content-Length: 20782
+Date: Sun, 05 Nov 2017 17:31:54 GMT
+Age: 683
+----------------------------------------------------------
+https://manager.sunfrogshirts.com/Designer/php/upload-handler.cfm
+
+POST /Designer/php/upload-handler.cfm HTTP/1.1
+Host: manager.sunfrogshirts.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:56.0) Gecko/20100101 Firefox/56.0
+Accept: */*
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+Content-Type: application/json
+X-Requested-With: XMLHttpRequest
+Referer: https://manager.sunfrogshirts.com/Designer/
+Content-Length: 843
+Cookie: CFID=59562618; CFTOKEN=55d401ff0736f1e5-80DAB270-155D-1A11-126B61765FA64823; BNI_OatmealRaisin=0000000000000000000000005a00580a00000000; _ga=GA1.2.1225994226.1509897207; _gid=GA1.2.1699687416.1509897207; TawkConnectionTime=0; __tawkuuid=e::manager.sunfrogshirts.com::U7wD2tG4lQJ3Wf0gJNk/siuSWKyCaUwOQNdpMWOHapLzPq9a+RboVlpYsEGAUBOH::2; Tawk_570fb8a942666b050c7537f8=vs39.tawk.to::0
+Connection: keep-alive
+{"ArtOwnerID":0,"IAgree":true,"Title":"hoangtest","Category":"78","Description":"asdfasdf","Collections":"ADV","Keywords":["adfasdf","asdf","asd"],"imageFront":"<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" id=\"SvgjsSvg1000\" version=\"1.1\" width=\"2400\" height=\"3200\" viewBox=\"311.00000000008 150 387.99999999984004 517.33333333312\"><text id=\"SvgjsText1052\" font-family=\"Source Sans Pro\" fill=\"#808080\" font-size=\"30\" stroke-width=\"0\" font-style=\"\" font-weight=\"\" text-decoration=\" \" text-anchor=\"start\" x=\"457.39119720458984\" y=\"241.71535301208496\"><tspan id=\"SvgjsTspan1056\" dy=\"39\" x=\"457.39119720458984\">adfasdf</tspan></text><defs id=\"SvgjsDefs1001\"></defs></svg>","imageBack":"","types":[{"id":8,"name":"Guys Tee","price":19,"colors":["Green"]}],"images":[]}
+HTTP/1.1 200 OK
+Cache-Control: no-store, no-cache, must-revalidate, max-age=0,post-check=0, pre-check=0
+Pragma: no-cache
+Content-Type: application/json;charset=UTF-8
+Server: Microsoft-IIS/8.5
+X-Powered-By: ASP.NET
+Date: Sun, 05 Nov 2017 17:32:16 GMT
+Content-Length: 408
+Set-Cookie: BNI_OatmealRaisin=0000000000000000000000005a00580a00000000; Path=/; HttpOnly
+----------------------------------------------------------
+https://manager.sunfrogshirts.com/my-art-edit.cfm?editNewDesign
+
+GET /my-art-edit.cfm?editNewDesign HTTP/1.1
+Host: manager.sunfrogshirts.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:56.0) Gecko/20100101 Firefox/56.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+Referer: https://manager.sunfrogshirts.com/Designer/
+Cookie: CFID=59562618; CFTOKEN=55d401ff0736f1e5-80DAB270-155D-1A11-126B61765FA64823; BNI_OatmealRaisin=0000000000000000000000005a00580a00000000; _ga=GA1.2.1225994226.1509897207; _gid=GA1.2.1699687416.1509897207; TawkConnectionTime=0; __tawkuuid=e::manager.sunfrogshirts.com::U7wD2tG4lQJ3Wf0gJNk/siuSWKyCaUwOQNdpMWOHapLzPq9a+RboVlpYsEGAUBOH::2; Tawk_570fb8a942666b050c7537f8=vs39.tawk.to::0
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+
+HTTP/1.1 200 OK
+Content-Type: text/html;charset=UTF-8
+Server: Microsoft-IIS/8.5
+X-Powered-By: ASP.NET
+Date: Sun, 05 Nov 2017 17:32:17 GMT
+Set-Cookie: BNI_OatmealRaisin=0000000000000000000000005a00580a00000000; Path=/; HttpOnly
+Transfer-Encoding: chunked
+Content-Encoding: gzip
+Vary: Accept-Encoding
+----------------------------------------------------------
+https://manager.sunfrogshirts.com/images/guys-tee-icon.jpg
+
+GET /images/guys-tee-icon.jpg HTTP/1.1
+Host: manager.sunfrogshirts.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:56.0) Gecko/20100101 Firefox/56.0
+Accept: */*
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+Referer: https://manager.sunfrogshirts.com/my-art-edit.cfm?editNewDesign
+Cookie: CFID=59562618; CFTOKEN=55d401ff0736f1e5-80DAB270-155D-1A11-126B61765FA64823; BNI_OatmealRaisin=0000000000000000000000005a00580a00000000; _ga=GA1.2.1225994226.1509897207; _gid=GA1.2.1699687416.1509897207; TawkConnectionTime=0; __tawkuuid=e::manager.sunfrogshirts.com::U7wD2tG4lQJ3Wf0gJNk/siuSWKyCaUwOQNdpMWOHapLzPq9a+RboVlpYsEGAUBOH::2; Tawk_570fb8a942666b050c7537f8=vs39.tawk.to::0
+Connection: keep-alive
+
+HTTP/1.1 200 OK
+Content-Type: image/jpeg
+Last-Modified: Tue, 19 May 2015 20:51:55 GMT
+Accept-Ranges: bytes
+ETag: "87f34ca47592d01:0"
+Server: Microsoft-IIS/8.5
+X-Powered-By: ASP.NET
+Content-Length: 2596
+Date: Sun, 05 Nov 2017 17:32:17 GMT
+Age: 122
+----------------------------------------------------------
+https://manager.sunfrogshirts.com/js/av1.0.1.min.js
+
+GET /js/av1.0.1.min.js HTTP/1.1
+Host: manager.sunfrogshirts.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:56.0) Gecko/20100101 Firefox/56.0
+Accept: */*
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+Referer: https://manager.sunfrogshirts.com/my-art-edit.cfm?editNewDesign
+Cookie: CFID=59562618; CFTOKEN=55d401ff0736f1e5-80DAB270-155D-1A11-126B61765FA64823; BNI_OatmealRaisin=0000000000000000000000005a00580a00000000; _ga=GA1.2.1225994226.1509897207; _gid=GA1.2.1699687416.1509897207; TawkConnectionTime=0; __tawkuuid=e::manager.sunfrogshirts.com::U7wD2tG4lQJ3Wf0gJNk/siuSWKyCaUwOQNdpMWOHapLzPq9a+RboVlpYsEGAUBOH::2; Tawk_570fb8a942666b050c7537f8=vs39.tawk.to::0
+Connection: keep-alive
+
+HTTP/1.1 200 OK
+Content-Type: application/javascript
+Last-Modified: Tue, 11 Oct 2016 15:40:09 GMT
+Accept-Ranges: bytes
+ETag: "1be5b3bfd523d21:0"
+Server: Microsoft-IIS/8.5
+X-Powered-By: ASP.NET
+Content-Length: 23468
+Date: Sun, 05 Nov 2017 17:32:17 GMT
+Age: 557
+----------------------------------------------------------
+https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/themes/smoothness/images/ui-bg_glass_75_e6e6e6_1x400.png
+
+GET /ajax/libs/jqueryui/1.11.1/themes/smoothness/images/ui-bg_glass_75_e6e6e6_1x400.png HTTP/1.1
+Host: ajax.googleapis.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:56.0) Gecko/20100101 Firefox/56.0
+Accept: */*
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+Referer: https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/themes/smoothness/jquery-ui.min.css
+Connection: keep-alive
+
+HTTP/2.0 200 OK
+accept-ranges: bytes
+content-type: image/png
+access-control-allow-origin: *
+timing-allow-origin: *
+content-length: 301
+date: Sat, 28 Oct 2017 22:16:48 GMT
+expires: Sun, 28 Oct 2018 22:16:48 GMT
+last-modified: Tue, 20 Dec 2016 18:17:03 GMT
+x-content-type-options: nosniff
+server: sffe
+x-xss-protection: 1; mode=block
+cache-control: public, max-age=31536000, stale-while-revalidate=2592000
+age: 674130
+alt-svc: quic=":443"; ma=2592000; v="41,39,38,37,35"
+X-Firefox-Spdy: h2
+----------------------------------------------------------
+https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/themes/smoothness/images/ui-bg_highlight-soft_75_cccccc_1x100.png
+
+GET /ajax/libs/jqueryui/1.11.1/themes/smoothness/images/ui-bg_highlight-soft_75_cccccc_1x100.png HTTP/1.1
+Host: ajax.googleapis.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:56.0) Gecko/20100101 Firefox/56.0
+Accept: */*
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+Referer: https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/themes/smoothness/jquery-ui.min.css
+Connection: keep-alive
+
+HTTP/2.0 200 OK
+accept-ranges: bytes
+content-type: image/png
+access-control-allow-origin: *
+timing-allow-origin: *
+content-length: 319
+date: Wed, 11 Oct 2017 13:51:45 GMT
+expires: Thu, 11 Oct 2018 13:51:45 GMT
+last-modified: Tue, 20 Dec 2016 18:17:03 GMT
+x-content-type-options: nosniff
+server: sffe
+x-xss-protection: 1; mode=block
+cache-control: public, max-age=31536000, stale-while-revalidate=2592000
+age: 2173233
+alt-svc: quic=":443"; ma=2592000; v="41,39,38,37,35"
+X-Firefox-Spdy: h2
+----------------------------------------------------------
+https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/themes/smoothness/images/ui-bg_flat_75_ffffff_40x100.png
+
+GET /ajax/libs/jqueryui/1.11.1/themes/smoothness/images/ui-bg_flat_75_ffffff_40x100.png HTTP/1.1
+Host: ajax.googleapis.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:56.0) Gecko/20100101 Firefox/56.0
+Accept: */*
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+Referer: https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/themes/smoothness/jquery-ui.min.css
+Connection: keep-alive
+
+HTTP/2.0 200 OK
+accept-ranges: bytes
+content-type: image/png
+access-control-allow-origin: *
+timing-allow-origin: *
+content-length: 247
+date: Wed, 11 Oct 2017 22:30:00 GMT
+expires: Thu, 11 Oct 2018 22:30:00 GMT
+last-modified: Tue, 20 Dec 2016 18:17:03 GMT
+x-content-type-options: nosniff
+server: sffe
+x-xss-protection: 1; mode=block
+cache-control: public, max-age=31536000, stale-while-revalidate=2592000
+age: 2142138
+alt-svc: quic=":443"; ma=2592000; v="41,39,38,37,35"
+X-Firefox-Spdy: h2
+----------------------------------------------------------
+http://ocsp.pki.goog/GTSGIAG3
+
+POST /GTSGIAG3 HTTP/1.1
+Host: ocsp.pki.goog
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:56.0) Gecko/20100101 Firefox/56.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate
+Content-Length: 75
+Content-Type: application/ocsp-request
+Connection: keep-alive
+0I0G0E0C0A0	+
+HTTP/1.1 200 OK
+Content-Type: application/ocsp-response
+Date: Sun, 05 Nov 2017 17:32:18 GMT
+Expires: Thu, 09 Nov 2017 17:32:18 GMT
+Cache-Control: public, max-age=345600
+Server: ocsp_responder
+Content-Length: 463
+X-XSS-Protection: 1; mode=block
+X-Frame-Options: SAMEORIGIN
+----------------------------------------------------------
+https://www.google-analytics.com/analytics.js
+
+GET /analytics.js HTTP/1.1
+Host: www.google-analytics.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:56.0) Gecko/20100101 Firefox/56.0
+Accept: */*
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+Referer: https://manager.sunfrogshirts.com/my-art-edit.cfm?editNewDesign
+Connection: keep-alive
+If-Modified-Since: Fri, 20 Oct 2017 23:46:20 GMT
+
+HTTP/2.0 304 Not Modified
+date: Sun, 05 Nov 2017 15:37:17 GMT
+expires: Sun, 05 Nov 2017 17:37:17 GMT
+age: 6901
+alt-svc: quic=":443"; ma=2592000; v="41,39,38,37,35"
+X-Firefox-Spdy: h2
+----------------------------------------------------------
+https://www.google-analytics.com/r/collect?v=1&_v=j65&a=1175010266&t=pageview&_s=1&dl=https%3A%2F%2Fmanager.sunfrogshirts.com%2Fmy-art-edit.cfm%3FeditNewDesign&ul=vi-vn&de=UTF-8&dt=SunFrog%20Manager&sd=24-bit&sr=1600x900&vp=1583x767&je=0&_u=AACAAEABI~&jid=1146061360&gjid=1756539145&cid=1225994226.1509897207&tid=UA-34191215-3&_gid=1699687416.1509897207&_r=1&z=969100953
+
+GET /r/collect?v=1&_v=j65&a=1175010266&t=pageview&_s=1&dl=https%3A%2F%2Fmanager.sunfrogshirts.com%2Fmy-art-edit.cfm%3FeditNewDesign&ul=vi-vn&de=UTF-8&dt=SunFrog%20Manager&sd=24-bit&sr=1600x900&vp=1583x767&je=0&_u=AACAAEABI~&jid=1146061360&gjid=1756539145&cid=1225994226.1509897207&tid=UA-34191215-3&_gid=1699687416.1509897207&_r=1&z=969100953 HTTP/1.1
+Host: www.google-analytics.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:56.0) Gecko/20100101 Firefox/56.0
+Accept: */*
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+Referer: https://manager.sunfrogshirts.com/my-art-edit.cfm?editNewDesign
+Connection: keep-alive
+
+HTTP/2.0 302 Found
+location: https://stats.g.doubleclick.net/r/collect?v=1&aip=1&t=dc&_r=3&tid=UA-34191215-3&cid=1225994226.1509897207&jid=1146061360&_gid=1699687416.1509897207&gjid=1756539145&_v=j65&z=969100953
+access-control-allow-origin: *
+date: Sun, 05 Nov 2017 17:32:18 GMT
+pragma: no-cache
+expires: Fri, 01 Jan 1990 00:00:00 GMT
+cache-control: no-cache, no-store, must-revalidate
+last-modified: Sun, 17 May 1998 03:00:00 GMT
+content-type: text/html; charset=UTF-8
+server: Golfe2
+content-length: 419
+alt-svc: quic=":443"; ma=2592000; v="41,39,38,37,35"
+X-Firefox-Spdy: h2
+----------------------------------------------------------
+https://stats.g.doubleclick.net/r/collect?v=1&aip=1&t=dc&_r=3&tid=UA-34191215-3&cid=1225994226.1509897207&jid=1146061360&_gid=1699687416.1509897207&gjid=1756539145&_v=j65&z=969100953
+
+GET /r/collect?v=1&aip=1&t=dc&_r=3&tid=UA-34191215-3&cid=1225994226.1509897207&jid=1146061360&_gid=1699687416.1509897207&gjid=1756539145&_v=j65&z=969100953 HTTP/1.1
+Host: stats.g.doubleclick.net
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:56.0) Gecko/20100101 Firefox/56.0
+Accept: */*
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+Referer: https://manager.sunfrogshirts.com/my-art-edit.cfm?editNewDesign
+Cookie: IDE=AHWqTUlPVaqJsHApdCeRXYMWrtHPZEu1k24tE2Q_fvfmKgrM5NcR2esu48j08e1c; DSID=ADyxukujfZ7TnSYTg31KBAmuFCEsfYyT-tBdD3UXE3CJhe1BcUhiD8wXbKoI5e9uNBhG6sIqJivvXM70dHhoLWuHEPL4WJ4FYIpwuHGBFyRsu57a2Gk-7rU
+Connection: keep-alive
+
+HTTP/2.0 200 OK
+access-control-allow-origin: *
+strict-transport-security: max-age=10886400; includeSubDomains; preload
+date: Sun, 05 Nov 2017 17:32:18 GMT
+pragma: no-cache
+expires: Fri, 01 Jan 1990 00:00:00 GMT
+cache-control: no-cache, no-store, must-revalidate
+last-modified: Sun, 17 May 1998 03:00:00 GMT
+x-content-type-options: nosniff
+content-type: image/gif
+server: Golfe2
+content-length: 35
+alt-svc: quic=":443"; ma=2592000; v="41,39,38,37,35"
+X-Firefox-Spdy: h2
+----------------------------------------------------------
+https://images.sunfrogshirts.com/2017/11/05/md_47626-1509903134646-Gildan-Men-Green-_w92_-front.jpg
+
+GET /2017/11/05/md_47626-1509903134646-Gildan-Men-Green-_w92_-front.jpg HTTP/1.1
+Host: images.sunfrogshirts.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:56.0) Gecko/20100101 Firefox/56.0
+Accept: */*
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+Referer: https://manager.sunfrogshirts.com/my-art-edit.cfm?editNewDesign
+Cookie: _ga=GA1.2.1225994226.1509897207; _gid=GA1.2.1699687416.1509897207
+Connection: keep-alive
+
+HTTP/1.1 200 OK
+Content-Type: image
+Content-Length: 4450
+Connection: keep-alive
+Date: Sun, 05 Nov 2017 17:32:20 GMT
+Last-Modified: Sun, 05 Nov 2017 17:32:16 GMT
+ETag: "fb8719f130c4c946f9e19c90412f680e"
+Cache-Control: max-age=2592000
+Expires: Sun, 19 Nov 2017 12:32:15 GMT
+Accept-Ranges: bytes
+Server: AmazonS3
+X-Cache: Miss from cloudfront
+Via: 1.1 16af61c00e4b40af68ff627d741bc337.cloudfront.net (CloudFront)
+X-Amz-Cf-Id: hickGWquYXkuMjG8m_iw3TX6O24iLTIIuOY1kL_8AAioIs-VrJd2Ng==
+----------------------------------------------------------
+https://images.sunfrogshirts.com/2017/11/05/m_47626-1509903134646-Gildan-Men-Green-_w92_-front.jpg
+
+GET /2017/11/05/m_47626-1509903134646-Gildan-Men-Green-_w92_-front.jpg HTTP/1.1
+Host: images.sunfrogshirts.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:56.0) Gecko/20100101 Firefox/56.0
+Accept: */*
+Accept-Language: vi-VN,vi;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+Referer: https://manager.sunfrogshirts.com/my-art-edit.cfm?editNewDesign
+Cookie: _ga=GA1.2.1225994226.1509897207; _gid=GA1.2.1699687416.1509897207
+Connection: keep-alive
+
+HTTP/1.1 200 OK
+Content-Type: image
+Content-Length: 17118
+Connection: keep-alive
+Date: Sun, 05 Nov 2017 17:32:20 GMT
+Last-Modified: Sun, 05 Nov 2017 17:32:16 GMT
+ETag: "dca5e793c4fe28e5b44aa101a8c6e394"
+Cache-Control: max-age=2592000
+Expires: Sun, 19 Nov 2017 12:32:15 GMT
+Accept-Ranges: bytes
+Server: AmazonS3
+X-Cache: Miss from cloudfront
+Via: 1.1 369f211c1b58ecc264e4f3a309850a3c.cloudfront.net (CloudFront)
+X-Amz-Cf-Id: fWzYmxDNmwbbWzJTLMlxIDGgN3FDbiGyY1r9yr7YUDvbbKmFIGv2sw==
+----------------------------------------------------------
