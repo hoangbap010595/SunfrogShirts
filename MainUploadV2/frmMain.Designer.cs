@@ -31,6 +31,9 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.linkLabelHelp = new System.Windows.Forms.LinkLabel();
+            this.linkDoiMatKhau = new System.Windows.Forms.LinkLabel();
+            this.ckRemember = new DevExpress.XtraEditors.CheckEdit();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.txtPassword = new DevExpress.XtraEditors.TextEdit();
@@ -40,6 +43,8 @@
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
             this.xtraScrollableControlMain = new DevExpress.XtraEditors.XtraScrollableControl();
+            this.btnAcctiveTeePublic = new DevExpress.XtraEditors.SimpleButton();
+            this.btnAcctiveMerchAmazon = new DevExpress.XtraEditors.SimpleButton();
             this.btnAcctiveTeeChipPro = new DevExpress.XtraEditors.SimpleButton();
             this.btnActiveToolSpread = new DevExpress.XtraEditors.SimpleButton();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
@@ -52,10 +57,11 @@
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.timerOnline = new System.Windows.Forms.Timer(this.components);
-            this.btnAcctiveMerchAmazon = new DevExpress.XtraEditors.SimpleButton();
-            this.btnAcctiveTeePublic = new DevExpress.XtraEditors.SimpleButton();
+            this.btnExit = new DevExpress.XtraEditors.SimpleButton();
+            this.btnCheckForUpdate = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ckRemember.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPassword.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtUserName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
@@ -67,6 +73,9 @@
             // 
             // groupControl1
             // 
+            this.groupControl1.Controls.Add(this.linkLabelHelp);
+            this.groupControl1.Controls.Add(this.linkDoiMatKhau);
+            this.groupControl1.Controls.Add(this.ckRemember);
             this.groupControl1.Controls.Add(this.labelControl2);
             this.groupControl1.Controls.Add(this.labelControl1);
             this.groupControl1.Controls.Add(this.txtPassword);
@@ -81,9 +90,42 @@
             this.groupControl1.TabIndex = 0;
             this.groupControl1.Text = "Account";
             // 
+            // linkLabelHelp
+            // 
+            this.linkLabelHelp.AutoSize = true;
+            this.linkLabelHelp.Location = new System.Drawing.Point(135, 212);
+            this.linkLabelHelp.Name = "linkLabelHelp";
+            this.linkLabelHelp.Size = new System.Drawing.Size(60, 13);
+            this.linkLabelHelp.TabIndex = 5;
+            this.linkLabelHelp.TabStop = true;
+            this.linkLabelHelp.Text = "Hướng dẫn";
+            this.linkLabelHelp.VisitedLinkColor = System.Drawing.Color.Blue;
+            this.linkLabelHelp.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelHelp_LinkClicked);
+            // 
+            // linkDoiMatKhau
+            // 
+            this.linkDoiMatKhau.AutoSize = true;
+            this.linkDoiMatKhau.Location = new System.Drawing.Point(121, 132);
+            this.linkDoiMatKhau.Name = "linkDoiMatKhau";
+            this.linkDoiMatKhau.Size = new System.Drawing.Size(70, 13);
+            this.linkDoiMatKhau.TabIndex = 0;
+            this.linkDoiMatKhau.TabStop = true;
+            this.linkDoiMatKhau.Text = "Đổi mật khẩu";
+            this.linkDoiMatKhau.Visible = false;
+            this.linkDoiMatKhau.VisitedLinkColor = System.Drawing.Color.Blue;
+            this.linkDoiMatKhau.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkDoiMatKhau_LinkClicked);
+            // 
+            // ckRemember
+            // 
+            this.ckRemember.Location = new System.Drawing.Point(12, 129);
+            this.ckRemember.Name = "ckRemember";
+            this.ckRemember.Properties.Caption = "Remember?";
+            this.ckRemember.Size = new System.Drawing.Size(75, 19);
+            this.ckRemember.TabIndex = 4;
+            // 
             // labelControl2
             // 
-            this.labelControl2.Location = new System.Drawing.Point(9, 82);
+            this.labelControl2.Location = new System.Drawing.Point(9, 76);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(50, 13);
             this.labelControl2.TabIndex = 0;
@@ -99,7 +141,7 @@
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(9, 101);
+            this.txtPassword.Location = new System.Drawing.Point(9, 95);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
             this.txtPassword.Properties.Appearance.Options.UseFont = true;
@@ -138,7 +180,7 @@
             this.btnLogin.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
             this.btnLogin.Appearance.Options.UseFont = true;
             this.btnLogin.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnLogin.ImageOptions.Image")));
-            this.btnLogin.Location = new System.Drawing.Point(33, 148);
+            this.btnLogin.Location = new System.Drawing.Point(40, 154);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(135, 35);
             this.btnLogin.TabIndex = 3;
@@ -171,10 +213,34 @@
             this.xtraScrollableControlMain.Controls.Add(this.btnAcctiveTeeChipPro);
             this.xtraScrollableControlMain.Controls.Add(this.btnActiveToolSpread);
             this.xtraScrollableControlMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.xtraScrollableControlMain.Location = new System.Drawing.Point(2, 22);
+            this.xtraScrollableControlMain.Location = new System.Drawing.Point(2, 20);
             this.xtraScrollableControlMain.Name = "xtraScrollableControlMain";
-            this.xtraScrollableControlMain.Size = new System.Drawing.Size(527, 193);
+            this.xtraScrollableControlMain.Size = new System.Drawing.Size(527, 195);
             this.xtraScrollableControlMain.TabIndex = 0;
+            // 
+            // btnAcctiveTeePublic
+            // 
+            this.btnAcctiveTeePublic.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.btnAcctiveTeePublic.Appearance.Options.UseFont = true;
+            this.btnAcctiveTeePublic.Enabled = false;
+            this.btnAcctiveTeePublic.Location = new System.Drawing.Point(274, 102);
+            this.btnAcctiveTeePublic.Name = "btnAcctiveTeePublic";
+            this.btnAcctiveTeePublic.Size = new System.Drawing.Size(189, 59);
+            this.btnAcctiveTeePublic.TabIndex = 3;
+            this.btnAcctiveTeePublic.Text = "Start TeePublic";
+            this.btnAcctiveTeePublic.Visible = false;
+            // 
+            // btnAcctiveMerchAmazon
+            // 
+            this.btnAcctiveMerchAmazon.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.btnAcctiveMerchAmazon.Appearance.Options.UseFont = true;
+            this.btnAcctiveMerchAmazon.Enabled = false;
+            this.btnAcctiveMerchAmazon.Location = new System.Drawing.Point(54, 102);
+            this.btnAcctiveMerchAmazon.Name = "btnAcctiveMerchAmazon";
+            this.btnAcctiveMerchAmazon.Size = new System.Drawing.Size(189, 59);
+            this.btnAcctiveMerchAmazon.TabIndex = 3;
+            this.btnAcctiveMerchAmazon.Text = "Start Merch Amazon";
+            this.btnAcctiveMerchAmazon.Visible = false;
             // 
             // btnAcctiveTeeChipPro
             // 
@@ -204,6 +270,8 @@
             // 
             // panelControl1
             // 
+            this.panelControl1.Controls.Add(this.btnCheckForUpdate);
+            this.panelControl1.Controls.Add(this.btnExit);
             this.panelControl1.Controls.Add(this.lblDateCreate);
             this.panelControl1.Controls.Add(this.lblExpires);
             this.panelControl1.Controls.Add(this.lblToDay);
@@ -300,29 +368,31 @@
             // 
             this.timerOnline.Interval = 1000;
             // 
-            // btnAcctiveMerchAmazon
+            // btnExit
             // 
-            this.btnAcctiveMerchAmazon.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.btnAcctiveMerchAmazon.Appearance.Options.UseFont = true;
-            this.btnAcctiveMerchAmazon.Enabled = false;
-            this.btnAcctiveMerchAmazon.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.ImageOptions.Image")));
-            this.btnAcctiveMerchAmazon.Location = new System.Drawing.Point(54, 102);
-            this.btnAcctiveMerchAmazon.Name = "btnAcctiveMerchAmazon";
-            this.btnAcctiveMerchAmazon.Size = new System.Drawing.Size(189, 59);
-            this.btnAcctiveMerchAmazon.TabIndex = 3;
-            this.btnAcctiveMerchAmazon.Text = "Start Merch Amazon";
+            this.btnExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnExit.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.btnExit.Appearance.Options.UseFont = true;
+            this.btnExit.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnExit.ImageOptions.Image")));
+            this.btnExit.Location = new System.Drawing.Point(482, 7);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(40, 35);
+            this.btnExit.TabIndex = 0;
+            this.btnExit.ToolTip = "Thoát chương trình";
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
-            // btnAcctiveTeePublic
+            // btnCheckForUpdate
             // 
-            this.btnAcctiveTeePublic.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.btnAcctiveTeePublic.Appearance.Options.UseFont = true;
-            this.btnAcctiveTeePublic.Enabled = false;
-            this.btnAcctiveTeePublic.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton2.ImageOptions.Image")));
-            this.btnAcctiveTeePublic.Location = new System.Drawing.Point(274, 102);
-            this.btnAcctiveTeePublic.Name = "btnAcctiveTeePublic";
-            this.btnAcctiveTeePublic.Size = new System.Drawing.Size(189, 59);
-            this.btnAcctiveTeePublic.TabIndex = 3;
-            this.btnAcctiveTeePublic.Text = "Start TeePublic";
+            this.btnCheckForUpdate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCheckForUpdate.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.btnCheckForUpdate.Appearance.Options.UseFont = true;
+            this.btnCheckForUpdate.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.ImageOptions.Image")));
+            this.btnCheckForUpdate.Location = new System.Drawing.Point(436, 7);
+            this.btnCheckForUpdate.Name = "btnCheckForUpdate";
+            this.btnCheckForUpdate.Size = new System.Drawing.Size(40, 35);
+            this.btnCheckForUpdate.TabIndex = 0;
+            this.btnCheckForUpdate.ToolTip = "Kiểm tra cập nhật";
+            this.btnCheckForUpdate.Click += new System.EventHandler(this.btnCheckForUpdate_Click);
             // 
             // frmMain
             // 
@@ -332,6 +402,7 @@
             this.Controls.Add(this.groupControl2);
             this.Controls.Add(this.groupControl1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(747, 303);
             this.MinimumSize = new System.Drawing.Size(747, 303);
             this.Name = "frmMain";
@@ -341,6 +412,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
             this.groupControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ckRemember.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPassword.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtUserName.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
@@ -379,6 +451,11 @@
         private DevExpress.XtraEditors.LabelControl labelControl7;
         private DevExpress.XtraEditors.SimpleButton btnAcctiveTeePublic;
         private DevExpress.XtraEditors.SimpleButton btnAcctiveMerchAmazon;
+        private DevExpress.XtraEditors.CheckEdit ckRemember;
+        private System.Windows.Forms.LinkLabel linkDoiMatKhau;
+        private System.Windows.Forms.LinkLabel linkLabelHelp;
+        private DevExpress.XtraEditors.SimpleButton btnCheckForUpdate;
+        private DevExpress.XtraEditors.SimpleButton btnExit;
     }
 }
 

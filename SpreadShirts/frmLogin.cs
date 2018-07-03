@@ -189,6 +189,8 @@ namespace SpreadShirts
             //{
             //    XtraMessageBox.Show("Thời gian dùng thử kết thúc 4/18/2018, 9:13:20 PM", "Thông báo");
             //}
+            ServicePointManager.Expect100Continue = true;
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
         }
         private Dictionary<string, object> PostDataAPI(HttpWebRequest wRequest, string data2Send)
         {

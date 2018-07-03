@@ -93,9 +93,7 @@
     <Compile Include="frmMainSunfrogV2.Designer.cs">
       <DependentUpon>frmMainSunfrogV2.cs</DependentUpon>
     </Compile>
-    <Compile Include="UCItemDesign.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="UCItemDesign.cs" />
     <Compile Include="UCItemDesign.Designer.cs">
       <DependentUpon>UCItemDesign.cs</DependentUpon>
     </Compile>

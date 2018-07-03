@@ -11,11 +11,14 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MainUploadV2.Services;
 using TCProShirts;
+using System.Net;
+using System.IO;
 
 namespace MainUploadV2
 {
     public partial class frmMain : XtraForm
     {
+        public static string CURRENT_USERNAME = "";
         private AccountServices accService = new AccountServices();
         private Timer timer_Expires = null;
         private int _CurrentTime = 0;
@@ -47,6 +50,13 @@ namespace MainUploadV2
             curr_UserID = accService.CheckLogin(user, pass);
             if (curr_UserID != "-1")
             {
+                CURRENT_USERNAME = user;
+                if (ckRemember.Checked)
+                {
+                    PartialViewService.Username = user;
+                    PartialViewService.Password = pass;
+                    PartialViewService.Remember = ckRemember.Checked;
+                }
                 Dictionary<string, object> data = accService.GetInfoMember(curr_UserID);
                 var dateExpires = DateTime.Parse(data["DateExpires"].ToString());
                 var currDate = DateTime.UtcNow;
@@ -56,6 +66,7 @@ namespace MainUploadV2
                     return;
                 }
                 btnLogin.Enabled = false;
+                linkDoiMatKhau.Visible = true;
                 XtraMessageBox.Show("Đăng nhập thành công.");
                 lblExpires.Text = data["DateExpires"].ToString();
                 lblDateCreate.Text = data["DateCreate"].ToString();
@@ -66,19 +77,57 @@ namespace MainUploadV2
                     foreach (Dictionary<string, object> item in tools)
                     {
                         int toolID = int.Parse(item["ToolID"].ToString());
+                        DateTime dateExpire = DateTime.Parse(item["DateExpires"].ToString());
+                        string Expires = item["Expires"].ToString();
                         switch (toolID)
                         {
                             case 1:
-                                btnActiveToolSpread.Enabled = true;
+                                if (DateTime.UtcNow > dateExpire)
+                                {
+                                    btnActiveToolSpread.Enabled = false;
+                                    btnActiveToolSpread.Text = "SpreadShirt (Hết hạn)";
+                                }
+                                else
+                                {
+                                    btnActiveToolSpread.Enabled = true;
+                                    btnActiveToolSpread.ToolTip = "Ngày hết hạn:" + dateExpire.ToString("dd-MM-yyyy") + " (" + Expires + " ngày)";
+                                }
                                 break;
                             case 2:
-                                btnAcctiveTeeChipPro.Enabled = true;
+                                if (DateTime.UtcNow > dateExpire)
+                                {
+                                    btnAcctiveTeeChipPro.Enabled = false;
+                                    btnAcctiveTeeChipPro.Text = "TeeChip Pro (Hết hạn)";
+                                }
+                                else
+                                {
+                                    btnAcctiveTeeChipPro.Enabled = true;
+                                    btnAcctiveTeeChipPro.ToolTip = "Ngày hết hạn:" + dateExpire.ToString("dd-MM-yyyy") + " (" + Expires + " ngày)";
+                                }
                                 break;
                             case 3:
-                                btnAcctiveMerchAmazon.Enabled = true;
+                                if (DateTime.UtcNow > dateExpire)
+                                {
+                                    btnAcctiveMerchAmazon.Enabled = false;
+                                    btnAcctiveMerchAmazon.Text = "MerchAmazon (Hết hạn)";
+                                }
+                                else
+                                {
+                                    btnAcctiveMerchAmazon.Enabled = true;
+                                    btnAcctiveMerchAmazon.ToolTip = "Ngày hết hạn:" + dateExpire.ToString("dd-MM-yyyy") + " (" + Expires + " ngày)";
+                                }
                                 break;
                             case 4:
-                                btnAcctiveTeePublic.Enabled = true;
+                                if (DateTime.UtcNow > dateExpire)
+                                {
+                                    btnAcctiveTeePublic.Enabled = false;
+                                    btnAcctiveTeePublic.Text = "Tee Public (Hết hạn)";
+                                }
+                                else
+                                {
+                                    btnAcctiveTeePublic.Enabled = true;
+                                    btnAcctiveTeePublic.ToolTip = "Ngày hết hạn:" + dateExpire.ToString("dd-MM-yyyy") + " (" + Expires + " ngày)";
+                                }
                                 break;
                         }
                     }
@@ -96,6 +145,10 @@ namespace MainUploadV2
 
         private void frmMain_Load(object sender, EventArgs e)
         {
+            // Use SecurityProtocolType.Ssl3 if needed for compatibility reasons
+            ServicePointManager.Expect100Continue = true;
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+
             timerOnline.Tick += TimerOnline_Tick;
             timerOnline.Start();
             lblToDay.Text = DateTime.Now.ToString("MMM, dd-yyyy");
@@ -105,6 +158,13 @@ namespace MainUploadV2
             timer_Expires.Tick += timer_Expires_Tick;
             timer_Expires.Enabled = true;
             timer_Expires.Start();
+
+            if (PartialViewService.Remember)
+            {
+                txtUserName.Text = PartialViewService.Username;
+                txtPassword.Text = PartialViewService.Password;
+                ckRemember.Checked = PartialViewService.Remember;
+            }
         }
 
         void timer_Expires_Tick(object sender, EventArgs e)
@@ -142,6 +202,39 @@ namespace MainUploadV2
         {
             TCProShirts.frmMainTeechip frm = new frmMainTeechip();
             frm.Show();
+        }
+
+        private void linkDoiMatKhau_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            frmChangePass frm = new frmChangePass();
+            frm.ShowDialog();
+        }
+
+        private void linkLabelHelp_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            frmHuongDan frm = new frmHuongDan();
+            frm.Show();
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            if (DialogResult.Yes == XtraMessageBox.Show("Kết thúc phiên làm việc ?", "Xác thực", MessageBoxButtons.YesNo, MessageBoxIcon.Question))
+                Application.Exit();
+        }
+
+        private void btnCheckForUpdate_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string fileNameUpdate = "\\updater.exe";
+                string appPath = Path.GetDirectoryName(Application.ExecutablePath);
+                var filePath = String.Concat(appPath, fileNameUpdate);
+                System.Diagnostics.Process.Start(filePath);
+            }
+            catch (Exception exx)
+            {
+                XtraMessageBox.Show(exx.Message);
+            }
         }
     }
 }

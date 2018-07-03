@@ -14,7 +14,7 @@ namespace MainUploadV2.UControls
 {
     public partial class UCPayment : XtraUserControl
     {
-        private AccountServices accService = new AccountServices();
+        private PaymentServices payService = new PaymentServices();
         public UCPayment()
         {
             InitializeComponent();
@@ -22,13 +22,13 @@ namespace MainUploadV2.UControls
 
         private void btnAddAccount_Click(object sender, EventArgs e)
         {
-            frmActionAccount frm = new frmActionAccount();
+            frmNewPayMent frm = new frmNewPayMent();
             frm.ShowDialog();
         }
 
         private void UCAccount_Load(object sender, EventArgs e)
         {
-            gridControl1.DataSource = accService.GetListMember();
+            gridControl1.DataSource = payService.GetListPayMent();
         }
     }
 }

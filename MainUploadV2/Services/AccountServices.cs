@@ -45,6 +45,12 @@ namespace MainUploadV2.Services
             var lsData = con.GetExecuteProcedure("getMemberAccount", null);
             return lsData;
         }
+        public DataTable GetListDataMember()
+        {
+            var lsData = con.GetExecuteProcedure("getDataMember", null);
+            return lsData;
+        }
+        
         public int InsertNewAccount(string username, string password, string fullName, string dateExpires, string acctype)
         {
             List<ParametersStore> param = new List<ParametersStore>();
@@ -58,6 +64,17 @@ namespace MainUploadV2.Services
             int rs = int.Parse(data[0]["Status"].ToString());
             return rs;
         }
+
+        public int ChangePassword(string username, string newpass)
+        {
+            List<ParametersStore> param = new List<ParametersStore>();
+            param.Add(new ParametersStore() { Text = "Username", Value = username });
+            param.Add(new ParametersStore() { Text = "Password", Value = GetMd5Hash(newpass) });
+            var data = con.ConvertDataTableToList("spChangePassword", param);
+            int rs = int.Parse(data[0]["Status"].ToString());
+            return rs;
+        }
+
         public static string GetMd5Hash(string value)
         {
             var md5Hasher = MD5.Create();

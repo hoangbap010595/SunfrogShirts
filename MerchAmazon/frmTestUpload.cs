@@ -76,6 +76,11 @@ namespace MerchAmazon
             IWebElement btnSaveAndContinue = driver.FindElement(By.Id("save-and-continue-upload-art-announce"));
 
 
+            //driver.FindElementByLinkText("Upload Files").click();
+            //driver.SetLogLevel(Level.ALL);
+            IWebElement element = driver.FindElement(By.XPath("//input[@name='file_1']"));
+            OpenQA.Selenium.Remote.LocalFileDetector detector = new OpenQA.Selenium.Remote.LocalFileDetector();
+
             //Select ProductType
 
             SelectElement SelectAnEducation = new SelectElement(selectProductType);

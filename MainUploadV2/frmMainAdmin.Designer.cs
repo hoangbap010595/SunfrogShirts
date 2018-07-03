@@ -32,12 +32,13 @@
             this.btnManageAccount = new DevExpress.XtraEditors.SimpleButton();
             this.groupControlMain = new DevExpress.XtraEditors.GroupControl();
             this.btnPayment = new DevExpress.XtraEditors.SimpleButton();
+            this.btnManageTool = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.groupControlMain)).BeginInit();
             this.SuspendLayout();
             // 
             // btnManageAccount
             // 
-            this.btnManageAccount.Location = new System.Drawing.Point(12, 32);
+            this.btnManageAccount.Location = new System.Drawing.Point(12, 12);
             this.btnManageAccount.Name = "btnManageAccount";
             this.btnManageAccount.Size = new System.Drawing.Size(181, 34);
             this.btnManageAccount.TabIndex = 0;
@@ -53,12 +54,21 @@
             // 
             // btnPayment
             // 
-            this.btnPayment.Location = new System.Drawing.Point(12, 72);
+            this.btnPayment.Location = new System.Drawing.Point(12, 52);
             this.btnPayment.Name = "btnPayment";
             this.btnPayment.Size = new System.Drawing.Size(181, 34);
             this.btnPayment.TabIndex = 0;
             this.btnPayment.Text = "Manage Payment";
             this.btnPayment.Click += new System.EventHandler(this.btnPayment_Click);
+            // 
+            // btnManageTool
+            // 
+            this.btnManageTool.Location = new System.Drawing.Point(12, 92);
+            this.btnManageTool.Name = "btnManageTool";
+            this.btnManageTool.Size = new System.Drawing.Size(181, 34);
+            this.btnManageTool.TabIndex = 0;
+            this.btnManageTool.Text = "Manage Tool";
+            this.btnManageTool.Click += new System.EventHandler(this.btnManageTool_Click);
             // 
             // frmMainAdmin
             // 
@@ -66,6 +76,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1071, 512);
             this.Controls.Add(this.groupControlMain);
+            this.Controls.Add(this.btnManageTool);
             this.Controls.Add(this.btnPayment);
             this.Controls.Add(this.btnManageAccount);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -84,5 +95,6 @@
         private DevExpress.XtraEditors.SimpleButton btnManageAccount;
         private DevExpress.XtraEditors.GroupControl groupControlMain;
         private DevExpress.XtraEditors.SimpleButton btnPayment;
+        private DevExpress.XtraEditors.SimpleButton btnManageTool;
     }
 }

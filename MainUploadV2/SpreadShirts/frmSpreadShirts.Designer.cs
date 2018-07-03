@@ -64,6 +64,8 @@
             this.btnClearAccount = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.btnImportAccount = new DevExpress.XtraEditors.SimpleButton();
+            this.btnReadFileTag = new DevExpress.XtraEditors.SimpleButton();
+            this.btnStop = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl5)).BeginInit();
@@ -163,7 +165,7 @@
             this.groupControlFile.Controls.Add(this.txtPath);
             this.groupControlFile.Location = new System.Drawing.Point(2, 377);
             this.groupControlFile.Name = "groupControlFile";
-            this.groupControlFile.Size = new System.Drawing.Size(560, 87);
+            this.groupControlFile.Size = new System.Drawing.Size(456, 87);
             this.groupControlFile.TabIndex = 0;
             this.groupControlFile.Text = "Open File Excel (*.xlsx)";
             // 
@@ -179,7 +181,7 @@
             this.ckUsingFileUpload.Properties.Appearance.Options.UseForeColor = true;
             this.ckUsingFileUpload.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
             this.ckUsingFileUpload.Properties.Caption = "Using upload from File";
-            this.ckUsingFileUpload.Size = new System.Drawing.Size(282, 26);
+            this.ckUsingFileUpload.Size = new System.Drawing.Size(178, 26);
             this.ckUsingFileUpload.TabIndex = 7;
             this.ckUsingFileUpload.CheckedChanged += new System.EventHandler(this.ckUsingFileUpload_CheckedChanged);
             // 
@@ -190,7 +192,7 @@
             this.btnClear.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnClear.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnClear.ImageOptions.Image")));
             this.btnClear.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleLeft;
-            this.btnClear.Location = new System.Drawing.Point(470, 58);
+            this.btnClear.Location = new System.Drawing.Point(366, 58);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(84, 23);
             this.btnClear.TabIndex = 10;
@@ -205,7 +207,7 @@
             this.btnWriteLog.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnWriteLog.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnWriteLog.ImageOptions.Image")));
             this.btnWriteLog.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleLeft;
-            this.btnWriteLog.Location = new System.Drawing.Point(383, 58);
+            this.btnWriteLog.Location = new System.Drawing.Point(279, 58);
             this.btnWriteLog.Name = "btnWriteLog";
             this.btnWriteLog.Size = new System.Drawing.Size(84, 23);
             this.btnWriteLog.TabIndex = 8;
@@ -221,7 +223,7 @@
             this.btnOpenFileExcel.Enabled = false;
             this.btnOpenFileExcel.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnOpenFileExcel.ImageOptions.Image")));
             this.btnOpenFileExcel.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleLeft;
-            this.btnOpenFileExcel.Location = new System.Drawing.Point(295, 58);
+            this.btnOpenFileExcel.Location = new System.Drawing.Point(191, 58);
             this.btnOpenFileExcel.Name = "btnOpenFileExcel";
             this.btnOpenFileExcel.Size = new System.Drawing.Size(84, 23);
             this.btnOpenFileExcel.TabIndex = 9;
@@ -236,17 +238,18 @@
             this.txtPath.Name = "txtPath";
             this.txtPath.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
             this.txtPath.Properties.Appearance.Options.UseFont = true;
-            this.txtPath.Size = new System.Drawing.Size(549, 26);
+            this.txtPath.Size = new System.Drawing.Size(445, 26);
             this.txtPath.TabIndex = 4;
             // 
             // panelControlAction
             // 
             this.panelControlAction.Appearance.BackColor = System.Drawing.Color.White;
             this.panelControlAction.Appearance.Options.UseBackColor = true;
+            this.panelControlAction.Controls.Add(this.btnStop);
             this.panelControlAction.Controls.Add(this.btnStart);
-            this.panelControlAction.Location = new System.Drawing.Point(568, 377);
+            this.panelControlAction.Location = new System.Drawing.Point(464, 377);
             this.panelControlAction.Name = "panelControlAction";
-            this.panelControlAction.Size = new System.Drawing.Size(183, 87);
+            this.panelControlAction.Size = new System.Drawing.Size(287, 87);
             this.panelControlAction.TabIndex = 0;
             // 
             // btnStart
@@ -261,9 +264,9 @@
             this.btnStart.Appearance.Options.UseForeColor = true;
             this.btnStart.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
             this.btnStart.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnStart.Location = new System.Drawing.Point(8, 7);
+            this.btnStart.Location = new System.Drawing.Point(12, 7);
             this.btnStart.Name = "btnStart";
-            this.btnStart.Size = new System.Drawing.Size(167, 76);
+            this.btnStart.Size = new System.Drawing.Size(129, 76);
             this.btnStart.TabIndex = 6;
             this.btnStart.Text = "Upload";
             this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
@@ -336,7 +339,7 @@
             this.memoTag.Properties.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.memoTag.Properties.Appearance.Options.UseFont = true;
             this.memoTag.Properties.Appearance.Options.UseForeColor = true;
-            this.memoTag.Size = new System.Drawing.Size(382, 88);
+            this.memoTag.Size = new System.Drawing.Size(346, 88);
             this.memoTag.TabIndex = 3;
             // 
             // panelControl1
@@ -510,6 +513,35 @@
             this.btnImportAccount.ToolTip = "Open File Data";
             this.btnImportAccount.Click += new System.EventHandler(this.btnImportAccount_Click);
             // 
+            // btnReadFileTag
+            // 
+            this.btnReadFileTag.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnReadFileTag.ImageOptions.Image")));
+            this.btnReadFileTag.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.BottomCenter;
+            this.btnReadFileTag.Location = new System.Drawing.Point(464, 138);
+            this.btnReadFileTag.Name = "btnReadFileTag";
+            this.btnReadFileTag.Size = new System.Drawing.Size(30, 36);
+            this.btnReadFileTag.TabIndex = 0;
+            this.btnReadFileTag.Click += new System.EventHandler(this.btnReadFileTag_Click);
+            // 
+            // btnStop
+            // 
+            this.btnStop.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.btnStop.Appearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.btnStop.Appearance.Font = new System.Drawing.Font("Tahoma", 20F, System.Drawing.FontStyle.Bold);
+            this.btnStop.Appearance.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnStop.Appearance.Options.UseBackColor = true;
+            this.btnStop.Appearance.Options.UseBorderColor = true;
+            this.btnStop.Appearance.Options.UseFont = true;
+            this.btnStop.Appearance.Options.UseForeColor = true;
+            this.btnStop.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
+            this.btnStop.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnStop.Location = new System.Drawing.Point(147, 7);
+            this.btnStop.Name = "btnStop";
+            this.btnStop.Size = new System.Drawing.Size(129, 76);
+            this.btnStop.TabIndex = 6;
+            this.btnStop.Text = "Stop";
+            this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
+            // 
             // frmSpreadShirts
             // 
             this.Appearance.BackColor = System.Drawing.Color.White;
@@ -533,6 +565,7 @@
             this.Controls.Add(this.groupControl5);
             this.Controls.Add(this.groupControl1);
             this.Controls.Add(this.simpleButton2);
+            this.Controls.Add(this.btnReadFileTag);
             this.Controls.Add(this.simpleButton1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(1100, 705);
@@ -605,6 +638,8 @@
         private DevExpress.XtraEditors.SimpleButton btnClearAccount;
         private DevExpress.XtraEditors.SimpleButton btnImportAccount;
         private DevExpress.XtraEditors.SimpleButton btnAccountFaild;
+        private DevExpress.XtraEditors.SimpleButton btnReadFileTag;
+        private DevExpress.XtraEditors.SimpleButton btnStop;
     }
 }
 

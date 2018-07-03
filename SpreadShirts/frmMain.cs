@@ -817,6 +817,8 @@ namespace SpreadShirts
         }
         private void frmMain_Load(object sender, EventArgs e)
         {
+            ServicePointManager.Expect100Continue = true;
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
             User = new ApplicationUser();
             lsAllShopItem = new List<UCItemShopSpread>();
             frmLogin frm = new frmLogin();

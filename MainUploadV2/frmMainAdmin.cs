@@ -30,7 +30,15 @@ namespace MainUploadV2
         private void btnPayment_Click(object sender, EventArgs e)
         {
             groupControlMain.Controls.Clear();
-            UCAccount frm = new UCAccount();
+            UCPayment frm = new UCPayment();
+            frm.Dock = DockStyle.Fill;
+            groupControlMain.Controls.Add(frm);
+        }
+
+        private void btnManageTool_Click(object sender, EventArgs e)
+        {
+            groupControlMain.Controls.Clear();
+            UCTool frm = new UCTool();
             frm.Dock = DockStyle.Fill;
             groupControlMain.Controls.Add(frm);
         }

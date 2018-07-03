@@ -79,6 +79,18 @@
     <Compile Include="frmActionAccount.Designer.cs">
       <DependentUpon>frmActionAccount.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmChangePass.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmChangePass.Designer.cs">
+      <DependentUpon>frmChangePass.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmHuongDan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmHuongDan.Designer.cs">
+      <DependentUpon>frmHuongDan.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,9 +103,17 @@
     <Compile Include="frmMainAdmin.Designer.cs">
       <DependentUpon>frmMainAdmin.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmNewPayMent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmNewPayMent.Designer.cs">
+      <DependentUpon>frmNewPayMent.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AccountServices.cs" />
+    <Compile Include="Services\PaymentServices.cs" />
+    <Compile Include="Services\ToolServices.cs" />
     <Compile Include="Services\PartialViewService.cs" />
     <Compile Include="SpreadShirts\ApplicationLibary.cs" />
     <Compile Include="SpreadShirts\ApplicationUser.cs" />
@@ -161,6 +181,12 @@
     <Compile Include="TCProShirts\UControls\UCItemProduct.Designer.cs">
       <DependentUpon>UCItemProduct.cs</DependentUpon>
     </Compile>
+    <Compile Include="UControls\UCTool.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UControls\UCTool.Designer.cs">
+      <DependentUpon>UCTool.cs</DependentUpon>
+    </Compile>
     <Compile Include="UControls\UCPayment.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -176,11 +202,20 @@
     <EmbeddedResource Include="frmActionAccount.resx">
       <DependentUpon>frmActionAccount.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmChangePass.resx">
+      <DependentUpon>frmChangePass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmHuongDan.resx">
+      <DependentUpon>frmHuongDan.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMainAdmin.resx">
       <DependentUpon>frmMainAdmin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmNewPayMent.resx">
+      <DependentUpon>frmNewPayMent.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -219,6 +254,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="TCProShirts\UControls\UCItemProduct.resx">
       <DependentUpon>UCItemProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UControls\UCTool.resx">
+      <DependentUpon>UCTool.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UControls\UCPayment.resx">
       <DependentUpon>UCPayment.cs</DependentUpon>

@@ -40,6 +40,7 @@ namespace MainUploadV2.SpreadShirts
         private List<string> listAccountUploadFaild = new List<string>();
         private int currentIndexUpload = -1;
         private int CurrentImageUpload = 0;
+        private Thread _ThreadUploadAll;
 
         private string dataCYOID = "{\"pointOfSale\":{\"id\":\"56963c0a59248d4dfb5c3852\",\"name\":\"CYO\",\"type\":\"CYO\",\"target\":{\"id\":\"93439\"}},\"id\":\"56963c0a59248d4dfb5c3852\"}";
         private string dataMarkID = @"{""id"":""55c864cc64c7436b464aeb7b"",""pointOfSale"":{""id"":""55c864cc64c7436b464aeb7b"",""type"":""MARKETPLACE"",""target"":{""id"":""93439""},""allowed"":true}}";
@@ -294,12 +295,13 @@ namespace MainUploadV2.SpreadShirts
                 try
                 {
                     string fileImage = lsImageFileNames[i].ToString();
-                    if (CurrentImageUpload > 50)
+                    if (CurrentImageUpload > 45)
                     {
                         CurrentImageUpload = 0;
                         ApplicationLibary.writeLogThread(lsBoxLog, "Change Account. Continiue upload...", 1);
                         return;
                     }
+                    CurrentImageUpload++;
                     string text_all = Path.GetFileName(fileImage).Split('.')[0];
                     string image = fileImage;
                     string title = txtName.Text;
@@ -401,7 +403,6 @@ namespace MainUploadV2.SpreadShirts
                     #endregion
                     MoveFileUploaded(image);
                     lsImageFileNames.RemoveAt(0);
-                    CurrentImageUpload++;
                     i--;
                 }
                 catch (Exception ex)
@@ -838,6 +839,8 @@ namespace MainUploadV2.SpreadShirts
         }
         private void frmMain_Load(object sender, EventArgs e)
         {
+            ServicePointManager.Expect100Continue = true;
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
             User = new ApplicationUser();
             lsAllShopItem = new List<UCItemShopSpread>();
         }
@@ -932,7 +935,9 @@ namespace MainUploadV2.SpreadShirts
             btnOpenFileExcel.Invoke((MethodInvoker)delegate { btnOpenFileExcel.Enabled = b; });
             btnClearAccount.Invoke((MethodInvoker)delegate { btnClearAccount.Enabled = b; });
             btnImportAccount.Invoke((MethodInvoker)delegate { btnImportAccount.Enabled = b; });
+            btnStop.Invoke((MethodInvoker)delegate { btnStop.Enabled = !b; });
         }
+
         private void btnStart_Click(object sender, EventArgs e)
         {
             currentIndexUpload = -1;
@@ -952,12 +957,12 @@ namespace MainUploadV2.SpreadShirts
                     enableB(true);
                     return;
                 }
-                Thread tStart1 = new Thread(new ThreadStart(() =>
+                _ThreadUploadAll = new Thread(new ThreadStart(() =>
                 {
                     UploadFileProgress(listDataUpload);
                     enableBThread(true);
                 }));
-                tStart1.Start();
+                _ThreadUploadAll.Start();
             }
             else
             {
@@ -1007,19 +1012,21 @@ namespace MainUploadV2.SpreadShirts
                     enableB(true);
                     return;
                 }
-                Thread tStart = new Thread(new ThreadStart(() =>
+                int curentAccountUpload = cbbShowAccount.SelectedIndex;
+                _ThreadUploadAll = new Thread(new ThreadStart(() =>
                 {
                     listAccountUploadDone = new List<string>();
                     listAccountUploadFaild = new List<string>();
-                    foreach (OAccount item in listAccountUpload)
+                    for (; curentAccountUpload < listAccountUpload.Count; curentAccountUpload++)
                     {
+                        OAccount item = listAccountUpload[curentAccountUpload];
                         string account = item.Username + "|" + item.Password;
                         if (lsImageFileNames.Count == 0)
                         {
                             ApplicationLibary.writeLogThread(lsBoxLog, "[DONE] Upload Finish", 1);
                             return;
                         }
-                        cbbShowAccount.Invoke((MethodInvoker)delegate { cbbShowAccount.SelectedValue = item.Password; });
+                        cbbShowAccount.Invoke((MethodInvoker)delegate { cbbShowAccount.SelectedIndex = curentAccountUpload; });
                         int rsLogin = executeLogin(item.Username, @item.Password);
                         if (rsLogin == 1)
                         {
@@ -1038,10 +1045,16 @@ namespace MainUploadV2.SpreadShirts
                     }
                     ApplicationLibary.writeLogThread(lsBoxLog, "[DONE] Upload Finish - Stop Progress", 1);
                 }));
-                tStart.Start();
+                _ThreadUploadAll.Start();
             }
         }
+        private void btnStop_Click(object sender, EventArgs e)
+        {
+            if (_ThreadUploadAll != null)
+                _ThreadUploadAll.Abort();
+            enableBThread(true);
 
+        }
         private void txtPrice_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == '.')
@@ -1157,5 +1170,30 @@ namespace MainUploadV2.SpreadShirts
             else
                 XtraMessageBox.Show("Not found data!");
         }
+
+        /// <summary>
+        /// Đọc dữ liệu file tag vào field Tag
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnReadFileTag_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                OpenFileDialog op = new OpenFileDialog();
+                op.Filter = "Text .txt|*.txt";
+                if (DialogResult.OK == op.ShowDialog())
+                {
+                    memoTag.Text = ApplicationLibary.readDataFromFile(op.FileName);
+                }
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show("Error: " + ex.Message);
+            }
+
+        }
+
+      
     }
 }
